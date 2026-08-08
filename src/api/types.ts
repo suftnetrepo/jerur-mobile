@@ -98,14 +98,23 @@ export type ChurchContact = {
 };
 
 // Church.notification (see jerur-next app/models/church.js) — a single
-// admin-authored announcement per church, not a list. `isExpired` is
-// computed server-side (buildNotificationResponse in churchService.js) at
-// request time; the mobile app recomputes its own display decision from
+// admin-authored announcement per church, not a list. `type`/`priority`
+// are ids — look them up against src/config/notificationTypes.ts
+// (getNotificationType/getNotificationPriority) for label/icon/color,
+// never hardcode those here. `isExpired` is computed server-side
+// (buildNotificationResponse in churchService.js) at request time; the
+// mobile app recomputes its own display decision from `start_date`/
 // `expiry_date` anyway rather than trusting a value that could go stale
-// between fetch and render — see ChurchNotificationCard.tsx.
+// between fetch and render — see src/components/NotificationCard.tsx.
 export type ChurchNotification = {
+  type: string;
   title: string;
   message: string;
+  secure_url: string;
+  public_id?: string;
+  priority: string;
+  status: boolean;
+  start_date: string | null;
   expiry_date: string | null;
   isExpired: boolean;
 };
@@ -126,6 +135,13 @@ export type ChurchSettings = {
   // include it - now fixed on the backend.
   secure_url?: string;
   public_id?: string;
+  // Home screen banner copy (see jerur-next app/models/church.js), set on
+  // Settings -> About Us alongside description/denomination — a short
+  // welcome/tagline and an optional scripture text/reference, both
+  // rendered over `secure_url` as the church's banner/hero. See
+  // src/components/ChurchBanner.tsx.
+  short_message?: string;
+  verse?: string;
   address?: {
     addressLine1?: string;
     town?: string;
@@ -198,4 +214,27 @@ export type ChurchEvent = {
   status?: boolean;
   can_register?: boolean;
   location?: { type: "Point"; coordinates: [number, number] };
+};
+
+// The single most recent PUBLISHED sermon for the selected church — see
+// GET /sermon/get (jerur-next app/api/sermon/get/route.js), a public
+// per-church-key endpoint distinct from the admin's staff-session-gated
+// GET /sermon. Deliberately trimmed: no audioUrl/videoUrl (the admin form
+// no longer collects them — see jerur-next's renderOffcanvas.jsx) and no
+// raw media/serviceId/createdBy objects the admin table needs but the
+// Home card doesn't. `thumbnail` is the backend's already-derived
+// maxresdefault URL (see jerur-next utils/youtube.js); src/lib/youtube.ts
+// mirrors the same derivation client-side only for the hqdefault
+// *fallback* — see LatestSermonCard.
+export type LatestSermon = {
+  id: string;
+  title: string;
+  speakerName: string;
+  summary: string;
+  preachedAt: string | null;
+  durationMinutes: number | null;
+  youtubeUrl: string;
+  thumbnail: string;
+  service: string;
+  status: string;
 };

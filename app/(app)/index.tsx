@@ -1,25 +1,24 @@
-import { useState } from "react";
-import { Animated, Dimensions, ScrollView, NativeSyntheticEvent, NativeScrollEvent, Image } from "react-native";
-import Svg, { Defs, LinearGradient, Stop, Rect } from "react-native-svg";
+import { useCallback, useState } from "react";
+import { Animated, RefreshControl, ScrollView } from "react-native";
 import { router } from "expo-router";
+import { useQueryClient } from "@tanstack/react-query";
 import { Feather as Icon } from "@expo/vector-icons";
 import { StyledPage, StyledText, StyledShape, StyledPressable, Stack, Loader } from "fluent-styles";
 import { BottomTabBar } from "../../src/components/BottomTabBar";
 import { PillActionRow, type PillAction } from "../../src/components/PillActionRow";
-import { ChurchNotificationCard } from "../../src/components/ChurchNotificationCard";
+import { NotificationCard, isNotificationActive } from "../../src/components/NotificationCard";
 import { CurrentChurchHeader } from "../../src/components/CurrentChurchHeader";
-import { ScalePressable } from "../../src/components/ScalePressable";
+import { ChurchBanner } from "../../src/components/ChurchBanner";
+import { LatestSermonCard } from "../../src/components/LatestSermonCard";
 import { useFadeUp } from "../../src/hooks/useFadeUp";
-import { SHADOW_SOFT, SHADOW_HERO } from "../../src/theme/shadows";
+import { SHADOW_SOFT } from "../../src/theme/shadows";
 import { useSelectedChurch } from "../../src/church/SelectedChurchContext";
 import { useMemberSession } from "../../src/member/MemberSessionContext";
-import { useSettings, useRegularServices } from "../../src/hooks/useChurchData";
+import { useSettings, useRegularServices, useLatestSermon } from "../../src/hooks/useChurchData";
 import { useFeatureFlags } from "../../src/hooks/useFeatureFlags";
 import { COLORS } from "../../src/theme/colors";
 
-const { width: SCREEN_WIDTH } = Dimensions.get("window");
 const H_PAD = 20;
-const CARD_WIDTH = SCREEN_WIDTH - H_PAD * 2;
 
 // "Ways to belong" cards — title/desc are page-specific copy (friendlier
 // than the admin-facing catalogue label/description), but icon and route
@@ -37,14 +36,43 @@ export default function HomeScreen() {
   const { member } = useMemberSession();
   const { data: settings, isLoading: settingsLoading } = useSettings();
   const { data: services } = useRegularServices();
+  const { data: latestSermon } = useLatestSermon();
   const { features, hasFeature } = useFeatureFlags();
-  const [flyerIndex, setFlyerIndex] = useState(0);
 
   const headerAnim = useFadeUp(0);
   const bodyAnim = useFadeUp(140);
 
-  const flyers = settings?.sliders?.length ? settings.sliders : [];
   const pastor = settings?.pastor_section;
+  const queryClient = useQueryClient();
+  const [refreshing, setRefreshing] = useState(false);
+
+  // Single hero slot: an active notification always wins over the church
+  // banner — see isNotificationActive() in NotificationCard.tsx for the
+  // status/title/date-window check this reuses (not duplicated here).
+  const hasActiveNotification = hasFeature("notifications") && isNotificationActive(settings?.notification);
+
+  // Pull-to-refresh — invalidates the exact React Query cache entries this
+  // screen already reads from (useSettings' "settings" key backs the
+  // banner/notification/pastor/contact/feature-flags — they're all read
+  // off the one GET /church/get response — plus useRegularServices'
+  // "regular-services" key for the "This week" list). No fetcher is ever
+  // called directly and no new query key is introduced: invalidateQueries
+  // just marks these stale and lets react-query re-run the same queryFn
+  // each hook already uses, then the UI updates from cache automatically
+  // once state settles — no reload, no AsyncStorage/church-selection
+  // logic touched.
+  const onRefresh = useCallback(async () => {
+    setRefreshing(true);
+    try {
+      await Promise.all([
+        queryClient.invalidateQueries({ queryKey: ["settings"] }),
+        queryClient.invalidateQueries({ queryKey: ["regular-services"] }),
+        queryClient.invalidateQueries({ queryKey: ["latest-sermon"] }),
+      ]);
+    } finally {
+      setRefreshing(false);
+    }
+  }, [queryClient]);
 
   // One pill per enabled feature — nothing hardcoded, nothing to update
   // here when a church enables/disables a feature or a new one ships.
@@ -59,11 +87,6 @@ export default function HomeScreen() {
     const feature = features.find((f) => f.id === item.featureId);
     return feature ? { ...item, icon: feature.icon, route: feature.route! } : null;
   }).filter((item): item is NonNullable<typeof item> => item !== null);
-
-  function onFlyerScroll(e: NativeSyntheticEvent<NativeScrollEvent>) {
-    const idx = Math.round(e.nativeEvent.contentOffset.x / CARD_WIDTH);
-    setFlyerIndex(idx);
-  }
 
   async function handleChangeChurch() {
     await changeChurch();
@@ -96,7 +119,13 @@ export default function HomeScreen() {
         </Stack>
       </Stack>
 
-      <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: 28 }}>
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={{ paddingBottom: 28 }}
+        refreshControl={
+          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} tintColor={COLORS.indigo} colors={[COLORS.indigo]} />
+        }
+      >
         <Animated.View style={headerAnim}>
           <Stack paddingHorizontal={H_PAD} marginTop={10} marginBottom={18}>
             <StyledText fontSize={26} fontWeight="800" color={COLORS.ink}>
@@ -107,60 +136,6 @@ export default function HomeScreen() {
             </StyledText>
           </Stack>
 
-          {/* Flyer hero — full-bleed image, gradient scrim, bold overlay title */}
-          {settingsLoading ? (
-            <Stack height={200} alignItems="center" justifyContent="center">
-              <Loader color={COLORS.indigo} />
-            </Stack>
-          ) : flyers.length > 0 ? (
-            <Stack paddingHorizontal={H_PAD} marginBottom={22}>
-              <ScrollView
-                horizontal
-                pagingEnabled
-                snapToInterval={CARD_WIDTH}
-                decelerationRate="fast"
-                showsHorizontalScrollIndicator={false}
-                onMomentumScrollEnd={onFlyerScroll}
-              >
-                {flyers.map((flyer, i) => (
-                  <ScalePressable
-                    key={flyer._id ?? i}
-                    onPress={() => {}}
-                    style={{ width: CARD_WIDTH, height: 210, borderRadius: 22, overflow: "hidden", ...SHADOW_HERO }}
-                  >
-                    <Image source={{ uri: flyer.secure_url }} style={{ width: "100%", height: "100%" }} resizeMode="cover" />
-                    {!flyer.imageOnly && (
-                      <>
-                        <Svg style={{ position: "absolute", inset: 0 }} width="100%" height="100%">
-                          <Defs>
-                            <LinearGradient id="flyerFade" x1="0" y1="1" x2="0" y2="0.25">
-                              <Stop offset="0" stopColor="#0C0A09" stopOpacity={0.88} />
-                              <Stop offset="1" stopColor="#0C0A09" stopOpacity={0} />
-                            </LinearGradient>
-                          </Defs>
-                          <Rect width="100%" height="100%" fill="url(#flyerFade)" />
-                        </Svg>
-                        <Stack position="absolute" bottom={0} left={0} right={0} padding={18}>
-                          <StyledText fontSize={11} fontWeight="700" letterSpacing={0.8} color={COLORS.gold} style={{ textTransform: "uppercase", marginBottom: 4 }}>
-                            {flyer.title}
-                          </StyledText>
-                          <StyledText fontSize={16} fontWeight="800" color={COLORS.white} numberOfLines={2}>
-                            {flyer.message}
-                          </StyledText>
-                        </Stack>
-                      </>
-                    )}
-                  </ScalePressable>
-                ))}
-              </ScrollView>
-              <Stack horizontal justifyContent="center" alignItems="center" gap={6} marginTop={10}>
-                {flyers.map((_, i) => (
-                  <Stack key={i} width={i === flyerIndex ? 20 : 6} height={6} borderRadius={3} backgroundColor={i === flyerIndex ? COLORS.gold : COLORS.chromeBorder} />
-                ))}
-              </Stack>
-            </Stack>
-          ) : null}
-
           {/* Quick actions — horizontal pill row, one per enabled feature */}
           {quickActions.length > 0 && (
             <Stack marginBottom={20}>
@@ -168,12 +143,24 @@ export default function HomeScreen() {
             </Stack>
           )}
 
-          {/* Church notification — replaces the old hardcoded Giving promo
-              card. Fully self-contained: reads settings, checks the
-              "notifications" feature flag and expiry itself, and renders
-              nothing (not even empty spacing) when there's no active
-              notification to show. */}
-          <ChurchNotificationCard />
+          {/* Single hero slot — an active notification always wins over
+              the church banner, never both (see hasActiveNotification
+              above). Same outer width/spacing either way, so swapping
+              between them never shifts the rest of the page. */}
+          {settingsLoading ? (
+            <Stack height={200} alignItems="center" justifyContent="center">
+              <Loader color={COLORS.indigo} />
+            </Stack>
+          ) : hasActiveNotification ? (
+            <NotificationCard notification={settings?.notification} />
+          ) : (
+            <ChurchBanner settings={settings} />
+          )}
+
+          {/* Latest Sermon — one card only, never a list. Fully
+              self-contained: hides itself for hasFeature("sermons")=false,
+              no published sermon, or no valid YouTube URL. */}
+          <LatestSermonCard sermon={latestSermon} />
         </Animated.View>
 
         <Animated.View style={bodyAnim}>

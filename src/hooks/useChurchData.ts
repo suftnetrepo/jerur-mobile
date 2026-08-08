@@ -49,3 +49,8 @@ export function useEvents() {
   const enabled = useChurchQueryEnabled();
   return useQuery({ queryKey: ["events"], queryFn: churchApi.getEvents, enabled });
 }
+
+export function useLatestSermon() {
+  const enabled = useChurchQueryEnabled();
+  return useQuery({ queryKey: ["latest-sermon"], queryFn: churchApi.getLatestSermon, enabled });
+}

@@ -1,5 +1,5 @@
 import { apiClient } from "./client";
-import type { ChurchSettings, RegularService, FellowshipGroup, ChurchEvent } from "./types";
+import type { ChurchSettings, RegularService, FellowshipGroup, ChurchEvent, LatestSermon } from "./types";
 
 // These paths match Jerur's actual route handlers directly (church/get,
 // slider/get, etc.) — not church-site's renamed proxy paths
@@ -31,4 +31,14 @@ export async function getFellowshipGroups(): Promise<FellowshipGroup[]> {
 export async function getEvents(): Promise<ChurchEvent[]> {
   const { data } = await apiClient.get<{ data: ChurchEvent[] }>("/event/get");
   return data.data ?? [];
+}
+
+// Public per-church-key endpoint (jerur-next app/api/sermon/get/route.js),
+// distinct from the admin's staff-session-gated /sermon route — returns
+// the single most recent PUBLISHED sermon, already trimmed to what the
+// Home screen's "Latest Sermon" card needs. `data` is null when the
+// church has no published sermon at all.
+export async function getLatestSermon(): Promise<LatestSermon | null> {
+  const { data } = await apiClient.get<{ data: LatestSermon | null }>("/sermon/get");
+  return data?.data ?? null;
 }
