@@ -7,6 +7,7 @@ import { StyledPage, StyledText, StyledShape, StyledPressable, Stack, Loader } f
 import { BottomTabBar } from "../../src/components/BottomTabBar";
 import { PillActionRow, type PillAction } from "../../src/components/PillActionRow";
 import { ChurchNotificationCard } from "../../src/components/ChurchNotificationCard";
+import { CurrentChurchHeader } from "../../src/components/CurrentChurchHeader";
 import { ScalePressable } from "../../src/components/ScalePressable";
 import { useFadeUp } from "../../src/hooks/useFadeUp";
 import { SHADOW_SOFT, SHADOW_HERO } from "../../src/theme/shadows";
@@ -71,12 +72,11 @@ export default function HomeScreen() {
 
   return (
     <StyledPage showStatusBar flex={1} backgroundColor={COLORS.chrome}>
-      {/* Top chrome — hamburger / notifications / avatar, matches the
-          Life.Church reference instead of a custom church-name pill */}
+      {/* Top chrome — current-church selector / notifications / avatar.
+          Same row/spacing as before; the only change from the hamburger
+          version is this one swap (menu icon -> CurrentChurchHeader). */}
       <Stack horizontal alignItems="center" justifyContent="space-between" paddingHorizontal={H_PAD} paddingTop={12} paddingBottom={4}>
-        <StyledPressable onPress={handleChangeChurch} accessibilityLabel="Switch church">
-          <Icon name="menu" size={22} color={COLORS.ink} />
-        </StyledPressable>
+        <CurrentChurchHeader church={church} onPress={handleChangeChurch} />
         <Stack horizontal alignItems="center" gap={14}>
           <StyledPressable accessibilityLabel="Notifications">
             <Icon name="bell" size={20} color={COLORS.ink} />
