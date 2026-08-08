@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx tsc *)",
+      "Bash([ -f \"$MEMFILE\" ])",
+      "Bash(npm run *)",
+      "Bash(xargs -I{} echo {})"
+    ],
+    "additionalDirectories": [
+      "/Users/appdev/dev/jerur-next/constants",
+      "/Users/appdev/dev/jerur-next/app/models",
+      "/Users/appdev/dev/jerur-next/migrations",
+      "/Users/appdev/dev/jerur-next"
+    ]
+  }
+}
