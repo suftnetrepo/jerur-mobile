@@ -238,3 +238,25 @@ export type LatestSermon = {
   service: string;
   status: string;
 };
+
+// A published article for the Home screen's horizontal "Christian
+// Articles" strip — see GET /article/get?action=latest (jerur-next
+// app/api/article/get/route.js's shapeArticleForList), a public
+// per-church-key endpoint distinct from the admin's staff-session-gated
+// GET /article. Deliberately trimmed: no `content` (the rich HTML body) -
+// that's only fetched for the single article a member actually opens, see
+// ArticleDetail below.
+export type Article = {
+  id: string;
+  title: string;
+  summary: string;
+  secure_url: string;
+  publishedAt: string | null;
+};
+
+// GET /article/get?action=detail&id=... (shapeArticleForDetail) - same
+// shape as Article, plus the Tiptap-generated HTML body the reader screen
+// renders.
+export type ArticleDetail = Article & {
+  content: string;
+};

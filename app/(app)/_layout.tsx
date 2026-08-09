@@ -8,6 +8,7 @@ export default function AppLayout() {
       <Stack.Screen name="prayers" />
       <Stack.Screen name="fellowship" />
       <Stack.Screen name="events/index" />
+      <Stack.Screen name="article/[id]" />
       <Stack.Screen name="more" />
       <Stack.Screen name="account" />
       <Stack.Screen name="check-in" />

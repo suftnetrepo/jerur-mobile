@@ -7,11 +7,15 @@ export function ScalePressable({
   children,
   style,
   toValue = 0.96,
+  accessibilityRole,
+  accessibilityLabel,
 }: {
   onPress?: () => void;
   children: ReactNode;
   style?: StyleProp<ViewStyle>;
   toValue?: number;
+  accessibilityRole?: "button" | "link" | "none";
+  accessibilityLabel?: string;
 }) {
   const anim = useRef(new Animated.Value(1)).current;
 
@@ -24,7 +28,13 @@ export function ScalePressable({
 
   return (
     <Animated.View style={[style, { transform: [{ scale: anim }] }]}>
-      <StyledPressable onPress={onPress} onPressIn={pressIn} onPressOut={pressOut}>
+      <StyledPressable
+        onPress={onPress}
+        onPressIn={pressIn}
+        onPressOut={pressOut}
+        accessibilityRole={accessibilityRole}
+        accessibilityLabel={accessibilityLabel}
+      >
         {children}
       </StyledPressable>
     </Animated.View>

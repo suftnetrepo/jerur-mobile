@@ -10,11 +10,12 @@ import { NotificationCard, isNotificationActive } from "../../src/components/Not
 import { CurrentChurchHeader } from "../../src/components/CurrentChurchHeader";
 import { ChurchBanner } from "../../src/components/ChurchBanner";
 import { LatestSermonCard } from "../../src/components/LatestSermonCard";
+import { ArticlesSection } from "../../src/components/ArticlesSection";
 import { useFadeUp } from "../../src/hooks/useFadeUp";
 import { SHADOW_SOFT } from "../../src/theme/shadows";
 import { useSelectedChurch } from "../../src/church/SelectedChurchContext";
 import { useMemberSession } from "../../src/member/MemberSessionContext";
-import { useSettings, useRegularServices, useLatestSermon } from "../../src/hooks/useChurchData";
+import { useSettings, useRegularServices, useLatestSermon, useLatestArticles } from "../../src/hooks/useChurchData";
 import { useFeatureFlags } from "../../src/hooks/useFeatureFlags";
 import { COLORS } from "../../src/theme/colors";
 
@@ -37,6 +38,7 @@ export default function HomeScreen() {
   const { data: settings, isLoading: settingsLoading } = useSettings();
   const { data: services } = useRegularServices();
   const { data: latestSermon } = useLatestSermon();
+  const { data: latestArticles, isLoading: articlesLoading } = useLatestArticles();
   const { features, hasFeature } = useFeatureFlags();
 
   const headerAnim = useFadeUp(0);
@@ -55,12 +57,13 @@ export default function HomeScreen() {
   // screen already reads from (useSettings' "settings" key backs the
   // banner/notification/pastor/contact/feature-flags — they're all read
   // off the one GET /church/get response — plus useRegularServices'
-  // "regular-services" key for the "This week" list). No fetcher is ever
-  // called directly and no new query key is introduced: invalidateQueries
-  // just marks these stale and lets react-query re-run the same queryFn
-  // each hook already uses, then the UI updates from cache automatically
-  // once state settles — no reload, no AsyncStorage/church-selection
-  // logic touched.
+  // "regular-services" key for the "This week" list, useLatestSermon's
+  // "latest-sermon" key, and useLatestArticles' "latest-articles" key).
+  // No fetcher is ever called directly and no new query key is introduced:
+  // invalidateQueries just marks these stale and lets react-query re-run
+  // the same queryFn each hook already uses, then the UI updates from
+  // cache automatically once state settles — no reload, no
+  // AsyncStorage/church-selection logic touched.
   const onRefresh = useCallback(async () => {
     setRefreshing(true);
     try {
@@ -68,6 +71,7 @@ export default function HomeScreen() {
         queryClient.invalidateQueries({ queryKey: ["settings"] }),
         queryClient.invalidateQueries({ queryKey: ["regular-services"] }),
         queryClient.invalidateQueries({ queryKey: ["latest-sermon"] }),
+        queryClient.invalidateQueries({ queryKey: ["latest-articles"] }),
       ]);
     } finally {
       setRefreshing(false);
@@ -161,6 +165,12 @@ export default function HomeScreen() {
               self-contained: hides itself for hasFeature("sermons")=false,
               no published sermon, or no valid YouTube URL. */}
           <LatestSermonCard sermon={latestSermon} />
+
+          {/* Christian Articles — up to 4 latest published articles,
+              horizontally scrolling. Fully self-contained: hides itself
+              for hasFeature("articles")=false or zero published articles;
+              see ArticlesSection.tsx. */}
+          <ArticlesSection articles={latestArticles} isLoading={articlesLoading} />
         </Animated.View>
 
         <Animated.View style={bodyAnim}>

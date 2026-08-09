@@ -208,6 +208,14 @@ export const MOBILE_FEATURES: MobileFeature[] = [
     color: "#16A34A",
   },
   {
+    id: "articles",
+    label: "Christian Articles",
+    description: "Read articles that help members grow in God's Word.",
+    category: "Media",
+    icon: "file-text",
+    color: "#4F46E5",
+  },
+  {
     id: "prayer-hour",
     label: "Prayer Hour",
     description: "Notify members of and let them join the church's dedicated prayer hour sessions.",

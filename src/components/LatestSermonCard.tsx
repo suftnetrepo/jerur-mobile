@@ -7,6 +7,7 @@ import { getNotificationType } from "../config/notificationTypes";
 import { useFeatureFlags } from "../hooks/useFeatureFlags";
 import { SHADOW_CARD } from "../theme/shadows";
 import { COLORS } from "../theme/colors";
+import { CARD_H_PAD, CARD_RADIUS } from "../theme/layout";
 import type { LatestSermon } from "../api/types";
 
 // Reuses the exact accent color already established for the "Sermon"
@@ -58,9 +59,9 @@ export function LatestSermonCard({ sermon }: { sermon: LatestSermon | null | und
   }
 
   return (
-    <Stack paddingHorizontal={20} marginBottom={26}>
+    <Stack paddingHorizontal={CARD_H_PAD} marginBottom={26}>
       <StyledPressable onPress={handlePress} accessibilityRole="button" accessibilityLabel={`Watch sermon: ${sermon.title}`}>
-        <Stack backgroundColor={COLORS.white} borderRadius={20} overflow="hidden" style={SHADOW_CARD}>
+        <Stack backgroundColor={COLORS.white} borderRadius={CARD_RADIUS} overflow="hidden" style={SHADOW_CARD}>
           <Stack style={{ height: 190, overflow: "hidden" }}>
             <Image
               source={{ uri: thumbnailUri }}

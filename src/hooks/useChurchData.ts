@@ -54,3 +54,26 @@ export function useLatestSermon() {
   const enabled = useChurchQueryEnabled();
   return useQuery({ queryKey: ["latest-sermon"], queryFn: churchApi.getLatestSermon, enabled });
 }
+
+// Home screen's "Christian Articles" strip - always the 4 most recent
+// published articles, newest first (server-side sort/filter, see
+// getLatestArticles). Its own query key ("latest-articles") so it
+// participates in Home's pull-to-refresh the same way "latest-sermon" does.
+export function useLatestArticles() {
+  const enabled = useChurchQueryEnabled();
+  return useQuery({ queryKey: ["latest-articles"], queryFn: () => churchApi.getLatestArticles(4), enabled });
+}
+
+// Article Detail screen - a separate query keyed by article id (not part
+// of "latest-articles") so opening one article doesn't refetch the whole
+// Home strip, and revisiting the same article reuses the cache. Only
+// enabled once both a church is selected AND an id was actually passed in
+// (guards the brief window before expo-router's params resolve).
+export function useArticleDetail(id: string | undefined) {
+  const churchEnabled = useChurchQueryEnabled();
+  return useQuery({
+    queryKey: ["article-detail", id],
+    queryFn: () => churchApi.getArticleDetail(id as string),
+    enabled: churchEnabled && !!id,
+  });
+}
