@@ -6,3 +6,10 @@ web-build
 .env.local
 *.log
 .DS_Store
+
+# This project uses Expo's Continuous Native Generation (managed
+# workflow, config plugins in app.json) - native projects are generated
+# on demand by `expo prebuild` / `expo run:ios` / `expo run:android`, not
+# committed. Regenerate locally when you need a native build.
+/ios
+/android

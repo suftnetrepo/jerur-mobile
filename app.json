@@ -17,7 +17,10 @@
           "resizeMode": "contain",
           "backgroundColor": "#1B2340"
         }
-      ]
+      ],
+      "expo-sqlite",
+      "expo-secure-store",
+      "expo-font"
     ],
     "ios": {
       "supportsTablet": false,

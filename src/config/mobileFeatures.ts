@@ -110,6 +110,7 @@ export const MOBILE_FEATURES: MobileFeature[] = [
     category: "Media",
     icon: "music",
     color: "#44403C",
+    route: "/hymns",
   },
   {
     id: "attendance",
@@ -195,6 +196,7 @@ export const MOBILE_FEATURES: MobileFeature[] = [
     category: "Media",
     icon: "edit-3",
     color: "#DB2777",
+    route: "/notes",
   },
   {
     id: "bible",
@@ -203,6 +205,7 @@ export const MOBILE_FEATURES: MobileFeature[] = [
     category: "Media",
     icon: "book",
     color: "#1E3A8A",
+    route: "/bible",
   },
   {
     id: "sermons",

@@ -42,6 +42,10 @@ const FEATURE_SECTIONS: { title: string; items: { featureId: string; label?: str
     ],
   },
   {
+    title: "Media",
+    items: [{ featureId: "bible" }, { featureId: "hymns" }, { featureId: "note", label: "Notes" }],
+  },
+  {
     title: "Resources",
     items: [{ featureId: "believers-foundation-class" }, { featureId: "wofbi-basic-certificate" }],
   },
