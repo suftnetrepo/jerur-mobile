@@ -118,7 +118,12 @@ export const MOBILE_FEATURES: MobileFeature[] = [
     category: "Church",
     icon: "check-circle",
     color: "#059669",
-    route: "/check-in",
+    // Not "/check-in" directly - that screen now requires a known
+    // serviceId (see check-in.tsx) and never lists services itself.
+    // Service Times is where a member actually picks which service to
+    // submit attendance for; "Submit attendance" lives on each service
+    // card there.
+    route: "/service-times",
   },
   {
     id: "upcoming-events",

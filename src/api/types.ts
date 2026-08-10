@@ -181,6 +181,13 @@ export type RegularService = {
   description?: string;
   remote?: boolean;
   remote_link?: string;
+  // Days of the week this recurring service runs on (0 = Sunday ... 6 =
+  // Saturday, matching JS Date.getDay() and jerur-next's ServiceTime.days
+  // enum). GET /regularService/get only .select('-suid')s the response, so
+  // this rides along already — previously just missing from this type.
+  // Lets the mobile app show "Today" vs a specific day name without
+  // fabricating it (see check-in.tsx's service summary card).
+  days?: number[];
 };
 
 export type FellowshipGroup = {

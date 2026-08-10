@@ -1,13 +1,14 @@
 import { useState } from "react";
 import { Image } from "react-native";
 import { Feather as Icon } from "@expo/vector-icons";
-import { StyledPage, StyledScrollView, StyledText, StyledCard, StyledButton, StyledForm, Popup, Stack } from "fluent-styles";
+import { StyledPage, StyledScrollView, StyledText, StyledButton, StyledForm, Popup, Stack } from "fluent-styles";
 import { BottomTabBar } from "../../../src/components/BottomTabBar";
 import { FeatureGate } from "../../../src/components/FeatureGate";
 import { useEvents } from "../../../src/hooks/useChurchData";
 import { useEventRegistration } from "../../../src/hooks/useSubmissions";
 import { apiErrorMessage } from "../../../src/api/client";
 import { COLORS } from "../../../src/theme/colors";
+import { SHADOW_CARD } from "../../../src/theme/shadows";
 import type { ChurchEvent } from "../../../src/api/types";
 
 function formatDate(value?: string) {
@@ -58,44 +59,107 @@ function EventsScreenContent() {
             const location = [event.town, event.postcode].filter(Boolean).join(", ");
 
             return (
-              <StyledCard key={event._id ?? i} shadow="light" borderRadius={14} overflow="hidden" padding={0}>
+              <Stack
+                key={event._id ?? i}
+                backgroundColor={COLORS.white}
+                borderRadius={22}
+                overflow="hidden"
+                style={SHADOW_CARD}
+              >
+                {/* Event image — edge-to-edge, rounded top corners via parent overflow */}
                 {event.secure_url && (
-                  <Image source={{ uri: event.secure_url }} style={{ width: "100%", height: 160 }} resizeMode="cover" />
+                  <Image
+                    source={{ uri: event.secure_url }}
+                    style={{ width: "100%", height: 200 }}
+                    resizeMode="cover"
+                  />
                 )}
-                <Stack padding={16}>
-                  <StyledText fontSize={17} fontWeight="800" color={COLORS.ink} style={{ marginBottom: 8 }}>
+
+                {/* Card body */}
+                <Stack padding={20} paddingTop={18} gap={0}>
+                  {/* Title */}
+                  <StyledText
+                    fontSize={20}
+                    fontWeight="800"
+                    color={COLORS.ink}
+                    style={{ marginBottom: 12, lineHeight: 26 }}
+                  >
                     {event.title}
                   </StyledText>
+
+                  {/* Date row */}
                   {dateRange && (
-                    <Stack horizontal alignItems="center" gap={6} marginBottom={4}>
-                      <Icon name="calendar" size={13} color={COLORS.inkSoft} />
-                      <StyledText fontSize={12.5} color={COLORS.inkSoft}>
+                    <Stack horizontal alignItems="center" gap={8} marginBottom={6}>
+                      <Stack
+                        width={28}
+                        height={28}
+                        borderRadius={8}
+                        backgroundColor={COLORS.goldPale}
+                        alignItems="center"
+                        justifyContent="center"
+                        flexShrink={0}
+                      >
+                        <Icon name="calendar" size={13} color={COLORS.goldDeep} />
+                      </Stack>
+                      <StyledText fontSize={13} color={COLORS.inkSoft} style={{ flex: 1 }}>
                         {dateRange}
                       </StyledText>
                     </Stack>
                   )}
+
+                  {/* Location row */}
                   {location && (
-                    <Stack horizontal alignItems="center" gap={6} marginBottom={8}>
-                      <Icon name="map-pin" size={13} color={COLORS.inkSoft} />
-                      <StyledText fontSize={12.5} color={COLORS.inkSoft}>
+                    <Stack horizontal alignItems="center" gap={8} marginBottom={14}>
+                      <Stack
+                        width={28}
+                        height={28}
+                        borderRadius={8}
+                        backgroundColor={COLORS.goldPale}
+                        alignItems="center"
+                        justifyContent="center"
+                        flexShrink={0}
+                      >
+                        <Icon name="map-pin" size={13} color={COLORS.goldDeep} />
+                      </Stack>
+                      <StyledText fontSize={13} color={COLORS.inkSoft} style={{ flex: 1 }}>
                         {location}
                       </StyledText>
                     </Stack>
                   )}
+
+                  {/* Description */}
                   {event.description && (
-                    <StyledText fontSize={13.5} color={COLORS.inkSoft} numberOfLines={3} style={{ marginBottom: 12, lineHeight: 19 }}>
+                    <StyledText
+                      fontSize={13.5}
+                      color={COLORS.inkSoft}
+                      numberOfLines={3}
+                      style={{ lineHeight: 20, marginBottom: event.can_register ? 18 : 4 }}
+                    >
                       {event.description}
                     </StyledText>
                   )}
+
+                  {/* Full-width Register CTA */}
                   {event.can_register && (
-                    <StyledButton primary compact onPress={() => setRegistering(event)}>
-                      <StyledButton.Text color={COLORS.indigoDeep} fontWeight="700">
-                        Register
-                      </StyledButton.Text>
+                    <StyledButton
+                      primary
+                      onPress={() => setRegistering(event)}
+                      style={{
+                        borderRadius: 14,
+                        paddingVertical: 14,
+                        backgroundColor: COLORS.indigo,
+                      }}
+                    >
+                      <Stack horizontal alignItems="center" justifyContent="center" gap={8}>
+                        <StyledText fontSize={15} fontWeight="700" color={COLORS.white}>
+                          Register
+                        </StyledText>
+                        <Icon name="arrow-right" size={15} color={COLORS.white} />
+                      </Stack>
                     </StyledButton>
                   )}
                 </Stack>
-              </StyledCard>
+              </Stack>
             );
           })}
         </Stack>

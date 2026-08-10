@@ -63,7 +63,10 @@ export default function MoreScreen() {
     title: "My account",
     items: [
       { label: "Account", icon: "user", route: "/account" },
-      ...(hasFeature("attendance") ? [{ label: "Submit attendance", icon: "check-circle", route: "/check-in" }] : []),
+      // Not "/check-in" directly - it now requires a known serviceId,
+      // picked from a specific service's own "Submit attendance" button
+      // on Service Times (see check-in.tsx / service-times.tsx).
+      ...(hasFeature("attendance") ? [{ label: "Submit attendance", icon: "check-circle", route: "/service-times" }] : []),
     ],
   };
 

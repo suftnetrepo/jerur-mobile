@@ -19,6 +19,7 @@ export const COLORS = {
   gold: "#D9A441",
   goldDeep: "#8C6420",
   goldPale: "#F4E3C1",
+  goldSoft: "#f3eadf",
   sage: "#5E7052",
   sageSoft: "#E6EBDD",
   border: "rgba(33,31,28,0.12)",

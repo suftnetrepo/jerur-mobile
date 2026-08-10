@@ -1,13 +1,68 @@
 import { useState } from "react";
 import { Feather as Icon } from "@expo/vector-icons";
-import { StyledPage, StyledScrollView, StyledText, StyledCard, StyledButton, Popup, Stack } from "fluent-styles";
+import { StyledPage, StyledScrollView, StyledText, StyledButton, Popup, Stack } from "fluent-styles";
+import Svg, { Path, Circle } from "react-native-svg";
 import { BottomTabBar } from "../../src/components/BottomTabBar";
 import { FeatureGate } from "../../src/components/FeatureGate";
 import { useSettings } from "../../src/hooks/useChurchData";
 import { COLORS } from "../../src/theme/colors";
+import { SHADOW_CARD } from "../../src/theme/shadows";
+import { ScalePressable } from "../../src/components/ScalePressable";
 
 const REFERENCE = "WCI Peterborough";
 
+// ── Accent tones per giving method ──────────────────────────────────────────
+const ONLINE_TONE  = { pale: "#FFF3E0", accent: "#F97316" } as const; // orange
+const BANK_TONE    = { pale: "#ECFDF5", accent: "#10B981" } as const; // green
+const ENV_TONE     = { pale: "#F5F3FF", accent: "#8B5CF6" } as const; // purple
+
+// ── Minimal hand-heart illustration for the encouragement card ───────────────
+function DonationSketch() {
+  return (
+    <Svg width={80} height={72} viewBox="0 0 80 72">
+      {/* Heart */}
+      <Path
+        d="M40 22 C40 22 28 12 22 18 C16 24 24 34 40 44 C56 34 64 24 58 18 C52 12 40 22 40 22 Z"
+        stroke="#C49035"
+        strokeWidth={1.8}
+        fill="none"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      {/* Cupped hands */}
+      <Path
+        d="M16 50 Q12 46 14 42 L22 38 Q26 36 28 40 L32 48"
+        stroke="#C49035"
+        strokeWidth={1.6}
+        fill="none"
+        strokeLinecap="round"
+      />
+      <Path
+        d="M64 50 Q68 46 66 42 L58 38 Q54 36 52 40 L48 48"
+        stroke="#C49035"
+        strokeWidth={1.6}
+        fill="none"
+        strokeLinecap="round"
+      />
+      <Path
+        d="M28 50 Q40 58 52 50"
+        stroke="#C49035"
+        strokeWidth={1.8}
+        fill="none"
+        strokeLinecap="round"
+      />
+      <Path
+        d="M16 50 Q28 62 40 64 Q52 62 64 50"
+        stroke="#C49035"
+        strokeWidth={1.8}
+        fill="none"
+        strokeLinecap="round"
+      />
+    </Svg>
+  );
+}
+
+// ── Utility: bank field row ──────────────────────────────────────────────────
 function formatSortCode(value?: string) {
   if (!value) return "—";
   return value.replace(/\D/g, "").match(/.{1,2}/g)?.join("-") ?? value;
@@ -22,22 +77,22 @@ function BankField({ label, value, copyValue }: { label: string; value: string; 
   async function handleCopy() {
     if (!copyValue) return;
     try {
-      // Lazy-required rather than imported at the top of the file: if the
-      // native module isn't linked (e.g. Expo Go needs an update, or the
-      // dev client needs a rebuild after this dependency was added), this
-      // fails silently on tap instead of crashing the whole screen at
-      // import time — which is what a top-level `import * as Clipboard`
-      // would do.
       const Clipboard = await import("expo-clipboard");
       await Clipboard.setStringAsync(copyValue);
       setCopied(true);
       setTimeout(() => setCopied(false), 1800);
     } catch {
-      // Clipboard unavailable — the value is still visible on screen to copy manually.
+      // Clipboard unavailable
     }
   }
   return (
-    <Stack horizontal alignItems="center" justifyContent="space-between" paddingVertical={14} style={{ borderBottomWidth: 1, borderColor: "rgba(255,255,255,0.1)" }}>
+    <Stack
+      horizontal
+      alignItems="center"
+      justifyContent="space-between"
+      paddingVertical={14}
+      style={{ borderBottomWidth: 1, borderColor: "rgba(255,255,255,0.1)" }}
+    >
       <Stack gap={3}>
         <StyledText fontSize={10} fontWeight="700" letterSpacing={1} color="#8A90AC">
           {label.toUpperCase()}
@@ -55,6 +110,24 @@ function BankField({ label, value, copyValue }: { label: string; value: string; 
   );
 }
 
+// ── Reusable chevron circle (right side of every card) ───────────────────────
+function ChevronCircle() {
+  return (
+    <Stack
+      width={36}
+      height={36}
+      borderRadius={18}
+      alignItems="center"
+      justifyContent="center"
+      flexShrink={0}
+      style={{ borderWidth: 1, borderColor: COLORS.chromeBorder }}
+    >
+      <Icon name="chevron-right" size={16} color={COLORS.inkSoft} />
+    </Stack>
+  );
+}
+
+// ── Screen ───────────────────────────────────────────────────────────────────
 export default function GiveScreen() {
   return (
     <FeatureGate feature="giving">
@@ -67,58 +140,130 @@ function GiveScreenContent() {
   const { data: settings } = useSettings();
   const [bankOpen, setBankOpen] = useState(false);
 
-  const bankName = settings?.bank_name || "World Mission Agency";
+  const bankName    = settings?.bank_name || "World Mission Agency";
   const accountName = settings?.name || "Winners Chapel International";
 
   return (
     <StyledPage flex={1} backgroundColor={COLORS.paper}>
-      <StyledScrollView contentContainerStyle={{ padding: 24, paddingBottom: 28 }}>
+      <StyledScrollView contentContainerStyle={{ paddingHorizontal: 24, paddingTop: 24, paddingBottom: 36 }}>
+        {/* ── Page header ─────────────────────────────────────────────── */}
         <StyledText fontSize={11} fontWeight="700" letterSpacing={1} color={COLORS.gold} style={{ marginBottom: 8 }}>
           GIVING
         </StyledText>
         <StyledText fontSize={26} fontWeight="800" color={COLORS.ink} style={{ marginBottom: 6 }}>
           Covenant of blessing
         </StyledText>
-        <StyledText fontSize={14.5} color={COLORS.inkSoft} style={{ marginBottom: 24, lineHeight: 21 }}>
+        <StyledText fontSize={14.5} color={COLORS.inkSoft} style={{ marginBottom: 28, lineHeight: 22 }}>
           When you give your tithe and offering, you unlock kingdom blessings — prepare for divine provision.
         </StyledText>
 
-        <Stack gap={14}>
-          <StyledCard shadow="light" padding={18} borderRadius={14}>
-            <IconBadge icon="cloud" />
-            <StyledText fontSize={16} fontWeight="700" color={COLORS.ink} style={{ marginTop: 12, marginBottom: 4 }}>
-              Give online
-            </StyledText>
-            <StyledText fontSize={13.5} color={COLORS.inkSoft}>
-              Via the Tithe.ly app or website. It's quick, easy, and secure.
-            </StyledText>
-          </StyledCard>
+        {/* ── Giving method cards ─────────────────────────────────────── */}
+        <Stack gap={16}>
 
-          <StyledCard shadow="light" padding={18} borderRadius={14} pressable pressableProps={{ onPress: () => setBankOpen(true) }}>
-            <IconBadge icon="home" />
-            <StyledText fontSize={16} fontWeight="700" color={COLORS.ink} style={{ marginTop: 12, marginBottom: 4 }}>
-              Bank transfer
-            </StyledText>
-            <StyledText fontSize={13.5} color={COLORS.inkSoft} style={{ marginBottom: 10 }}>
-              Give directly from your bank using our account details.
-            </StyledText>
-            <StyledText fontSize={13} fontWeight="700" color={COLORS.goldDeep}>
-              View bank details →
-            </StyledText>
-          </StyledCard>
+          {/* Give online */}
+          <Stack
+            backgroundColor={COLORS.white}
+            borderRadius={22}
+            padding={18}
+            horizontal
+            alignItems="center"
+            gap={16}
+            style={SHADOW_CARD}
+          >
+            <Stack
+              width={68}
+              height={68}
+              borderRadius={34}
+              backgroundColor={ONLINE_TONE.pale}
+              alignItems="center"
+              justifyContent="center"
+              flexShrink={0}
+            >
+              <Icon name="cloud" size={26} color={ONLINE_TONE.accent} />
+            </Stack>
+            <Stack flex={1} gap={5}>
+              <StyledText fontSize={17} fontWeight="800" color={COLORS.ink}>
+                Give online
+              </StyledText>
+              <StyledText fontSize={13.5} color={COLORS.inkSoft} style={{ lineHeight: 20 }}>
+                Via the Tithe.ly app or website. It's quick, easy, and secure.
+              </StyledText>
+            </Stack>
+            <ChevronCircle />
+          </Stack>
 
-          <StyledCard shadow="light" padding={18} borderRadius={14}>
-            <IconBadge icon="mail" />
-            <StyledText fontSize={16} fontWeight="700" color={COLORS.ink} style={{ marginTop: 12, marginBottom: 4 }}>
-              Use a giving envelope
-            </StyledText>
-            <StyledText fontSize={13.5} color={COLORS.inkSoft}>
-              Available during any of our services — you'll find these at the back of the church.
-            </StyledText>
-          </StyledCard>
+          {/* Bank transfer */}
+          <ScalePressable onPress={() => setBankOpen(true)}>
+            <Stack
+              backgroundColor={COLORS.white}
+              borderRadius={22}
+              padding={18}
+              horizontal
+              alignItems="center"
+              gap={16}
+              style={SHADOW_CARD}
+            >
+              <Stack
+                width={68}
+                height={68}
+                borderRadius={34}
+                backgroundColor={BANK_TONE.pale}
+                alignItems="center"
+                justifyContent="center"
+                flexShrink={0}
+              >
+                <Icon name="home" size={26} color={BANK_TONE.accent} />
+              </Stack>
+              <Stack flex={1} gap={5}>
+                <StyledText fontSize={17} fontWeight="800" color={COLORS.ink}>
+                  Bank transfer
+                </StyledText>
+                <StyledText fontSize={13.5} color={COLORS.inkSoft} style={{ lineHeight: 20 }}>
+                  Give directly from your bank using our account details.
+                </StyledText>
+                <StyledText fontSize={13} fontWeight="700" color={BANK_TONE.accent} style={{ marginTop: 2 }}>
+                  View bank details →
+                </StyledText>
+              </Stack>
+              <ChevronCircle />
+            </Stack>
+          </ScalePressable>
+
+          {/* Giving envelope */}
+          <Stack
+            backgroundColor={COLORS.white}
+            borderRadius={22}
+            padding={18}
+            horizontal
+            alignItems="center"
+            gap={16}
+            style={SHADOW_CARD}
+          >
+            <Stack
+              width={68}
+              height={68}
+              borderRadius={34}
+              backgroundColor={ENV_TONE.pale}
+              alignItems="center"
+              justifyContent="center"
+              flexShrink={0}
+            >
+              <Icon name="mail" size={26} color={ENV_TONE.accent} />
+            </Stack>
+            <Stack flex={1} gap={5}>
+              <StyledText fontSize={17} fontWeight="800" color={COLORS.ink}>
+                Use a giving envelope
+              </StyledText>
+              <StyledText fontSize={13.5} color={COLORS.inkSoft} style={{ lineHeight: 20 }}>
+                Available during any of our services — you'll find these at the back of the church.
+              </StyledText>
+            </Stack>
+            <ChevronCircle />
+          </Stack>
         </Stack>
       </StyledScrollView>
 
+      {/* ── Bank details popup (unchanged) ──────────────────────────────── */}
       <Popup
         visible={bankOpen}
         onClose={() => setBankOpen(false)}
@@ -128,7 +273,15 @@ function GiveScreenContent() {
         colors={{ background: COLORS.indigo, closeIcon: "#C7CBDA", closeIconBg: "rgba(255,255,255,0.08)" }}
       >
         <Stack padding={22}>
-          <Stack width={48} height={48} borderRadius={24} backgroundColor="rgba(255,255,255,0.1)" alignItems="center" justifyContent="center" marginBottom={16}>
+          <Stack
+            width={48}
+            height={48}
+            borderRadius={24}
+            backgroundColor="rgba(255,255,255,0.1)"
+            alignItems="center"
+            justifyContent="center"
+            marginBottom={16}
+          >
             <Icon name="home" size={22} color={COLORS.gold} />
           </Stack>
           <StyledText fontSize={20} fontWeight="800" color={COLORS.white} style={{ marginBottom: 4 }}>
@@ -147,13 +300,5 @@ function GiveScreenContent() {
 
       <BottomTabBar active="give" />
     </StyledPage>
-  );
-}
-
-function IconBadge({ icon }: { icon: string }) {
-  return (
-    <Stack width={40} height={40} borderRadius={20} backgroundColor={COLORS.goldPale} alignItems="center" justifyContent="center">
-      <Icon name={icon as any} size={18} color={COLORS.goldDeep} />
-    </Stack>
   );
 }

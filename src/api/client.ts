@@ -77,3 +77,18 @@ export function apiErrorMessage(err: unknown, fallback = "Something went wrong. 
   }
   return fallback;
 }
+
+/**
+ * Extracts the machine-readable `code` from an API error response, if the
+ * backend sent one (e.g. "EMAIL_EXISTS" from POST /member/register — see
+ * jerur-next's MemberAuthError). Lets a caller branch on a specific known
+ * failure (offer a "Log in" action, etc.) instead of pattern-matching the
+ * human-readable message text.
+ */
+export function apiErrorCode(err: unknown): string | undefined {
+  if (axios.isAxiosError(err)) {
+    const data = err.response?.data as { code?: unknown } | undefined;
+    if (typeof data?.code === "string") return data.code;
+  }
+  return undefined;
+}
