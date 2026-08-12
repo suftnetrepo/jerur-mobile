@@ -20,10 +20,10 @@ function HymnRowComponent({ hymn, tone, onPress }: { hymn: HymnSummary; tone: { 
         alignItems="center"
         justifyContent="space-between"
         backgroundColor={COLORS.white}
-        borderRadius={20}
+        borderRadius={8}
         paddingHorizontal={14}
         paddingVertical={12}
-        style={SHADOW_SOFT}
+      
       >
         <Stack horizontal alignItems="center" gap={12} flex={1}>
           <StyledShape size={44} cycle backgroundColor={tone.bg} alignItems="center" justifyContent="center" flexShrink={0}>

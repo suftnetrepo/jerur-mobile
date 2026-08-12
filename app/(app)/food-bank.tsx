@@ -147,7 +147,13 @@ function FoodBankScreenContent() {
 
   return (
     <StyledPage flex={1} backgroundColor={COLORS.paper}>
-      <StyledPage.Header title="Food Bank" titleAlignment="center" showBackArrow onBackPress={() => router.back()} />
+      <StyledPage.Header shapeProps={{
+          cycle: true,
+          size: 48,
+          borderRadius: 24,
+          borderWidth: 1,
+          borderColor: COLORS.chromeBorder,
+        }} marginHorizontal={16} title="Food Bank" titleAlignment="center" showBackArrow onBackPress={() => router.back()} />
       <StyledScrollView contentContainerStyle={{ padding: 20, paddingBottom: 60 }}>
 
         {/* ── Hero Card ─────────────────────────────────────────────────── */}

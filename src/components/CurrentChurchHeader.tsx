@@ -1,5 +1,5 @@
 import { Feather as Icon } from "@expo/vector-icons";
-import { Stack, StyledText, StyledPressable } from "fluent-styles";
+import { Stack, StyledText, StyledPressable, StyledShape } from "fluent-styles";
 import { COLORS } from "../theme/colors";
 import type { ChurchSearchResult } from "../api/types";
 
@@ -17,7 +17,13 @@ import type { ChurchSearchResult } from "../api/types";
  * handleChangeChurch in app/(app)/index.tsx, unchanged, just handed to it
  * via `onPress`.
  */
-export function CurrentChurchHeader({ church, onPress }: { church: ChurchSearchResult | null; onPress: () => void }) {
+export function CurrentChurchHeader({
+  church,
+  onPress,
+}: {
+  church: ChurchSearchResult | null;
+  onPress: () => void;
+}) {
   const address = church?.address;
   const displayAddress = church
     ? address?.completeAddress?.trim() ||
@@ -29,13 +35,22 @@ export function CurrentChurchHeader({ church, onPress }: { church: ChurchSearchR
     <StyledPressable
       onPress={onPress}
       accessibilityRole="button"
-      accessibilityLabel={church ? `Change church, current location: ${displayAddress}` : "Select a church"}
+      accessibilityLabel={
+        church
+          ? `Change church, current location: ${displayAddress}`
+          : "Select a church"
+      }
       flexShrink={1}
     >
       <Stack horizontal alignItems="center" gap={10} flexShrink={1}>
-        <Stack width={44} height={44} borderRadius={22} backgroundColor="rgba(27,35,64,0.1)" alignItems="center" justifyContent="center">
-          <Icon name="map-pin" size={19} color={COLORS.indigo} />
-        </Stack>
+        <StyledShape
+          size={48}
+          cycle
+          backgroundColor={COLORS.white}
+          style={{ borderWidth: 1, borderColor: COLORS.chromeBorder }}
+        >
+          <Icon name="map-pin" size={24} color={COLORS.inkSoft} />
+        </StyledShape>
         <Stack gap={1} flexShrink={1}>
           <StyledText fontSize={11.5} fontWeight="600" color={COLORS.inkSoft}>
             {church ? "Your Location" : "Select Church"}
@@ -44,10 +59,22 @@ export function CurrentChurchHeader({ church, onPress }: { church: ChurchSearchR
               not in the outer row's `gap`, which is what was spacing it
               away before. */}
           <Stack horizontal alignItems="center" flexShrink={1}>
-            <StyledText fontSize={15.5} fontWeight="600" color={COLORS.ink} numberOfLines={1} ellipsizeMode="tail" flexShrink={1}>
+            <StyledText
+              fontSize={15.5}
+              fontWeight="600"
+              color={COLORS.ink}
+              numberOfLines={1}
+              ellipsizeMode="tail"
+              flexShrink={1}
+            >
               {displayAddress}
             </StyledText>
-            <Icon name="chevron-down" size={14} color={COLORS.inkSoft} style={{ marginLeft: 2 }} />
+            <Icon
+              name="chevron-down"
+              size={14}
+              color={COLORS.inkSoft}
+              style={{ marginLeft: 2 }}
+            />
           </Stack>
         </Stack>
       </Stack>

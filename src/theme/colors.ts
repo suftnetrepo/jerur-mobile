@@ -8,6 +8,9 @@ export const COLORS = {
   inkSoft: "#6B675E",
   paper: "#FCFBF7",
   paperAlt: "#F2ECDE",
+  paperSoft: "#F9F7F2",
+  paperSoftest: "#FDFCF9",
+  paperWarm: "#FDF9F2",
   // Neutral cool gray-lavender used as the default screen background —
   // matches the ChurchTools/Life.Church reference screenshots' app-shell
   // feel, distinct from the warmer "paper" tone reserved for content cards

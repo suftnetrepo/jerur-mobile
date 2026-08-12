@@ -61,6 +61,13 @@ function ServiceTimesScreenContent() {
   return (
     <StyledPage showStatusBar backgroundColor={COLORS.paper}>
       <StyledPage.Header
+       shapeProps={{
+          cycle: true,
+          size: 48,
+          borderRadius: 24,
+          borderWidth: 1,
+          borderColor: COLORS.chromeBorder,
+        }}
         marginHorizontal={16}
         title="Service times"
         titleAlignment="center"

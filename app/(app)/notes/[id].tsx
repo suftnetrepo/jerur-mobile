@@ -1,5 +1,5 @@
 import { useCallback, useState } from "react";
-import { KeyboardAvoidingView, Platform } from "react-native";
+import { KeyboardAvoidingView, Platform, Share } from "react-native";
 import { router, useFocusEffect, useLocalSearchParams } from "expo-router";
 import { Feather as Icon } from "@expo/vector-icons";
 import { StyledPage, StyledButton, StyledText, StyledPressable, Stack, Loader, useToast, useDialogue } from "fluent-styles";
@@ -7,7 +7,8 @@ import { FeatureGate } from "../../../src/components/FeatureGate";
 import { NoteFormFields } from "../../../src/components/NoteFormFields";
 import { getNoteById, updateNote, deleteNote } from "../../../src/notes/notes-repository";
 import { markNote, unmarkNote } from "../../../src/notes/marked-note";
-import { formatNoteDateTime } from "../../../src/notes/display";
+import { formatNoteDateTime, getDisplayTitle } from "../../../src/notes/display";
+import { formatNoteShareText } from "../../../src/notes/share-text";
 import { COLORS } from "../../../src/theme/colors";
 import type { Note } from "../../../src/notes/types";
 
@@ -75,6 +76,20 @@ function NoteDetailScreenContent() {
     router.back();
   }
 
+  // Native share sheet - title + full content, same text a member would
+  // get from formatNoteShareText elsewhere (kept as one pure formatter so
+  // "what gets shared" has a single definition). Works identically whether
+  // the note was typed manually or grew from Bible verses via
+  // appendToMarkedNote() - it's all just `content` by this point.
+  async function handleShare() {
+    if (!note) return;
+    try {
+      await Share.share({ message: formatNoteShareText({ title, content }) });
+    } catch {
+      // User-cancelled or platform share error - nothing to recover from here.
+    }
+  }
+
   async function handleToggleBibleNote() {
     if (!note || marking) return;
     setMarking(true);
@@ -93,7 +108,7 @@ function NoteDetailScreenContent() {
   if (note === undefined) {
     return (
       <StyledPage showStatusBar flex={1} backgroundColor={COLORS.paper}>
-        <StyledPage.Header showBackArrow onBackPress={() => router.back()} backgroundColor={COLORS.paper} />
+        <StyledPage.Header showBackArrow onBackPress={() => router.back()} backgroundColor={COLORS.paper} paddingHorizontal={16} />
         <Stack flex={1} alignItems="center" justifyContent="center">
           <Loader color={COLORS.indigo} />
         </Stack>
@@ -104,7 +119,7 @@ function NoteDetailScreenContent() {
   if (note === null) {
     return (
       <StyledPage showStatusBar flex={1} backgroundColor={COLORS.paper}>
-        <StyledPage.Header showBackArrow onBackPress={() => router.back()} title="Notes" titleAlignment="center" />
+        <StyledPage.Header showBackArrow onBackPress={() => router.back()} title="Notes" titleAlignment="center" paddingHorizontal={16} />
         <Stack flex={1} alignItems="center" justifyContent="center" paddingHorizontal={32}>
           <StyledText fontSize={14} color={COLORS.inkSoft} style={{ textAlign: "center" }}>
             That note couldn't be found.
@@ -117,18 +132,32 @@ function NoteDetailScreenContent() {
   return (
     <StyledPage showStatusBar flex={1} backgroundColor={COLORS.paper}>
       <StyledPage.Header
-        showBackArrow
+      showBackArrow
+        shapeProps={{
+          cycle: true,
+          size: 48,
+          borderRadius: 24,
+          borderWidth: 1,
+          borderColor: COLORS.chromeBorder,
+        }}
+        marginHorizontal={16}
+        
         onBackPress={() => router.back()}
         backgroundColor={COLORS.paper}
+       
+        title={getDisplayTitle(note)}
+        titleAlignment="left"
+        titleProps={{ fontSize: 15, fontWeight: "700", color: COLORS.ink, numberOfLines: 1 }}
         rightIcon={
           <Stack horizontal alignItems="center" gap={8}>
+            <StyledButton icon compact backgroundColor={COLORS.chrome} onPress={handleShare} accessibilityLabel="Share note">
+              <Icon name="share" size={15} color={COLORS.ink} />
+            </StyledButton>
             <StyledButton icon compact backgroundColor={COLORS.errorLight} onPress={handleDelete} accessibilityLabel="Delete note">
               <Icon name="trash-2" size={15} color={COLORS.error} />
             </StyledButton>
-            <StyledButton compact primary loading={saving} onPress={handleSave} accessibilityLabel="Save note">
-              <StyledText fontSize={13} fontWeight="700" color={COLORS.white}>
-                Save
-              </StyledText>
+            <StyledButton icon compact primary loading={saving} onPress={handleSave} accessibilityLabel="Save note">
+              <Icon name="check" size={16} color={COLORS.white} />
             </StyledButton>
           </Stack>
         }
@@ -145,6 +174,7 @@ function NoteDetailScreenContent() {
           paddingHorizontal={13}
           paddingVertical={8}
           borderRadius={20}
+          marginTop={4}
           backgroundColor={note.isMarked ? COLORS.goldPale : COLORS.white}
           style={{ borderWidth: 1, borderColor: note.isMarked ? COLORS.gold : COLORS.chromeBorder }}
           accessibilityRole="button"

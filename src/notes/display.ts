@@ -38,3 +38,10 @@ export function formatNoteDateTime(iso: string): string {
   if (Number.isNaN(date.getTime())) return "";
   return date.toLocaleString(undefined, { day: "numeric", month: "short", year: "numeric", hour: "numeric", minute: "2-digit" });
 }
+
+/** Local time only (e.g. "08:39"), for the library card's compact "Updated HH:MM" line. */
+export function formatNoteTime(iso: string): string {
+  const date = new Date(iso);
+  if (Number.isNaN(date.getTime())) return "";
+  return date.toLocaleTimeString(undefined, { hour: "2-digit", minute: "2-digit" });
+}

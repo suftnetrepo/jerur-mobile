@@ -46,8 +46,7 @@ export function BibleChapterGrid({
             borderRadius={14}
             alignItems="center"
             justifyContent="center"
-            backgroundColor={isActive ? tone.fg : COLORS.white}
-            style={SHADOW_CHIP}
+           
             accessibilityRole="button"
             accessibilityLabel={`Chapter ${chapter}`}
             accessibilityState={{ selected: isActive }}

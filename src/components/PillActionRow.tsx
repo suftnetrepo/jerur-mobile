@@ -19,7 +19,9 @@ export function PillActionRow({ actions }: { actions: PillAction[] }) {
             borderRadius={999}
             paddingHorizontal={16}
             paddingVertical={11}
-            style={{ borderWidth: 1, borderColor: COLORS.chromeBorder }}
+            borderWidth={1}
+            borderColor={COLORS.paperAlt}
+   
           >
             <Icon name={action.icon as any} size={15} color={COLORS.ink} />
             <StyledText fontSize={13} fontWeight="700" color={COLORS.ink}>

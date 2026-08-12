@@ -33,7 +33,7 @@ export function BottomTabBar({ active }: { active: Tab }) {
   return (
     <Stack
       horizontal
-      backgroundColor={COLORS.white}
+      backgroundColor={COLORS.paper}
       paddingTop={10}
       paddingBottom={22}
       alignItems="center"

@@ -4,6 +4,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { GlobalPortalProvider, PortalManager } from "fluent-styles";
 import { SelectedChurchProvider, useSelectedChurch } from "../src/church/SelectedChurchContext";
 import { MemberSessionProvider } from "../src/member/MemberSessionContext";
+import "../src/notifications/notification-handler";
 
 const queryClient = new QueryClient({
   defaultOptions: {

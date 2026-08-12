@@ -1,7 +1,16 @@
 import { useState } from "react";
 import { Image } from "react-native";
+import { router } from "expo-router";
 import { Feather as Icon } from "@expo/vector-icons";
-import { StyledPage, StyledScrollView, StyledText, StyledButton, StyledForm, Popup, Stack } from "fluent-styles";
+import {
+  StyledPage,
+  StyledScrollView,
+  StyledText,
+  StyledButton,
+  StyledForm,
+  Popup,
+  Stack,
+} from "fluent-styles";
 import { BottomTabBar } from "../../../src/components/BottomTabBar";
 import { FeatureGate } from "../../../src/components/FeatureGate";
 import { useEvents } from "../../../src/hooks/useChurchData";
@@ -13,7 +22,11 @@ import type { ChurchEvent } from "../../../src/api/types";
 
 function formatDate(value?: string) {
   if (!value) return null;
-  return new Date(value).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" });
+  return new Date(value).toLocaleDateString("en-GB", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  });
 }
 
 export default function EventsScreen() {
@@ -32,11 +45,34 @@ function EventsScreenContent() {
 
   return (
     <StyledPage flex={1} backgroundColor={COLORS.paper}>
+      <StyledPage.Header
+        shapeProps={{
+          cycle: true,
+          size: 48,
+          borderRadius: 24,
+          borderWidth: 1,
+          borderColor: COLORS.chromeBorder,
+        }}
+        marginHorizontal={16}
+        showBackArrow
+        onBackPress={() => router.back()}
+      />
       <Stack paddingHorizontal={24} paddingTop={20} paddingBottom={12}>
-        <StyledText fontSize={11} fontWeight="700" letterSpacing={1} color={COLORS.gold} style={{ marginBottom: 8 }}>
+        <StyledText
+          fontSize={11}
+          fontWeight="700"
+          letterSpacing={1}
+          color={COLORS.gold}
+          style={{ marginBottom: 8 }}
+        >
           EVENTS
         </StyledText>
-        <StyledText fontSize={24} fontWeight="800" color={COLORS.ink} style={{ marginBottom: 6 }}>
+        <StyledText
+          fontSize={24}
+          fontWeight="800"
+          color={COLORS.ink}
+          style={{ marginBottom: 6 }}
+        >
           What's coming up
         </StyledText>
         <StyledText fontSize={13.5} color={COLORS.inkSoft}>
@@ -44,10 +80,20 @@ function EventsScreenContent() {
         </StyledText>
       </Stack>
 
-      <StyledScrollView contentContainerStyle={{ padding: 24, paddingTop: 8, paddingBottom: 28 }}>
+      <StyledScrollView
+        contentContainerStyle={{
+          padding: 24,
+          paddingTop: 8,
+          paddingBottom: 28,
+        }}
+      >
         <Stack gap={14}>
           {published.length === 0 && (
-            <StyledText fontSize={14} color={COLORS.inkSoft} style={{ textAlign: "center", paddingVertical: 24 }}>
+            <StyledText
+              fontSize={14}
+              color={COLORS.inkSoft}
+              style={{ textAlign: "center", paddingVertical: 24 }}
+            >
               No upcoming events right now — check back soon.
             </StyledText>
           )}
@@ -56,7 +102,9 @@ function EventsScreenContent() {
               event.end_date && event.end_date !== event.start_date
                 ? `${formatDate(event.start_date)} – ${formatDate(event.end_date)}`
                 : formatDate(event.start_date);
-            const location = [event.town, event.postcode].filter(Boolean).join(", ");
+            const location = [event.town, event.postcode]
+              .filter(Boolean)
+              .join(", ");
 
             return (
               <Stack
@@ -89,7 +137,12 @@ function EventsScreenContent() {
 
                   {/* Date row */}
                   {dateRange && (
-                    <Stack horizontal alignItems="center" gap={8} marginBottom={6}>
+                    <Stack
+                      horizontal
+                      alignItems="center"
+                      gap={8}
+                      marginBottom={6}
+                    >
                       <Stack
                         width={28}
                         height={28}
@@ -99,9 +152,17 @@ function EventsScreenContent() {
                         justifyContent="center"
                         flexShrink={0}
                       >
-                        <Icon name="calendar" size={13} color={COLORS.goldDeep} />
+                        <Icon
+                          name="calendar"
+                          size={13}
+                          color={COLORS.goldDeep}
+                        />
                       </Stack>
-                      <StyledText fontSize={13} color={COLORS.inkSoft} style={{ flex: 1 }}>
+                      <StyledText
+                        fontSize={13}
+                        color={COLORS.inkSoft}
+                        style={{ flex: 1 }}
+                      >
                         {dateRange}
                       </StyledText>
                     </Stack>
@@ -109,7 +170,12 @@ function EventsScreenContent() {
 
                   {/* Location row */}
                   {location && (
-                    <Stack horizontal alignItems="center" gap={8} marginBottom={14}>
+                    <Stack
+                      horizontal
+                      alignItems="center"
+                      gap={8}
+                      marginBottom={14}
+                    >
                       <Stack
                         width={28}
                         height={28}
@@ -119,9 +185,17 @@ function EventsScreenContent() {
                         justifyContent="center"
                         flexShrink={0}
                       >
-                        <Icon name="map-pin" size={13} color={COLORS.goldDeep} />
+                        <Icon
+                          name="map-pin"
+                          size={13}
+                          color={COLORS.goldDeep}
+                        />
                       </Stack>
-                      <StyledText fontSize={13} color={COLORS.inkSoft} style={{ flex: 1 }}>
+                      <StyledText
+                        fontSize={13}
+                        color={COLORS.inkSoft}
+                        style={{ flex: 1 }}
+                      >
                         {location}
                       </StyledText>
                     </Stack>
@@ -133,7 +207,10 @@ function EventsScreenContent() {
                       fontSize={13.5}
                       color={COLORS.inkSoft}
                       numberOfLines={3}
-                      style={{ lineHeight: 20, marginBottom: event.can_register ? 18 : 4 }}
+                      style={{
+                        lineHeight: 20,
+                        marginBottom: event.can_register ? 18 : 4,
+                      }}
                     >
                       {event.description}
                     </StyledText>
@@ -150,11 +227,24 @@ function EventsScreenContent() {
                         backgroundColor: COLORS.indigo,
                       }}
                     >
-                      <Stack horizontal alignItems="center" justifyContent="center" gap={8}>
-                        <StyledText fontSize={15} fontWeight="700" color={COLORS.white}>
+                      <Stack
+                        horizontal
+                        alignItems="center"
+                        justifyContent="center"
+                        gap={8}
+                      >
+                        <StyledText
+                          fontSize={15}
+                          fontWeight="700"
+                          color={COLORS.white}
+                        >
                           Register
                         </StyledText>
-                        <Icon name="arrow-right" size={15} color={COLORS.white} />
+                        <Icon
+                          name="arrow-right"
+                          size={15}
+                          color={COLORS.white}
+                        />
                       </Stack>
                     </StyledButton>
                   )}
@@ -165,14 +255,25 @@ function EventsScreenContent() {
         </Stack>
       </StyledScrollView>
 
-      {registering && <EventRegisterPopup event={registering} onClose={() => setRegistering(null)} />}
+      {registering && (
+        <EventRegisterPopup
+          event={registering}
+          onClose={() => setRegistering(null)}
+        />
+      )}
 
       <BottomTabBar active="events" />
     </StyledPage>
   );
 }
 
-function EventRegisterPopup({ event, onClose }: { event: ChurchEvent; onClose: () => void }) {
+function EventRegisterPopup({
+  event,
+  onClose,
+}: {
+  event: ChurchEvent;
+  onClose: () => void;
+}) {
   const { mutateAsync, isPending } = useEventRegistration();
   const [form, setForm] = useState({ name: "", email: "", phone: "" });
   const [success, setSuccess] = useState(false);
@@ -193,10 +294,21 @@ function EventRegisterPopup({ event, onClose }: { event: ChurchEvent; onClose: (
   }
 
   return (
-    <Popup visible onClose={onClose} title="Register" subtitle={event.title} showClose safeAreaBottom>
+    <Popup
+      visible
+      onClose={onClose}
+      title="Register"
+      subtitle={event.title}
+      showClose
+      safeAreaBottom
+    >
       <Stack padding={20}>
         {success ? (
-          <Stack backgroundColor={COLORS.sageSoft} borderRadius={8} padding={14}>
+          <Stack
+            backgroundColor={COLORS.sageSoft}
+            borderRadius={8}
+            padding={14}
+          >
             <StyledText fontSize={14} fontWeight="600" color={COLORS.sage}>
               You're registered — we'll see you there.
             </StyledText>
@@ -204,13 +316,21 @@ function EventRegisterPopup({ event, onClose }: { event: ChurchEvent; onClose: (
         ) : (
           <StyledForm gap={14} avoidKeyboard={false}>
             {error && (
-              <Stack backgroundColor={COLORS.errorLight} borderRadius={8} padding={12}>
+              <Stack
+                backgroundColor={COLORS.errorLight}
+                borderRadius={8}
+                padding={12}
+              >
                 <StyledText fontSize={13} fontWeight="600" color={COLORS.error}>
                   {error}
                 </StyledText>
               </Stack>
             )}
-            <StyledForm.Input label="Full name" value={form.name} onChangeText={(v) => setForm((f) => ({ ...f, name: v }))} />
+            <StyledForm.Input
+              label="Full name"
+              value={form.name}
+              onChangeText={(v) => setForm((f) => ({ ...f, name: v }))}
+            />
             <StyledForm.Input
               label="Email"
               keyboardType="email-address"
@@ -225,7 +345,12 @@ function EventRegisterPopup({ event, onClose }: { event: ChurchEvent; onClose: (
               onChangeText={(v) => setForm((f) => ({ ...f, phone: v }))}
             />
             <StyledForm.Actions>
-              <StyledButton primary block loading={isPending} onPress={handleSubmit}>
+              <StyledButton
+                primary
+                block
+                loading={isPending}
+                onPress={handleSubmit}
+              >
                 <StyledButton.Text color={COLORS.indigoDeep} fontWeight="700">
                   {isPending ? "Registering…" : "Register"}
                 </StyledButton.Text>

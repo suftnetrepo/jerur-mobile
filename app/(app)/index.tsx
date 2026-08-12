@@ -3,10 +3,25 @@ import { Animated, RefreshControl, ScrollView } from "react-native";
 import { router } from "expo-router";
 import { useQueryClient } from "@tanstack/react-query";
 import { Feather as Icon } from "@expo/vector-icons";
-import { StyledPage, StyledText, StyledShape, StyledPressable, StyledImageBackground, Stack, Loader, StyledSpacer } from "fluent-styles";
+import {
+  StyledPage,
+  StyledText,
+  StyledShape,
+  StyledPressable,
+  StyledImageBackground,
+  Stack,
+  Loader,
+  StyledSpacer,
+} from "fluent-styles";
 import { BottomTabBar } from "../../src/components/BottomTabBar";
-import { PillActionRow, type PillAction } from "../../src/components/PillActionRow";
-import { NotificationCard, isNotificationActive } from "../../src/components/NotificationCard";
+import {
+  PillActionRow,
+  type PillAction,
+} from "../../src/components/PillActionRow";
+import {
+  NotificationCard,
+  isNotificationActive,
+} from "../../src/components/NotificationCard";
 import { CurrentChurchHeader } from "../../src/components/CurrentChurchHeader";
 import { ChurchBanner } from "../../src/components/ChurchBanner";
 import { LatestSermonCard } from "../../src/components/LatestSermonCard";
@@ -15,7 +30,12 @@ import { useFadeUp } from "../../src/hooks/useFadeUp";
 import { SHADOW_SOFT, SHADOW_CARD } from "../../src/theme/shadows";
 import { useSelectedChurch } from "../../src/church/SelectedChurchContext";
 import { useMemberSession } from "../../src/member/MemberSessionContext";
-import { useSettings, useRegularServices, useLatestSermon, useLatestArticles } from "../../src/hooks/useChurchData";
+import {
+  useSettings,
+  useRegularServices,
+  useLatestSermon,
+  useLatestArticles,
+} from "../../src/hooks/useChurchData";
 import { useFeatureFlags } from "../../src/hooks/useFeatureFlags";
 import { COLORS } from "../../src/theme/colors";
 
@@ -59,9 +79,21 @@ function WelcomeQuoteText({ text }: { text: string }) {
 // via `features` below, so there's one place that can drift out of sync
 // with the backend. A card simply disappears once its feature is off.
 const WAYS_TO_BELONG = [
-  { featureId: "house-fellowship", title: "Fellowship groups", desc: "Small groups meeting through the week." },
-  { featureId: "upcoming-events", title: "Upcoming events", desc: "Conferences, prayer nights, community days." },
-  { featureId: "community-food-bank", title: "Community food bank", desc: "Practical support for families nearby." },
+  {
+    featureId: "house-fellowship",
+    title: "Fellowship groups",
+    desc: "Small groups meeting through the week.",
+  },
+  {
+    featureId: "upcoming-events",
+    title: "Upcoming events",
+    desc: "Conferences, prayer nights, community days.",
+  },
+  {
+    featureId: "community-food-bank",
+    title: "Community food bank",
+    desc: "Practical support for families nearby.",
+  },
 ] as const;
 
 export default function HomeScreen() {
@@ -70,7 +102,8 @@ export default function HomeScreen() {
   const { data: settings, isLoading: settingsLoading } = useSettings();
   const { data: services } = useRegularServices();
   const { data: latestSermon } = useLatestSermon();
-  const { data: latestArticles, isLoading: articlesLoading } = useLatestArticles();
+  const { data: latestArticles, isLoading: articlesLoading } =
+    useLatestArticles();
   const { features, hasFeature } = useFeatureFlags();
 
   const headerAnim = useFadeUp(0);
@@ -83,7 +116,8 @@ export default function HomeScreen() {
   // Single hero slot: an active notification always wins over the church
   // banner — see isNotificationActive() in NotificationCard.tsx for the
   // status/title/date-window check this reuses (not duplicated here).
-  const hasActiveNotification = hasFeature("notifications") && isNotificationActive(settings?.notification);
+  const hasActiveNotification =
+    hasFeature("notifications") && isNotificationActive(settings?.notification);
 
   // Pull-to-refresh — invalidates the exact React Query cache entries this
   // screen already reads from (useSettings' "settings" key backs the
@@ -119,47 +153,54 @@ export default function HomeScreen() {
     route: feature.route!,
   }));
 
-  const waysToBelong = WAYS_TO_BELONG.map((item) => {
-    const feature = features.find((f) => f.id === item.featureId);
-    return feature ? { ...item, icon: feature.icon, route: feature.route! } : null;
-  }).filter((item): item is NonNullable<typeof item> => item !== null);
-
   async function handleChangeChurch() {
     await changeChurch();
     router.replace("/select-church");
   }
 
   return (
-    <StyledPage showStatusBar flex={1} backgroundColor={COLORS.chrome}>
+    <StyledPage showStatusBar flex={1} backgroundColor={COLORS.paper}>
       {/* Top chrome — current-church selector / notifications / avatar.
           Same row/spacing as before; the only change from the hamburger
           version is this one swap (menu icon -> CurrentChurchHeader). */}
-      <Stack horizontal alignItems="center" justifyContent="space-between" paddingHorizontal={H_PAD} paddingTop={12} paddingBottom={4}>
-        <CurrentChurchHeader church={church} onPress={handleChangeChurch} />
-        <Stack horizontal alignItems="center" gap={14}>
-          <StyledPressable accessibilityLabel="Notifications">
-            <Icon name="bell" size={20} color={COLORS.ink} />
-          </StyledPressable>
-          <StyledPressable onPress={() => router.push("/account")} accessibilityLabel="Account">
-            <StyledShape size={32} cycle backgroundColor={COLORS.white} style={{ borderWidth: 1, borderColor: COLORS.chromeBorder }}>
-              {member ? (
-                <StyledText fontSize={12} fontWeight="800" color={COLORS.goldDeep}>
-                  {member.first_name[0]}
-                  {member.last_name[0]}
-                </StyledText>
-              ) : (
-                <Icon name="user" size={15} color={COLORS.inkSoft} />
-              )}
-            </StyledShape>
-          </StyledPressable>
+      <StyledPage.Header.Full>
+        <Stack
+          horizontal
+          alignItems="center"
+          justifyContent="space-between"
+          paddingHorizontal={H_PAD}
+          paddingTop={12}
+          paddingBottom={4}
+        >
+          <CurrentChurchHeader church={church} onPress={handleChangeChurch} />
+          <Stack marginLeft={16} horizontal alignItems="center" gap={14}>
+            <StyledPressable
+              onPress={() => router.push("/account")}
+              accessibilityLabel="Account"
+            >
+              <StyledShape
+                size={48}
+                cycle
+                backgroundColor={COLORS.white}
+                style={{ borderWidth: 1, borderColor: COLORS.chromeBorder }}
+              >
+                <Icon name="user" size={24} color={COLORS.inkSoft} />
+              </StyledShape>
+            </StyledPressable>
+          </Stack>
         </Stack>
-      </Stack>
+      </StyledPage.Header.Full>
 
       <ScrollView
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{ paddingBottom: 28 }}
         refreshControl={
-          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} tintColor={COLORS.indigo} colors={[COLORS.indigo]} />
+          <RefreshControl
+            refreshing={refreshing}
+            onRefresh={onRefresh}
+            tintColor={COLORS.indigo}
+            colors={[COLORS.indigo]}
+          />
         }
       >
         <Animated.View style={headerAnim}>
@@ -202,7 +243,10 @@ export default function HomeScreen() {
               horizontally scrolling. Fully self-contained: hides itself
               for hasFeature("articles")=false or zero published articles;
               see ArticlesSection.tsx. */}
-          <ArticlesSection articles={latestArticles} isLoading={articlesLoading} />
+          <ArticlesSection
+            articles={latestArticles}
+            isLoading={articlesLoading}
+          />
         </Animated.View>
 
         <Animated.View style={bodyAnim}>
@@ -222,7 +266,7 @@ export default function HomeScreen() {
               {/* <StyledSpacer marginVertical={16} /> */}
               <Stack marginVertical={8} padding={26} paddingBottom={8}>
                 {/* Quote text — constrained for editorial readability */}
-               <StyledSpacer marginVertical={8} /> 
+                <StyledSpacer marginVertical={8} />
                 <WelcomeQuoteText
                   text={
                     pastor?.description ??
@@ -231,7 +275,13 @@ export default function HomeScreen() {
                 />
 
                 {/* Thin gold rule */}
-                <Stack width={56} height={1.5} backgroundColor={COLORS.gold} marginTop={24} marginBottom={16} />
+                <Stack
+                  width={56}
+                  height={1.5}
+                  backgroundColor={COLORS.gold}
+                  marginTop={24}
+                  marginBottom={16}
+                />
 
                 {/* Pastor name + title */}
                 <StyledText fontSize={14} fontWeight="800" color={COLORS.ink}>
@@ -239,12 +289,15 @@ export default function HomeScreen() {
                     ? `${pastor.first_name} ${pastor.last_name}`
                     : "The pastoral team"}
                 </StyledText>
-                <StyledText fontSize={12} color={COLORS.inkSoft} style={{ marginTop: 3 }}>
+                <StyledText
+                  fontSize={12}
+                  color={COLORS.inkSoft}
+                  style={{ marginTop: 3 }}
+                >
                   {pastor?.title ?? "Lead Pastor"}, Winners Chapel Peterborough
                 </StyledText>
               </Stack>
             </StyledImageBackground>
-            
           </Stack>
         </Animated.View>
       </ScrollView>

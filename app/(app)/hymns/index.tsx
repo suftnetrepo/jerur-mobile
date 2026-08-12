@@ -2,7 +2,7 @@ import { useCallback, useMemo, useState } from "react";
 import { FlatList } from "react-native";
 import { router } from "expo-router";
 import { Feather as Icon } from "@expo/vector-icons";
-import { StyledPage, StyledText, StyledTextInput, Stack } from "fluent-styles";
+import { StyledPage, StyledText, StyledTextInput, Stack, StyledSpacer } from "fluent-styles";
 import { FeatureGate } from "../../../src/components/FeatureGate";
 import { HymnRow } from "../../../src/components/HymnRow";
 import { getHymns, searchHymns } from "../../../src/hymns/hymns-lookup";
@@ -40,14 +40,25 @@ function HymnsScreenContent() {
   );
 
   return (
-    <StyledPage showStatusBar flex={1} backgroundColor={COLORS.chrome}>
-      <StyledPage.Header showBackArrow onBackPress={() => router.back()} backgroundColor={COLORS.chrome} />
+    <StyledPage showStatusBar flex={1} backgroundColor={COLORS.paper}>
+      <StyledPage.Header  showBackArrow
+        shapeProps={{
+          cycle: true,
+          size: 48,
+          borderRadius: 24,
+          borderWidth: 1,
+          borderColor: COLORS.chromeBorder,
+        }}
+        marginHorizontal={16}
+        title="Hymns"
+        titleAlignment="center"
+        onBackPress={() => router.back()}
+        backgroundColor={COLORS.paper}
+      />
 
-      <Stack paddingHorizontal={24} paddingTop={4} paddingBottom={16}>
-        <StyledText fontSize={26} fontWeight="800" color={COLORS.ink} style={{ marginBottom: 6 }}>
-          Hymns
-        </StyledText>
-        <StyledText fontSize={13.5} color={COLORS.inkSoft} style={{ marginBottom: 18, lineHeight: 20 }}>
+      <Stack flex={1} paddingHorizontal={24} paddingTop={4} paddingBottom={16}>
+       
+        <StyledText textAlign="center" fontSize={13.5} color={COLORS.inkSoft} style={{ marginBottom: 18, lineHeight: 20 }}>
           Songs of faith, worship and praise
         </StyledText>
 
@@ -60,7 +71,7 @@ function HymnsScreenContent() {
           clearable
           maxLength={40}
         />
-
+        {/* <StyledSpacer marginVertical={16} /> */}
         <Stack
           horizontal
           alignItems="center"

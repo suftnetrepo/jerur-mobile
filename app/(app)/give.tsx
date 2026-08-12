@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Feather as Icon } from "@expo/vector-icons";
+import { router } from "expo-router";
 import { StyledPage, StyledScrollView, StyledText, StyledButton, Popup, Stack } from "fluent-styles";
 import Svg, { Path, Circle } from "react-native-svg";
 import { BottomTabBar } from "../../src/components/BottomTabBar";
@@ -15,52 +16,6 @@ const REFERENCE = "WCI Peterborough";
 const ONLINE_TONE  = { pale: "#FFF3E0", accent: "#F97316" } as const; // orange
 const BANK_TONE    = { pale: "#ECFDF5", accent: "#10B981" } as const; // green
 const ENV_TONE     = { pale: "#F5F3FF", accent: "#8B5CF6" } as const; // purple
-
-// ── Minimal hand-heart illustration for the encouragement card ───────────────
-function DonationSketch() {
-  return (
-    <Svg width={80} height={72} viewBox="0 0 80 72">
-      {/* Heart */}
-      <Path
-        d="M40 22 C40 22 28 12 22 18 C16 24 24 34 40 44 C56 34 64 24 58 18 C52 12 40 22 40 22 Z"
-        stroke="#C49035"
-        strokeWidth={1.8}
-        fill="none"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      {/* Cupped hands */}
-      <Path
-        d="M16 50 Q12 46 14 42 L22 38 Q26 36 28 40 L32 48"
-        stroke="#C49035"
-        strokeWidth={1.6}
-        fill="none"
-        strokeLinecap="round"
-      />
-      <Path
-        d="M64 50 Q68 46 66 42 L58 38 Q54 36 52 40 L48 48"
-        stroke="#C49035"
-        strokeWidth={1.6}
-        fill="none"
-        strokeLinecap="round"
-      />
-      <Path
-        d="M28 50 Q40 58 52 50"
-        stroke="#C49035"
-        strokeWidth={1.8}
-        fill="none"
-        strokeLinecap="round"
-      />
-      <Path
-        d="M16 50 Q28 62 40 64 Q52 62 64 50"
-        stroke="#C49035"
-        strokeWidth={1.8}
-        fill="none"
-        strokeLinecap="round"
-      />
-    </Svg>
-  );
-}
 
 // ── Utility: bank field row ──────────────────────────────────────────────────
 function formatSortCode(value?: string) {
@@ -145,6 +100,20 @@ function GiveScreenContent() {
 
   return (
     <StyledPage flex={1} backgroundColor={COLORS.paper}>
+       <StyledPage.Header
+        shapeProps={{
+          cycle: true,
+          size: 48,
+          borderRadius: 24,
+          borderWidth: 1,
+          borderColor: COLORS.chromeBorder,
+        }}
+       
+        marginHorizontal={16}
+        titleAlignment="center"
+        showBackArrow
+        onBackPress={() => router.back()}
+      />
       <StyledScrollView contentContainerStyle={{ paddingHorizontal: 24, paddingTop: 24, paddingBottom: 36 }}>
         {/* ── Page header ─────────────────────────────────────────────── */}
         <StyledText fontSize={11} fontWeight="700" letterSpacing={1} color={COLORS.gold} style={{ marginBottom: 8 }}>

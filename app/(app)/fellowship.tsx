@@ -11,6 +11,7 @@ import {
   StyledSpacer,
   StyledShape,
 } from "fluent-styles";
+import { router } from "expo-router";
 import { BottomTabBar } from "../../src/components/BottomTabBar";
 import { FeatureGate } from "../../src/components/FeatureGate";
 import { useFellowship } from "../../src/hooks/useChurchData";
@@ -84,6 +85,20 @@ function FellowshipScreenContent() {
 
   return (
     <StyledPage flex={1} backgroundColor={COLORS.paper}>
+      <StyledPage.Header
+              shapeProps={{
+                cycle: true,
+                size: 48,
+                borderRadius: 24,
+                borderWidth: 1,
+                borderColor: COLORS.chromeBorder,
+              }}
+             
+              marginHorizontal={16}
+              titleAlignment="center"
+              showBackArrow
+              onBackPress={() => router.back()}
+            />
       <Stack paddingHorizontal={24} paddingTop={20} paddingBottom={16}>
         <StyledText
           fontSize={11}

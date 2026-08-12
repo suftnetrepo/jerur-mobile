@@ -5,7 +5,11 @@ import { StyledPage, StyledScrollView, StyledText, Stack } from "fluent-styles";
 import { FeatureGate } from "../../../src/components/FeatureGate";
 import { HymnReaderToolbar } from "../../../src/components/HymnReaderToolbar";
 import { ReaderFontSizePopup } from "../../../src/components/ReaderFontSizePopup";
-import { getHymnById, getPreviousHymn, getNextHymn } from "../../../src/hymns/hymns-lookup";
+import {
+  getHymnById,
+  getPreviousHymn,
+  getNextHymn,
+} from "../../../src/hymns/hymns-lookup";
 import { formatHymnShareText } from "../../../src/hymns/share-text";
 import { useReaderFontSize } from "../../../src/hymns/use-reader-font-size";
 import { COLORS } from "../../../src/theme/colors";
@@ -27,7 +31,8 @@ function HymnReaderScreenContent() {
   const previousHymn = useMemo(() => getPreviousHymn(id), [id]);
   const nextHymn = useMemo(() => getNextHymn(id), [id]);
 
-  const { fontSize, increase, decrease, reset, canIncrease, canDecrease } = useReaderFontSize();
+  const { fontSize, increase, decrease, reset, canIncrease, canDecrease } =
+    useReaderFontSize();
   const [fontSizePopupVisible, setFontSizePopupVisible] = useState(false);
 
   function goToPrevious() {
@@ -44,9 +49,23 @@ function HymnReaderScreenContent() {
   if (!hymn) {
     return (
       <StyledPage showStatusBar flex={1} backgroundColor={COLORS.paper}>
-        <StyledPage.Header showBackArrow onBackPress={() => router.back()} title="Hymns" titleAlignment="center" />
-        <Stack flex={1} alignItems="center" justifyContent="center" paddingHorizontal={32}>
-          <StyledText fontSize={14} color={COLORS.inkSoft} style={{ textAlign: "center" }}>
+        <StyledPage.Header
+          showBackArrow
+          onBackPress={() => router.back()}
+          title="Hymns"
+          titleAlignment="center"
+        />
+        <Stack
+          flex={1}
+          alignItems="center"
+          justifyContent="center"
+          paddingHorizontal={32}
+        >
+          <StyledText
+            fontSize={14}
+            color={COLORS.inkSoft}
+            style={{ textAlign: "center" }}
+          >
             That hymn couldn't be found.
           </StyledText>
         </Stack>
@@ -61,22 +80,44 @@ function HymnReaderScreenContent() {
 
   return (
     <StyledPage showStatusBar flex={1} backgroundColor={COLORS.paper}>
-      <StyledPage.Header showBackArrow onBackPress={() => router.back()} backgroundColor={COLORS.paper} />
+      <StyledPage.Header
+        shapeProps={{
+          cycle: true,
+          size: 48,
+          borderRadius: 24,
+          borderWidth: 1,
+          borderColor: COLORS.chromeBorder,
+        }}
+        marginHorizontal={16}
+        title={`HYMN ${hymn.id}`}
+        titleAlignment="center"
+        showBackArrow
+        onBackPress={() => router.back()}
+        backgroundColor={COLORS.paper}
+      />
 
-      <Stack paddingHorizontal={H_PAD} paddingTop={2} paddingBottom={10}>
-        <StyledText fontSize={11} fontWeight="700" letterSpacing={1} color={COLORS.gold} style={{ marginBottom: 8 }}>
-          HYMN {hymn.id}
-        </StyledText>
-        <StyledText fontSize={24} fontWeight="800" color={COLORS.ink} style={{ lineHeight: 30 }}>
+      <Stack paddingHorizontal={H_PAD} marginTop={8} paddingBottom={10}>
+        <StyledText
+          fontSize={24}
+          fontWeight="800"
+          color={COLORS.ink}
+          style={{ lineHeight: 30 }}
+        >
           {hymn.title}
         </StyledText>
       </Stack>
 
-      <StyledScrollView contentContainerStyle={{ paddingHorizontal: H_PAD, paddingBottom: 24 }}>
+      <StyledScrollView
+        contentContainerStyle={{ paddingHorizontal: H_PAD, paddingBottom: 24 }}
+      >
         {/* One flowing text block, not a card per stanza - the source
             data's blank lines between stanzas render as natural paragraph
             spacing once \r\n is normalized to \n. */}
-        <Text style={{ fontSize, lineHeight: fontSize * 1.7, color: COLORS.ink }}>{lyrics}</Text>
+        <Text
+          style={{ fontSize, lineHeight: fontSize * 1.7, color: COLORS.ink }}
+        >
+          {lyrics}
+        </Text>
       </StyledScrollView>
 
       <Stack paddingHorizontal={16} paddingBottom={16} paddingTop={8}>

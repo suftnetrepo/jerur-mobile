@@ -39,9 +39,16 @@ function FreeTransportScreenContent() {
   return (
     <StyledPage  backgroundColor={COLORS.paper}>
       <StyledPage.Header
+      shapeProps={{
+          cycle: true,
+          size: 48,
+          borderRadius: 24,
+          borderWidth: 1,
+          borderColor: COLORS.chromeBorder,
+        }}
+        marginHorizontal={16}
         title="Free Transport"
         titleAlignment="center"
-        marginHorizontal={16}
         showBackArrow
         onBackPress={() => router.back()}
       />
@@ -160,22 +167,7 @@ function FreeTransportScreenContent() {
                   <Icon name="truck" size={22} color={COLORS.goldDeep} />
                 </Stack>
                 <StyledSpacer marginHorizontal={8} />
-                <Stack
-                  width={22}
-                  height={22}
-                  borderRadius={11}
-                  backgroundColor={COLORS.gold}
-                  alignItems="center"
-                  justifyContent="center"
-                >
-                  <StyledText
-                    fontSize={11}
-                    fontWeight="800"
-                    color={COLORS.white}
-                  >
-                    1
-                  </StyledText>
-                </Stack>
+                
               </Stack>
               <Stack flex={1}>
                 <StyledText
@@ -195,11 +187,22 @@ function FreeTransportScreenContent() {
                   suits you best.
                 </StyledText>
               </Stack>
-              <Icon
-                name="chevron-right"
-                size={16}
-                color={COLORS.chromeBorder}
-              />
+              <Stack
+                  width={22}
+                  height={22}
+                  borderRadius={11}
+                  backgroundColor={COLORS.gold}
+                  alignItems="center"
+                  justifyContent="center"
+                >
+                  <StyledText
+                    fontSize={11}
+                    fontWeight="800"
+                    color={COLORS.white}
+                  >
+                    1
+                  </StyledText>
+                </Stack>
             </Stack>
           </Stack>
         </Animated.View>
@@ -237,22 +240,7 @@ function FreeTransportScreenContent() {
                   <Icon name="file-text" size={22} color={COLORS.goldDeep} />
                 </Stack>
                 <StyledSpacer marginHorizontal={8} />
-                <Stack
-                  width={22}
-                  height={22}
-                  borderRadius={11}
-                  backgroundColor={COLORS.gold}
-                  alignItems="center"
-                  justifyContent="center"
-                >
-                  <StyledText
-                    fontSize={11}
-                    fontWeight="800"
-                    color={COLORS.white}
-                  >
-                    2
-                  </StyledText>
-                </Stack>
+                
               </Stack>
 
               <Stack flex={1}>
@@ -273,11 +261,22 @@ function FreeTransportScreenContent() {
                   printed or digital receipt.
                 </StyledText>
               </Stack>
-              <Icon
-                name="chevron-right"
-                size={16}
-                color={COLORS.chromeBorder}
-              />
+             <Stack
+                  width={22}
+                  height={22}
+                  borderRadius={11}
+                  backgroundColor={COLORS.gold}
+                  alignItems="center"
+                  justifyContent="center"
+                >
+                  <StyledText
+                    fontSize={11}
+                    fontWeight="800"
+                    color={COLORS.white}
+                  >
+                    2
+                  </StyledText>
+                </Stack>
             </Stack>
           </Stack>
         </Animated.View>
@@ -315,22 +314,7 @@ function FreeTransportScreenContent() {
                   <Icon name="upload" size={22} color={COLORS.goldDeep} />
                 </Stack>
                 <StyledSpacer marginHorizontal={16} />
-                <Stack
-                  width={22}
-                  height={22}
-                  borderRadius={11}
-                  backgroundColor={COLORS.gold}
-                  alignItems="center"
-                  justifyContent="center"
-                >
-                  <StyledText
-                    fontSize={11}
-                    fontWeight="800"
-                    color={COLORS.white}
-                  >
-                    3
-                  </StyledText>
-                </Stack>
+                
               </Stack>
               <Stack flex={1}>
                 <StyledText
@@ -350,11 +334,22 @@ function FreeTransportScreenContent() {
                   refund your fare.
                 </StyledText>
               </Stack>
-              <Icon
-                name="chevron-right"
-                size={16}
-                color={COLORS.chromeBorder}
-              />
+             <Stack
+                  width={22}
+                  height={22}
+                  borderRadius={11}
+                  backgroundColor={COLORS.gold}
+                  alignItems="center"
+                  justifyContent="center"
+                >
+                  <StyledText
+                    fontSize={11}
+                    fontWeight="800"
+                    color={COLORS.white}
+                  >
+                    3
+                  </StyledText>
+                </Stack>
             </Stack>
           </Stack>
         </Animated.View>

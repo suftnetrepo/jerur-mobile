@@ -1,12 +1,18 @@
 import { useState } from "react";
-import { Feather as Icon } from "@expo/vector-icons";
-import { StyledPage, StyledScrollView, StyledText, StyledCard, StyledForm, StyledButton, Stack } from "fluent-styles";
+import { Feather as Icon, MaterialCommunityIcons as MCIcon } from "@expo/vector-icons";
+import { StyledPage, StyledScrollView, StyledText, StyledForm, StyledButton, Stack } from "fluent-styles";
 import { BottomTabBar } from "../../src/components/BottomTabBar";
 import { FeatureGate } from "../../src/components/FeatureGate";
+import { PrayerHeroIllustration } from "../../src/components/illustrations/PrayerIllustration";
+import { PrayerReminderControl } from "../../src/components/PrayerReminderControl";
 import { usePrayerTimes } from "../../src/hooks/useChurchData";
 import { usePrayerRequestSubmission } from "../../src/hooks/useSubmissions";
+import { usePrayerReminders } from "../../src/notifications/use-prayer-reminders";
+import { sessionKey } from "../../src/notifications/prayer-reminders";
 import { apiErrorMessage } from "../../src/api/client";
 import { COLORS, ICON_TONES } from "../../src/theme/colors";
+import { SHADOW_SOFT } from "../../src/theme/shadows";
+import { router } from "expo-router";
 
 export default function PrayersScreen() {
   return (
@@ -19,6 +25,7 @@ export default function PrayersScreen() {
 function PrayersScreenContent() {
   const { data: prayerTimes } = usePrayerTimes();
   const { mutateAsync, isPending } = usePrayerRequestSubmission();
+  const { reminders, setReminder, clearReminder } = usePrayerReminders(prayerTimes);
 
   const [form, setForm] = useState({ first_name: "", last_name: "", email: "", message: "" });
   const [success, setSuccess] = useState(false);
@@ -41,49 +48,97 @@ function PrayersScreenContent() {
 
   return (
     <StyledPage flex={1} backgroundColor={COLORS.paper}>
+      <StyledPage.Header shapeProps={{
+                cycle: true,
+                size: 48,
+                borderRadius: 24,
+                borderWidth: 1,
+                borderColor: COLORS.chromeBorder,
+              }}
+             
+              marginHorizontal={16}  titleAlignment="center" showBackArrow onBackPress={() => router.back()} />
+      
       <StyledScrollView contentContainerStyle={{ padding: 24, paddingBottom: 28 }}>
-        <StyledText fontSize={11} fontWeight="700" letterSpacing={1} color={COLORS.gold} style={{ marginBottom: 8 }}>
-          PRAYER
-        </StyledText>
-        <StyledText fontSize={26} fontWeight="800" color={COLORS.ink} style={{ marginBottom: 6 }}>
-          We believe in the power of prayer
-        </StyledText>
-        <StyledText fontSize={14.5} color={COLORS.inkSoft} style={{ marginBottom: 24, lineHeight: 21 }}>
-          Whatever you're facing, you're not alone. Let us stand with you in prayer.
-        </StyledText>
+        <Stack horizontal alignItems="flex-start" justifyContent="space-between" gap={12} marginBottom={24}>
+          <Stack flex={1}>
+            <Stack horizontal alignItems="center" gap={8} style={{ marginBottom: 14 }}>
+              <Stack width={34} height={34} borderRadius={17} backgroundColor={COLORS.goldPale} alignItems="center" justifyContent="center">
+                <MCIcon name="hands-pray" size={17} color={COLORS.gold} />
+              </Stack>
+              <StyledText fontSize={11} fontWeight="700" letterSpacing={1} color={COLORS.gold}>
+                PRAYER
+              </StyledText>
+            </Stack>
+            <StyledText fontSize={28} fontWeight="800" color={COLORS.ink} style={{ lineHeight: 34 }}>
+              We believe in the{" "}
+              <StyledText fontSize={28} fontWeight="800" color={COLORS.gold} style={{ lineHeight: 34 }}>
+                power of prayer
+              </StyledText>
+            </StyledText>
+            <StyledText fontSize={14} color={COLORS.inkSoft} style={{ marginTop: 10, lineHeight: 21 }}>
+              Whatever you're facing, you're not alone. Let us stand with you in prayer.
+            </StyledText>
+          </Stack>
+
+          <PrayerHeroIllustration />
+        </Stack>
 
         {prayerTimes && prayerTimes.length > 0 && (
           <Stack gap={12} marginBottom={28}>
             {prayerTimes.map((meeting, i) => {
               const tone = ICON_TONES[i % ICON_TONES.length];
               return (
-                <StyledCard key={meeting._id ?? i} shadow="light" padding={16} borderRadius={12}>
-                  <Stack width={40} height={40} borderRadius={20} backgroundColor={tone.bg} alignItems="center" justifyContent="center" marginBottom={10}>
-                    <Icon name="clock" size={17} color={tone.fg} />
+                <Stack
+                  key={meeting._id ?? i}
+                  horizontal
+                  alignItems="flex-start"
+                  gap={14}
+                  backgroundColor={COLORS.paper}
+                  borderRadius={16}
+                  paddingHorizontal={16}
+                  paddingVertical={16}
+                  style={[{ borderLeftWidth: 4, borderLeftColor: tone.fg }, SHADOW_SOFT]}
+                >
+                  <Stack width={44} height={44} borderRadius={22} backgroundColor={tone.bg} alignItems="center" justifyContent="center">
+                    <Icon name="clock" size={18} color={tone.fg} />
                   </Stack>
-                  <StyledText fontSize={16} fontWeight="700" color={COLORS.ink} style={{ marginBottom: 4 }}>
-                    {meeting.title}
-                  </StyledText>
-                  <StyledText fontSize={13} color={COLORS.inkSoft}>
-                    {meeting.start_time} – {meeting.end_time}
-                  </StyledText>
-                  {meeting.description && (
-                    <StyledText fontSize={13} color={COLORS.inkSoft} style={{ marginTop: 6 }}>
-                      {meeting.description}
+                  <Stack flex={1}>
+                    <StyledText fontSize={16} fontWeight="700" color={COLORS.ink} style={{ marginBottom: 2 }}>
+                      {meeting.title}
                     </StyledText>
-                  )}
-                </StyledCard>
+                    <StyledText fontSize={13} fontWeight="700" color={tone.fg} style={{ marginBottom: 6 }}>
+                      {meeting.start_time} – {meeting.end_time}
+                    </StyledText>
+                    {meeting.description && (
+                      <StyledText fontSize={13} color={COLORS.inkSoft} style={{ marginBottom: 10 }}>
+                        {meeting.description}
+                      </StyledText>
+                    )}
+                    <Stack alignItems="flex-start">
+                      <PrayerReminderControl
+                        sessionTitle={meeting.title}
+                        tone={tone}
+                        reminder={reminders[sessionKey(meeting)]}
+                        onSetReminder={(offset) => setReminder(meeting, offset)}
+                        onRemoveReminder={() => clearReminder(meeting)}
+                      />
+                    </Stack>
+                  </Stack>
+                </Stack>
               );
             })}
           </Stack>
         )}
 
-        <StyledText fontSize={19} fontWeight="800" color={COLORS.ink} style={{ marginBottom: 4 }}>
-          We're praying with you
-        </StyledText>
-        <StyledText fontSize={13.5} color={COLORS.inkSoft} style={{ marginBottom: 18, lineHeight: 20 }}>
-          Share your heart, your struggles, or your praise. Our prayer team is committed to interceding on your behalf.
-        </StyledText>
+        <Stack marginBottom={18}>
+          <StyledText fontSize={20} fontWeight="800" color={COLORS.ink} style={{ marginBottom: 8 }}>
+            We're praying with you
+          </StyledText>
+          <Stack width={40} height={3} borderRadius={2} backgroundColor={COLORS.gold} style={{ marginBottom: 10 }} />
+          <StyledText fontSize={13.5} color={COLORS.inkSoft} style={{ lineHeight: 20 }}>
+            Share your heart, your struggles, or your praise. Our prayer team is committed to interceding on your behalf.
+          </StyledText>
+        </Stack>
 
         {success && (
           <Stack backgroundColor={COLORS.sageSoft} borderRadius={8} padding={14} marginBottom={16}>
