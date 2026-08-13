@@ -10,11 +10,17 @@ export type Tab = "home" | "events" | "give" | "more";
 // always show. "events" and "give" front the "upcoming-events" / "giving"
 // features, so the bar only shows them when the selected church has that
 // feature enabled (see src/config/mobileFeatures.ts).
+//
+// The "more" tab's label/icon read as "Settings" (more.tsx is now
+// app-wide settings only, not a feature list — every feature already has
+// its own pill on Home) — key stays "more" so the `active="more"` prop
+// scattered across screens (prayers.tsx, fellowship.tsx, ...) doesn't need
+// touching everywhere for what's just a label change.
 const TABS: { key: Tab; label: string; icon: string; route: string; featureId?: string }[] = [
   { key: "home", label: "Home", icon: "home", route: "/" },
   { key: "events", label: "Events", icon: "calendar", route: "/events", featureId: "upcoming-events" },
   { key: "give", label: "Give", icon: "heart", route: "/give", featureId: "giving" },
-  { key: "more", label: "More", icon: "grid", route: "/more" },
+  { key: "more", label: "Settings", icon: "settings", route: "/more" },
 ];
 
 // Flat, fixed bottom bar — icon above label, active tab bold in the brand

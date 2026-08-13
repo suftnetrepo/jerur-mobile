@@ -8,10 +8,8 @@ import {
   StyledText,
   StyledShape,
   StyledPressable,
-  StyledImageBackground,
   Stack,
   Loader,
-  StyledSpacer,
 } from "fluent-styles";
 import { BottomTabBar } from "../../src/components/BottomTabBar";
 import {
@@ -26,8 +24,8 @@ import { CurrentChurchHeader } from "../../src/components/CurrentChurchHeader";
 import { ChurchBanner } from "../../src/components/ChurchBanner";
 import { LatestSermonCard } from "../../src/components/LatestSermonCard";
 import { ArticlesSection } from "../../src/components/ArticlesSection";
+import { WelcomeMessageCard } from "../../src/components/WelcomeMessageCard";
 import { useFadeUp } from "../../src/hooks/useFadeUp";
-import { SHADOW_SOFT, SHADOW_CARD } from "../../src/theme/shadows";
 import { useSelectedChurch } from "../../src/church/SelectedChurchContext";
 import { useMemberSession } from "../../src/member/MemberSessionContext";
 import {
@@ -39,39 +37,7 @@ import {
 import { useFeatureFlags } from "../../src/hooks/useFeatureFlags";
 import { COLORS } from "../../src/theme/colors";
 
-const WELCOME_BG = require("../../assets/welcome_message.png");
-
 const H_PAD = 20;
-
-/**
- * Renders the pastor quote, highlighting "Come as you are" in gold/italic
- * when that phrase appears in the description.
- */
-function WelcomeQuoteText({ text }: { text: string }) {
-  const PHRASE = "Come as you are";
-  const idx = text.indexOf(PHRASE);
-  if (idx === -1) {
-    return (
-      <StyledText fontSize={18} color={COLORS.ink} style={{ lineHeight: 29 }}>
-        {text}
-      </StyledText>
-    );
-  }
-  return (
-    <StyledText fontSize={18} color={COLORS.ink} style={{ lineHeight: 29 }}>
-      {text.slice(0, idx)}
-      <StyledText
-        fontSize={18}
-        fontWeight="700"
-        color={COLORS.gold}
-        style={{ fontStyle: "italic" }}
-      >
-        {PHRASE}
-      </StyledText>
-      {text.slice(idx + PHRASE.length)}
-    </StyledText>
-  );
-}
 
 // "Ways to belong" cards — title/desc are page-specific copy (friendlier
 // than the admin-facing catalogue label/description), but icon and route
@@ -250,54 +216,9 @@ export default function HomeScreen() {
         </Animated.View>
 
         <Animated.View style={bodyAnim}>
-          {/* Welcome / pastor */}
-          <Stack paddingHorizontal={H_PAD} marginBottom={26} gap={12}>
-            <StyledText fontSize={16} fontWeight="800" color={COLORS.ink}>
-              A word of welcome
-            </StyledText>
-
-            {/* Premium quote card — background artwork fills the card */}
-            <StyledImageBackground
-              source={WELCOME_BG}
-              borderRadius={22}
-              resizeMode="cover"
-              style={SHADOW_CARD}
-            >
-              {/* <StyledSpacer marginVertical={16} /> */}
-              <Stack marginVertical={8} padding={26} paddingBottom={8}>
-                {/* Quote text — constrained for editorial readability */}
-                <StyledSpacer marginVertical={8} />
-                <WelcomeQuoteText
-                  text={
-                    pastor?.description ??
-                    "Whatever season you\u2019re walking through, you don\u2019t have to walk through it alone. Come as you are \u2014 we\u2019ll believe with you for what\u2019s next."
-                  }
-                />
-
-                {/* Thin gold rule */}
-                <Stack
-                  width={56}
-                  height={1.5}
-                  backgroundColor={COLORS.gold}
-                  marginTop={24}
-                  marginBottom={16}
-                />
-
-                {/* Pastor name + title */}
-                <StyledText fontSize={14} fontWeight="800" color={COLORS.ink}>
-                  {pastor
-                    ? `${pastor.first_name} ${pastor.last_name}`
-                    : "The pastoral team"}
-                </StyledText>
-                <StyledText
-                  fontSize={12}
-                  color={COLORS.inkSoft}
-                  style={{ marginTop: 3 }}
-                >
-                  {pastor?.title ?? "Lead Pastor"}, Winners Chapel Peterborough
-                </StyledText>
-              </Stack>
-            </StyledImageBackground>
+          {/* Welcome / pastor - shared with the Pastor settings screen, see WelcomeMessageCard.tsx */}
+          <Stack paddingHorizontal={H_PAD} marginBottom={26}>
+            <WelcomeMessageCard pastor={pastor} />
           </Stack>
         </Animated.View>
       </ScrollView>

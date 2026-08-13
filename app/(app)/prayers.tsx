@@ -1,17 +1,15 @@
 import { useState } from "react";
-import { Feather as Icon, MaterialCommunityIcons as MCIcon } from "@expo/vector-icons";
+import { MaterialCommunityIcons as MCIcon } from "@expo/vector-icons";
 import { StyledPage, StyledScrollView, StyledText, StyledForm, StyledButton, Stack } from "fluent-styles";
 import { BottomTabBar } from "../../src/components/BottomTabBar";
 import { FeatureGate } from "../../src/components/FeatureGate";
 import { PrayerHeroIllustration } from "../../src/components/illustrations/PrayerIllustration";
-import { PrayerReminderControl } from "../../src/components/PrayerReminderControl";
+import { PrayerSessionCard } from "../../src/components/PrayerSessionCard";
 import { usePrayerTimes } from "../../src/hooks/useChurchData";
 import { usePrayerRequestSubmission } from "../../src/hooks/useSubmissions";
 import { usePrayerReminders } from "../../src/notifications/use-prayer-reminders";
-import { sessionKey } from "../../src/notifications/prayer-reminders";
 import { apiErrorMessage } from "../../src/api/client";
 import { COLORS, ICON_TONES } from "../../src/theme/colors";
-import { SHADOW_SOFT } from "../../src/theme/shadows";
 import { router } from "expo-router";
 
 export default function PrayersScreen() {
@@ -85,48 +83,16 @@ function PrayersScreenContent() {
 
         {prayerTimes && prayerTimes.length > 0 && (
           <Stack gap={12} marginBottom={28}>
-            {prayerTimes.map((meeting, i) => {
-              const tone = ICON_TONES[i % ICON_TONES.length];
-              return (
-                <Stack
-                  key={meeting._id ?? i}
-                  horizontal
-                  alignItems="flex-start"
-                  gap={14}
-                  backgroundColor={COLORS.paper}
-                  borderRadius={16}
-                  paddingHorizontal={16}
-                  paddingVertical={16}
-                  style={[{ borderLeftWidth: 4, borderLeftColor: tone.fg }, SHADOW_SOFT]}
-                >
-                  <Stack width={44} height={44} borderRadius={22} backgroundColor={tone.bg} alignItems="center" justifyContent="center">
-                    <Icon name="clock" size={18} color={tone.fg} />
-                  </Stack>
-                  <Stack flex={1}>
-                    <StyledText fontSize={16} fontWeight="700" color={COLORS.ink} style={{ marginBottom: 2 }}>
-                      {meeting.title}
-                    </StyledText>
-                    <StyledText fontSize={13} fontWeight="700" color={tone.fg} style={{ marginBottom: 6 }}>
-                      {meeting.start_time} – {meeting.end_time}
-                    </StyledText>
-                    {meeting.description && (
-                      <StyledText fontSize={13} color={COLORS.inkSoft} style={{ marginBottom: 10 }}>
-                        {meeting.description}
-                      </StyledText>
-                    )}
-                    <Stack alignItems="flex-start">
-                      <PrayerReminderControl
-                        sessionTitle={meeting.title}
-                        tone={tone}
-                        reminder={reminders[sessionKey(meeting)]}
-                        onSetReminder={(offset) => setReminder(meeting, offset)}
-                        onRemoveReminder={() => clearReminder(meeting)}
-                      />
-                    </Stack>
-                  </Stack>
-                </Stack>
-              );
-            })}
+            {prayerTimes.map((meeting, i) => (
+              <PrayerSessionCard
+                key={meeting._id ?? i}
+                meeting={meeting}
+                tone={ICON_TONES[i % ICON_TONES.length]}
+                reminders={reminders}
+                onSetReminder={setReminder}
+                onRemoveReminder={clearReminder}
+              />
+            ))}
           </Stack>
         )}
 

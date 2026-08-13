@@ -15,7 +15,15 @@ export default function AboutScreen() {
 
   return (
     <StyledPage flex={1} backgroundColor={COLORS.paper}>
-      <StyledPage.Header title="About us" titleAlignment="center" showBackArrow onBackPress={() => router.back()} />
+      <StyledPage.Header  shapeProps={{
+                cycle: true,
+                size: 48,
+                borderRadius: 24,
+                borderWidth: 1,
+                borderColor: COLORS.chromeBorder,
+              }}
+             
+              marginHorizontal={16} showBackArrow onBackPress={() => router.back()} />
       <StyledScrollView contentContainerStyle={{ padding: 24, paddingBottom: 60 }}>
         <StyledText fontSize={11} fontWeight="700" letterSpacing={1} color={COLORS.goldDeep} style={{ marginBottom: 8 }}>
           OUR STORY
