@@ -4,6 +4,8 @@ import { router } from "expo-router";
 import { Feather as Icon } from "@expo/vector-icons";
 import { StyledPage, StyledText, StyledTextInput, Stack, StyledSpacer } from "fluent-styles";
 import { FeatureGate } from "../../../src/components/FeatureGate";
+import { AppBackHeader } from "../../../src/components/AppBackHeader";
+import { BottomTabBar } from "../../../src/components/BottomTabBar";
 import { HymnRow } from "../../../src/components/HymnRow";
 import { getHymns, searchHymns } from "../../../src/hymns/hymns-lookup";
 import { COLORS, ICON_TONES } from "../../../src/theme/colors";
@@ -41,20 +43,7 @@ function HymnsScreenContent() {
 
   return (
     <StyledPage showStatusBar flex={1} backgroundColor={COLORS.paper}>
-      <StyledPage.Header  showBackArrow
-        shapeProps={{
-          cycle: true,
-          size: 48,
-          borderRadius: 24,
-          borderWidth: 1,
-          borderColor: COLORS.chromeBorder,
-        }}
-        marginHorizontal={16}
-        title="Hymns"
-        titleAlignment="center"
-        onBackPress={() => router.back()}
-        backgroundColor={COLORS.paper}
-      />
+      <AppBackHeader title="Hymns" />
 
       <Stack flex={1} paddingHorizontal={24} paddingTop={4} paddingBottom={16}>
        
@@ -94,7 +83,7 @@ function HymnsScreenContent() {
         data={results}
         keyExtractor={(item) => item.id}
         renderItem={renderItem}
-        contentContainerStyle={{ paddingHorizontal: 20, paddingTop: 6, paddingBottom: 32, gap: 9 }}
+        contentContainerStyle={{ paddingHorizontal: 24, paddingTop: 6, paddingBottom: 32, gap: 9 }}
         showsVerticalScrollIndicator={false}
         initialNumToRender={16}
         maxToRenderPerBatch={16}
@@ -111,6 +100,7 @@ function HymnsScreenContent() {
           </Stack>
         }
       />
+      <BottomTabBar active="hymns" />
     </StyledPage>
   );
 }

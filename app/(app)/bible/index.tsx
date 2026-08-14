@@ -10,6 +10,7 @@ import {
   Stack,
 } from "fluent-styles";
 import { FeatureGate } from "../../../src/components/FeatureGate";
+import { BottomTabBar } from "../../../src/components/BottomTabBar";
 import { BibleBookRow } from "../../../src/components/BibleBookRow";
 import { ReaderFontSizePopup } from "../../../src/components/ReaderFontSizePopup";
 import { SpringChip } from "../../../src/components/SpringChip";
@@ -167,6 +168,7 @@ function BibleScreenContent() {
         onIncrease={increase}
         onReset={reset}
       />
+      <BottomTabBar active="bible" />
     </StyledPage>
   );
 }

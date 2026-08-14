@@ -4,9 +4,10 @@ import { router, useLocalSearchParams } from "expo-router";
 import { Feather as Icon } from "@expo/vector-icons";
 import { StyledPage, StyledScrollView, StyledText, StyledForm, StyledButton, StyledPressable, Stack, useToast } from "fluent-styles";
 import { FeatureGate } from "../../src/components/FeatureGate";
+import { FormSubmitButton } from "../../src/components/FormSubmitButton";
 import { useMemberSession } from "../../src/member/MemberSessionContext";
-import { submitAttendance } from "../../src/api/attendance";
-import { apiErrorMessage } from "../../src/api/client";
+import { useSettings } from "../../src/hooks/useChurchData";
+import { openChurchEmailDraft } from "../../src/lib/church-email";
 import { SHADOW_SOFT } from "../../src/theme/shadows";
 import { COLORS } from "../../src/theme/colors";
 import type { AttendanceStatus } from "../../src/api/types";
@@ -53,6 +54,7 @@ export default function CheckInScreen() {
 
 function CheckInScreenContent() {
   const { member } = useMemberSession();
+  const { data: settings } = useSettings();
   const params = useLocalSearchParams<{ serviceId?: string; title?: string; startTime?: string; endTime?: string; days?: string }>();
   const toast = useToast();
 
@@ -63,8 +65,6 @@ function CheckInScreenContent() {
   // takes effect — checked synchronously at the top of handleSubmit, not
   // just relied on via the button's own state.
   const submittingRef = useRef(false);
-
-  const memberId = member?._id;
 
   if (!member) {
     return (
@@ -107,7 +107,7 @@ function CheckInScreenContent() {
     );
   }
 
-  const serviceId = params.serviceId;
+  const activeMember = member;
   const serviceTitle = params.title || "Service";
   let serviceDays: number[] = [];
   try {
@@ -128,13 +128,23 @@ function CheckInScreenContent() {
     submittingRef.current = true;
     setSubmitting(true);
     try {
-      await submitAttendance({ serviceId, memberId: memberId!, status, message: message.trim() || undefined, checkedInVia: "ONLINE" });
-      toast.success("Attendance submitted successfully.");
-      // Back to wherever this came from — always Service Times now that
-      // attendance only ever starts there.
-      router.back();
+      const statusLabel = STATUS_OPTIONS.find((option) => option.value === status)?.label ?? status;
+      await openChurchEmailDraft({
+        recipient: settings?.email,
+        subject: `Attendance — ${serviceTitle} — ${activeMember.first_name} ${activeMember.last_name}`,
+        heading: "A new attendance response has been prepared for the pastoral team.",
+        fields: [
+          { label: "Member", value: `${activeMember.first_name} ${activeMember.last_name}` },
+          { label: "Member ID", value: activeMember._id },
+          { label: "Service", value: serviceTitle },
+          { label: "Schedule", value: summaryLine },
+          { label: "Attendance response", value: statusLabel },
+          { label: "Additional note", value: message },
+        ],
+      });
+      toast.success("Email draft ready", "Review it and tap send in your email app.");
     } catch (err) {
-      toast.error(apiErrorMessage(err, "Couldn't submit attendance. Please try again."));
+      toast.error(err instanceof Error ? err.message : "Couldn't open your email app. Please try again.");
     } finally {
       submittingRef.current = false;
       setSubmitting(false);
@@ -270,19 +280,7 @@ function CheckInScreenContent() {
               onChangeText={setMessage}
             />
             <StyledForm.Actions>
-              <StyledButton
-                primary
-                block
-                loading={submitting}
-                disabled={submitting}
-                onPress={handleSubmit}
-                leftIcon={<Icon name="send" size={16} color={COLORS.white} />}
-                backgroundColor={ACCENT}
-              >
-                <StyledButton.Text color={COLORS.white} fontWeight="700">
-                  {submitting ? "Submitting…" : "Submit attendance"}
-                </StyledButton.Text>
-              </StyledButton>
+              <FormSubmitButton label="Submit attendance" loadingLabel="Submitting…" loading={submitting} onPress={handleSubmit} />
             </StyledForm.Actions>
           </StyledForm>
         </Stack>

@@ -1,22 +1,21 @@
 import { useState } from "react";
 import { Animated } from "react-native";
-import { router } from "expo-router";
 import { Feather as Icon } from "@expo/vector-icons";
 import {
   StyledPage,
   StyledScrollView,
   StyledText,
   StyledForm,
-  StyledButton,
   Stack,
 } from "fluent-styles";
 import { FeatureGate } from "../../src/components/FeatureGate";
+import { AppBackHeader } from "../../src/components/AppBackHeader";
+import { FormSubmitButton } from "../../src/components/FormSubmitButton";
 import { ContactChips } from "../../src/components/ContactChips";
 import { ContactHeroIllustration } from "../../src/components/illustrations/ContactIllustration";
 import { useFadeUp } from "../../src/hooks/useFadeUp";
 import { useSettings } from "../../src/hooks/useChurchData";
-import { useContactSubmission } from "../../src/hooks/useSubmissions";
-import { apiErrorMessage } from "../../src/api/client";
+import { openChurchEmailDraft } from "../../src/lib/church-email";
 import { COLORS } from "../../src/theme/colors";
 import { SHADOW_SOFT } from "../../src/theme/shadows";
 
@@ -30,7 +29,6 @@ export default function ContactScreen() {
 
 function ContactScreenContent() {
   const { data: settings } = useSettings();
-  const { mutateAsync, isPending } = useContactSubmission();
 
   const [form, setForm] = useState({
     first_name: "",
@@ -40,6 +38,7 @@ function ContactScreenContent() {
   });
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [isPending, setIsPending] = useState(false);
 
   const address = settings?.address;
   const email =
@@ -60,33 +59,32 @@ function ContactScreenContent() {
       setError("Please fill in every field.");
       return;
     }
+    setIsPending(true);
     try {
-      await mutateAsync(form);
+      await openChurchEmailDraft({
+        recipient: settings?.email,
+        subject: `Contact enquiry — ${form.first_name} ${form.last_name}`,
+        heading: "A new contact enquiry has been prepared for the church team.",
+        fields: [
+          { label: "Name", value: `${form.first_name} ${form.last_name}` },
+          { label: "Email", value: form.email },
+          { label: "Message", value: form.message },
+        ],
+      });
       setSuccess(true);
       setForm({ first_name: "", last_name: "", email: "", message: "" });
     } catch (err) {
-      setError(apiErrorMessage(err));
+      setError(err instanceof Error ? err.message : "Couldn't open your email app. Please try again.");
+    } finally {
+      setIsPending(false);
     }
   }
 
   return (
     <StyledPage flex={1} backgroundColor={COLORS.paper}>
-      <StyledPage.Header
-        shapeProps={{
-          cycle: true,
-          size: 48,
-          borderRadius: 24,
-          borderWidth: 1,
-          borderColor: COLORS.chromeBorder,
-        }}
-       
-        marginHorizontal={16}
-        titleAlignment="center"
-        showBackArrow
-        onBackPress={() => router.back()}
-      />
+      <AppBackHeader title="Contact Us" />
       <StyledScrollView
-        contentContainerStyle={{ padding: 20, paddingBottom: 60 }}
+        contentContainerStyle={{ padding: 24, paddingBottom: 60 }}
       >
         {/* ── Hero ──────────────────────────────────────────────────────── */}
         <Animated.View style={[{ marginBottom: 20 }, heroAnim]}>
@@ -207,7 +205,7 @@ function ContactScreenContent() {
               color={COLORS.sage}
               style={{ flex: 1 }}
             >
-              Thanks for reaching out — we'll be in touch soon.
+              Your email draft is ready. Review it and tap send in your email app.
             </StyledText>
           </Stack>
         )}
@@ -290,16 +288,7 @@ function ContactScreenContent() {
                 onChangeText={(v) => setForm((f) => ({ ...f, message: v }))}
               />
               <StyledForm.Actions>
-                <StyledButton
-                  primary
-                  block
-                  loading={isPending}
-                  onPress={handleSubmit}
-                >
-                  <StyledButton.Text color={COLORS.indigoDeep} fontWeight="700">
-                    {isPending ? "Sending…" : "Send message"}
-                  </StyledButton.Text>
-                </StyledButton>
+                <FormSubmitButton label="Send message" loadingLabel="Sending…" loading={isPending} onPress={handleSubmit} />
               </StyledForm.Actions>
             </StyledForm>
           </Stack>

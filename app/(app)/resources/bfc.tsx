@@ -1,6 +1,6 @@
-import { router } from "expo-router";
 import { StyledPage, StyledScrollView, StyledText, Stack } from "fluent-styles";
 import { FeatureGate } from "../../../src/components/FeatureGate";
+import { AppBackHeader } from "../../../src/components/AppBackHeader";
 import { COLORS } from "../../../src/theme/colors";
 
 export default function BfcScreen() {
@@ -14,13 +14,7 @@ export default function BfcScreen() {
 function BfcScreenContent() {
   return (
     <StyledPage flex={1} backgroundColor={COLORS.paper}>
-      <StyledPage.Header shapeProps={{
-          cycle: true,
-          size: 48,
-          borderRadius: 24,
-          borderWidth: 1,
-          borderColor: COLORS.chromeBorder,
-        }} marginHorizontal={16} title="Believers Foundation Class" titleAlignment="center" showBackArrow onBackPress={() => router.back()} />
+      <AppBackHeader title="Foundation Class" />
       <StyledScrollView contentContainerStyle={{ padding: 24, paddingBottom: 60 }}>
         <Stack alignItems="center" marginBottom={28}>
           <StyledText fontSize={19} fontWeight="700" color={COLORS.ink} style={{ fontStyle: "italic", textAlign: "center", lineHeight: 27, marginBottom: 10 }}>

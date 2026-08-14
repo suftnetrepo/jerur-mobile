@@ -4,7 +4,8 @@
       "Bash(npx tsc *)",
       "Bash([ -f \"$MEMFILE\" ])",
       "Bash(npm run *)",
-      "Bash(xargs -I{} echo {})"
+      "Bash(xargs -I{} echo {})",
+      "Bash(git merge *)"
     ],
     "additionalDirectories": [
       "/Users/appdev/dev/jerur-next/constants",

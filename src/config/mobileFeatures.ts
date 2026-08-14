@@ -69,7 +69,7 @@ export const MOBILE_FEATURES: MobileFeature[] = [
   },
   {
     id: "prayer-request",
-    label: "Prayer Request",
+    label: "Ask for Prayer",
     description: "Members can submit prayer requests directly to the church.",
     category: "Communication",
     icon: "message-circle",
@@ -96,7 +96,7 @@ export const MOBILE_FEATURES: MobileFeature[] = [
   },
   {
     id: "register-member",
-    label: "Register Member",
+    label: "I'm New",
     description: "Allow visitors to register as a church member directly from the mobile app.",
     category: "Members",
     icon: "user-plus",

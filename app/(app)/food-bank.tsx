@@ -1,9 +1,9 @@
 import { Animated, Linking } from "react-native";
-import { router } from "expo-router";
 import { Feather as Icon } from "@expo/vector-icons";
 import Svg, { Path, Rect, Defs, LinearGradient, Stop, Ellipse, Polygon } from "react-native-svg";
 import { StyledPage, StyledScrollView, StyledText, Stack } from "fluent-styles";
 import { FeatureGate } from "../../src/components/FeatureGate";
+import { AppBackHeader } from "../../src/components/AppBackHeader";
 import { ScalePressable } from "../../src/components/ScalePressable";
 import { useFadeUp } from "../../src/hooks/useFadeUp";
 import { COLORS } from "../../src/theme/colors";
@@ -147,14 +147,8 @@ function FoodBankScreenContent() {
 
   return (
     <StyledPage flex={1} backgroundColor={COLORS.paper}>
-      <StyledPage.Header shapeProps={{
-          cycle: true,
-          size: 48,
-          borderRadius: 24,
-          borderWidth: 1,
-          borderColor: COLORS.chromeBorder,
-        }} marginHorizontal={16} title="Food Bank" titleAlignment="center" showBackArrow onBackPress={() => router.back()} />
-      <StyledScrollView contentContainerStyle={{ padding: 20, paddingBottom: 60 }}>
+      <AppBackHeader title="Community Food Bank" />
+      <StyledScrollView contentContainerStyle={{ padding: 24, paddingBottom: 60 }}>
 
         {/* ── Hero Card ─────────────────────────────────────────────────── */}
         <Animated.View style={[{ marginBottom: 16 }, heroAnim]}>
@@ -351,4 +345,3 @@ function FoodBankScreenContent() {
     </StyledPage>
   );
 }
-

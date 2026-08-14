@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { Feather as Icon } from "@expo/vector-icons";
-import { router } from "expo-router";
 import { StyledPage, StyledScrollView, StyledText, StyledButton, Popup, Stack } from "fluent-styles";
 import Svg, { Path, Circle } from "react-native-svg";
 import { BottomTabBar } from "../../src/components/BottomTabBar";
 import { FeatureGate } from "../../src/components/FeatureGate";
+import { AppBackHeader } from "../../src/components/AppBackHeader";
 import { useSettings } from "../../src/hooks/useChurchData";
 import { COLORS } from "../../src/theme/colors";
 import { SHADOW_CARD } from "../../src/theme/shadows";
@@ -100,20 +100,7 @@ function GiveScreenContent() {
 
   return (
     <StyledPage flex={1} backgroundColor={COLORS.paper}>
-       <StyledPage.Header
-        shapeProps={{
-          cycle: true,
-          size: 48,
-          borderRadius: 24,
-          borderWidth: 1,
-          borderColor: COLORS.chromeBorder,
-        }}
-       
-        marginHorizontal={16}
-        titleAlignment="center"
-        showBackArrow
-        onBackPress={() => router.back()}
-      />
+      <AppBackHeader title="Giving" />
       <StyledScrollView contentContainerStyle={{ paddingHorizontal: 24, paddingTop: 24, paddingBottom: 36 }}>
         {/* ── Page header ─────────────────────────────────────────────── */}
         <StyledText fontSize={11} fontWeight="700" letterSpacing={1} color={COLORS.gold} style={{ marginBottom: 8 }}>
@@ -267,7 +254,7 @@ function GiveScreenContent() {
         </Stack>
       </Popup>
 
-      <BottomTabBar active="give" />
+      <BottomTabBar />
     </StyledPage>
   );
 }

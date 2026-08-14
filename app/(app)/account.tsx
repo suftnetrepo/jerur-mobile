@@ -9,24 +9,41 @@ import {
   StyledButton,
   StyledCard,
   StyledTextInput,
+  StyledPressable,
   Stack,
   useToast,
   useNotification,
   type StyledTextInputHandle,
 } from "fluent-styles";
 import { useMemberSession } from "../../src/member/MemberSessionContext";
+import { AppBackHeader } from "../../src/components/AppBackHeader";
+import { FormSubmitButton } from "../../src/components/FormSubmitButton";
 import { useFeatureFlags } from "../../src/hooks/useFeatureFlags";
 import { apiErrorMessage, apiErrorCode } from "../../src/api/client";
 import { COLORS } from "../../src/theme/colors";
+import { SHADOW_CARD } from "../../src/theme/shadows";
 
 export default function AccountScreen() {
   const { member, logout } = useMemberSession();
 
   return (
     <StyledPage flex={1} backgroundColor={COLORS.paper}>
-      <StyledPage.Header title="Account" titleAlignment="center" showBackArrow onBackPress={() => router.back()} />
-      <StyledScrollView contentContainerStyle={{ padding: 24, paddingBottom: 60 }}>
-        {member ? <LoggedInView member={member} onLogout={logout} /> : <AuthForms />}
+      <AppBackHeader title="Account" />
+      <StyledScrollView contentContainerStyle={{ paddingBottom: 60 }}>
+        <Stack backgroundColor={COLORS.paper} paddingHorizontal={24} paddingTop={28} paddingBottom={member ? 52 : 68}>
+          <Stack width={46} height={46} borderRadius={23} backgroundColor={COLORS.paperAlt} alignItems="center" justifyContent="center" marginBottom={18}>
+            <Icon name={member ? "user-check" : "lock"} size={21} color={COLORS.ink} />
+          </Stack>
+          <StyledText fontSize={27} fontWeight="800" color={COLORS.ink} style={{ marginBottom: 7 }}>
+            {member ? "Your membership" : "Welcome home"}
+          </StyledText>
+          <StyledText fontSize={13.5} color={COLORS.inkSoft} style={{ lineHeight: 21 }}>
+            {member ? "Your church profile, all in one place." : "Sign in to take part, stay connected and keep your details secure."}
+          </StyledText>
+        </Stack>
+        <Stack marginHorizontal={20} marginTop={-28} backgroundColor={COLORS.paper} borderRadius={24} padding={22} style={[SHADOW_CARD, { borderWidth: 1, borderColor: COLORS.chromeBorder }]}>
+          {member ? <LoggedInView member={member} onLogout={logout} /> : <AuthForms />}
+        </Stack>
       </StyledScrollView>
     </StyledPage>
   );
@@ -36,9 +53,9 @@ function LoggedInView({ member, onLogout }: { member: NonNullable<ReturnType<typ
   const { hasFeature } = useFeatureFlags();
 
   return (
-    <Stack alignItems="center" paddingTop={20}>
-      <Stack width={72} height={72} borderRadius={36} backgroundColor={COLORS.goldPale} alignItems="center" justifyContent="center" marginBottom={16}>
-        <StyledText fontSize={24} fontWeight="800" color={COLORS.goldDeep}>
+    <Stack alignItems="center" paddingTop={4}>
+      <Stack width={76} height={76} borderRadius={38} backgroundColor={COLORS.paperAlt} alignItems="center" justifyContent="center" marginBottom={16} style={{ borderWidth: 4, borderColor: COLORS.paperWarm }}>
+        <StyledText fontSize={24} fontWeight="800" color={COLORS.ink}>
           {member.first_name[0]}
           {member.last_name[0]}
         </StyledText>
@@ -209,6 +226,37 @@ function AuthForms() {
 
   return (
     <Stack>
+      <Stack
+        horizontal
+        backgroundColor={COLORS.paperAlt}
+        borderRadius={14}
+        padding={4}
+        marginBottom={22}
+        style={{ borderWidth: 1, borderColor: COLORS.chromeBorder }}
+      >
+        {(["login", "register"] as const).map((item) => {
+          const active = mode === item;
+          return (
+            <StyledPressable
+              key={item}
+              onPress={() => switchMode(item)}
+              flex={1}
+              alignItems="center"
+              paddingVertical={10}
+              borderRadius={10}
+              backgroundColor={active ? COLORS.white : "transparent"}
+              style={active ? { borderWidth: 1, borderColor: COLORS.chromeBorder } : undefined}
+              accessibilityRole="button"
+              accessibilityState={{ selected: active }}
+            >
+              <StyledText fontSize={13} fontWeight={active ? "800" : "600"} color={active ? COLORS.ink : COLORS.inkSoft}>
+                {item === "login" ? "Log in" : "Create account"}
+              </StyledText>
+            </StyledPressable>
+          );
+        })}
+      </Stack>
+
       <StyledText fontSize={20} fontWeight="800" color={COLORS.ink} style={{ marginBottom: 6 }}>
         {mode === "login" ? "Welcome back" : "Create your account"}
       </StyledText>
@@ -247,11 +295,7 @@ function AuthForms() {
             errorMessage={loginErrors.pin}
           />
           <StyledForm.Actions>
-            <StyledButton primary block loading={loading} disabled={loading} onPress={handleLogin}>
-              <StyledButton.Text color={COLORS.indigoDeep} fontWeight="700">
-                {loading ? "Logging in…" : "Log in"}
-              </StyledButton.Text>
-            </StyledButton>
+            <FormSubmitButton label="Log in" loadingLabel="Logging in…" loading={loading} onPress={handleLogin} />
           </StyledForm.Actions>
         </StyledForm>
       ) : (
@@ -322,20 +366,11 @@ function AuthForms() {
             errorMessage={registerErrors.pin}
           />
           <StyledForm.Actions>
-            <StyledButton primary block loading={loading} disabled={loading} onPress={handleRegister}>
-              <StyledButton.Text color={COLORS.indigoDeep} fontWeight="700">
-                {loading ? "Creating account…" : "Create account"}
-              </StyledButton.Text>
-            </StyledButton>
+            <FormSubmitButton label="Create account" loadingLabel="Creating account…" loading={loading} onPress={handleRegister} />
           </StyledForm.Actions>
         </StyledForm>
       )}
 
-      <StyledButton link block onPress={() => switchMode(mode === "login" ? "register" : "login")} style={{ marginTop: 16 }}>
-        <StyledButton.Text color={COLORS.goldDeep} fontWeight="600">
-          {mode === "login" ? "New here? Create an account" : "Already registered? Log in"}
-        </StyledButton.Text>
-      </StyledButton>
     </Stack>
   );
 }

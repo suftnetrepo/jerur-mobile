@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Image } from "react-native";
-import { router } from "expo-router";
 import { Feather as Icon } from "@expo/vector-icons";
 import {
   StyledPage,
@@ -13,6 +12,8 @@ import {
 } from "fluent-styles";
 import { BottomTabBar } from "../../../src/components/BottomTabBar";
 import { FeatureGate } from "../../../src/components/FeatureGate";
+import { AppBackHeader } from "../../../src/components/AppBackHeader";
+import { FormSubmitButton } from "../../../src/components/FormSubmitButton";
 import { useEvents } from "../../../src/hooks/useChurchData";
 import { useEventRegistration } from "../../../src/hooks/useSubmissions";
 import { apiErrorMessage } from "../../../src/api/client";
@@ -45,18 +46,7 @@ function EventsScreenContent() {
 
   return (
     <StyledPage flex={1} backgroundColor={COLORS.paper}>
-      <StyledPage.Header
-        shapeProps={{
-          cycle: true,
-          size: 48,
-          borderRadius: 24,
-          borderWidth: 1,
-          borderColor: COLORS.chromeBorder,
-        }}
-        marginHorizontal={16}
-        showBackArrow
-        onBackPress={() => router.back()}
-      />
+      <AppBackHeader title="Upcoming Events" />
       <Stack paddingHorizontal={24} paddingTop={20} paddingBottom={12}>
         <StyledText
           fontSize={11}
@@ -219,12 +209,13 @@ function EventsScreenContent() {
                   {/* Full-width Register CTA */}
                   {event.can_register && (
                     <StyledButton
-                      primary
                       onPress={() => setRegistering(event)}
+                      backgroundColor={COLORS.white}
+                      borderWidth={1}
+                      borderColor={COLORS.chromeBorder}
                       style={{
                         borderRadius: 14,
                         paddingVertical: 14,
-                        backgroundColor: COLORS.indigo,
                       }}
                     >
                       <Stack
@@ -236,14 +227,14 @@ function EventsScreenContent() {
                         <StyledText
                           fontSize={15}
                           fontWeight="700"
-                          color={COLORS.white}
+                          color={COLORS.ink}
                         >
                           Register
                         </StyledText>
                         <Icon
                           name="arrow-right"
                           size={15}
-                          color={COLORS.white}
+                          color={COLORS.inkSoft}
                         />
                       </Stack>
                     </StyledButton>
@@ -262,7 +253,7 @@ function EventsScreenContent() {
         />
       )}
 
-      <BottomTabBar active="events" />
+      <BottomTabBar />
     </StyledPage>
   );
 }
@@ -345,16 +336,7 @@ function EventRegisterPopup({
               onChangeText={(v) => setForm((f) => ({ ...f, phone: v }))}
             />
             <StyledForm.Actions>
-              <StyledButton
-                primary
-                block
-                loading={isPending}
-                onPress={handleSubmit}
-              >
-                <StyledButton.Text color={COLORS.indigoDeep} fontWeight="700">
-                  {isPending ? "Registering…" : "Register"}
-                </StyledButton.Text>
-              </StyledButton>
+              <FormSubmitButton label="Register" loadingLabel="Registering…" loading={isPending} onPress={handleSubmit} />
             </StyledForm.Actions>
           </StyledForm>
         )}

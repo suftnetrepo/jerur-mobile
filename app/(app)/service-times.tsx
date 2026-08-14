@@ -1,8 +1,9 @@
-import { View } from "react-native";
+import { Linking, View } from "react-native";
 import { router } from "expo-router";
 import { Feather as Icon } from "@expo/vector-icons";
 import { StyledPage, StyledScrollView, StyledText, StyledButton, Stack } from "fluent-styles";
 import { FeatureGate } from "../../src/components/FeatureGate";
+import { AppBackHeader } from "../../src/components/AppBackHeader";
 import {
   ChurchIllustration,
   BibleIllustration,
@@ -58,23 +59,15 @@ function ServiceTimesScreenContent() {
     router.push("/events");
   }
 
+  function handleJoinOnline(remoteLink: string) {
+    const url = /^https?:\/\//i.test(remoteLink) ? remoteLink : `https://${remoteLink}`;
+    Linking.openURL(url);
+  }
+
   return (
     <StyledPage showStatusBar backgroundColor={COLORS.paper}>
-      <StyledPage.Header
-       shapeProps={{
-          cycle: true,
-          size: 48,
-          borderRadius: 24,
-          borderWidth: 1,
-          borderColor: COLORS.chromeBorder,
-        }}
-        marginHorizontal={16}
-        title="Service times"
-        titleAlignment="center"
-        showBackArrow
-        onBackPress={() => router.back()}
-      />
-      <StyledScrollView contentContainerStyle={{ padding: 20, paddingBottom: 60 }}>
+      <AppBackHeader title="Service Times" />
+      <StyledScrollView contentContainerStyle={{ padding: 24, paddingBottom: 60 }}>
 
         {/* Tagline */}
         <StyledText
@@ -184,6 +177,22 @@ function ServiceTimesScreenContent() {
 
                   {/* ── Action buttons: equal width, side by side ── */}
                   <View style={{ flexDirection: "row", gap: 10 }}>
+                    {service.remote && service.remote_link?.trim() && (
+                      <StyledButton
+                        primary
+                        compact
+                        onPress={() => handleJoinOnline(service.remote_link!.trim())}
+                        accessibilityLabel={`Join ${service.title} online`}
+                        style={{ flex: 1 }}
+                      >
+                        <Stack horizontal alignItems="center" justifyContent="center" gap={6}>
+                          <Icon name="external-link" size={14} color={COLORS.indigoDeep} />
+                          <StyledText fontSize={12.5} fontWeight="700" color={COLORS.indigoDeep}>
+                            Join online
+                          </StyledText>
+                        </Stack>
+                      </StyledButton>
+                    )}
                     {hasFeature("attendance") && (
                       <StyledButton
                         outline
@@ -201,7 +210,7 @@ function ServiceTimesScreenContent() {
                         </Stack>
                       </StyledButton>
                     )}
-                    <StyledButton
+                    {!service.remote && <StyledButton
                       outline
                       compact
                       onPress={handleViewAgenda}
@@ -215,7 +224,7 @@ function ServiceTimesScreenContent() {
                           View agenda
                         </StyledText>
                       </Stack>
-                    </StyledButton>
+                    </StyledButton>}
                   </View>
 
                 </View>

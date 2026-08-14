@@ -7,7 +7,7 @@ import { useFadeUp } from "../../src/hooks/useFadeUp";
 import { SHADOW_SOFT } from "../../src/theme/shadows";
 import { COLORS, ICON_TONES } from "../../src/theme/colors";
 
-type SettingsItem = { label: string; icon: string; route: string };
+type SettingsItem = { label: string; description: string; icon: string; route: string };
 
 /**
  * Settings (tab key stays "more" - see BottomTabBar.tsx - only the label
@@ -21,10 +21,10 @@ type SettingsItem = { label: string; icon: string; route: string };
  * than a stack of separately-shadowed cards.
  */
 const SETTINGS_ITEMS: SettingsItem[] = [
-  { label: "My account", icon: "user", route: "/account" },
-  { label: "Pastor", icon: "book-open", route: "/pastor" },
-  { label: "Notifications", icon: "bell", route: "/notifications" },
-  { label: "About us", icon: "info", route: "/about" },
+  { label: "My account", description: "Profile and membership", icon: "user", route: "/account" },
+  { label: "Pastor", description: "Meet our resident pastor", icon: "book-open", route: "/pastor" },
+  { label: "Notifications", description: "Choose what reaches you", icon: "bell", route: "/notifications" },
+  { label: "About us", description: "Our story, mission and values", icon: "info", route: "/about" },
 ];
 
 // Divider left-inset so it starts where the label text does, not under the
@@ -36,17 +36,21 @@ export default function MoreScreen() {
   const listAnim = useFadeUp(0);
 
   return (
-    <StyledPage showStatusBar flex={1} backgroundColor={COLORS.chrome}>
-      <StyledScrollView contentContainerStyle={{ padding: 20, paddingTop: 16, paddingBottom: 28 }}>
-        <StyledText fontSize={26} fontWeight="800" color={COLORS.ink} style={{ marginBottom: 4 }}>
-          Settings
-        </StyledText>
-        <StyledText fontSize={13.5} color={COLORS.inkSoft} style={{ marginBottom: 22 }}>
-          Your account and how this app reaches you.
-        </StyledText>
+    <StyledPage showStatusBar flex={1} backgroundColor={COLORS.paper}>
+      <StyledScrollView contentContainerStyle={{ paddingBottom: 32 }}>
+        <Stack backgroundColor={COLORS.paper} paddingHorizontal={22} paddingTop={24} paddingBottom={34}>
+          <Stack horizontal alignItems="center" gap={9} marginBottom={14}>
+            <Stack width={28} height={1} backgroundColor={COLORS.inkSoft} />
+            <StyledText fontSize={10.5} fontWeight="800" letterSpacing={1.5} color={COLORS.inkSoft}>YOUR SPACE</StyledText>
+          </Stack>
+          <StyledText fontSize={30} fontWeight="800" color={COLORS.ink} style={{ marginBottom: 7 }}>Settings</StyledText>
+          <StyledText fontSize={14} color={COLORS.inkSoft} style={{ lineHeight: 21, maxWidth: 300 }}>
+            Personalise your account and stay connected with your church family.
+          </StyledText>
+        </Stack>
 
         <Animated.View style={listAnim}>
-          <Stack backgroundColor={COLORS.white} borderRadius={18} overflow="hidden" style={SHADOW_SOFT}>
+          <Stack marginHorizontal={20} marginTop={-16} backgroundColor={COLORS.paper} borderRadius={24} overflow="hidden" style={[SHADOW_SOFT, { borderWidth: 1, borderColor: COLORS.chromeBorder }]}>
             {SETTINGS_ITEMS.map((item, i) => {
               const tone = ICON_TONES[i % ICON_TONES.length];
               return (
@@ -57,15 +61,16 @@ export default function MoreScreen() {
                     alignItems="center"
                     justifyContent="space-between"
                     paddingHorizontal={16}
-                    paddingVertical={14}
+                    paddingVertical={16}
                   >
                     <Stack horizontal alignItems="center" gap={12}>
                       <StyledShape size={38} cycle backgroundColor={tone.bg}>
                         <Icon name={item.icon as any} size={16} color={tone.fg} />
                       </StyledShape>
-                      <StyledText fontSize={14.5} fontWeight="700" color={COLORS.ink}>
-                        {item.label}
-                      </StyledText>
+                      <Stack gap={2}>
+                        <StyledText fontSize={14.5} fontWeight="800" color={COLORS.ink}>{item.label}</StyledText>
+                        <StyledText fontSize={11.5} color={COLORS.inkSoft}>{item.description}</StyledText>
+                      </Stack>
                     </Stack>
                     <Icon name="chevron-right" size={17} color={COLORS.inkSoft} />
                   </StyledPressable>

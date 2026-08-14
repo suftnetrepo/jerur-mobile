@@ -1,5 +1,4 @@
 import { Animated, Linking } from "react-native";
-import { router } from "expo-router";
 import { Feather as Icon } from "@expo/vector-icons";
 import {
   StyledPage,
@@ -9,6 +8,7 @@ import {
   StyledSpacer,
 } from "fluent-styles";
 import { FeatureGate } from "../../src/components/FeatureGate";
+import { AppBackHeader } from "../../src/components/AppBackHeader";
 import { ScalePressable } from "../../src/components/ScalePressable";
 import {
   CarIllustration,
@@ -38,22 +38,9 @@ function FreeTransportScreenContent() {
 
   return (
     <StyledPage  backgroundColor={COLORS.paper}>
-      <StyledPage.Header
-      shapeProps={{
-          cycle: true,
-          size: 48,
-          borderRadius: 24,
-          borderWidth: 1,
-          borderColor: COLORS.chromeBorder,
-        }}
-        marginHorizontal={16}
-        title="Free Transport"
-        titleAlignment="center"
-        showBackArrow
-        onBackPress={() => router.back()}
-      />
+      <AppBackHeader title="Free Transport" />
       <StyledScrollView
-        contentContainerStyle={{ padding: 20, paddingBottom: 60 }}
+        contentContainerStyle={{ padding: 24, paddingBottom: 60 }}
       >
         {/* ── Hero Card ─────────────────────────────────────────────────── */}
         <Animated.View style={[{ marginBottom: 28 }, heroAnim]}>

@@ -1,9 +1,10 @@
 import { useState } from "react";
-import { router } from "expo-router";
-import { StyledPage, StyledScrollView, StyledText, StyledCard, StyledForm, StyledButton, Stack } from "fluent-styles";
+import { StyledPage, StyledScrollView, StyledText, StyledCard, StyledForm, Stack } from "fluent-styles";
 import { FeatureGate } from "../../src/components/FeatureGate";
-import { useTestimonySubmission } from "../../src/hooks/useSubmissions";
-import { apiErrorMessage } from "../../src/api/client";
+import { AppBackHeader } from "../../src/components/AppBackHeader";
+import { FormSubmitButton } from "../../src/components/FormSubmitButton";
+import { useSettings } from "../../src/hooks/useChurchData";
+import { openChurchEmailDraft } from "../../src/lib/church-email";
 import { COLORS } from "../../src/theme/colors";
 
 // NOTE: same gap as the website — Jerur has no GET endpoint for approved
@@ -24,10 +25,11 @@ export default function TestimoniesScreen() {
 }
 
 function TestimoniesScreenContent() {
-  const { mutateAsync, isPending } = useTestimonySubmission();
+  const { data: settings } = useSettings();
   const [form, setForm] = useState({ first_name: "", last_name: "", email: "", message: "" });
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [isPending, setIsPending] = useState(false);
 
   async function handleSubmit() {
     setError(null);
@@ -35,26 +37,30 @@ function TestimoniesScreenContent() {
       setError("Please fill in every field.");
       return;
     }
+    setIsPending(true);
     try {
-      await mutateAsync(form);
+      await openChurchEmailDraft({
+        recipient: settings?.email,
+        subject: `Testimony — ${form.first_name} ${form.last_name}`,
+        heading: "A new testimony has been prepared for the church team.",
+        fields: [
+          { label: "Name", value: `${form.first_name} ${form.last_name}` },
+          { label: "Email", value: form.email },
+          { label: "Testimony", value: form.message },
+        ],
+      });
       setSuccess(true);
       setForm({ first_name: "", last_name: "", email: "", message: "" });
     } catch (err) {
-      setError(apiErrorMessage(err));
+      setError(err instanceof Error ? err.message : "Couldn't open your email app. Please try again.");
+    } finally {
+      setIsPending(false);
     }
   }
 
   return (
     <StyledPage flex={1} backgroundColor={COLORS.paper}>
-      <StyledPage.Header shapeProps={{
-          cycle: true,
-          size: 48,
-          borderRadius: 24,
-          borderWidth: 1,
-          borderColor: COLORS.chromeBorder,
-        }}
-       
-        marginHorizontal={16} title="Testimonies" titleAlignment="center" showBackArrow onBackPress={() => router.back()} />
+      <AppBackHeader title="Testimonies" />
       <StyledScrollView contentContainerStyle={{ padding: 24, paddingBottom: 60 }}>
         <StyledText fontSize={22} fontWeight="800" color={COLORS.ink} style={{ marginBottom: 6 }}>
           Celebrate the goodness of God
@@ -79,7 +85,7 @@ function TestimoniesScreenContent() {
         {success && (
           <Stack backgroundColor={COLORS.sageSoft} borderRadius={8} padding={14} marginBottom={16}>
             <StyledText fontSize={13.5} fontWeight="600" color={COLORS.sage}>
-              Thank you for sharing — your testimony has been received.
+              Your email draft is ready. Review it and tap send in your email app.
             </StyledText>
           </Stack>
         )}
@@ -99,11 +105,7 @@ function TestimoniesScreenContent() {
           <StyledForm.Input label="Email" keyboardType="email-address" autoCapitalize="none" value={form.email} onChangeText={(v) => setForm((f) => ({ ...f, email: v }))} />
           <StyledForm.Input label="Your testimony" placeholder="Tell us what God has done…" multiline style={{ minHeight: 120 }} value={form.message} onChangeText={(v) => setForm((f) => ({ ...f, message: v }))} />
           <StyledForm.Actions>
-            <StyledButton primary block loading={isPending} onPress={handleSubmit}>
-              <StyledButton.Text color={COLORS.indigoDeep} fontWeight="700">
-                {isPending ? "Sending…" : "Share testimony"}
-              </StyledButton.Text>
-            </StyledButton>
+            <FormSubmitButton label="Share testimony" loadingLabel="Sending…" loading={isPending} onPress={handleSubmit} />
           </StyledForm.Actions>
         </StyledForm>
       </StyledScrollView>

@@ -1,14 +1,15 @@
 import { useState } from "react";
 import { MaterialCommunityIcons as MCIcon } from "@expo/vector-icons";
-import { StyledPage, StyledScrollView, StyledText, StyledForm, StyledButton, Stack } from "fluent-styles";
+import { StyledPage, StyledScrollView, StyledText, StyledForm, Stack } from "fluent-styles";
 import { BottomTabBar } from "../../src/components/BottomTabBar";
 import { FeatureGate } from "../../src/components/FeatureGate";
 import { PrayerHeroIllustration } from "../../src/components/illustrations/PrayerIllustration";
 import { PrayerSessionCard } from "../../src/components/PrayerSessionCard";
+import { FormSubmitButton } from "../../src/components/FormSubmitButton";
 import { usePrayerTimes } from "../../src/hooks/useChurchData";
-import { usePrayerRequestSubmission } from "../../src/hooks/useSubmissions";
+import { useSettings } from "../../src/hooks/useChurchData";
 import { usePrayerReminders } from "../../src/notifications/use-prayer-reminders";
-import { apiErrorMessage } from "../../src/api/client";
+import { openChurchEmailDraft } from "../../src/lib/church-email";
 import { COLORS, ICON_TONES } from "../../src/theme/colors";
 import { router } from "expo-router";
 
@@ -22,12 +23,13 @@ export default function PrayersScreen() {
 
 function PrayersScreenContent() {
   const { data: prayerTimes } = usePrayerTimes();
-  const { mutateAsync, isPending } = usePrayerRequestSubmission();
+  const { data: settings } = useSettings();
   const { reminders, setReminder, clearReminder } = usePrayerReminders(prayerTimes);
 
   const [form, setForm] = useState({ first_name: "", last_name: "", email: "", message: "" });
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [isPending, setIsPending] = useState(false);
 
   async function handleSubmit() {
     setError(null);
@@ -35,12 +37,24 @@ function PrayersScreenContent() {
       setError("Please fill in every field.");
       return;
     }
+    setIsPending(true);
     try {
-      await mutateAsync(form);
+      await openChurchEmailDraft({
+        recipient: settings?.email,
+        subject: `Prayer request — ${form.first_name} ${form.last_name}`,
+        heading: "A new prayer request has been prepared for the prayer team.",
+        fields: [
+          { label: "Name", value: `${form.first_name} ${form.last_name}` },
+          { label: "Email", value: form.email },
+          { label: "Prayer request", value: form.message },
+        ],
+      });
       setSuccess(true);
       setForm({ first_name: "", last_name: "", email: "", message: "" });
     } catch (err) {
-      setError(apiErrorMessage(err));
+      setError(err instanceof Error ? err.message : "Couldn't open your email app. Please try again.");
+    } finally {
+      setIsPending(false);
     }
   }
 
@@ -109,7 +123,7 @@ function PrayersScreenContent() {
         {success && (
           <Stack backgroundColor={COLORS.sageSoft} borderRadius={8} padding={14} marginBottom={16}>
             <StyledText fontSize={13.5} fontWeight="600" color={COLORS.sage}>
-              Your prayer request has been received. We'll be praying with you.
+              Your email draft is ready. Review it and tap send in your email app.
             </StyledText>
           </Stack>
         )}
@@ -155,11 +169,12 @@ function PrayersScreenContent() {
             onChangeText={(v) => setForm((f) => ({ ...f, message: v }))}
           />
           <StyledForm.Actions>
-            <StyledButton primary block loading={isPending} onPress={handleSubmit}>
-              <StyledButton.Text color={COLORS.indigoDeep} fontWeight="700">
-                {isPending ? "Sending…" : "Send prayer request"}
-              </StyledButton.Text>
-            </StyledButton>
+            <FormSubmitButton
+              label="Send prayer request"
+              loadingLabel="Sending…"
+              loading={isPending}
+              onPress={handleSubmit}
+            />
           </StyledForm.Actions>
         </StyledForm>
       </StyledScrollView>

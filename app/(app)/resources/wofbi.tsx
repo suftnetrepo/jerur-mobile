@@ -1,11 +1,14 @@
 import { useState } from "react";
 import { router } from "expo-router";
 import { Feather as Icon } from "@expo/vector-icons";
-import { StyledPage, StyledScrollView, StyledText, StyledCard, StyledForm, StyledButton, Stack } from "fluent-styles";
+import { StyledPage, StyledScrollView, StyledText, StyledCard, StyledForm, Stack } from "fluent-styles";
 import { FeatureGate } from "../../../src/components/FeatureGate";
-import { useWofbiRegistration } from "../../../src/hooks/useSubmissions";
-import { apiErrorMessage } from "../../../src/api/client";
+import { ScalePressable } from "../../../src/components/ScalePressable";
+import { FormSubmitButton } from "../../../src/components/FormSubmitButton";
+import { useSettings } from "../../../src/hooks/useChurchData";
+import { openChurchEmailDraft } from "../../../src/lib/church-email";
 import { COLORS } from "../../../src/theme/colors";
+import { SHADOW_SOFT } from "../../../src/theme/shadows";
 
 const CAMPUSES = [
   { label: "Birmingham Campus", dates: "5th – 10th August" },
@@ -23,11 +26,12 @@ export default function WofbiScreen() {
 }
 
 function WofbiScreenContent() {
-  const { mutateAsync, isPending } = useWofbiRegistration();
+  const { data: settings } = useSettings();
   const [form, setForm] = useState({ firstName: "", lastName: "", email: "", phone: "" });
   const [campus, setCampus] = useState<string | null>(null);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [isPending, setIsPending] = useState(false);
 
   async function handleSubmit() {
     setError(null);
@@ -35,11 +39,24 @@ function WofbiScreenContent() {
       setError("Please fill in every field and choose a campus.");
       return;
     }
+    setIsPending(true);
     try {
-      await mutateAsync({ ...form, campus });
+      await openChurchEmailDraft({
+        recipient: settings?.email,
+        subject: `WOFBI registration — ${form.firstName} ${form.lastName}`,
+        heading: "A new WOFBI registration has been prepared for the church team.",
+        fields: [
+          { label: "Name", value: `${form.firstName} ${form.lastName}` },
+          { label: "Email", value: form.email },
+          { label: "Phone", value: form.phone },
+          { label: "Selected campus", value: campus },
+        ],
+      });
       setSuccess(true);
     } catch (err) {
-      setError(apiErrorMessage(err, "Registration failed. Please try again."));
+      setError(err instanceof Error ? err.message : "Couldn't open your email app. Please try again.");
+    } finally {
+      setIsPending(false);
     }
   }
 
@@ -79,40 +96,95 @@ function WofbiScreenContent() {
           </Stack>
         </StyledCard>
 
-        <StyledText fontSize={16} fontWeight="800" color={COLORS.ink} style={{ marginBottom: 12 }}>
-          Choose a campus
-        </StyledText>
-        <Stack gap={10} marginBottom={26}>
-          {CAMPUSES.map((c) => (
-            <StyledCard
-              key={c.label}
-              shadow="light"
-              padding={14}
-              borderRadius={10}
-              pressable
-              pressableProps={{ onPress: () => setCampus(`${c.label} — ${c.dates}`) }}
-              style={campus === `${c.label} — ${c.dates}` ? { borderWidth: 2, borderColor: COLORS.gold } : undefined}
-            >
-              <Stack horizontal alignItems="center" gap={10}>
-                <Icon name="map-pin" size={15} color={COLORS.goldDeep} />
-                <Stack flex={1}>
-                  <StyledText fontSize={13.5} fontWeight="700" color={COLORS.ink}>
-                    {c.label}
-                  </StyledText>
-                  <StyledText fontSize={12} color={COLORS.inkSoft}>
-                    {c.dates}
-                  </StyledText>
-                </Stack>
-                {campus === `${c.label} — ${c.dates}` && <Icon name="check-circle" size={16} color={COLORS.gold} />}
-              </Stack>
-            </StyledCard>
-          ))}
+        <Stack marginBottom={26}>
+          <Stack horizontal alignItems="flex-end" justifyContent="space-between" marginBottom={14}>
+            <Stack flex={1}>
+              <StyledText fontSize={18} fontWeight="800" color={COLORS.ink} style={{ marginBottom: 3 }}>
+                Choose a campus
+              </StyledText>
+              <StyledText fontSize={12.5} color={COLORS.inkSoft}>
+                Select the location and dates that suit you.
+              </StyledText>
+            </Stack>
+            <StyledText fontSize={11} fontWeight="700" color={COLORS.inkSoft}>
+              {CAMPUSES.length} LOCATIONS
+            </StyledText>
+          </Stack>
+
+          <Stack gap={12}>
+            {CAMPUSES.map((c, index) => {
+              const value = `${c.label} — ${c.dates}`;
+              const selected = campus === value;
+
+              return (
+                <ScalePressable
+                  key={c.label}
+                  onPress={() => setCampus(value)}
+                  accessibilityRole="button"
+                  accessibilityLabel={`${c.label}, ${c.dates}${selected ? ", selected" : ""}`}
+                >
+                  <Stack
+                    horizontal
+                    alignItems="center"
+                    gap={14}
+                    padding={16}
+                    borderRadius={18}
+                    backgroundColor={selected ? COLORS.paperAlt : COLORS.paper}
+                    style={[
+                      SHADOW_SOFT,
+                      {
+                        borderWidth: selected ? 1.5 : 1,
+                        borderColor: selected ? COLORS.ink : COLORS.chromeBorder,
+                      },
+                    ]}
+                  >
+                    <Stack
+                      width={42}
+                      height={42}
+                      borderRadius={21}
+                      backgroundColor={selected ? COLORS.ink : COLORS.paperAlt}
+                      alignItems="center"
+                      justifyContent="center"
+                    >
+                      <StyledText fontSize={12} fontWeight="800" color={selected ? COLORS.paper : COLORS.inkSoft}>
+                        {String(index + 1).padStart(2, "0")}
+                      </StyledText>
+                    </Stack>
+
+                    <Stack flex={1} gap={5}>
+                      <StyledText fontSize={14.5} fontWeight="800" color={COLORS.ink}>
+                        {c.label}
+                      </StyledText>
+                      <Stack horizontal alignItems="center" gap={6}>
+                        <Icon name="calendar" size={12} color={COLORS.inkSoft} />
+                        <StyledText fontSize={12.5} fontWeight="600" color={COLORS.inkSoft}>
+                          {c.dates}
+                        </StyledText>
+                      </Stack>
+                    </Stack>
+
+                    <Stack
+                      width={24}
+                      height={24}
+                      borderRadius={12}
+                      alignItems="center"
+                      justifyContent="center"
+                      backgroundColor={selected ? COLORS.ink : "transparent"}
+                      style={!selected ? { borderWidth: 1.5, borderColor: COLORS.chromeBorder } : undefined}
+                    >
+                      {selected && <Icon name="check" size={14} color={COLORS.paper} />}
+                    </Stack>
+                  </Stack>
+                </ScalePressable>
+              );
+            })}
+          </Stack>
         </Stack>
 
         {success ? (
           <Stack backgroundColor={COLORS.sageSoft} borderRadius={8} padding={14}>
             <StyledText fontSize={13.5} fontWeight="600" color={COLORS.sage}>
-              Thank you for registering — we'll be in touch soon.
+              Your registration email is ready. Review it and tap send in your email app.
             </StyledText>
           </Stack>
         ) : (
@@ -132,11 +204,7 @@ function WofbiScreenContent() {
               <StyledForm.Input label="Email" keyboardType="email-address" autoCapitalize="none" value={form.email} onChangeText={(v) => setForm((f) => ({ ...f, email: v }))} />
               <StyledForm.Input label="Phone number" keyboardType="phone-pad" value={form.phone} onChangeText={(v) => setForm((f) => ({ ...f, phone: v }))} />
               <StyledForm.Actions>
-                <StyledButton primary block loading={isPending} onPress={handleSubmit}>
-                  <StyledButton.Text color={COLORS.indigoDeep} fontWeight="700">
-                    {isPending ? "Submitting…" : "Submit"}
-                  </StyledButton.Text>
-                </StyledButton>
+                <FormSubmitButton label="Submit" loadingLabel="Submitting…" loading={isPending} onPress={handleSubmit} />
               </StyledForm.Actions>
             </StyledForm>
           </>
