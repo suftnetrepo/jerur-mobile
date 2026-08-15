@@ -59,7 +59,7 @@ export function LatestSermonCard({ sermon }: { sermon: LatestSermon | null | und
   }
 
   return (
-    <Stack paddingHorizontal={CARD_H_PAD} marginBottom={26}>
+    <Stack paddingHorizontal={CARD_H_PAD}>
       <StyledPressable onPress={handlePress} accessibilityRole="button" accessibilityLabel={`Watch sermon: ${sermon.title}`}>
         <Stack backgroundColor={COLORS.white} borderRadius={CARD_RADIUS} overflow="hidden" style={SHADOW_CARD}>
           <Stack style={{ height: 190, overflow: "hidden" }}>

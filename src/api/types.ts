@@ -188,6 +188,9 @@ export type RegularService = {
   // Lets the mobile app show "Today" vs a specific day name without
   // fabricating it (see check-in.tsx's service summary card).
   days?: number[];
+  // How early this recurring session should surface on Home. Older
+  // records omit it and use the product default of 15 minutes.
+  home_notice_minutes?: number;
 };
 
 export type FellowshipGroup = {

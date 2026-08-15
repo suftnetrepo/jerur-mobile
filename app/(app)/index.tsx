@@ -1,6 +1,6 @@
-import { useCallback, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { Animated, RefreshControl, ScrollView } from "react-native";
-import { router } from "expo-router";
+import { router, useFocusEffect } from "expo-router";
 import { useQueryClient } from "@tanstack/react-query";
 import { Feather as Icon } from "@expo/vector-icons";
 import {
@@ -10,6 +10,7 @@ import {
   StyledPressable,
   Stack,
   Loader,
+  StyledSeperator,
 } from "fluent-styles";
 import { BottomTabBar } from "../../src/components/BottomTabBar";
 import {
@@ -22,6 +23,7 @@ import {
 } from "../../src/components/NotificationCard";
 import { CurrentChurchHeader } from "../../src/components/CurrentChurchHeader";
 import { ChurchBanner } from "../../src/components/ChurchBanner";
+import { LiveSessionCard } from "../../src/components/LiveSessionCard";
 import { LatestSermonCard } from "../../src/components/LatestSermonCard";
 import { ArticlesSection } from "../../src/components/ArticlesSection";
 import { WelcomeMessageCard } from "../../src/components/WelcomeMessageCard";
@@ -31,42 +33,23 @@ import { useMemberSession } from "../../src/member/MemberSessionContext";
 import {
   useSettings,
   useRegularServices,
+  usePrayerTimes,
   useLatestSermon,
   useLatestArticles,
 } from "../../src/hooks/useChurchData";
 import { useFeatureFlags } from "../../src/hooks/useFeatureFlags";
 import { COLORS } from "../../src/theme/colors";
+import { getNotificationPriority } from "../../src/config/notificationTypes";
+import { findLiveSessions } from "../../src/utils/liveSessions";
 
 const H_PAD = 20;
-
-// "Ways to belong" cards — title/desc are page-specific copy (friendlier
-// than the admin-facing catalogue label/description), but icon and route
-// are never re-typed here: they're looked up from src/config/mobileFeatures.ts
-// via `features` below, so there's one place that can drift out of sync
-// with the backend. A card simply disappears once its feature is off.
-const WAYS_TO_BELONG = [
-  {
-    featureId: "house-fellowship",
-    title: "Fellowship groups",
-    desc: "Small groups meeting through the week.",
-  },
-  {
-    featureId: "upcoming-events",
-    title: "Upcoming events",
-    desc: "Conferences, prayer nights, community days.",
-  },
-  {
-    featureId: "community-food-bank",
-    title: "Community food bank",
-    desc: "Practical support for families nearby.",
-  },
-] as const;
 
 export default function HomeScreen() {
   const { church, changeChurch } = useSelectedChurch();
   const { member } = useMemberSession();
   const { data: settings, isLoading: settingsLoading } = useSettings();
   const { data: services } = useRegularServices();
+  const { data: prayerTimes } = usePrayerTimes();
   const { data: latestSermon } = useLatestSermon();
   const { data: latestArticles, isLoading: articlesLoading } =
     useLatestArticles();
@@ -78,12 +61,35 @@ export default function HomeScreen() {
   const pastor = settings?.pastor_section;
   const queryClient = useQueryClient();
   const [refreshing, setRefreshing] = useState(false);
+  const [scheduleNow, setScheduleNow] = useState(() => new Date());
+
+  // Re-evaluate the dynamic schedule whenever Home becomes visible. This
+  // intentionally remains an in-app Home notice rather than a scheduled
+  // device notification.
+  useFocusEffect(useCallback(() => {
+    setScheduleNow(new Date());
+    // Home stays mounted behind other routes, so navigation focus must
+    // refresh schedules explicitly; otherwise a newly configured session
+    // can remain hidden behind the previous React Query cache entry.
+    void Promise.all([
+      queryClient.invalidateQueries({ queryKey: ["regular-services"] }),
+      queryClient.invalidateQueries({ queryKey: ["prayer-times"] }),
+    ]);
+  }, [queryClient]));
 
   // Single hero slot: an active notification always wins over the church
   // banner — see isNotificationActive() in NotificationCard.tsx for the
   // status/title/date-window check this reuses (not duplicated here).
   const hasActiveNotification =
     hasFeature("notifications") && isNotificationActive(settings?.notification);
+  const activeNotificationPriority = getNotificationPriority(settings?.notification?.priority);
+  const hasPriorityNotification =
+    hasActiveNotification && (activeNotificationPriority.id === "high" || activeNotificationPriority.id === "urgent");
+  const liveSessions = useMemo(() => findLiveSessions(
+    services,
+    prayerTimes,
+    scheduleNow,
+  ), [services, prayerTimes, scheduleNow]);
 
   // Pull-to-refresh — invalidates the exact React Query cache entries this
   // screen already reads from (useSettings' "settings" key backs the
@@ -102,9 +108,11 @@ export default function HomeScreen() {
       await Promise.all([
         queryClient.invalidateQueries({ queryKey: ["settings"] }),
         queryClient.invalidateQueries({ queryKey: ["regular-services"] }),
+        queryClient.invalidateQueries({ queryKey: ["prayer-times"] }),
         queryClient.invalidateQueries({ queryKey: ["latest-sermon"] }),
         queryClient.invalidateQueries({ queryKey: ["latest-articles"] }),
       ]);
+      setScheduleNow(new Date());
     } finally {
       setRefreshing(false);
     }
@@ -148,7 +156,8 @@ export default function HomeScreen() {
                 size={48}
                 cycle
                 backgroundColor={COLORS.white}
-                style={{ borderWidth: 1, borderColor: COLORS.chromeBorder }}
+                borderWidth={1}
+                borderColor={COLORS.chromeBorder}
               >
                 <Icon name="user" size={24} color={COLORS.inkSoft} />
               </StyledShape>
@@ -186,13 +195,18 @@ export default function HomeScreen() {
             </Stack>
           )}
 
-          {/* Single hero slot — an active notification always wins over
-              the church banner, never both (see hasActiveNotification
-              above). Same outer width/spacing either way, so swapping
-              between them never shifts the rest of the page. */}
+          {/* Important administrator notices win. Otherwise a service or
+              prayer in its configured lead-time window takes this slot,
+              followed by a normal administrator notice and the banner. */}
           {settingsLoading ? (
             <Stack height={200} alignItems="center" justifyContent="center">
               <Loader color={COLORS.indigo} />
+            </Stack>
+          ) : hasPriorityNotification ? (
+            <NotificationCard notification={settings?.notification} />
+          ) : liveSessions.length > 0 ? (
+            <Stack paddingHorizontal={H_PAD} gap={12}>
+              {liveSessions.map((item) => <LiveSessionCard key={item.key} item={item} />)}
             </Stack>
           ) : hasActiveNotification ? (
             <NotificationCard notification={settings?.notification} />
@@ -200,10 +214,24 @@ export default function HomeScreen() {
             <ChurchBanner settings={settings} />
           )}
 
+          <StyledSeperator
+            marginHorizontal={32}
+            marginVertical={24}
+             leftLabel="Latest Message"
+            leftLabelProps={{ fontSize: 18, color: COLORS.inkSoftest }}
+          />
+
           {/* Latest Sermon — one card only, never a list. Fully
               self-contained: hides itself for hasFeature("sermons")=false,
               no published sermon, or no valid YouTube URL. */}
           <LatestSermonCard sermon={latestSermon} />
+
+          <StyledSeperator
+              marginHorizontal={32}
+            marginVertical={24}
+            leftLabel="More Articles"
+            leftLabelProps={{ fontSize: 18, color: COLORS.inkSoftest }}
+          />
 
           {/* Christian Articles — up to 4 latest published articles,
               horizontally scrolling. Fully self-contained: hides itself
@@ -213,13 +241,6 @@ export default function HomeScreen() {
             articles={latestArticles}
             isLoading={articlesLoading}
           />
-        </Animated.View>
-
-        <Animated.View style={bodyAnim}>
-          {/* Welcome / pastor - shared with the Pastor settings screen, see WelcomeMessageCard.tsx */}
-          <Stack paddingHorizontal={H_PAD} marginBottom={26}>
-            <WelcomeMessageCard pastor={pastor} />
-          </Stack>
         </Animated.View>
       </ScrollView>
 

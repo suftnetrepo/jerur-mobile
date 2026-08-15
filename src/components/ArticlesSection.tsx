@@ -73,15 +73,7 @@ export function ArticlesSection({
 
   return (
     <Stack marginBottom={26}>
-      <Stack paddingHorizontal={CARD_H_PAD} marginBottom={14} gap={2}>
-        <StyledText fontSize={16} fontWeight="800" color={COLORS.ink}>
-          Christian Articles
-        </StyledText>
-        <StyledText fontSize={12.5} color={COLORS.inkSoft}>
-          Grow in God's Word
-        </StyledText>
-      </Stack>
-
+      
       <ScrollView
         horizontal
         showsHorizontalScrollIndicator={false}

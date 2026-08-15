@@ -1,8 +1,9 @@
-import { useEffect, useMemo, useRef } from "react";
-import { Animated, Image } from "react-native";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { Animated } from "react-native";
 import { router } from "expo-router";
 import { Feather as Icon } from "@expo/vector-icons";
 import { Stack, StyledText, StyledPressable } from "fluent-styles";
+import { FullScreenImageViewer } from "./FullScreenImageViewer";
 import { useFeatureFlags } from "../hooks/useFeatureFlags";
 import { getFeatureById } from "../config/mobileFeatures";
 import { getNotificationType, getNotificationPriority } from "../config/notificationTypes";
@@ -70,11 +71,11 @@ export function isNotificationActive(notification: ChurchNotification | null | u
 /**
  * Home screen's notification card — the enriched Church.notification
  * model (type/title/message/secure_url/priority/status/start_date/
- * expiry_date), styled to match the admin's live preview
- * (NotificationPreview.jsx): image with an overlaid type badge, title,
- * message, a type-colored accent bar, a Date/Time info panel, an
- * optional type-inferred CTA, and a priority-colored strip along the
- * bottom edge.
+ * expiry_date), presented as a compact, type-tinted notice rather than a
+ * second hero banner. One type icon anchors the hierarchy, priority is a
+ * small semantic badge, metadata stays lightweight, and an attached image
+ * opens through an explicit full-screen action instead of competing with
+ * the message as a cropped thumbnail.
  *
  * Fully self-contained: Home just passes the notification object
  * straight from its existing useSettings() call (no fetching in here),
@@ -93,6 +94,9 @@ export function NotificationCard({ notification }: { notification: ChurchNotific
   // useSettings() resolves), not on component mount — this component is
   // always mounted by Home regardless of whether it's currently visible.
   const opacity = useRef(new Animated.Value(0)).current;
+  const [imageViewerVisible, setImageViewerVisible] = useState(false);
+  const imageUri = notification?.secure_url?.trim() ?? "";
+
   useEffect(() => {
     if (shouldRender) {
       Animated.timing(opacity, { toValue: 1, duration: 400, useNativeDriver: true }).start();
@@ -101,11 +105,16 @@ export function NotificationCard({ notification }: { notification: ChurchNotific
     }
   }, [shouldRender, opacity]);
 
+  // Never leave a viewer open on an image that has just been replaced by a
+  // settings refresh.
+  useEffect(() => {
+    setImageViewerVisible(false);
+  }, [imageUri]);
+
   if (!shouldRender) return null;
 
   const type = getNotificationType(notification!.type);
   const priority = getNotificationPriority(notification!.priority);
-  const imageUri = notification!.secure_url?.trim();
 
   const dateRange = formatRange(formatDatePart(notification!.start_date), formatDatePart(notification!.expiry_date));
   const timeRange = formatRange(formatTimePart(notification!.start_date), formatTimePart(notification!.expiry_date));
@@ -114,47 +123,42 @@ export function NotificationCard({ notification }: { notification: ChurchNotific
   const ctaFeature = ctaConfig && hasFeature(ctaConfig.featureId) ? getFeatureById(ctaConfig.featureId) : undefined;
   const cta = ctaFeature?.route ? { label: ctaConfig!.label, route: ctaFeature.route } : null;
 
-  const TypeBadge = ({ overlay }: { overlay?: boolean }) => (
-    <Stack
-      horizontal
-      alignItems="center"
-      gap={6}
-      borderRadius={999}
-      paddingHorizontal={12}
-      paddingVertical={6}
-      backgroundColor={overlay ? `${type.color}E6` : `${type.color}1A`}
-      style={{ alignSelf: "flex-start" }}
-    >
-      <Icon name={type.icon as any} size={13} color={overlay ? COLORS.white : type.color} />
-      <StyledText fontSize={11.5} fontWeight="700" color={overlay ? COLORS.white : type.color}>
-        {type.label}
-      </StyledText>
-    </Stack>
-  );
-
   return (
     // marginBottom/paddingHorizontal deliberately match ChurchBanner's
     // exactly (H_PAD=20, marginBottom=22) — the two are mutually
     // exclusive in the same hero slot (see app/(app)/index.tsx), so
     // switching between them must not shift surrounding layout.
-    <Animated.View style={{ opacity, marginBottom: 22, paddingHorizontal: 20 }}>
-      <Stack backgroundColor={COLORS.white} borderRadius={20} overflow="hidden" style={SHADOW_CARD}>
-        {imageUri ? (
-          <Stack style={{ height: 180, overflow: "hidden" }}>
-            <Image source={{ uri: imageUri }} style={{ width: "100%", height: "100%" }} resizeMode="cover" />
-            {/* `style` object, not flat props — see the note on ChurchBanner's
-                overlay for why: this fluent-styles version silently drops
-                `position="absolute"` (+ friends) passed as flat props. */}
-            <Stack style={{ position: "absolute", top: 14, left: 14 }}>
-              <TypeBadge overlay />
+    <Animated.View style={{ opacity, paddingHorizontal: 20 }}>
+      <Stack
+        backgroundColor={type.surfaceColor}
+        borderRadius={20}
+        overflow="hidden"
+        style={[SHADOW_CARD, { borderWidth: 1, borderColor: `${type.color}2E` }]}
+      >
+        <Stack padding={17} gap={13}>
+            <Stack horizontal alignItems="center" justifyContent="space-between" gap={10}>
+              <Stack
+                width={38}
+                height={38}
+                borderRadius={12}
+                alignItems="center"
+                justifyContent="center"
+                backgroundColor={`${type.color}16`}
+                accessibilityLabel={`${type.label} notification`}
+              >
+                <Icon name={type.icon as any} size={17} color={type.color} />
+              </Stack>
+              {(priority.id === "high" || priority.id === "urgent") && (
+                <Stack horizontal alignItems="center" gap={5} borderRadius={999} paddingHorizontal={9} paddingVertical={5} backgroundColor={`${priority.color}16`}>
+                  <Icon name="bell" size={12} color={priority.color} />
+                  <StyledText fontSize={10} fontWeight="800" letterSpacing={0.4} color={priority.color} style={{ textTransform: "uppercase" }}>
+                    {priority.id === "urgent" ? "Urgent" : "Important"}
+                  </StyledText>
+                </Stack>
+              )}
             </Stack>
-          </Stack>
-        ) : null}
 
-        <Stack padding={18} gap={12}>
-          <Stack horizontal alignItems="flex-start" justifyContent="space-between" gap={12}>
-            <Stack flex={1} gap={8}>
-              {!imageUri && <TypeBadge />}
+            <Stack gap={6}>
               <StyledText fontSize={17} fontWeight="800" color={COLORS.ink} style={{ lineHeight: 22 }}>
                 {notification!.title}
               </StyledText>
@@ -164,79 +168,79 @@ export function NotificationCard({ notification }: { notification: ChurchNotific
                 </StyledText>
               ) : null}
             </Stack>
-            {imageUri && (
-              <Stack width={40} height={40} borderRadius={20} alignItems="center" justifyContent="center" backgroundColor={`${type.color}1A`}>
-                <Icon name={type.icon as any} size={17} color={type.color} />
+
+            {(dateRange || timeRange) && (
+              <Stack horizontal alignItems="center" gap={8} style={{ flexWrap: "wrap" }}>
+                {dateRange && (
+                  <Stack horizontal alignItems="center" gap={5}>
+                    <Icon name="calendar" size={12} color={type.color} />
+                    <StyledText fontSize={11.5} fontWeight="600" color={COLORS.inkSoft}>{dateRange}</StyledText>
+                  </Stack>
+                )}
+                {dateRange && timeRange && <Stack width={3} height={3} borderRadius={2} backgroundColor={COLORS.chromeBorder} />}
+                {timeRange && (
+                  <Stack horizontal alignItems="center" gap={5}>
+                    <Icon name="clock" size={12} color={type.color} />
+                    <StyledText fontSize={11.5} fontWeight="600" color={COLORS.inkSoft}>{timeRange}</StyledText>
+                  </Stack>
+                )}
               </Stack>
             )}
-          </Stack>
 
-          <Stack width={44} height={3} borderRadius={2} backgroundColor={type.color} />
-
-          {(dateRange || timeRange) && (
-            <Stack backgroundColor={COLORS.chrome} borderRadius={12} paddingHorizontal={14}>
-              {dateRange && (
-                <Stack
-                  horizontal
-                  alignItems="center"
-                  gap={12}
-                  paddingVertical={10}
-                  style={timeRange ? { borderBottomWidth: 1, borderColor: COLORS.chromeBorder } : undefined}
-                >
-                  <Stack width={30} height={30} borderRadius={15} alignItems="center" justifyContent="center" backgroundColor={`${type.color}1A`}>
-                    <Icon name="calendar" size={13} color={type.color} />
-                  </Stack>
-                  <Stack gap={1}>
-                    <StyledText fontSize={10.5} color={COLORS.inkSoft}>
-                      Date
-                    </StyledText>
-                    <StyledText fontSize={12.5} fontWeight="700" color={COLORS.ink}>
-                      {dateRange}
-                    </StyledText>
-                  </Stack>
-                </Stack>
-              )}
-              {timeRange && (
-                <Stack horizontal alignItems="center" gap={12} paddingVertical={10}>
-                  <Stack width={30} height={30} borderRadius={15} alignItems="center" justifyContent="center" backgroundColor={`${type.color}1A`}>
-                    <Icon name="clock" size={13} color={type.color} />
-                  </Stack>
-                  <Stack gap={1}>
-                    <StyledText fontSize={10.5} color={COLORS.inkSoft}>
-                      Time
-                    </StyledText>
-                    <StyledText fontSize={12.5} fontWeight="700" color={COLORS.ink}>
-                      {timeRange}
-                    </StyledText>
-                  </Stack>
-                </Stack>
-              )}
-            </Stack>
-          )}
-
-          {cta && (
-            <StyledPressable onPress={() => router.push(cta.route as any)}>
+            {(cta || imageUri) && (
               <Stack
                 horizontal
                 alignItems="center"
-                justifyContent="center"
-                gap={6}
-                borderRadius={999}
-                paddingVertical={12}
-                backgroundColor={type.color}
+                justifyContent={cta && imageUri ? "space-between" : imageUri ? "flex-end" : "flex-start"}
+                gap={18}
+                width="100%"
+                style={{ flexWrap: "wrap" }}
               >
-                <StyledText fontSize={13.5} fontWeight="700" color={COLORS.white}>
-                  {cta.label}
-                </StyledText>
-                <Icon name="arrow-right" size={14} color={COLORS.white} />
+                {cta && (
+                  <StyledPressable onPress={() => router.push(cta.route as any)} accessibilityRole="link">
+                    <Stack horizontal alignItems="center" gap={6} paddingVertical={3}>
+                      <StyledText
+                        fontSize={13}
+                        fontWeight="800"
+                        color={type.color}
+                      >
+                        {cta.label}
+                      </StyledText>
+                      <Icon name="arrow-right" size={14} color={type.color} />
+                    </Stack>
+                  </StyledPressable>
+                )}
+                {!!imageUri && (
+                  <StyledPressable
+                    onPress={() => setImageViewerVisible(true)}
+                    accessibilityRole="button"
+                    accessibilityLabel={`View ${notification!.title} image full screen`}
+                  >
+                    <Stack horizontal alignItems="center" gap={6} paddingVertical={3}>
+                      <Icon name="image" size={14} color={type.color} />
+                      <StyledText
+                        fontSize={13}
+                        fontWeight="800"
+                        color={type.color}
+                      >
+                        View image
+                      </StyledText>
+                    </Stack>
+                  </StyledPressable>
+                )}
               </Stack>
-            </StyledPressable>
-          )}
+            )}
         </Stack>
-
-        {/* Priority accent strip — low/normal/high/urgent, see src/config/notificationTypes.ts */}
-        <Stack height={4} backgroundColor={priority.color} />
       </Stack>
+
+      {!!imageUri && (
+        <FullScreenImageViewer
+          visible={imageViewerVisible}
+          imageUri={imageUri}
+          accessibilityLabel={`${notification!.title} flyer`}
+          onClose={() => setImageViewerVisible(false)}
+        />
+      )}
     </Animated.View>
   );
 }

@@ -31,7 +31,7 @@ export function ChurchBanner({ settings }: { settings: ChurchSettings | null | u
   const verse = settings?.verse?.trim();
 
   return (
-    <Stack paddingHorizontal={H_PAD} marginBottom={22}>
+    <Stack paddingHorizontal={H_PAD}>
       <Stack
         width={SCREEN_WIDTH - H_PAD * 2}
         height={BANNER_HEIGHT}

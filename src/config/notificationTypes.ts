@@ -18,16 +18,17 @@ export type NotificationType = {
   label: string;
   icon: string;
   color: string;
+  surfaceColor: string;
 };
 
 export const NOTIFICATION_TYPES: NotificationType[] = [
-  { id: "announcement", label: "Announcement", icon: "volume-2", color: "#7C3AED" },
-  { id: "event", label: "Event", icon: "calendar", color: "#2563EB" },
-  { id: "promotion", label: "Promotion", icon: "tag", color: "#EA580C" },
-  { id: "scripture", label: "Scripture", icon: "book-open", color: "#059669" },
-  { id: "welcome", label: "Welcome", icon: "smile", color: "#DB2777" },
-  { id: "emergency", label: "Emergency", icon: "alert-triangle", color: "#DC2626" },
-  { id: "sermon", label: "Sermon", icon: "video", color: "#0891B2" },
+  { id: "announcement", label: "Announcement", icon: "volume-2", color: "#7C3AED", surfaceColor: "#F7F2FF" },
+  { id: "event", label: "Event", icon: "calendar", color: "#2563EB", surfaceColor: "#F2F7FF" },
+  { id: "promotion", label: "Promotion", icon: "tag", color: "#EA580C", surfaceColor: "#FFF7ED" },
+  { id: "scripture", label: "Scripture", icon: "book-open", color: "#059669", surfaceColor: "#F0FDF4" },
+  { id: "welcome", label: "Welcome", icon: "smile", color: "#DB2777", surfaceColor: "#FDF2F8" },
+  { id: "emergency", label: "Emergency", icon: "alert-triangle", color: "#DC2626", surfaceColor: "#FEF2F2" },
+  { id: "sermon", label: "Sermon", icon: "video", color: "#0891B2", surfaceColor: "#ECFEFF" },
 ];
 
 export const getNotificationType = (id?: string | null): NotificationType =>

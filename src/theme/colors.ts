@@ -6,6 +6,8 @@
 export const COLORS = {
   ink: "#211F1C",
   inkSoft: "#6B675E",
+  inkSoftest: "#A39D92",
+  inkDeep: "#4B453A",
   paper: "#FCFBF7",
   paperAlt: "#F2ECDE",
   paperSoft: "#F9F7F2",
