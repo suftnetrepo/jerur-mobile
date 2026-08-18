@@ -84,7 +84,7 @@ function BibleScreenContent() {
          shapeProps ={{ cycle: true, size : 48, borderRadius: 24, borderWidth: 1, borderColor: COLORS.chromeBorder }}
         title="Bible"
         titleAlignment="center"
-        onBackPress={() => router.back()}
+        onBackPress={() => (router.push("/"))}
         backgroundColor={COLORS.paper}
         marginHorizontal={16}
         rightIcon={

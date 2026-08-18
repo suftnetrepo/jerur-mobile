@@ -9,7 +9,6 @@ import {
   StyledButton,
   Stack,
   Loader,
-  StyledSpacer,
 } from "fluent-styles";
 import { FeatureGate } from "../../../src/components/FeatureGate";
 import { NoteCard } from "../../../src/components/NoteCard";
@@ -32,11 +31,6 @@ function NotesScreenContent() {
   const [loading, setLoading] = useState(true);
   const [query, setQuery] = useState("");
 
-  // Reloads every time this screen gains focus (not just on first mount) -
-  // expo-router keeps the library screen mounted underneath /notes/new and
-  // /notes/[id], so a plain useEffect(() => {}, []) would never see notes
-  // created/edited/deleted/marked after the initial load. SQLite reads are
-  // a few ms, not worth a global store just to avoid this.
   useFocusEffect(
     useCallback(() => {
       let cancelled = false;
@@ -55,13 +49,13 @@ function NotesScreenContent() {
   const filtered = searchNotes(notes, query);
 
   return (
-    <StyledPage showStatusBar backgroundColor={COLORS.paper}>
+    <StyledPage showStatusBar flex={1} backgroundColor={COLORS.paper}>
       <StyledPage.Header
         showBackArrow
         shapeProps={{
           cycle: true,
-          size: 48,
-          borderRadius: 24,
+          size: 46,
+          borderRadius: 23,
           borderWidth: 1,
           borderColor: COLORS.chromeBorder,
         }}
@@ -70,6 +64,11 @@ function NotesScreenContent() {
         titleAlignment="center"
         onBackPress={() => router.back()}
         backgroundColor={COLORS.paper}
+        titleProps={{
+          fontSize: 17,
+          fontWeight: "800",
+          color: COLORS.ink,
+        }}
         rightIcon={
           <StyledButton
             icon
@@ -83,48 +82,87 @@ function NotesScreenContent() {
         }
       />
 
-      <StyledText
-        textAlign="center"
-        fontSize={13.5}
-        color={COLORS.inkSoft}
-        style={{ marginBottom: 18, lineHeight: 20 }}
-      >
-        Write, reflect and grow in God's Word
-      </StyledText>
-      <Stack>
-        <StyledTextInput
-          variant="filled"
-          placeholder="Search notes..."
-          leftIcon={<Icon name="search" size={15} color={COLORS.inkSoft} />}
-          value={query}
-          onChangeText={setQuery}
-          clearable
-          maxLength={60}
-        />
+      {/* ── Intro ─────────────────────────────────────────────────────── */}
+      <Stack paddingHorizontal={24} paddingTop={2} paddingBottom={16}>
+        <Stack alignItems="center" marginBottom={18}>
+          <StyledText
+            fontSize={13}
+            color={COLORS.inkSoft}
+            style={{ textAlign: "center", lineHeight: 19 }}
+          >
+            Write, reflect and grow in God's Word
+          </StyledText>
+        </Stack>
+
+        {/* Search is deliberately contained and elevated instead of spanning
+            edge-to-edge like a generic form control. */}
+        <Stack
+          backgroundColor={COLORS.white}
+          borderRadius={18}
+          paddingHorizontal={4}
+          style={SHADOW_SOFT}
+        >
+          <StyledTextInput
+            variant="filled"
+            placeholder="Search your notes..."
+            leftIcon={
+              <Icon name="search" size={15} color={COLORS.inkSoft} />
+            }
+            value={query}
+            onChangeText={setQuery}
+            clearable
+            maxLength={60}
+          />
+        </Stack>
       </Stack>
-      <Stack vertical paddingHorizontal={24} paddingTop={4} paddingBottom={14}>
-        {notes.length > 0 && (
+
+      {/* ── Library heading ───────────────────────────────────────────── */}
+      {notes.length > 0 && (
+        <Stack
+          horizontal
+          alignItems="center"
+          justifyContent="space-between"
+          paddingHorizontal={28}
+          paddingTop={4}
+          paddingBottom={12}
+        >
+          <Stack horizontal alignItems="center" gap={8}>
+            <Stack
+              width={28}
+              height={28}
+              borderRadius={14}
+              backgroundColor={COLORS.goldPale}
+              alignItems="center"
+              justifyContent="center"
+            >
+              <Icon name="book-open" size={12} color={COLORS.goldDeep} />
+            </Stack>
+            <StyledText
+              fontSize={12}
+              fontWeight="800"
+              letterSpacing={0.35}
+              color={COLORS.ink}
+            >
+              {query.trim() ? "Search results" : "Your notes"}
+            </StyledText>
+          </Stack>
+
           <Stack
-            marginHorizontal={8}
-            horizontal
-            alignItems="center"
-            justifyContent="space-between"
-            marginTop={8}
+            paddingHorizontal={10}
+            paddingVertical={5}
+            borderRadius={12}
+            backgroundColor={COLORS.paperAlt}
           >
             <StyledText
-              fontSize={11}
+              fontSize={11.5}
               fontWeight="700"
-              letterSpacing={0.5}
               color={COLORS.inkSoft}
             >
-              {query.trim() ? "Results" : "All Notes"}
-            </StyledText>
-            <StyledText fontSize={12} color={COLORS.inkSoft}>
               {filtered.length} note{filtered.length === 1 ? "" : "s"}
             </StyledText>
           </Stack>
-        )}
-      </Stack>
+        </Stack>
+      )}
 
       {loading ? (
         <Stack flex={1} alignItems="center" justifyContent="center">
@@ -143,8 +181,8 @@ function NotesScreenContent() {
           )}
           contentContainerStyle={{
             paddingHorizontal: 20,
-            paddingTop: 6,
-            paddingBottom: 32,
+            paddingTop: 4,
+            paddingBottom: 42,
             gap: 12,
             flexGrow: 1,
           }}
@@ -155,65 +193,86 @@ function NotesScreenContent() {
                 flex={1}
                 alignItems="center"
                 justifyContent="center"
-                paddingVertical={32}
-                gap={14}
-                paddingHorizontal={32}
+                paddingVertical={42}
+                paddingHorizontal={30}
               >
                 <Stack
-                  width={140}
-                  height={140}
-                  borderRadius={70}
+                  width={132}
+                  height={132}
+                  borderRadius={66}
                   backgroundColor={COLORS.goldPale}
                   alignItems="center"
                   justifyContent="center"
+                  marginBottom={22}
                 >
                   <Stack
-                    width={96}
-                    height={96}
-                    borderRadius={48}
+                    width={88}
+                    height={88}
+                    borderRadius={44}
                     backgroundColor={COLORS.white}
                     alignItems="center"
                     justifyContent="center"
                     style={SHADOW_SOFT}
                   >
-                    <Icon name="book-open" size={36} color={COLORS.goldDeep} />
+                    <Icon
+                      name="book-open"
+                      size={32}
+                      color={COLORS.goldDeep}
+                    />
                   </Stack>
+
                   <Icon
                     name="star"
-                    size={13}
+                    size={12}
                     color={COLORS.gold}
                     style={{ position: "absolute", top: 10, right: 18 }}
                   />
                   <Icon
                     name="star"
-                    size={9}
+                    size={8}
                     color={COLORS.goldDeep}
-                    style={{ position: "absolute", bottom: 18, left: 12 }}
+                    style={{ position: "absolute", bottom: 18, left: 13 }}
                   />
                 </Stack>
-                <StyledText fontSize={17} fontWeight="800" color={COLORS.ink}>
-                  No notes yet
-                </StyledText>
+
                 <StyledText
-                  fontSize={13.5}
-                  color={COLORS.inkSoft}
-                  style={{ textAlign: "center", lineHeight: 20 }}
+                  fontSize={18}
+                  fontWeight="800"
+                  color={COLORS.ink}
+                  style={{ marginBottom: 7 }}
                 >
-                  Capture what God is speaking to you as you read and reflect.
+                  Your notes start here
                 </StyledText>
+
+                <StyledText
+                  fontSize={13}
+                  color={COLORS.inkSoft}
+                  style={{
+                    textAlign: "center",
+                    lineHeight: 20,
+                    marginBottom: 20,
+                    maxWidth: 280,
+                  }}
+                >
+                  Capture what God is speaking to you as you read, study and
+                  reflect on His Word.
+                </StyledText>
+
                 <StyledButton
                   primary
                   compact
                   onPress={() => router.push("/notes/new" as any)}
-                  style={{ marginTop: 4 }}
                 >
-                  <StyledText
-                    fontSize={13.5}
-                    fontWeight="700"
-                    color={COLORS.white}
-                  >
-                    + Create your first note
-                  </StyledText>
+                  <Stack horizontal alignItems="center" gap={7}>
+                    <Icon name="plus" size={14} color={COLORS.white} />
+                    <StyledText
+                      fontSize={13}
+                      fontWeight="800"
+                      color={COLORS.white}
+                    >
+                      Create your first note
+                    </StyledText>
+                  </Stack>
                 </StyledButton>
 
                 <Stack
@@ -221,38 +280,75 @@ function NotesScreenContent() {
                   alignItems="flex-start"
                   gap={10}
                   backgroundColor={COLORS.goldPale}
-                  borderRadius={16}
-                  padding={14}
-                  marginTop={20}
+                  borderRadius={18}
+                  padding={15}
+                  marginTop={24}
+                  width="100%"
                 >
-                  <Icon
-                    name="zap"
-                    size={15}
-                    color={COLORS.goldDeep}
-                    style={{ marginTop: 1 }}
-                  />
+                  <Stack
+                    width={32}
+                    height={32}
+                    borderRadius={16}
+                    backgroundColor={COLORS.white}
+                    alignItems="center"
+                    justifyContent="center"
+                  >
+                    <Icon name="bookmark" size={14} color={COLORS.goldDeep} />
+                  </Stack>
+
                   <Stack flex={1}>
                     <StyledText
-                      fontSize={12.5}
-                      fontWeight="700"
+                      fontSize={12}
+                      fontWeight="800"
                       color={COLORS.goldDeep}
+                      style={{ marginBottom: 3 }}
                     >
-                      Tip: Set a note as your Bible Note
+                      Make one your Bible Note
                     </StyledText>
                     <StyledText
-                      fontSize={12}
+                      fontSize={11.5}
                       color={COLORS.goldDeep}
-                      style={{ opacity: 0.85, marginTop: 2, lineHeight: 17 }}
+                      style={{ opacity: 0.82, lineHeight: 17 }}
                     >
-                      to quickly save verses from the Bible.
+                      Save verses from the Bible directly into one dedicated
+                      note.
                     </StyledText>
                   </Stack>
                 </Stack>
               </Stack>
             ) : (
-              <Stack alignItems="center" paddingVertical={48}>
-                <StyledText fontSize={14} color={COLORS.inkSoft}>
-                  No notes found
+              <Stack
+                flex={1}
+                alignItems="center"
+                justifyContent="center"
+                paddingVertical={56}
+                paddingHorizontal={32}
+              >
+                <Stack
+                  width={54}
+                  height={54}
+                  borderRadius={27}
+                  backgroundColor={COLORS.paperAlt}
+                  alignItems="center"
+                  justifyContent="center"
+                  marginBottom={12}
+                >
+                  <Icon name="search" size={21} color={COLORS.inkSoft} />
+                </Stack>
+                <StyledText
+                  fontSize={15}
+                  fontWeight="800"
+                  color={COLORS.ink}
+                  style={{ marginBottom: 5 }}
+                >
+                  No matching notes
+                </StyledText>
+                <StyledText
+                  fontSize={12.5}
+                  color={COLORS.inkSoft}
+                  style={{ textAlign: "center" }}
+                >
+                  Try a different title, verse or keyword.
                 </StyledText>
               </Stack>
             )

@@ -58,13 +58,11 @@ function BibleVerseSelectionScreenContent() {
         marginHorizontal={16}
         onBackPress={() => router.back()}
         title={`${book.name} ${chapter}`}
-        titleAlignment="center"
+        titleAlignment="left"
         backgroundColor={COLORS.paper}
       />
 
       <StyledScrollView contentContainerStyle={{ paddingHorizontal: H_PAD, paddingTop: 12, paddingBottom: 100 }}>
-      
-
         <BibleChapterGrid
           chapterCount={verseCount}
           tone={tone}
@@ -84,7 +82,7 @@ function BibleVerseSelectionScreenContent() {
           width: 58,
           height: 58,
           borderRadius: 29,
-          backgroundColor: COLORS.indigo,
+          backgroundColor: COLORS.gold,
           ...SHADOW_CARD,
         }}
         accessibilityRole="button"

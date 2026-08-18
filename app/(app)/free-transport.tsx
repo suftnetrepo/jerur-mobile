@@ -5,7 +5,6 @@ import {
   StyledScrollView,
   StyledText,
   Stack,
-  StyledSpacer,
 } from "fluent-styles";
 import { FeatureGate } from "../../src/components/FeatureGate";
 import { AppBackHeader } from "../../src/components/AppBackHeader";
@@ -37,16 +36,23 @@ function FreeTransportScreenContent() {
   const footerAnim = useFadeUp(490);
 
   return (
-    <StyledPage  backgroundColor={COLORS.paper}>
+    <StyledPage flex={1} backgroundColor={COLORS.paper}>
       <AppBackHeader title="Free Transport" />
       <StyledScrollView
-        contentContainerStyle={{ padding: 24, paddingBottom: 60 }}
+        contentContainerStyle={{ paddingHorizontal: 24, paddingTop: 10, paddingBottom: 60 }}
       >
+         <Stack
+          width={42}
+          height={4}
+          borderRadius={999}
+          backgroundColor={COLORS.gold}
+          marginBottom={12}
+        />
         {/* ── Hero Card ─────────────────────────────────────────────────── */}
         <Animated.View style={[{ marginBottom: 28 }, heroAnim]}>
           <Stack
-            backgroundColor={COLORS.white}
-            borderRadius={22}
+            backgroundColor={COLORS.goldPale}
+            borderRadius={26}
             overflow="hidden"
             style={SHADOW_CARD}
           >
@@ -54,9 +60,9 @@ function FreeTransportScreenContent() {
               {/* Left: headline + badge */}
               <Stack
                 flex={1}
-                padding={20}
-                paddingRight={12}
-                alignItems="center"
+                padding={22}
+                paddingRight={8}
+                alignItems="flex-start"
                 justifyContent="space-between"
               >
                 {/* Gold accent bar + text */}
@@ -78,8 +84,8 @@ function FreeTransportScreenContent() {
                     <StyledText
                       fontSize={25}
                       fontWeight="800"
-                      color={COLORS.gold}
-                      style={{ lineHeight: 30, marginBottom: 12 }}
+                      color={COLORS.goldDeep}
+                      style={{ lineHeight: 30, marginBottom: 12}}
                     >
                       We’ve got you!
                     </StyledText>
@@ -98,7 +104,7 @@ function FreeTransportScreenContent() {
               {/* Right: car illustration */}
               <CarIllustration />
             </Stack>
-            <Stack horizontal alignItems="center" gap={8} padding={10}>
+            <Stack horizontal alignItems="center" gap={8} paddingHorizontal={20} paddingBottom={18}>
               <Icon name="shield" size={14} color={COLORS.goldDeep} />
               <StyledText
                 fontSize={11.5}
@@ -113,11 +119,17 @@ function FreeTransportScreenContent() {
 
         {/* ── “How it works” header ──────────────────────────────────────── */}
         <Animated.View style={[{ marginBottom: 16 }, headerAnim]}>
-          <Stack horizontal alignItems="center" gap={12}>
-            <StyledText fontSize={18} fontWeight="800" color={COLORS.ink}>
-              How it works
-            </StyledText>
-            <Stack flex={1} height={1} backgroundColor={COLORS.chromeBorder} />
+          <Stack horizontal alignItems="center" gap={10}>
+            <Stack flex={1} height={1} backgroundColor={COLORS.goldPale} />
+            <Stack alignItems="center">
+              <Stack width={30} height={30} borderRadius={15} backgroundColor={COLORS.goldPale} alignItems="center" justifyContent="center" marginBottom={5}>
+                <Icon name="map" size={13} color={COLORS.goldDeep} />
+              </Stack>
+              <StyledText fontSize={18} fontWeight="800" color={COLORS.ink}>
+                How it works
+              </StyledText>
+            </Stack>
+            <Stack flex={1} height={1} backgroundColor={COLORS.goldPale} />
           </Stack>
         </Animated.View>
 
@@ -125,8 +137,8 @@ function FreeTransportScreenContent() {
         <Animated.View style={[{ marginBottom: 12 }, step1Anim]}>
           <Stack
             backgroundColor={COLORS.white}
-            borderRadius={16}
-            padding={16}
+            borderRadius={20}
+            padding={18}
             style={SHADOW_SOFT}
           >
             <Stack
@@ -153,9 +165,7 @@ function FreeTransportScreenContent() {
                 >
                   <Icon name="truck" size={22} color={COLORS.goldDeep} />
                 </Stack>
-                <StyledSpacer marginHorizontal={8} />
-                
-              </Stack>
+</Stack>
               <Stack flex={1}>
                 <StyledText
                   fontSize={15}
@@ -175,10 +185,10 @@ function FreeTransportScreenContent() {
                 </StyledText>
               </Stack>
               <Stack
-                  width={22}
-                  height={22}
-                  borderRadius={11}
-                  backgroundColor={COLORS.gold}
+                  width={26}
+                  height={26}
+                  borderRadius={13}
+                  backgroundColor={COLORS.goldDeep}
                   alignItems="center"
                   justifyContent="center"
                 >
@@ -198,8 +208,8 @@ function FreeTransportScreenContent() {
         <Animated.View style={[{ marginBottom: 12 }, step2Anim]}>
           <Stack
             backgroundColor={COLORS.white}
-            borderRadius={16}
-            padding={16}
+            borderRadius={20}
+            padding={18}
             style={SHADOW_SOFT}
           >
             <Stack
@@ -226,9 +236,7 @@ function FreeTransportScreenContent() {
                 >
                   <Icon name="file-text" size={22} color={COLORS.goldDeep} />
                 </Stack>
-                <StyledSpacer marginHorizontal={8} />
-                
-              </Stack>
+</Stack>
 
               <Stack flex={1}>
                 <StyledText
@@ -249,10 +257,10 @@ function FreeTransportScreenContent() {
                 </StyledText>
               </Stack>
              <Stack
-                  width={22}
-                  height={22}
-                  borderRadius={11}
-                  backgroundColor={COLORS.gold}
+                  width={26}
+                  height={26}
+                  borderRadius={13}
+                  backgroundColor={COLORS.goldDeep}
                   alignItems="center"
                   justifyContent="center"
                 >
@@ -272,8 +280,8 @@ function FreeTransportScreenContent() {
         <Animated.View style={[{ marginBottom: 24 }, step3Anim]}>
           <Stack
             backgroundColor={COLORS.white}
-            borderRadius={16}
-            padding={16}
+            borderRadius={20}
+            padding={18}
             style={SHADOW_SOFT}
           >
             <Stack
@@ -300,9 +308,7 @@ function FreeTransportScreenContent() {
                 >
                   <Icon name="upload" size={22} color={COLORS.goldDeep} />
                 </Stack>
-                <StyledSpacer marginHorizontal={16} />
-                
-              </Stack>
+</Stack>
               <Stack flex={1}>
                 <StyledText
                   fontSize={15}
@@ -322,10 +328,10 @@ function FreeTransportScreenContent() {
                 </StyledText>
               </Stack>
              <Stack
-                  width={22}
-                  height={22}
-                  borderRadius={11}
-                  backgroundColor={COLORS.gold}
+                  width={26}
+                  height={26}
+                  borderRadius={13}
+                  backgroundColor={COLORS.goldDeep}
                   alignItems="center"
                   justifyContent="center"
                 >
@@ -344,8 +350,8 @@ function FreeTransportScreenContent() {
         {/* ── Help / Contact Card ───────────────────────────────────────── */}
         <Animated.View style={[{ marginBottom: 20 }, helpAnim]}>
           <Stack
-            backgroundColor={COLORS.white}
-            borderRadius={18}
+            backgroundColor={COLORS.sageSoft}
+            borderRadius={22}
             padding={18}
             style={SHADOW_SOFT}
           >
@@ -388,8 +394,8 @@ function FreeTransportScreenContent() {
               </Stack>
             </Stack>
 
-            {/* Phone buttons — side by side */}
-            <Stack horizontal gap={10}>
+            {/* Premium full-width phone actions */}
+            <Stack gap={10}>
               {[
                 { number: "07888 230 650", tel: "07888230650" },
                 { number: "07776 696 504", tel: "07776696504" },
@@ -400,29 +406,27 @@ function FreeTransportScreenContent() {
                   accessibilityRole="button"
                   accessibilityLabel={`Call ${number}`}
                   style={{
-                    flex: 1,
-                    paddingVertical: 12,
-                    paddingHorizontal: 8,
-                    borderRadius: 50,
-                    borderWidth: 1.5,
-                    borderColor: COLORS.sage,
+                    paddingVertical: 13,
+                    paddingHorizontal: 14,
+                    borderRadius: 16,
+                    borderWidth: 1,
+                    borderColor: "rgba(66,122,93,0.16)",
                     backgroundColor: COLORS.white,
                   }}
                 >
-                  <Stack
-                    horizontal
-                    alignItems="center"
-                    justifyContent="center"
-                    gap={6}
-                  >
-                    <Icon name="phone" size={13} color={COLORS.sage} />
-                    <StyledText
-                      fontSize={13}
-                      fontWeight="700"
-                      color={COLORS.sage}
-                    >
-                      {number}
-                    </StyledText>
+                  <Stack horizontal alignItems="center" gap={11}>
+                    <Stack width={34} height={34} borderRadius={17} backgroundColor={COLORS.sageSoft} alignItems="center" justifyContent="center">
+                      <Icon name="phone" size={14} color={COLORS.sage} />
+                    </Stack>
+                    <Stack flex={1}>
+                      <StyledText fontSize={10.5} fontWeight="700" color={COLORS.inkSoft} style={{ marginBottom: 1 }}>
+                        CALL US
+                      </StyledText>
+                      <StyledText fontSize={13.5} fontWeight="800" color={COLORS.ink}>
+                        {number}
+                      </StyledText>
+                    </Stack>
+                    <Icon name="chevron-right" size={19} color={COLORS.sage} />
                   </Stack>
                 </ScalePressable>
               ))}
@@ -432,22 +436,22 @@ function FreeTransportScreenContent() {
 
         {/* ── Footer Info Card ────────────────────────────────────────────── */}
         <Animated.View style={footerAnim}>
-          <Stack backgroundColor="#EEF2FF" borderRadius={16} padding={16}>
+          <Stack backgroundColor={COLORS.goldPale} borderRadius={20} padding={16} style={SHADOW_SOFT}>
             <Stack horizontal alignItems="center" gap={12}>
               <Stack
                 width={38}
                 height={38}
                 borderRadius={19}
-                backgroundColor="rgba(99,102,241,0.15)"
+                backgroundColor={COLORS.white}
                 alignItems="center"
                 justifyContent="center"
                 flexShrink={0}
               >
-                <Icon name="info" size={16} color="#4F46E5" />
+                <Icon name="info" size={16} color={COLORS.goldDeep} />
               </Stack>
               <StyledText
                 fontSize={13}
-                color="#4F46E5"
+                color={COLORS.goldDeep}
                 style={{ flex: 1, lineHeight: 20 }}
               >
                 This service is provided to help you attend church.{"\n"}We’re

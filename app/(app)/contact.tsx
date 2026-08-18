@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Animated } from "react-native";
+import { Animated, Linking } from "react-native";
 import { Feather as Icon } from "@expo/vector-icons";
 import {
   StyledPage,
@@ -11,7 +11,6 @@ import {
 import { FeatureGate } from "../../src/components/FeatureGate";
 import { AppBackHeader } from "../../src/components/AppBackHeader";
 import { FormSubmitButton } from "../../src/components/FormSubmitButton";
-import { ContactChips } from "../../src/components/ContactChips";
 import { ContactHeroIllustration } from "../../src/components/illustrations/ContactIllustration";
 import { useFadeUp } from "../../src/hooks/useFadeUp";
 import { useSettings } from "../../src/hooks/useChurchData";
@@ -43,11 +42,15 @@ function ContactScreenContent() {
   const address = settings?.address;
   const email =
     settings?.email ||
-    "WinnersChapel.InternationalPeterborough@winners-chapel.org.uk";
-  const phone = settings?.mobile || "07888 230 650 / 07776 696 504";
-  // The fallback carries two numbers separated by " / " for display in the
-  // old full-width row; a chip shows one clean, dialable number instead.
+    "";
+  const phone = settings?.mobile || "";
   const primaryPhone = phone.split(" / ")[0].trim();
+
+  const handleEmailPress = () => Linking.openURL(`mailto:${email}`);
+  const handlePhonePress = () => {
+    const dialablePhone = primaryPhone.replace(/[^+\d]/g, "");
+    Linking.openURL(`tel:${dialablePhone}`);
+  };
 
   const heroAnim = useFadeUp(0);
   const detailsAnim = useFadeUp(120);
@@ -82,7 +85,7 @@ function ContactScreenContent() {
 
   return (
     <StyledPage flex={1} backgroundColor={COLORS.paper}>
-      <AppBackHeader title="Contact Us" />
+      <AppBackHeader  />
       <StyledScrollView
         contentContainerStyle={{ padding: 24, paddingBottom: 60 }}
       >
@@ -144,8 +147,6 @@ function ContactScreenContent() {
                 Don't hesitate to get in touch — we'd love to hear from you.
               </StyledText>
             </Stack>
-
-            <ContactHeroIllustration />
           </Stack>
         </Animated.View>
 
@@ -160,13 +161,13 @@ function ContactScreenContent() {
             <ContactRow
               icon="map-pin"
               label="Address"
-              value={`${address?.addressLine1 || "Ormiston Bushfield Academy"}\n${[address?.town, address?.postcode].filter(Boolean).join(", ") || "Peterborough, PE2 5RQ"}`}
+              value={`${address?.completeAddress} `}
             />
 
             <Stack
               height={1}
               backgroundColor={COLORS.chromeBorder}
-              style={{ marginVertical: 18 }}
+              marginVertical={ 18}
             />
 
             <StyledText
@@ -174,17 +175,14 @@ function ContactScreenContent() {
               fontWeight="700"
               letterSpacing={1}
               color={COLORS.inkSoft}
-              style={{ marginBottom: 8, textTransform: "uppercase" }}
+              style={{ marginBottom: 14, textTransform: "uppercase" }}
             >
               Get in touch
             </StyledText>
-            <ContactChips
-              phone={primaryPhone}
-              email={email}
-              facebookUrl={settings?.facebook_url}
-              instagramUrl={settings?.instagram_url}
-              youtubeUrl={settings?.youtube_url}
-            />
+
+            <ContactRow icon="mail" label="Email" value={email} onPress={handleEmailPress} showChevron />
+            <Stack height={1} backgroundColor={COLORS.chromeBorder} style={{ marginLeft: 58, marginVertical: 14 }} />
+            <ContactRow icon="phone" label="Call" value={primaryPhone} onPress={handlePhonePress} showChevron />
           </Stack>
         </Animated.View>
 
@@ -303,41 +301,28 @@ function ContactRow({
   label,
   value,
   onPress,
+  showChevron = false,
 }: {
   icon: string;
   label: string;
   value: string;
   onPress?: () => void;
+  showChevron?: boolean;
 }) {
   return (
-    <Stack horizontal gap={14} alignItems="flex-start" onTouchEnd={onPress}>
-      <Stack
-        width={38}
-        height={38}
-        borderRadius={19}
-        backgroundColor={COLORS.goldPale}
-        alignItems="center"
-        justifyContent="center"
-      >
-        <Icon name={icon as any} size={16} color={COLORS.goldDeep} />
+    <Stack horizontal gap={14} alignItems="center" onTouchEnd={onPress} style={{ minHeight: 58 }}>
+      <Stack width={46} height={46} borderRadius={23} backgroundColor={COLORS.goldPale} alignItems="center" justifyContent="center">
+        <Icon name={icon as any} size={20} color={COLORS.goldDeep} />
       </Stack>
       <Stack flex={1}>
-        <StyledText
-          fontSize={13}
-          fontWeight="700"
-          color={COLORS.ink}
-          style={{ marginBottom: 2 }}
-        >
+        <StyledText fontSize={14} fontWeight="800" color={COLORS.ink} style={{ marginBottom: 2 }}>
           {label}
         </StyledText>
-        <StyledText
-          fontSize={13.5}
-          color={COLORS.inkSoft}
-          style={{ lineHeight: 19 }}
-        >
+        <StyledText fontSize={13.5} color={COLORS.inkSoft} numberOfLines={2} style={{ lineHeight: 19 }}>
           {value}
         </StyledText>
       </Stack>
+      {showChevron && <Icon name="chevron-right" size={22} color={COLORS.inkSoft} />}
     </Stack>
   );
 }

@@ -47,16 +47,14 @@ function EventsScreenContent() {
   return (
     <StyledPage flex={1} backgroundColor={COLORS.paper}>
       <AppBackHeader title="Upcoming Events" />
-      <Stack paddingHorizontal={24} paddingTop={20} paddingBottom={12}>
-        <StyledText
-          fontSize={11}
-          fontWeight="700"
-          letterSpacing={1}
-          color={COLORS.gold}
-          style={{ marginBottom: 8 }}
-        >
-          EVENTS
-        </StyledText>
+      <Stack paddingHorizontal={24} paddingTop={8} paddingBottom={12}>
+       <Stack
+          width={42}
+          height={4}
+          borderRadius={999}
+          backgroundColor={COLORS.gold}
+          marginBottom={12}
+        />
         <StyledText
           fontSize={24}
           fontWeight="800"
@@ -71,6 +69,7 @@ function EventsScreenContent() {
       </Stack>
 
       <StyledScrollView
+      showsVerticalScrollIndicator={false}
         contentContainerStyle={{
           padding: 24,
           paddingTop: 8,
@@ -100,7 +99,7 @@ function EventsScreenContent() {
               <Stack
                 key={event._id ?? i}
                 backgroundColor={COLORS.white}
-                borderRadius={22}
+                borderRadius={24}
                 overflow="hidden"
                 style={SHADOW_CARD}
               >
@@ -210,13 +209,12 @@ function EventsScreenContent() {
                   {event.can_register && (
                     <StyledButton
                       onPress={() => setRegistering(event)}
-                      backgroundColor={COLORS.white}
-                      borderWidth={1}
-                      borderColor={COLORS.chromeBorder}
-                      style={{
-                        borderRadius: 14,
-                        paddingVertical: 14,
-                      }}
+                      backgroundColor={COLORS.goldPale}
+                      borderWidth={0}
+                      borderColor={COLORS.goldSoft}
+                      borderRadius={24}
+                      paddingVertical={14}
+                     
                     >
                       <Stack
                         horizontal

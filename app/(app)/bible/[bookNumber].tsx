@@ -73,7 +73,7 @@ function BibleBookScreenContent() {
    
         onBackPress={() => router.back()}
         title={book.name}
-        titleAlignment="center"
+        titleAlignment="left"
         backgroundColor={COLORS.paper}
       />
       <StyledScrollView

@@ -17,12 +17,12 @@ export function FormSubmitButton({
       block
       loading={loading}
       disabled={loading}
-      backgroundColor={COLORS.white}
-      borderWidth={1}
-      borderColor={COLORS.chromeBorder}
+      backgroundColor={COLORS.goldPale}
+  
+      borderColor={COLORS.goldPale}
       onPress={onPress}
     >
-      <StyledButton.Text color={COLORS.ink} fontWeight="700">
+      <StyledButton.Text color={COLORS.indigo} fontWeight="700">
         {loading ? loadingLabel : label}
       </StyledButton.Text>
     </StyledButton>

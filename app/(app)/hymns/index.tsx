@@ -2,7 +2,13 @@ import { useCallback, useMemo, useState } from "react";
 import { FlatList } from "react-native";
 import { router } from "expo-router";
 import { Feather as Icon } from "@expo/vector-icons";
-import { StyledPage, StyledText, StyledTextInput, Stack, StyledSpacer } from "fluent-styles";
+import {
+  StyledPage,
+  StyledText,
+  StyledTextInput,
+  Stack,
+  StyledSpacer,
+} from "fluent-styles";
 import { FeatureGate } from "../../../src/components/FeatureGate";
 import { AppBackHeader } from "../../../src/components/AppBackHeader";
 import { BottomTabBar } from "../../../src/components/BottomTabBar";
@@ -38,19 +44,19 @@ function HymnsScreenContent() {
         onPress={() => router.push(`/hymns/${item.id}` as any)}
       />
     ),
-    []
+    [],
   );
 
   return (
-    <StyledPage showStatusBar flex={1} backgroundColor={COLORS.paper}>
+    <StyledPage showStatusBar backgroundColor={COLORS.paper}>
       <AppBackHeader title="Hymns" />
-
-      <Stack flex={1} paddingHorizontal={24} paddingTop={4} paddingBottom={16}>
-       
-        <StyledText textAlign="center" fontSize={13.5} color={COLORS.inkSoft} style={{ marginBottom: 18, lineHeight: 20 }}>
-          Songs of faith, worship and praise
-        </StyledText>
-
+      <Stack
+        vertical
+        flex={1}
+        paddingHorizontal={24}
+        paddingTop={4}
+        paddingBottom={16}
+      >
         <StyledTextInput
           variant="outline"
           placeholder="Search hymns..."
@@ -60,6 +66,18 @@ function HymnsScreenContent() {
           clearable
           maxLength={40}
         />
+      </Stack>
+
+      <Stack paddingHorizontal={24} paddingTop={4} paddingBottom={16}>
+        <StyledText
+          textAlign="center"
+          fontSize={13.5}
+          color={COLORS.inkSoft}
+          style={{ marginBottom: 18, lineHeight: 20 }}
+        >
+          Songs of faith, worship and praise
+        </StyledText>
+
         {/* <StyledSpacer marginVertical={16} /> */}
         <Stack
           horizontal
@@ -74,7 +92,9 @@ function HymnsScreenContent() {
         >
           <Icon name="music" size={13} color={COLORS.goldDeep} />
           <StyledText fontSize={13} fontWeight="700" color={COLORS.goldDeep}>
-            {query.trim() ? `${results.length} hymn${results.length === 1 ? "" : "s"} found` : `${results.length} hymns`}
+            {query.trim()
+              ? `${results.length} hymn${results.length === 1 ? "" : "s"} found`
+              : `${results.length} hymns`}
           </StyledText>
         </Stack>
       </Stack>
@@ -83,7 +103,12 @@ function HymnsScreenContent() {
         data={results}
         keyExtractor={(item) => item.id}
         renderItem={renderItem}
-        contentContainerStyle={{ paddingHorizontal: 24, paddingTop: 6, paddingBottom: 32, gap: 9 }}
+        contentContainerStyle={{
+          paddingHorizontal: 24,
+          paddingTop: 6,
+          paddingBottom: 32,
+          gap: 9,
+        }}
         showsVerticalScrollIndicator={false}
         initialNumToRender={16}
         maxToRenderPerBatch={16}
@@ -94,7 +119,11 @@ function HymnsScreenContent() {
             <StyledText fontSize={15} fontWeight="700" color={COLORS.ink}>
               No hymns found
             </StyledText>
-            <StyledText fontSize={13} color={COLORS.inkSoft} style={{ textAlign: "center" }}>
+            <StyledText
+              fontSize={13}
+              color={COLORS.inkSoft}
+              style={{ textAlign: "center" }}
+            >
               Try searching by hymn title or number.
             </StyledText>
           </Stack>

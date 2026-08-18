@@ -26,7 +26,6 @@ import { ChurchBanner } from "../../src/components/ChurchBanner";
 import { LiveSessionCard } from "../../src/components/LiveSessionCard";
 import { LatestSermonCard } from "../../src/components/LatestSermonCard";
 import { ArticlesSection } from "../../src/components/ArticlesSection";
-import { WelcomeMessageCard } from "../../src/components/WelcomeMessageCard";
 import { useFadeUp } from "../../src/hooks/useFadeUp";
 import { useSelectedChurch } from "../../src/church/SelectedChurchContext";
 import { useMemberSession } from "../../src/member/MemberSessionContext";
@@ -56,9 +55,7 @@ export default function HomeScreen() {
   const { features, hasFeature } = useFeatureFlags();
 
   const headerAnim = useFadeUp(0);
-  const bodyAnim = useFadeUp(140);
 
-  const pastor = settings?.pastor_section;
   const queryClient = useQueryClient();
   const [refreshing, setRefreshing] = useState(false);
   const [scheduleNow, setScheduleNow] = useState(() => new Date());
@@ -66,30 +63,35 @@ export default function HomeScreen() {
   // Re-evaluate the dynamic schedule whenever Home becomes visible. This
   // intentionally remains an in-app Home notice rather than a scheduled
   // device notification.
-  useFocusEffect(useCallback(() => {
-    setScheduleNow(new Date());
-    // Home stays mounted behind other routes, so navigation focus must
-    // refresh schedules explicitly; otherwise a newly configured session
-    // can remain hidden behind the previous React Query cache entry.
-    void Promise.all([
-      queryClient.invalidateQueries({ queryKey: ["regular-services"] }),
-      queryClient.invalidateQueries({ queryKey: ["prayer-times"] }),
-    ]);
-  }, [queryClient]));
+  useFocusEffect(
+    useCallback(() => {
+      setScheduleNow(new Date());
+      // Home stays mounted behind other routes, so navigation focus must
+      // refresh schedules explicitly; otherwise a newly configured session
+      // can remain hidden behind the previous React Query cache entry.
+      void Promise.all([
+        queryClient.invalidateQueries({ queryKey: ["regular-services"] }),
+        queryClient.invalidateQueries({ queryKey: ["prayer-times"] }),
+      ]);
+    }, [queryClient]),
+  );
 
   // Single hero slot: an active notification always wins over the church
   // banner — see isNotificationActive() in NotificationCard.tsx for the
   // status/title/date-window check this reuses (not duplicated here).
   const hasActiveNotification =
     hasFeature("notifications") && isNotificationActive(settings?.notification);
-  const activeNotificationPriority = getNotificationPriority(settings?.notification?.priority);
+  const activeNotificationPriority = getNotificationPriority(
+    settings?.notification?.priority,
+  );
   const hasPriorityNotification =
-    hasActiveNotification && (activeNotificationPriority.id === "high" || activeNotificationPriority.id === "urgent");
-  const liveSessions = useMemo(() => findLiveSessions(
-    services,
-    prayerTimes,
-    scheduleNow,
-  ), [services, prayerTimes, scheduleNow]);
+    hasActiveNotification &&
+    (activeNotificationPriority.id === "high" ||
+      activeNotificationPriority.id === "urgent");
+  const liveSessions = useMemo(
+    () => findLiveSessions(services, prayerTimes, scheduleNow),
+    [services, prayerTimes, scheduleNow],
+  );
 
   // Pull-to-refresh — invalidates the exact React Query cache entries this
   // screen already reads from (useSettings' "settings" key backs the
@@ -206,18 +208,20 @@ export default function HomeScreen() {
             <NotificationCard notification={settings?.notification} />
           ) : liveSessions.length > 0 ? (
             <Stack paddingHorizontal={H_PAD} gap={12}>
-              {liveSessions.map((item) => <LiveSessionCard key={item.key} item={item} />)}
+              {liveSessions.map((item) => (
+                <LiveSessionCard key={item.key} item={item} />
+              ))}
             </Stack>
           ) : hasActiveNotification ? (
             <NotificationCard notification={settings?.notification} />
           ) : (
-            <ChurchBanner settings={settings} />
+             <ChurchBanner settings={settings} />
           )}
 
           <StyledSeperator
             marginHorizontal={32}
             marginVertical={24}
-             leftLabel="Latest Message"
+            leftLabel="Latest Message"
             leftLabelProps={{ fontSize: 18, color: COLORS.inkSoftest }}
           />
 
@@ -227,7 +231,7 @@ export default function HomeScreen() {
           <LatestSermonCard sermon={latestSermon} />
 
           <StyledSeperator
-              marginHorizontal={32}
+            marginHorizontal={32}
             marginVertical={24}
             leftLabel="More Articles"
             leftLabelProps={{ fontSize: 18, color: COLORS.inkSoftest }}

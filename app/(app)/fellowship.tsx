@@ -86,19 +86,18 @@ function FellowshipScreenContent() {
   return (
     <StyledPage flex={1} backgroundColor={COLORS.paper}>
       <StyledPage.Header
-              shapeProps={{
-                cycle: true,
-                size: 48,
-                borderRadius: 24,
-                borderWidth: 1,
-                borderColor: COLORS.chromeBorder,
-              }}
-             
-              marginHorizontal={16}
-              titleAlignment="center"
-              showBackArrow
-              onBackPress={() => router.back()}
-            />
+        shapeProps={{
+          cycle: true,
+          size: 48,
+          borderRadius: 24,
+          borderWidth: 1,
+          borderColor: COLORS.chromeBorder,
+        }}
+        marginHorizontal={16}
+        titleAlignment="center"
+        showBackArrow
+        onBackPress={() => router.back()}
+      />
       <Stack paddingHorizontal={24} paddingTop={20} paddingBottom={16}>
         <StyledText
           fontSize={11}
@@ -109,6 +108,13 @@ function FellowshipScreenContent() {
         >
           FELLOWSHIP
         </StyledText>
+          <Stack
+          width={42}
+          height={4}
+          borderRadius={999}
+          backgroundColor={COLORS.gold}
+          marginBottom={12}
+        />
         <StyledText
           fontSize={26}
           fontWeight="800"
@@ -181,7 +187,6 @@ function FellowshipScreenContent() {
         contentContainerStyle={{
           paddingHorizontal: 20,
           paddingBottom: 32,
-         
         }}
       >
         <Stack gap={14}>
@@ -208,7 +213,7 @@ function FellowshipScreenContent() {
               >
                 <Stack
                   backgroundColor={COLORS.white}
-                  borderRadius={22}
+                  borderRadius={16}
                   padding={16}
                   horizontal
                   alignItems="center"

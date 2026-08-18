@@ -1,22 +1,10 @@
+import { useState } from "react";
 import { TextInput } from "react-native";
+import { Feather as Icon } from "@expo/vector-icons";
 import { StyledText, Stack } from "fluent-styles";
 import { COLORS } from "../theme/colors";
 import { SHADOW_SOFT } from "../theme/shadows";
 
-/**
- * The note editor's two fields, shared between Create and Edit — a single
- * editable body, whether the member typed it or it grew from Bible verses
- * appended via appendToMarkedNote() (see src/notes/marked-note.ts). There
- * is no separate read-only verse block anywhere: everything in `content`
- * is plain text in this one TextInput.
- *
- * Both fields use plain RN TextInput in explicitly bordered/boxed
- * containers (not fluent-styles' StyledTextInput) so their height is
- * fully predictable — an earlier version used StyledTextInput's `ghost`
- * variant for the title, whose internal spacing left a large dead gap
- * above the note body that made the editor read as two disconnected
- * zones instead of one note.
- */
 export function NoteFormFields({
   title,
   onTitleChange,
@@ -28,55 +16,131 @@ export function NoteFormFields({
   content: string;
   onContentChange: (value: string) => void;
 }) {
+  const [titleFocused, setTitleFocused] = useState(false);
+  const [contentFocused, setContentFocused] = useState(false);
+
   return (
-    <Stack flex={1} gap={16}>
-      <Stack gap={6}>
-        <StyledText paddingHorizontal={16} fontSize={11} fontWeight="700" letterSpacing={0.5} color={COLORS.inkSoft} >
-          Title (Optional)
+    <Stack flex={1} gap={18}>
+      {/* Document-style title */}
+      <Stack gap={7}>
+        <StyledText
+          paddingHorizontal={4}
+          fontSize={10.5}
+          fontWeight="800"
+          letterSpacing={0.8}
+          color={COLORS.inkSoft}
+        >
+          TITLE · OPTIONAL
         </StyledText>
-        <TextInput
-          placeholder="Sunday Service Notes"
-          placeholderTextColor={COLORS.inkSoft}
-          value={title}
-          onChangeText={onTitleChange}
-          maxLength={120}
-          returnKeyType="next"
+
+        <Stack
+          backgroundColor={COLORS.white}
+          borderRadius={18}
           style={{
-            fontSize: 16.5,
-            fontWeight: "700",
-            color: COLORS.ink,
-            backgroundColor: COLORS.white,
-            borderRadius: 14,
-            borderWidth: 1,
-            borderColor: COLORS.paperAlt,
-            paddingHorizontal: 16,
-            paddingVertical: 13,
+            borderWidth: titleFocused ? 1.5 : 1,
+            borderColor: titleFocused ? COLORS.gold : COLORS.chromeBorder,
+            ...SHADOW_SOFT,
           }}
-        />
+        >
+          <TextInput
+            placeholder="Give your note a title"
+            placeholderTextColor={COLORS.inkSoft}
+            value={title}
+            onChangeText={onTitleChange}
+            onFocus={() => setTitleFocused(true)}
+            onBlur={() => setTitleFocused(false)}
+            maxLength={120}
+            returnKeyType="next"
+            style={{
+              fontSize: 18,
+              fontWeight: "700",
+              color: COLORS.ink,
+              paddingHorizontal: 18,
+              paddingVertical: 16,
+            }}
+          />
+        </Stack>
       </Stack>
 
-      <Stack flex={1} gap={6}>
-        <StyledText paddingHorizontal={16} fontSize={11} fontWeight="700" letterSpacing={0.5} color={COLORS.inkSoft} >
-          Note
-        </StyledText>
-        <Stack flex={1} backgroundColor={COLORS.white} borderRadius={16} style={{ borderWidth: 1, borderColor: COLORS.chromeBorder, ...SHADOW_SOFT }}>
+      {/* Premium writing surface */}
+      <Stack flex={1} gap={7}>
+        <Stack horizontal alignItems="center" justifyContent="space-between" paddingHorizontal={4}>
+          <StyledText
+            fontSize={10.5}
+            fontWeight="800"
+            letterSpacing={0.8}
+            color={COLORS.inkSoft}
+          >
+            NOTE
+          </StyledText>
+
+          <Stack horizontal alignItems="center" gap={5}>
+            <Icon name="edit-3" size={11} color={COLORS.goldDeep} />
+            <StyledText fontSize={10.5} fontWeight="700" color={COLORS.goldDeep}>
+              Writing
+            </StyledText>
+          </Stack>
+        </Stack>
+
+        <Stack
+          flex={1}
+          minHeight={320}
+          backgroundColor={COLORS.white}
+          borderRadius={22}
+          overflow="hidden"
+          style={{
+            borderWidth: contentFocused ? 1.5 : 1,
+            borderColor: contentFocused ? COLORS.gold : COLORS.chromeBorder,
+            ...SHADOW_SOFT,
+          }}
+        >
+          {/* Warm notebook accent */}
+          <Stack
+            position="absolute"
+            left={0}
+            top={22}
+            bottom={22}
+            width={3}
+            borderRadius={2}
+            backgroundColor={COLORS.goldPale}
+          />
+
           <TextInput
-            placeholder="Start writing..."
+            placeholder="Start writing your thoughts, reflections or Bible notes…"
             placeholderTextColor={COLORS.inkSoft}
             value={content}
             onChangeText={onContentChange}
+            onFocus={() => setContentFocused(true)}
+            onBlur={() => setContentFocused(false)}
             multiline
             textAlignVertical="top"
-            style={{ flex: 1, fontSize: 16.5, lineHeight: 25, color: COLORS.ink, backgroundColor: COLORS.white,
-            borderRadius: 14,
-            borderWidth: 1,
-            borderColor: COLORS.paperAlt,
-            paddingHorizontal: 16,
-            paddingVertical: 13 }}
+            scrollEnabled
+            style={{
+              flex: 1,
+              fontSize: 16.5,
+              lineHeight: 27,
+              color: COLORS.ink,
+              paddingHorizontal: 20,
+              paddingTop: 20,
+              paddingBottom: 18,
+            }}
           />
-          <StyledText fontSize={11} color={COLORS.inkSoft} style={{ textAlign: "right", paddingHorizontal: 16, paddingBottom: 10 }}>
-            {content.length} character{content.length === 1 ? "" : "s"}
-          </StyledText>
+
+          <Stack
+            horizontal
+            alignItems="center"
+            justifyContent="flex-end"
+            paddingHorizontal={16}
+            paddingVertical={10}
+            style={{
+              borderTopWidth: 1,
+              borderTopColor: COLORS.paperAlt,
+            }}
+          >
+            <StyledText fontSize={10.5} color={COLORS.inkSoft}>
+              {content.length} character{content.length === 1 ? "" : "s"}
+            </StyledText>
+          </Stack>
         </Stack>
       </Stack>
     </Stack>

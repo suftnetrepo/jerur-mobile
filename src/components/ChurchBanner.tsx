@@ -48,9 +48,9 @@ export function ChurchBanner({ settings }: { settings: ChurchSettings | null | u
         <Svg style={{ position: "absolute", inset: 0 }} width="100%" height="100%">
           <Defs>
             <LinearGradient id="churchBannerFade" x1="0" y1="0" x2="0" y2="1">
-              <Stop offset="0" stopColor="#0C0A09" stopOpacity={0.45} />
-              <Stop offset="0.5" stopColor="#0C0A09" stopOpacity={0.15} />
-              <Stop offset="1" stopColor="#0C0A09" stopOpacity={0.45} />
+              <Stop offset="0" stopColor="#0C0A09" stopOpacity={0.95} />
+              <Stop offset="0.5" stopColor="#0C0A09" stopOpacity={0.60} />
+              <Stop offset="1" stopColor="#0C0A09" stopOpacity={0.95} />
             </LinearGradient>
           </Defs>
           <Rect width="100%" height="100%" fill="url(#churchBannerFade)" />

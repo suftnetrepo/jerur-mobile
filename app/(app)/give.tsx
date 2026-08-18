@@ -101,11 +101,17 @@ function GiveScreenContent() {
   return (
     <StyledPage flex={1} backgroundColor={COLORS.paper}>
       <AppBackHeader title="Giving" />
-      <StyledScrollView contentContainerStyle={{ paddingHorizontal: 24, paddingTop: 24, paddingBottom: 36 }}>
+      <StyledScrollView contentContainerStyle={{  paddingHorizontal: 24,
+          paddingTop: 10,
+          paddingBottom: 60, }}>
         {/* ── Page header ─────────────────────────────────────────────── */}
-        <StyledText fontSize={11} fontWeight="700" letterSpacing={1} color={COLORS.gold} style={{ marginBottom: 8 }}>
-          GIVING
-        </StyledText>
+       <Stack
+          width={42}
+          height={4}
+          borderRadius={999}
+          backgroundColor={COLORS.gold}
+          marginBottom={12}
+        />
         <StyledText fontSize={26} fontWeight="800" color={COLORS.ink} style={{ marginBottom: 6 }}>
           Covenant of blessing
         </StyledText>
@@ -188,7 +194,7 @@ function GiveScreenContent() {
           {/* Giving envelope */}
           <Stack
             backgroundColor={COLORS.white}
-            borderRadius={22}
+            borderRadius={16}
             padding={18}
             horizontal
             alignItems="center"
