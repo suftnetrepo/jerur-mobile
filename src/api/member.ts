@@ -16,3 +16,11 @@ export async function loginMember(payload: { identifier: string; pin: string }):
   const { data } = await apiClient.post<{ data: MemberLoginResponse; success: boolean }>("/member/login", payload);
   return data.data;
 }
+
+// Permanently deletes the logged-in member's own record. Authorization
+// header (member token) is attached automatically by the apiClient
+// interceptor — see setActiveMemberToken() in client.ts — and the backend
+// requires it to match `id` (a member may only ever delete themselves).
+export async function deleteMember(id: string): Promise<void> {
+  await apiClient.delete("/member/delete", { params: { id } });
+}

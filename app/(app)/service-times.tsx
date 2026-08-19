@@ -18,28 +18,19 @@ import {
 } from "../../src/components/illustrations/ServiceIllustrations";
 import { useRegularServices } from "../../src/hooks/useChurchData";
 import { useFeatureFlags } from "../../src/hooks/useFeatureFlags";
+import {
+  formatServiceDayNames,
+  isServiceDay,
+} from "../../src/lib/service-days";
 import { COLORS, ICON_TONES } from "../../src/theme/colors";
 import { SHADOW_CARD } from "../../src/theme/shadows";
 import type { RegularService } from "../../src/api/types";
 
 // ── Helpers ──────────────────────────────────────────────────────────────────────────
 
-const WEEKDAY_NAMES = [
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-];
-
 function formatRecurrence(days: number[] | undefined): string | null {
-  if (!days?.length) return null;
-  const names = days.map((d) => WEEKDAY_NAMES[d] ?? "").filter(Boolean);
-  if (!names.length) return null;
-  if (names.length === 1) return `Every ${names[0]}`;
-  return `Every ${names.slice(0, -1).join(", ")} & ${names[names.length - 1]}`;
+  const names = formatServiceDayNames(days);
+  return names ? `Every ${names}` : null;
 }
 
 export default function ServiceTimesScreen() {
@@ -131,6 +122,7 @@ function ServiceTimesScreenContent() {
             const recurrence = formatRecurrence(service.days);
             const Illustration =
               SERVICE_ILLUSTRATIONS[i % SERVICE_ILLUSTRATIONS.length];
+            const canCheckIn = isServiceDay(service.days);
 
             return (
               <Stack
@@ -289,8 +281,13 @@ function ServiceTimesScreenContent() {
                       <StyledButton
                         backgroundColor={COLORS.chrome}
                         compact
+                        disabled={!canCheckIn}
                         onPress={() => handleSubmitAttendance(service)}
-                        accessibilityLabel={`Submit attendance for ${service.title}`}
+                        accessibilityLabel={
+                          canCheckIn
+                            ? `Submit attendance for ${service.title}`
+                            : `Check-in for ${service.title} is only available on ${formatServiceDayNames(service.days) ?? "its service day"}`
+                        }
                         borderColor={tone.fg}
                         style={{ flex: 1 }}
                       >

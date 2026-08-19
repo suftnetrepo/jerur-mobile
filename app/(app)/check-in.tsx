@@ -2,40 +2,97 @@ import { useRef, useState } from "react";
 import { Dimensions } from "react-native";
 import { router, useLocalSearchParams } from "expo-router";
 import { Feather as Icon } from "@expo/vector-icons";
-import { StyledPage, StyledScrollView, StyledText, StyledForm, StyledButton, StyledPressable, Stack, useToast } from "fluent-styles";
+import {
+  StyledPage,
+  StyledScrollView,
+  StyledText,
+  StyledForm,
+  StyledButton,
+  StyledPressable,
+  Stack,
+  useToast,
+} from "fluent-styles";
 import { FeatureGate } from "../../src/components/FeatureGate";
 import { FormSubmitButton } from "../../src/components/FormSubmitButton";
 import { useMemberSession } from "../../src/member/MemberSessionContext";
-import { useSettings } from "../../src/hooks/useChurchData";
-import { openChurchEmailDraft } from "../../src/lib/church-email";
+import { submitAttendance } from "../../src/api/attendance";
+import { apiErrorMessage } from "../../src/api/client";
+import {
+  WEEKDAY_NAMES,
+  formatServiceDayNames,
+  isServiceDay,
+} from "../../src/lib/service-days";
 import { SHADOW_SOFT } from "../../src/theme/shadows";
 import { COLORS } from "../../src/theme/colors";
 import type { AttendanceStatus } from "../../src/api/types";
+import { AppBackHeader } from "@/src/components/AppBackHeader";
 
 // Primary selection accent — matches the mock's bright indigo/violet.
 const ACCENT = "#5B6CF9";
 
-const STATUS_OPTIONS: { value: AttendanceStatus; label: string; icon: string; iconColor: string }[] = [
-  { value: "PRESENT_IN_CHURCH", label: "I'm in church",      icon: "home",           iconColor: ACCENT },
-  { value: "JOINED_ONLINE",     label: "Joining online",    icon: "wifi",           iconColor: ACCENT },
-  { value: "TRAVELLING",        label: "Travelling",        icon: "map",            iconColor: "#22A06B" },
-  { value: "WORKING",           label: "Working",           icon: "briefcase",      iconColor: "#F59E0B" },
-  { value: "SICK",              label: "Sick",              icon: "thermometer",    iconColor: "#EF4444" },
-  { value: "FAMILY_COMMITMENT", label: "Family commitment", icon: "users",          iconColor: "#0EA5E9" },
-  { value: "NEEDS_PRAYER",      label: "I need prayer",     icon: "heart",          iconColor: "#EC4899" },
-  { value: "ABSENT",            label: "Won't make it",     icon: "x-circle",       iconColor: "#9CA3AF" },
-  { value: "OTHER",             label: "Other",             icon: "more-horizontal", iconColor: "#9CA3AF" },
+const STATUS_OPTIONS: {
+  value: AttendanceStatus;
+  label: string;
+  icon: string;
+  iconColor: string;
+}[] = [
+  {
+    value: "PRESENT_IN_CHURCH",
+    label: "I'm in church",
+    icon: "home",
+    iconColor: ACCENT,
+  },
+  {
+    value: "JOINED_ONLINE",
+    label: "Joining online",
+    icon: "wifi",
+    iconColor: ACCENT,
+  },
+  {
+    value: "TRAVELLING",
+    label: "Travelling",
+    icon: "map",
+    iconColor: "#22A06B",
+  },
+  {
+    value: "WORKING",
+    label: "Working",
+    icon: "briefcase",
+    iconColor: "#F59E0B",
+  },
+  { value: "SICK", label: "Sick", icon: "thermometer", iconColor: "#EF4444" },
+  {
+    value: "FAMILY_COMMITMENT",
+    label: "Family commitment",
+    icon: "users",
+    iconColor: "#0EA5E9",
+  },
+  {
+    value: "NEEDS_PRAYER",
+    label: "I need prayer",
+    icon: "heart",
+    iconColor: "#EC4899",
+  },
+  {
+    value: "ABSENT",
+    label: "Won't make it",
+    icon: "x-circle",
+    iconColor: "#9CA3AF",
+  },
+  {
+    value: "OTHER",
+    label: "Other",
+    icon: "more-horizontal",
+    iconColor: "#9CA3AF",
+  },
 ];
-
-const WEEKDAY_NAMES = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
 // "Today" only when the service's own recurrence (ServiceTime.days, 0=Sun..
 // 6=Sat) actually includes today — never assumed just because a card says
 // "Sunday Service". Falls back to naming the day instead of guessing.
 function formatServiceDayLabel(days: number[]): string | null {
   if (!days.length) return null;
-  const todayIndex = new Date().getDay();
-  if (days.includes(todayIndex)) return "Today";
+  if (isServiceDay(days)) return "Today";
   return WEEKDAY_NAMES[days[0]] ?? null;
 }
 
@@ -54,8 +111,13 @@ export default function CheckInScreen() {
 
 function CheckInScreenContent() {
   const { member } = useMemberSession();
-  const { data: settings } = useSettings();
-  const params = useLocalSearchParams<{ serviceId?: string; title?: string; startTime?: string; endTime?: string; days?: string }>();
+  const params = useLocalSearchParams<{
+    serviceId?: string;
+    title?: string;
+    startTime?: string;
+    endTime?: string;
+    days?: string;
+  }>();
   const toast = useToast();
 
   const [status, setStatus] = useState<AttendanceStatus | null>(null);
@@ -69,12 +131,35 @@ function CheckInScreenContent() {
   if (!member) {
     return (
       <StyledPage flex={1} backgroundColor={COLORS.paper}>
-        <StyledPage.Header title="Submit attendance" titleAlignment="center" showBackArrow onBackPress={() => router.back()} />
-        <Stack flex={1} alignItems="center" justifyContent="center" padding={24}>
-          <StyledText fontSize={14.5} color={COLORS.inkSoft} style={{ textAlign: "center", marginBottom: 16 }}>
+        <StyledPage.Header
+          shapeProps={{
+            cycle: true,
+            size: 48,
+            borderRadius: 24,
+            borderWidth: 1,
+            borderColor: COLORS.chromeBorder,
+          }}
+          marginHorizontal={16}
+          showBackArrow
+          onBackPress={() => router.back()}
+        />
+        <Stack
+          flex={1}
+          alignItems="center"
+          justifyContent="center"
+          padding={24}
+        >
+          <StyledText
+            fontSize={14.5}
+            color={COLORS.inkSoft}
+            style={{ textAlign: "center", marginBottom: 16 }}
+          >
             Log in to submit your attendance.
           </StyledText>
-          <StyledButton primary onPress={() => router.push("/account")}>
+          <StyledButton
+            backgroundColor={COLORS.gold}
+            onPress={() => router.push("/account")}
+          >
             <StyledButton.Text color={COLORS.indigoDeep} fontWeight="700">
               Go to account
             </StyledButton.Text>
@@ -92,12 +177,30 @@ function CheckInScreenContent() {
   if (!params.serviceId) {
     return (
       <StyledPage flex={1} backgroundColor={COLORS.paper}>
-        <StyledPage.Header title="Submit attendance" titleAlignment="center" showBackArrow onBackPress={() => router.back()} />
-        <Stack flex={1} alignItems="center" justifyContent="center" padding={24} gap={16}>
-          <StyledText fontSize={14.5} color={COLORS.inkSoft} style={{ textAlign: "center" }}>
+        <StyledPage.Header
+          title="Submit attendance"
+          titleAlignment="center"
+          showBackArrow
+          onBackPress={() => router.back()}
+        />
+        <Stack
+          flex={1}
+          alignItems="center"
+          justifyContent="center"
+          padding={24}
+          gap={16}
+        >
+          <StyledText
+            fontSize={14.5}
+            color={COLORS.inkSoft}
+            style={{ textAlign: "center" }}
+          >
             Choose a service from Service Times to submit your attendance.
           </StyledText>
-          <StyledButton primary onPress={() => router.replace("/service-times")}>
+          <StyledButton
+            primary
+            onPress={() => router.replace("/service-times")}
+          >
             <StyledButton.Text color={COLORS.indigoDeep} fontWeight="700">
               Go to Service times
             </StyledButton.Text>
@@ -116,8 +219,68 @@ function CheckInScreenContent() {
     serviceDays = [];
   }
   const dayLabel = formatServiceDayLabel(serviceDays);
-  const timeRange = [params.startTime, params.endTime].filter(Boolean).join(" – ");
+  const timeRange = [params.startTime, params.endTime]
+    .filter(Boolean)
+    .join(" – ");
   const summaryLine = [dayLabel, timeRange].filter(Boolean).join(" · ");
+
+  // Attendance is only ever for the service actually happening today — a
+  // stale nav param, a bookmarked link, or just opening this screen on the
+  // wrong day of the week should never let someone submit for a service
+  // that isn't running. Checked here (not just by disabling the entry
+  // point on Service Times) so this holds regardless of how the screen was
+  // reached.
+  if (!isServiceDay(serviceDays)) {
+    return (
+      <StyledPage flex={1} backgroundColor={COLORS.paper}>
+        <AppBackHeader title="" />
+      
+     
+        <Stack
+          flex={1}
+          alignItems="center"
+          justifyContent="center"
+          padding={24}
+          gap={16}
+        >
+          <Stack
+            width={56}
+            height={56}
+            borderRadius={28}
+            backgroundColor={COLORS.chrome}
+            alignItems="center"
+            justifyContent="center"
+          >
+            <Icon name="calendar" size={22} color={COLORS.inkSoft} />
+          </Stack>
+          <StyledText
+            fontSize={16}
+            fontWeight="800"
+            color={COLORS.ink}
+            style={{ textAlign: "center" }}
+          >
+            Not a service day
+          </StyledText>
+          <StyledText
+            fontSize={13.5}
+            color={COLORS.inkSoft}
+            style={{ textAlign: "center" }}
+          >
+            Attendance for {serviceTitle} can only be submitted on{" "}
+            {formatServiceDayNames(serviceDays) ?? "its scheduled day"}.
+          </StyledText>
+          <StyledButton
+            backgroundColor={COLORS.gold}
+            onPress={() => router.replace("/service-times")}
+          >
+            <StyledButton.Text color={COLORS.indigoDeep} fontWeight="700">
+              Go to Service times
+            </StyledButton.Text>
+          </StyledButton>
+        </Stack>
+      </StyledPage>
+    );
+  }
 
   async function handleSubmit() {
     if (submittingRef.current) return;
@@ -128,23 +291,24 @@ function CheckInScreenContent() {
     submittingRef.current = true;
     setSubmitting(true);
     try {
-      const statusLabel = STATUS_OPTIONS.find((option) => option.value === status)?.label ?? status;
-      await openChurchEmailDraft({
-        recipient: settings?.email,
-        subject: `Attendance — ${serviceTitle} — ${activeMember.first_name} ${activeMember.last_name}`,
-        heading: "A new attendance response has been prepared for the pastoral team.",
-        fields: [
-          { label: "Member", value: `${activeMember.first_name} ${activeMember.last_name}` },
-          { label: "Member ID", value: activeMember._id },
-          { label: "Service", value: serviceTitle },
-          { label: "Schedule", value: summaryLine },
-          { label: "Attendance response", value: statusLabel },
-          { label: "Additional note", value: message },
-        ],
+      // Actually records the attendance (POST /attendance/create/mobile)
+      // rather than just drafting an email — SICK/NEEDS_PRAYER already
+      // raise a CareFollowUp for the pastoral team server-side (see
+      // attendanceService.createAttendance), so no separate email step is
+      // needed here.
+      await submitAttendance({
+        serviceId: params.serviceId!,
+        memberId: activeMember._id,
+        status,
+        message: message.trim() || undefined,
+        checkedInVia: "ONLINE",
       });
-      toast.success("Email draft ready", "Review it and tap send in your email app.");
+      toast.success("You're checked in", "Thanks for letting us know.");
+      router.back();
     } catch (err) {
-      toast.error(err instanceof Error ? err.message : "Couldn't open your email app. Please try again.");
+      toast.error(
+        apiErrorMessage(err, "Couldn't submit attendance. Please try again."),
+      );
     } finally {
       submittingRef.current = false;
       setSubmitting(false);
@@ -153,8 +317,23 @@ function CheckInScreenContent() {
 
   return (
     <StyledPage flex={1} backgroundColor={COLORS.paper}>
-      <StyledPage.Header title="Submit attendance" titleAlignment="center" showBackArrow onBackPress={() => router.back()} />
-      <StyledScrollView contentContainerStyle={{ padding: SCREEN_PAD, paddingBottom: 60 }}>
+      <AppBackHeader title="Attendance" />
+      <StyledScrollView
+        contentContainerStyle={{
+          padding: SCREEN_PAD,
+          paddingTop: 10,
+          paddingBottom: 60,
+        }}
+      >
+        <Stack
+          width={75}
+          height={4}
+          marginHorizontal={4}
+          borderRadius={999}
+          backgroundColor={COLORS.gold}
+          marginBottom={16}
+        />
+
         {/* Service summary — informational only, never selectable. The
             service is already decided; this just confirms which one. */}
         <Stack
@@ -169,7 +348,14 @@ function CheckInScreenContent() {
           marginBottom={28}
           style={SHADOW_SOFT}
         >
-          <Stack width={44} height={44} borderRadius={22} backgroundColor="#EEEFFE" alignItems="center" justifyContent="center">
+          <Stack
+            width={44}
+            height={44}
+            borderRadius={22}
+            backgroundColor="#EEEFFE"
+            alignItems="center"
+            justifyContent="center"
+          >
             <Icon name="calendar" size={20} color={ACCENT} />
           </Stack>
           <Stack style={{ flex: 1 }}>
@@ -177,16 +363,29 @@ function CheckInScreenContent() {
               {serviceTitle}
             </StyledText>
             {summaryLine ? (
-              <Stack horizontal alignItems="center" gap={4} style={{ marginTop: 2, flexWrap: "wrap" }}>
+              <Stack
+                horizontal
+                alignItems="center"
+                gap={4}
+                style={{ marginTop: 2, flexWrap: "wrap" }}
+              >
                 <Icon name="calendar" size={11} color={COLORS.inkSoft} />
-                <StyledText fontSize={12.5} color={COLORS.inkSoft}>{dayLabel ?? ""}</StyledText>
+                <StyledText fontSize={12.5} color={COLORS.inkSoft}>
+                  {dayLabel ?? ""}
+                </StyledText>
                 {dayLabel && timeRange ? (
-                  <StyledText fontSize={12.5} color={COLORS.inkSoft}> · </StyledText>
+                  <StyledText fontSize={12.5} color={COLORS.inkSoft}>
+                    {" "}
+                    ·{" "}
+                  </StyledText>
                 ) : null}
                 {timeRange ? (
                   <>
                     <Icon name="clock" size={11} color={COLORS.inkSoft} />
-                    <StyledText fontSize={12.5} color={COLORS.inkSoft}> {timeRange}</StyledText>
+                    <StyledText fontSize={12.5} color={COLORS.inkSoft}>
+                      {" "}
+                      {timeRange}
+                    </StyledText>
                   </>
                 ) : null}
               </Stack>
@@ -194,13 +393,29 @@ function CheckInScreenContent() {
           </Stack>
         </Stack>
 
-        <StyledText fontSize={17} fontWeight="800" color={COLORS.ink} style={{ marginBottom: 4 }}>
+        <StyledText
+          fontSize={17}
+          fontWeight="800"
+          color={COLORS.ink}
+          style={{ marginBottom: 4 }}
+        >
           How are you joining today?
         </StyledText>
-        <StyledText fontSize={13} color={COLORS.inkSoft} style={{ marginBottom: 18 }}>
+        <StyledText
+          fontSize={13}
+          color={COLORS.inkSoft}
+          style={{ marginBottom: 18 }}
+        >
           Choose one option.
         </StyledText>
-        <Stack style={{ flexDirection: "row", flexWrap: "wrap", gap: CHIP_GAP, marginBottom: 8 }}>
+        <Stack
+          style={{
+            flexDirection: "row",
+            flexWrap: "wrap",
+            gap: CHIP_GAP,
+            marginBottom: 8,
+          }}
+        >
           {STATUS_OPTIONS.map((option) => {
             const selected = status === option.value;
             return (
@@ -218,7 +433,9 @@ function CheckInScreenContent() {
                   paddingVertical: 13,
                   paddingHorizontal: 14,
                   borderRadius: 14,
-                  backgroundColor: selected ? "rgba(91,108,249,0.07)" : COLORS.white,
+                  backgroundColor: selected
+                    ? "rgba(91,108,249,0.07)"
+                    : COLORS.white,
                   borderWidth: selected ? 2 : 1,
                   borderColor: selected ? ACCENT : COLORS.chromeBorder,
                 }}
@@ -258,9 +475,19 @@ function CheckInScreenContent() {
         </Stack>
 
         {status === "NEEDS_PRAYER" && (
-          <Stack horizontal alignItems="center" gap={8} marginTop={10} marginBottom={4}>
+          <Stack
+            horizontal
+            alignItems="center"
+            gap={8}
+            marginTop={10}
+            marginBottom={4}
+          >
             <Icon name="heart" size={13} color={COLORS.sage} />
-            <StyledText fontSize={12.5} color={COLORS.inkSoft} style={{ flex: 1 }}>
+            <StyledText
+              fontSize={12.5}
+              color={COLORS.inkSoft}
+              style={{ flex: 1 }}
+            >
               We'll let the pastoral team know you'd like prayer.
             </StyledText>
           </Stack>
@@ -280,16 +507,32 @@ function CheckInScreenContent() {
               onChangeText={setMessage}
             />
             <StyledForm.Actions>
-              <FormSubmitButton label="Submit attendance" loadingLabel="Submitting…" loading={submitting} onPress={handleSubmit} />
+              <FormSubmitButton
+                label="Submit attendance"
+                loadingLabel="Submitting…"
+                loading={submitting}
+                onPress={handleSubmit}
+              />
             </StyledForm.Actions>
           </StyledForm>
         </Stack>
 
         {/* Privacy reassurance */}
-        <Stack horizontal alignItems="center" justifyContent="center" gap={6} marginTop={20}>
-          <Icon name="lock" size={12} color={COLORS.inkSoft} />
-          <StyledText fontSize={12} color={COLORS.inkSoft} style={{ textAlign: "center" }}>
-            Your information is private and is only shared with the pastoral team.
+        <Stack
+          horizontal
+          alignItems="center"
+          justifyContent="center"
+          gap={6}
+          marginTop={20}
+        >
+      
+          <StyledText
+            fontSize={12}
+            color={COLORS.inkSoft}
+            style={{ textAlign: "center" }}
+          >
+            Your information is private and is only shared with the pastoral
+            team.
           </StyledText>
         </Stack>
       </StyledScrollView>

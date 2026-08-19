@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 import { Share, Text } from "react-native";
 import { router, useLocalSearchParams } from "expo-router";
-import { StyledPage, StyledScrollView, StyledText, Stack } from "fluent-styles";
+import { StyledPage, StyledScrollView, StyledText, Stack, StyledShape } from "fluent-styles";
 import { FeatureGate } from "../../../src/components/FeatureGate";
 import { HymnReaderToolbar } from "../../../src/components/HymnReaderToolbar";
 import { ReaderFontSizePopup } from "../../../src/components/ReaderFontSizePopup";
@@ -54,6 +54,7 @@ function HymnReaderScreenContent() {
           onBackPress={() => router.back()}
           title="Hymns"
           titleAlignment="center"
+             rightIcon ={<StyledShape size={48}></StyledShape>}
         />
         <Stack
           flex={1}
@@ -94,6 +95,7 @@ function HymnReaderScreenContent() {
         showBackArrow
         onBackPress={() => router.back()}
         backgroundColor={COLORS.paper}
+            rightIcon ={<StyledShape size={48}></StyledShape>}
       />
 
       <Stack paddingHorizontal={H_PAD} marginTop={8} paddingBottom={10}>
@@ -108,6 +110,7 @@ function HymnReaderScreenContent() {
       </Stack>
 
       <StyledScrollView
+      showsVerticalScrollIndicator={false}
         contentContainerStyle={{ paddingHorizontal: H_PAD, paddingBottom: 24 }}
       >
         {/* One flowing text block, not a card per stanza - the source

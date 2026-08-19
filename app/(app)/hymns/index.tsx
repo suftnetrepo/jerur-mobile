@@ -1,13 +1,14 @@
 import { useCallback, useMemo, useState } from "react";
-import { FlatList } from "react-native";
+import { FlatList, TextInput } from "react-native";
 import { router } from "expo-router";
 import { Feather as Icon } from "@expo/vector-icons";
 import {
   StyledPage,
   StyledText,
-  StyledTextInput,
+  StyledPressable,
   Stack,
   StyledSpacer,
+  StyledShape,
 } from "fluent-styles";
 import { FeatureGate } from "../../../src/components/FeatureGate";
 import { AppBackHeader } from "../../../src/components/AppBackHeader";
@@ -27,6 +28,7 @@ export default function HymnsScreen() {
 
 function HymnsScreenContent() {
   const [query, setQuery] = useState("");
+  const [searchFocused, setSearchFocused] = useState(false);
 
   // getHymns()/searchHymns() only ever return {id, title} - full lyrics
   // are never pulled into this list (see src/hymns/hymns-lookup.ts), so
@@ -49,24 +51,22 @@ function HymnsScreenContent() {
 
   return (
     <StyledPage showStatusBar backgroundColor={COLORS.paper}>
-      <AppBackHeader title="Hymns" />
-      <Stack
-        vertical
-        flex={1}
-        paddingHorizontal={24}
-        paddingTop={4}
-        paddingBottom={16}
-      >
-        <StyledTextInput
-          variant="outline"
-          placeholder="Search hymns..."
-          leftIcon={<Icon name="search" size={15} color={COLORS.inkSoft} />}
-          value={query}
-          onChangeText={setQuery}
-          clearable
-          maxLength={40}
-        />
-      </Stack>
+      <StyledPage.Header
+        showBackArrow
+        shapeProps={{
+          cycle: true,
+          size: 48,
+          borderRadius: 24,
+          borderWidth: 1,
+          borderColor: COLORS.chromeBorder,
+        }}
+        title="Hymns"
+        titleAlignment="center"
+        onBackPress={() => router.push("/")}
+        backgroundColor={COLORS.paper}
+        marginHorizontal={16}
+        rightIcon ={<StyledShape size={48}></StyledShape>}
+      />
 
       <Stack paddingHorizontal={24} paddingTop={4} paddingBottom={16}>
         <StyledText
@@ -77,6 +77,62 @@ function HymnsScreenContent() {
         >
           Songs of faith, worship and praise
         </StyledText>
+        <Stack
+          horizontal
+          alignItems="center"
+          backgroundColor="#FFFFFF"
+          borderRadius={8}
+          style={{
+            borderWidth: searchFocused ? 1.5 : 1,
+            borderColor: searchFocused ? "#6366f1" : COLORS.chromeBorder,
+          }}
+        >
+          <Stack paddingHorizontal={4} marginLeft={4}>
+            <Icon name="search" size={15} color={COLORS.inkSoft} />
+          </Stack>
+          <TextInput
+            value={query}
+            onChangeText={setQuery}
+            onFocus={() => setSearchFocused(true)}
+            onBlur={() => setSearchFocused(false)}
+            placeholder="Search hymns..."
+            placeholderTextColor="#d4d4d8"
+            maxLength={40}
+            style={{
+              flex: 1,
+              fontSize: 15,
+              fontWeight: "400",
+              color: COLORS.ink,
+              paddingHorizontal: 12,
+              paddingVertical: 11,
+              minHeight: 48,
+              height: 48,
+              textAlignVertical: "center",
+              includeFontPadding: false,
+            }}
+          />
+          {query.length > 0 && (
+            <StyledPressable
+              onPress={() => setQuery("")}
+              hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
+              accessibilityLabel="Clear input"
+              style={{ paddingHorizontal: 4, marginRight: 4 }}
+            >
+              <Stack
+                width={19}
+                height={19}
+                borderRadius={9.5}
+                alignItems="center"
+                justifyContent="center"
+                backgroundColor="#f4f4f5"
+              >
+                <StyledText fontSize={9.75} fontWeight="700" color="#a1a1aa">
+                  ✕
+                </StyledText>
+              </Stack>
+            </StyledPressable>
+          )}
+        </Stack>
 
         {/* <StyledSpacer marginVertical={16} /> */}
         <Stack

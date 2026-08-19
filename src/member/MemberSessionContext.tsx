@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
 import { setActiveMemberToken } from "../api/client";
 import { loadMemberSession, saveMemberSession, clearMemberSession } from "./member-session-storage";
-import { registerMember, loginMember } from "../api/member";
+import { registerMember, loginMember, deleteMember } from "../api/member";
 import type { Member } from "../api/types";
 
 type MemberSessionContextValue = {
@@ -10,6 +10,7 @@ type MemberSessionContextValue = {
   register: (payload: { first_name: string; last_name: string; mobile?: string; email?: string; pin: string }) => Promise<void>;
   login: (payload: { identifier: string; pin: string }) => Promise<void>;
   logout: () => Promise<void>;
+  deleteAccount: () => Promise<void>;
 };
 
 const MemberSessionContext = createContext<MemberSessionContextValue | null>(null);
@@ -46,8 +47,20 @@ export function MemberSessionProvider({ children }: { children: ReactNode }) {
     setMember(null);
   }
 
+  // Permanently deletes the member's own backend record, then clears the
+  // local session exactly like logout() does — but only once the API call
+  // has actually succeeded. If deleteMember() throws, none of the session
+  // clearing below runs, so the member stays logged in on failure.
+  async function deleteAccount() {
+    if (!member) return;
+    await deleteMember(member._id);
+    await clearMemberSession();
+    setActiveMemberToken(null);
+    setMember(null);
+  }
+
   return (
-    <MemberSessionContext.Provider value={{ member, isLoading, register, login, logout }}>
+    <MemberSessionContext.Provider value={{ member, isLoading, register, login, logout, deleteAccount }}>
       {children}
     </MemberSessionContext.Provider>
   );

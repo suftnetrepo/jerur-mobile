@@ -17,9 +17,9 @@ export function FormSubmitButton({
       block
       loading={loading}
       disabled={loading}
-      backgroundColor={COLORS.goldPale}
+      backgroundColor={COLORS.gold}
   
-      borderColor={COLORS.goldPale}
+      borderColor={COLORS.gold}
       onPress={onPress}
     >
       <StyledButton.Text color={COLORS.indigo} fontWeight="700">

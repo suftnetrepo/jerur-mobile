@@ -209,9 +209,9 @@ function EventsScreenContent() {
                   {event.can_register && (
                     <StyledButton
                       onPress={() => setRegistering(event)}
-                      backgroundColor={COLORS.goldPale}
+                      backgroundColor={COLORS.gold}
                       borderWidth={0}
-                      borderColor={COLORS.goldSoft}
+                      borderColor={COLORS.gold}
                       borderRadius={24}
                       paddingVertical={14}
                      

@@ -215,15 +215,32 @@ export default function HomeScreen() {
           ) : hasActiveNotification ? (
             <NotificationCard notification={settings?.notification} />
           ) : (
-             <ChurchBanner settings={settings} />
+            <ChurchBanner settings={settings} />
           )}
 
-          <StyledSeperator
-            marginHorizontal={32}
-            marginVertical={24}
-            leftLabel="Latest Message"
-            leftLabelProps={{ fontSize: 18, color: COLORS.inkSoftest }}
-          />
+          <Stack
+            horizontal
+            alignItems="center"
+            justifyContent="space-between"
+            paddingHorizontal={32}
+            marginVertical={16}
+          >
+            <Stack>
+              <StyledText fontSize={20} fontWeight="800" color={COLORS.ink}>
+                Latest Message
+              </StyledText>
+
+              <StyledText
+                fontSize={12.5}
+                color={COLORS.inkSoft}
+                style={{ marginTop: 3 }}
+              >
+                Watch the latest word from our church
+              </StyledText>
+            </Stack>
+
+           
+          </Stack>
 
           {/* Latest Sermon — one card only, never a list. Fully
               self-contained: hides itself for hasFeature("sermons")=false,
