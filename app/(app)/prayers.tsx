@@ -40,7 +40,7 @@ function PrayersScreenContent() {
     setIsPending(true);
     try {
       await openChurchEmailDraft({
-        recipient: settings?.email,
+        recipient: settings?.support_email || settings?.email,
         subject: `Prayer request — ${form.first_name} ${form.last_name}`,
         heading: "A new prayer request has been prepared for the prayer team.",
         fields: [

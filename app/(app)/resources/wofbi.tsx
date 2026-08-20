@@ -65,7 +65,7 @@ function WofbiScreenContent() {
     setIsPending(true);
     try {
       await openChurchEmailDraft({
-        recipient: settings?.email,
+        recipient: settings?.support_email || settings?.email,
         subject: `WOFBI registration — ${form.firstName} ${form.lastName}`,
         heading:
           "A new WOFBI registration has been prepared for the church team.",

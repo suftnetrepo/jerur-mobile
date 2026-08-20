@@ -1,14 +1,17 @@
-import { Animated } from "react-native";
+import { Animated, Linking } from "react-native";
 import { Feather as Icon } from "@expo/vector-icons";
 import {
   StyledPage,
   StyledScrollView,
   StyledText,
+  StyledPressable,
   Stack,
+  useToast,
 } from "fluent-styles";
 import { FeatureGate } from "../../../src/components/FeatureGate";
 import { AppBackHeader } from "../../../src/components/AppBackHeader";
 import { useFadeUp } from "../../../src/hooks/useFadeUp";
+import { useSettings } from "../../../src/hooks/useChurchData";
 import { COLORS } from "../../../src/theme/colors";
 import { SHADOW_CARD, SHADOW_SOFT } from "../../../src/theme/shadows";
 
@@ -21,9 +24,30 @@ export default function BfcScreen() {
 }
 
 function BfcScreenContent() {
+  const { data: settings } = useSettings();
+  const toast = useToast();
+  const conferenceLink = settings?.conference_link?.trim();
+
   const heroAnim = useFadeUp(0);
   const aboutAnim = useFadeUp(140);
   const scheduleAnim = useFadeUp(260);
+
+  async function handleJoinOnline() {
+    if (!conferenceLink) return;
+    try {
+      const url = /^https?:\/\//i.test(conferenceLink)
+        ? conferenceLink
+        : `https://${conferenceLink}`;
+      const supported = await Linking.canOpenURL(url);
+      if (!supported) {
+        toast.error("Couldn't open the conference link.");
+        return;
+      }
+      await Linking.openURL(url);
+    } catch {
+      toast.error("Couldn't open the conference link.");
+    }
+  }
 
   return (
     <StyledPage flex={1} backgroundColor={COLORS.paper}>
@@ -191,6 +215,41 @@ function BfcScreenContent() {
                   Tuesdays at 7PM
                 </StyledText>
               </Stack>
+
+              {/* Church-wide conference link (Settings -> Config in the
+                  admin portal) — hidden entirely when the church hasn't
+                  set one, same as every other optional link in the app. */}
+              {conferenceLink ? (
+                <StyledPressable
+                  onPress={handleJoinOnline}
+                  accessibilityRole="button"
+                  accessibilityLabel="Join the foundation class online"
+                  style={{ marginTop: 16 }}
+                >
+                  <Stack
+                    horizontal
+                    alignItems="center"
+                    justifyContent="center"
+                    gap={8}
+                    backgroundColor={COLORS.gold}
+                    borderRadius={14}
+                    paddingVertical={13}
+                  >
+                    <Icon
+                      name="video"
+                      size={16}
+                      color={COLORS.indigoDeep}
+                    />
+                    <StyledText
+                      fontSize={13.5}
+                      fontWeight="700"
+                      color={COLORS.indigoDeep}
+                    >
+                      Join online
+                    </StyledText>
+                  </Stack>
+                </StyledPressable>
+              ) : null}
             </Stack>
           </Stack>
         </Animated.View>

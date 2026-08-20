@@ -47,6 +47,13 @@ export type MobileFeature = {
   color: string;
   /** expo-router path this feature links to. Undefined = no mobile screen built yet. */
   route?: string;
+  /**
+   * Church denomination ids (see constants/denominations.js) this feature
+   * is restricted to — undefined/empty means available to every
+   * denomination. Set from Settings -> About Us; only takes effect once a
+   * church has actually selected one (see useFeatureFlags.ts).
+   */
+  denominations?: string[];
 };
 
 export const MOBILE_FEATURES: MobileFeature[] = [
@@ -78,7 +85,7 @@ export const MOBILE_FEATURES: MobileFeature[] = [
   },
   {
     id: "testimony",
-    label: "Testimony",
+    label: "Share Testimony",
     description: "Let members share testimonies of what God has done in their lives.",
     category: "Church",
     icon: "star",
@@ -161,6 +168,7 @@ export const MOBILE_FEATURES: MobileFeature[] = [
     icon: "shopping-bag",
     color: "#EA580C",
     route: "/food-bank",
+    denominations: ["living-faith-church"],
   },
   {
     id: "free-transport",
@@ -170,6 +178,7 @@ export const MOBILE_FEATURES: MobileFeature[] = [
     icon: "truck",
     color: "#2563EB",
     route: "/free-transport",
+    denominations: ["living-faith-church"],
   },
   {
     id: "believers-foundation-class",
@@ -179,6 +188,7 @@ export const MOBILE_FEATURES: MobileFeature[] = [
     icon: "book-open",
     color: "#9333EA",
     route: "/resources/bfc",
+    denominations: ["living-faith-church"],
   },
   {
     id: "wofbi-basic-certificate",
@@ -188,6 +198,7 @@ export const MOBILE_FEATURES: MobileFeature[] = [
     icon: "award",
     color: "#B91C1C",
     route: "/resources/wofbi",
+    denominations: ["living-faith-church"],
   },
   {
     id: "note",
@@ -230,6 +241,19 @@ export const MOBILE_FEATURES: MobileFeature[] = [
     category: "Church",
     icon: "sunrise",
     color: "#115E59",
+  },
+  {
+    id: "prophetic-theme",
+    label: "Prophetic Theme of the Month",
+    description: "Share this month's prophetic theme and scripture with members on the home screen.",
+    category: "Church",
+    icon: "compass",
+    color: "#6D28D9",
+    // No `route` — this isn't a screen, it's a card rendered inline on
+    // Home (see src/components/PropheticThemeCard.tsx), gated directly
+    // via hasFeature("prophetic-theme") rather than the generic
+    // enabled-features pill row.
+    denominations: ["living-faith-church"],
   },
 ];
 

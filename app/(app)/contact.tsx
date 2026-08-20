@@ -11,7 +11,6 @@ import {
 import { FeatureGate } from "../../src/components/FeatureGate";
 import { AppBackHeader } from "../../src/components/AppBackHeader";
 import { FormSubmitButton } from "../../src/components/FormSubmitButton";
-import { ContactHeroIllustration } from "../../src/components/illustrations/ContactIllustration";
 import { useFadeUp } from "../../src/hooks/useFadeUp";
 import { useSettings } from "../../src/hooks/useChurchData";
 import { openChurchEmailDraft } from "../../src/lib/church-email";
@@ -46,11 +45,43 @@ function ContactScreenContent() {
   const phone = settings?.mobile || "";
   const primaryPhone = phone.split(" / ")[0].trim();
 
-  const handleEmailPress = () => Linking.openURL(`mailto:${email}`);
-  const handlePhonePress = () => {
+  // Both awaited + guarded with canOpenURL — a bare `Linking.openURL(...)`
+  // call left unhandled here means a rejection (no mail/phone handler
+  // registered, e.g. no telephony on the iOS Simulator) surfaces as an
+  // "Uncaught (in promise...)" error instead of a message the member can
+  // actually read. Reuses the same error banner the message form already
+  // shows below.
+  async function handleEmailPress() {
+    const to = email.trim();
+    if (!to) return;
+    try {
+      const url = `mailto:${to}`;
+      const supported = await Linking.canOpenURL(url);
+      if (!supported) {
+        setError("No email app is available on this device.");
+        return;
+      }
+      await Linking.openURL(url);
+    } catch {
+      setError("Couldn't open your email app. Please try again.");
+    }
+  }
+
+  async function handlePhonePress() {
     const dialablePhone = primaryPhone.replace(/[^+\d]/g, "");
-    Linking.openURL(`tel:${dialablePhone}`);
-  };
+    if (!dialablePhone) return;
+    try {
+      const url = `tel:${dialablePhone}`;
+      const supported = await Linking.canOpenURL(url);
+      if (!supported) {
+        setError("This device can't make phone calls.");
+        return;
+      }
+      await Linking.openURL(url);
+    } catch {
+      setError("Couldn't start the call. Please try again.");
+    }
+  }
 
   const heroAnim = useFadeUp(0);
   const detailsAnim = useFadeUp(120);
@@ -65,7 +96,7 @@ function ContactScreenContent() {
     setIsPending(true);
     try {
       await openChurchEmailDraft({
-        recipient: settings?.email,
+        recipient: settings?.support_email || settings?.email,
         subject: `Contact enquiry — ${form.first_name} ${form.last_name}`,
         heading: "A new contact enquiry has been prepared for the church team.",
         fields: [

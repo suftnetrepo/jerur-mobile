@@ -58,7 +58,7 @@ function TestimoniesScreenContent() {
     setIsPending(true);
     try {
       await openChurchEmailDraft({
-        recipient: settings?.email,
+        recipient: settings?.support_email || settings?.email,
         subject: `Testimony — ${form.first_name} ${form.last_name}`,
         heading: "A new testimony has been prepared for the church team.",
         fields: [

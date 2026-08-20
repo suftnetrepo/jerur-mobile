@@ -158,6 +158,16 @@ export type ChurchSettings = {
     secure_url?: string;
   };
   contacts?: ChurchContact[];
+  // This month's prophetic theme (Settings -> Prophetic Focus, admin
+  // portal) — see src/components/PropheticThemeCard.tsx, gated behind the
+  // "prophetic-theme" mobile feature. `month` is a calendar month name
+  // ("August"), `verse` is a short reference ("Jeremiah 29:11"), not the
+  // full verse text.
+  prophetic_focus?: {
+    month?: string;
+    verse?: string;
+    description?: string;
+  };
   facebook_url?: string;
   instagram_url?: string;
   youtube_url?: string;
@@ -171,6 +181,17 @@ export type ChurchSettings = {
   // in the admin portal (church/models/church.js has no schema default).
   features?: string[];
   notification?: ChurchNotification;
+  // Church-wide Zoom/Teams/etc. link for remote services (Settings ->
+  // Config in the admin portal) — distinct from a single RegularService's
+  // own remote_link above. '' (the schema default), not absent, on
+  // churches that haven't set one.
+  conference_link?: string;
+  // General support address (Settings -> Config, admin portal — renamed
+  // from Church.prayer_request_email server-side) — the recipient for
+  // Testimony, Contact Us and Wofbi course enquiry email drafts. Falls
+  // back to `email` (the church's general address) wherever it's used,
+  // since it's commonly unset.
+  support_email?: string;
 };
 
 export type RegularService = {

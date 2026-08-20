@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 import { useSettings } from "./useChurchData";
-import { MOBILE_FEATURES, type MobileFeature } from "../config/mobileFeatures";
+import { MOBILE_FEATURES, getFeatureById, type MobileFeature } from "../config/mobileFeatures";
 
 /**
  * Central feature-flag hook. The selected church's enabled feature ids
@@ -30,18 +30,34 @@ export function useFeatureFlags() {
   // Settings -> Mobile Features has no `features` array at all, which
   // means no optional feature is enabled, not "everything enabled".
   const featureIds = useMemo(() => settings?.features ?? [], [settings?.features]);
+  const denomination = settings?.denomination;
+
+  // A feature is actually available when the church has enabled it AND
+  // (it carries no denomination restriction, or the church's own
+  // denomination is one it's restricted to) — e.g. Prophetic Theme of the
+  // Month, Wofbi, Believers Foundation Class, Community Food Bank and
+  // Free Transport are all living-faith-church only (see
+  // MobileFeature.denominations in src/config/mobileFeatures.ts).
+  // Checked here, not just by hiding the admin's toggle, so a `features`
+  // id left over from before a denomination change never resurfaces.
+  function isAvailable(feature: MobileFeature): boolean {
+    if (!featureIds.includes(feature.id)) return false;
+    if (!feature.denominations?.length) return true;
+    return !!denomination && feature.denominations.includes(denomination);
+  }
 
   // Enabled features, resolved against the mobile catalogue and filtered
   // to those with a mobile screen already built (`route` set) — an admin
   // can toggle a feature on before its mobile screen ships without that
   // producing a dead link on the home screen.
   const features = useMemo<MobileFeature[]>(
-    () => MOBILE_FEATURES.filter((feature) => feature.route && featureIds.includes(feature.id)),
-    [featureIds]
+    () => MOBILE_FEATURES.filter((feature) => feature.route && isAvailable(feature)),
+    [featureIds, denomination]
   );
 
   function hasFeature(id: string): boolean {
-    return featureIds.includes(id);
+    const feature = getFeatureById(id);
+    return !!feature && isAvailable(feature);
   }
 
   return {

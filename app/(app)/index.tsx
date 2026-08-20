@@ -25,6 +25,7 @@ import { CurrentChurchHeader } from "../../src/components/CurrentChurchHeader";
 import { ChurchBanner } from "../../src/components/ChurchBanner";
 import { LiveSessionCard } from "../../src/components/LiveSessionCard";
 import { LatestSermonCard } from "../../src/components/LatestSermonCard";
+import { PropheticThemeCard } from "../../src/components/PropheticThemeCard";
 import { ArticlesSection } from "../../src/components/ArticlesSection";
 import { useFadeUp } from "../../src/hooks/useFadeUp";
 import { useSelectedChurch } from "../../src/church/SelectedChurchContext";
@@ -122,12 +123,16 @@ export default function HomeScreen() {
 
   // One pill per enabled feature — nothing hardcoded, nothing to update
   // here when a church enables/disables a feature or a new one ships.
-  const quickActions: PillAction[] = features.map((feature) => ({
-    key: feature.id,
-    label: feature.label,
-    icon: feature.icon,
-    route: feature.route!,
-  }));
+  // "contact-us" is the one deliberate exception: it now lives in
+  // Settings (see more.tsx, right before "About us") instead of here.
+  const quickActions: PillAction[] = features
+    .filter((feature) => feature.id !== "contact-us")
+    .map((feature) => ({
+      key: feature.id,
+      label: feature.label,
+      icon: feature.icon,
+      route: feature.route!,
+    }));
 
   async function handleChangeChurch() {
     await changeChurch();
@@ -218,6 +223,11 @@ export default function HomeScreen() {
             <ChurchBanner settings={settings} />
           )}
 
+          {/* Just below the hero slot above (whichever of the four it
+              rendered) — fully self-contained, see PropheticThemeCard.tsx
+              for its own hasFeature/content visibility checks. */}
+          <PropheticThemeCard settings={settings} />
+
           <Stack
             horizontal
             alignItems="center"
@@ -226,7 +236,7 @@ export default function HomeScreen() {
             marginVertical={16}
           >
             <Stack>
-              <StyledText fontSize={20} fontWeight="800" color={COLORS.ink}>
+              <StyledText fontSize={20} fontWeight="400" color={COLORS.inkSoft}>
                 Latest Message
               </StyledText>
 
@@ -238,8 +248,6 @@ export default function HomeScreen() {
                 Watch the latest word from our church
               </StyledText>
             </Stack>
-
-           
           </Stack>
 
           {/* Latest Sermon — one card only, never a list. Fully
@@ -247,12 +255,21 @@ export default function HomeScreen() {
               no published sermon, or no valid YouTube URL. */}
           <LatestSermonCard sermon={latestSermon} />
 
-          <StyledSeperator
-            marginHorizontal={32}
-            marginVertical={24}
-            leftLabel="More Articles"
-            leftLabelProps={{ fontSize: 18, color: COLORS.inkSoftest }}
-          />
+          <Stack
+            horizontal
+            alignItems="center"
+            justifyContent="space-between"
+            paddingHorizontal={32}
+            marginVertical={16}
+          >
+            <Stack>
+              <StyledText fontSize={20} fontWeight="400" color={COLORS.inkSoft}>
+                More Article 
+              </StyledText>
+
+             
+            </Stack>
+          </Stack>
 
           {/* Christian Articles — up to 4 latest published articles,
               horizontally scrolling. Fully self-contained: hides itself
