@@ -9,6 +9,7 @@ import { getCurrentCoordinates } from "../../src/lib/location";
 import { apiErrorMessage } from "../../src/api/client";
 import { ScalePressable } from "../../src/components/ScalePressable";
 import { ChurchResultCard } from "../../src/components/ChurchResultCard";
+import { ChurchResultsSkeleton } from "../../src/components/skeleton";
 import { useFadeUp } from "../../src/hooks/useFadeUp";
 import { useDenominations } from "../../src/hooks/useDenominations";
 import { SHADOW_SOFT, SHADOW_CARD, shadowCta } from "../../src/theme/shadows";
@@ -218,8 +219,15 @@ export default function SelectChurchScreen() {
             </Stack>
           )}
 
-          {loading && (
-            <Stack alignItems="center" paddingVertical={24}>
+          {/* First fetch of a search/near-me request, nothing to show yet
+              — card-shaped skeletons instead of a bare spinner. Once a
+              result set exists, a new search keeps it on screen (see the
+              `filteredResults.map` below, which always renders off
+              `results` regardless of `loading`) and just shows a small
+              inline indicator instead of hiding valid content. */}
+          {loading && results.length === 0 && <ChurchResultsSkeleton />}
+          {loading && results.length > 0 && (
+            <Stack alignItems="center" paddingVertical={12}>
               <Loader color={COLORS.indigo} />
             </Stack>
           )}

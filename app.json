@@ -1,9 +1,9 @@
 {
   "expo": {
-    "name": "Winners Chapel Peterborough",
-    "slug": "winners-chapel-mobile",
+    "name": "",
+    "slug": "",
     "version": "1.0.0",
-    "scheme": "winnerschapel",
+    "scheme": "jerur",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -13,9 +13,9 @@
         "expo-splash-screen",
         {
           "image": "./assets/splash-icon.png",
-          "imageWidth": 200,
+          "imageWidth": 160,
           "resizeMode": "contain",
-          "backgroundColor": "#1B2340"
+          "backgroundColor": "#FFFFFF"
         }
       ],
       "expo-sqlite",
@@ -25,7 +25,7 @@
     ],
     "ios": {
       "supportsTablet": false,
-      "bundleIdentifier": "org.winnerschapel.peterborough"
+      "bundleIdentifier": "com.jerur.sm"
     },
     "android": {
       "adaptiveIcon": {
@@ -33,7 +33,7 @@
         "foregroundImage": "./assets/android-icon-foreground.png"
       },
       "predictiveBackGestureEnabled": false,
-      "package": "org.winnerschapel.peterborough"
+      "package": "com.jerur.sm"
     },
     "web": {
       "favicon": "./assets/favicon.png"

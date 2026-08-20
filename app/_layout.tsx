@@ -1,11 +1,14 @@
 import { useEffect, type ReactNode } from "react";
+import { Image } from "react-native";
 import { Stack as RouterStack, useRouter, useSegments } from "expo-router";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { GlobalPortalProvider, PortalManager, StyledPage, Stack, Loader } from "fluent-styles";
+import { GlobalPortalProvider, PortalManager, StyledPage, Stack } from "fluent-styles";
 import { SelectedChurchProvider, useSelectedChurch } from "../src/church/SelectedChurchContext";
 import { MemberSessionProvider } from "../src/member/MemberSessionContext";
-import { COLORS } from "../src/theme/colors";
+import { ShimmerProvider } from "../src/components/skeleton";
 import "../src/notifications/notification-handler";
+
+const SPLASH_LOGO = require("../assets/splash-icon.png");
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -45,6 +48,16 @@ const queryClient = new QueryClient({
  * itself would still flash briefly with no data. Now the navigator isn't
  * mounted at all until hydration resolves, so there's nothing to flash —
  * see the `if (isLoading)` branch below.
+ *
+ * That branch is a plain, static continuation of the native splash screen
+ * (same logo, same white background, no spinner) — its only job is
+ * app/bootstrap hydration, the one thing genuinely blocking every screen
+ * equally. It is NOT the place for per-screen loading state: the instant
+ * hydration resolves, RouterStack mounts the real screen (Home, etc.),
+ * and that screen is responsible for its own skeleton while its own API
+ * data loads (see src/components/skeleton/ — HomeSkeleton and friends).
+ * Keeping this splash on screen any longer than bootstrap hydration would
+ * just hide those skeletons behind it for no reason.
  */
 function RouteGuard({ children }: { children: ReactNode }) {
   const { church, isLoading } = useSelectedChurch();
@@ -67,9 +80,14 @@ function RouteGuard({ children }: { children: ReactNode }) {
 
   if (isLoading) {
     return (
-      <StyledPage flex={1} backgroundColor={COLORS.paper}>
+      <StyledPage flex={1} backgroundColor="#FFFFFF">
         <Stack flex={1} alignItems="center" justifyContent="center">
-          <Loader color={COLORS.indigo} />
+          <Image
+            source={SPLASH_LOGO}
+            resizeMode="contain"
+            style={{ width: 160, height: 160 }}
+            accessibilityLabel="Jerur"
+          />
         </Stack>
       </StyledPage>
     );
@@ -81,17 +99,19 @@ function RouteGuard({ children }: { children: ReactNode }) {
 export default function RootLayout() {
   return (
     <QueryClientProvider client={queryClient}>
-      <SelectedChurchProvider>
-        <MemberSessionProvider>
-          <GlobalPortalProvider>
-            <PortalManager>
-              <RouteGuard>
-                <RouterStack screenOptions={{ headerShown: false }} />
-              </RouteGuard>
-            </PortalManager>
-          </GlobalPortalProvider>
-        </MemberSessionProvider>
-      </SelectedChurchProvider>
+      <ShimmerProvider>
+        <SelectedChurchProvider>
+          <MemberSessionProvider>
+            <GlobalPortalProvider>
+              <PortalManager>
+                <RouteGuard>
+                  <RouterStack screenOptions={{ headerShown: false }} />
+                </RouteGuard>
+              </PortalManager>
+            </GlobalPortalProvider>
+          </MemberSessionProvider>
+        </SelectedChurchProvider>
+      </ShimmerProvider>
     </QueryClientProvider>
   );
 }

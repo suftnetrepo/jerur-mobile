@@ -14,6 +14,7 @@ import { BottomTabBar } from "../../../src/components/BottomTabBar";
 import { FeatureGate } from "../../../src/components/FeatureGate";
 import { AppBackHeader } from "../../../src/components/AppBackHeader";
 import { FormSubmitButton } from "../../../src/components/FormSubmitButton";
+import { EventsSkeleton } from "../../../src/components/skeleton";
 import { useEvents } from "../../../src/hooks/useChurchData";
 import { useEventRegistration } from "../../../src/hooks/useSubmissions";
 import { apiErrorMessage } from "../../../src/api/client";
@@ -39,7 +40,7 @@ export default function EventsScreen() {
 }
 
 function EventsScreenContent() {
-  const { data: events } = useEvents();
+  const { data: events, isLoading } = useEvents();
   const [registering, setRegistering] = useState<ChurchEvent | null>(null);
 
   const published = (events ?? []).filter((e) => e.status !== false);
@@ -76,6 +77,9 @@ function EventsScreenContent() {
           paddingBottom: 28,
         }}
       >
+        {isLoading && !events ? (
+          <EventsSkeleton />
+        ) : (
         <Stack gap={14}>
           {published.length === 0 && (
             <StyledText
@@ -242,6 +246,7 @@ function EventsScreenContent() {
             );
           })}
         </Stack>
+        )}
       </StyledScrollView>
 
       {registering && (

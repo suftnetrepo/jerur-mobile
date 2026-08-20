@@ -6,6 +6,7 @@ import { FeatureGate } from "../../src/components/FeatureGate";
 import { PrayerHeroIllustration } from "../../src/components/illustrations/PrayerIllustration";
 import { PrayerSessionCard } from "../../src/components/PrayerSessionCard";
 import { FormSubmitButton } from "../../src/components/FormSubmitButton";
+import { PrayersSkeleton } from "../../src/components/skeleton";
 import { usePrayerTimes } from "../../src/hooks/useChurchData";
 import { useSettings } from "../../src/hooks/useChurchData";
 import { usePrayerReminders } from "../../src/notifications/use-prayer-reminders";
@@ -22,7 +23,7 @@ export default function PrayersScreen() {
 }
 
 function PrayersScreenContent() {
-  const { data: prayerTimes } = usePrayerTimes();
+  const { data: prayerTimes, isLoading: prayerTimesLoading } = usePrayerTimes();
   const { data: settings } = useSettings();
   const { reminders, setReminder, clearReminder } = usePrayerReminders(prayerTimes);
 
@@ -95,19 +96,24 @@ function PrayersScreenContent() {
           <PrayerHeroIllustration />
         </Stack>
 
-        {prayerTimes && prayerTimes.length > 0 && (
-          <Stack gap={12} marginBottom={28}>
-            {prayerTimes.map((meeting, i) => (
-              <PrayerSessionCard
-                key={meeting._id ?? i}
-                meeting={meeting}
-                tone={ICON_TONES[i % ICON_TONES.length]}
-                reminders={reminders}
-                onSetReminder={setReminder}
-                onRemoveReminder={clearReminder}
-              />
-            ))}
-          </Stack>
+        {prayerTimesLoading && !prayerTimes ? (
+          <PrayersSkeleton />
+        ) : (
+          prayerTimes &&
+          prayerTimes.length > 0 && (
+            <Stack gap={12} marginBottom={28}>
+              {prayerTimes.map((meeting, i) => (
+                <PrayerSessionCard
+                  key={meeting._id ?? i}
+                  meeting={meeting}
+                  tone={ICON_TONES[i % ICON_TONES.length]}
+                  reminders={reminders}
+                  onSetReminder={setReminder}
+                  onRemoveReminder={clearReminder}
+                />
+              ))}
+            </Stack>
+          )
         )}
 
         <Stack marginBottom={18}>

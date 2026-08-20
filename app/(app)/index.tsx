@@ -9,7 +9,6 @@ import {
   StyledShape,
   StyledPressable,
   Stack,
-  Loader,
   StyledSeperator,
 } from "fluent-styles";
 import { BottomTabBar } from "../../src/components/BottomTabBar";
@@ -27,6 +26,7 @@ import { LiveSessionCard } from "../../src/components/LiveSessionCard";
 import { LatestSermonCard } from "../../src/components/LatestSermonCard";
 import { PropheticThemeCard } from "../../src/components/PropheticThemeCard";
 import { ArticlesSection } from "../../src/components/ArticlesSection";
+import { HomeSkeletonPills, HomeSkeletonHero, SermonCardSkeleton } from "../../src/components/skeleton";
 import { useFadeUp } from "../../src/hooks/useFadeUp";
 import { useSelectedChurch } from "../../src/church/SelectedChurchContext";
 import { useMemberSession } from "../../src/member/MemberSessionContext";
@@ -50,7 +50,7 @@ export default function HomeScreen() {
   const { data: settings, isLoading: settingsLoading } = useSettings();
   const { data: services } = useRegularServices();
   const { data: prayerTimes } = usePrayerTimes();
-  const { data: latestSermon } = useLatestSermon();
+  const { data: latestSermon, isLoading: sermonLoading } = useLatestSermon();
   const { data: latestArticles, isLoading: articlesLoading } =
     useLatestArticles();
   const { features, hasFeature } = useFeatureFlags();
@@ -199,20 +199,23 @@ export default function HomeScreen() {
             </StyledText>
           </Stack>
 
-          {/* Quick actions — horizontal pill row, one per enabled feature */}
-          {quickActions.length > 0 && (
+          {/* Quick actions — horizontal pill row, one per enabled feature.
+              Pill-shaped skeletons while settings is on its first fetch
+              (features derives from it); nothing at all once loaded if a
+              church genuinely has zero enabled features. */}
+          {quickActions.length > 0 ? (
             <Stack marginBottom={20}>
               <PillActionRow actions={quickActions} />
             </Stack>
-          )}
+          ) : settingsLoading ? (
+            <HomeSkeletonPills />
+          ) : null}
 
           {/* Important administrator notices win. Otherwise a service or
               prayer in its configured lead-time window takes this slot,
               followed by a normal administrator notice and the banner. */}
           {settingsLoading ? (
-            <Stack height={200} alignItems="center" justifyContent="center">
-              <Loader color={COLORS.indigo} />
-            </Stack>
+            <HomeSkeletonHero />
           ) : hasPriorityNotification ? (
             <NotificationCard notification={settings?.notification} />
           ) : liveSessions.length > 0 ? (
@@ -230,7 +233,7 @@ export default function HomeScreen() {
           {/* Just below the hero slot above (whichever of the four it
               rendered) — fully self-contained, see PropheticThemeCard.tsx
               for its own hasFeature/content visibility checks. */}
-          <PropheticThemeCard settings={settings} />
+          {!settingsLoading && <PropheticThemeCard settings={settings} />}
 
           <Stack
             horizontal
@@ -250,8 +253,15 @@ export default function HomeScreen() {
 
           {/* Latest Sermon — one card only, never a list. Fully
               self-contained: hides itself for hasFeature("sermons")=false,
-              no published sermon, or no valid YouTube URL. */}
-          <LatestSermonCard sermon={latestSermon} />
+              no published sermon, or no valid YouTube URL. Skeletons only
+              on the true first fetch (sermonLoading + nothing cached yet)
+              — LatestSermonCard already collapses to nothing once loaded
+              if there's genuinely no sermon to show. */}
+          {sermonLoading && !latestSermon ? (
+            <SermonCardSkeleton />
+          ) : (
+            <LatestSermonCard sermon={latestSermon} />
+          )}
 
           <Stack
             horizontal

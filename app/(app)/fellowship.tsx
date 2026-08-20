@@ -15,6 +15,7 @@ import { router } from "expo-router";
 import { BottomTabBar } from "../../src/components/BottomTabBar";
 import { FeatureGate } from "../../src/components/FeatureGate";
 import { useFellowship } from "../../src/hooks/useChurchData";
+import { FellowshipSkeleton } from "../../src/components/skeleton";
 import { COLORS } from "../../src/theme/colors";
 import { SHADOW_CARD, SHADOW_CHIP } from "../../src/theme/shadows";
 import { ScalePressable } from "../../src/components/ScalePressable";
@@ -40,7 +41,7 @@ export default function FellowshipScreen() {
 }
 
 function FellowshipScreenContent() {
-  const { data: groups } = useFellowship();
+  const { data: groups, isLoading } = useFellowship();
   const [query, setQuery] = useState("");
   const [cityFilter, setCityFilter] = useState<string | null>(null);
   const [filterOpen, setFilterOpen] = useState(false);
@@ -164,23 +165,27 @@ function FellowshipScreenContent() {
             </StyledShape>
           </ScalePressable>
         </Stack>
-        {/* Count badge */}
-        <Stack
-          horizontal
-          alignItems="center"
-          gap={7}
-          marginTop={16}
-          alignSelf="flex-start"
-          paddingHorizontal={12}
-          paddingVertical={7}
-          borderRadius={50}
-          backgroundColor={COLORS.goldPale}
-        >
-          <Icon name="users" size={13} color={COLORS.goldDeep} />
-          <StyledText fontSize={13} fontWeight="700" color={COLORS.goldDeep}>
-            {filtered.length} fellowship{filtered.length === 1 ? "" : "s"}
-          </StyledText>
-        </Stack>
+        {/* Count badge — only once loading has actually finished, so it
+            never flashes "0 fellowships" while the real count is still
+            in flight. */}
+        {!isLoading && (
+          <Stack
+            horizontal
+            alignItems="center"
+            gap={7}
+            marginTop={16}
+            alignSelf="flex-start"
+            paddingHorizontal={12}
+            paddingVertical={7}
+            borderRadius={50}
+            backgroundColor={COLORS.goldPale}
+          >
+            <Icon name="users" size={13} color={COLORS.goldDeep} />
+            <StyledText fontSize={13} fontWeight="700" color={COLORS.goldDeep}>
+              {filtered.length} fellowship{filtered.length === 1 ? "" : "s"}
+            </StyledText>
+          </Stack>
+        )}
       </Stack>
 
       <StyledScrollView
@@ -189,6 +194,9 @@ function FellowshipScreenContent() {
           paddingBottom: 32,
         }}
       >
+        {isLoading && !groups ? (
+          <FellowshipSkeleton />
+        ) : (
         <Stack gap={14}>
           {filtered.length === 0 && (
             <StyledText
@@ -296,6 +304,7 @@ function FellowshipScreenContent() {
             );
           })}
         </Stack>
+        )}
       </StyledScrollView>
 
       {/* City Filter Popup */}

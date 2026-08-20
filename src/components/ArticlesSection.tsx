@@ -5,6 +5,7 @@ import { Stack, StyledText } from "fluent-styles";
 import Svg, { Defs, LinearGradient, Stop, Rect } from "react-native-svg";
 import { router } from "expo-router";
 import { ScalePressable } from "./ScalePressable";
+import { Skeleton } from "./skeleton";
 import { getFeatureById } from "../config/mobileFeatures";
 import { useFeatureFlags } from "../hooks/useFeatureFlags";
 import { SHADOW_CARD } from "../theme/shadows";
@@ -168,37 +169,24 @@ function ArticleCard({ article, index }: { article: Article; index: number }) {
   );
 }
 
-// Simple pulsing-opacity placeholder matching the final card's exact
-// dimensions — no ActivityIndicator, per spec, and no layout shift once
+// Placeholder matching the final card's exact dimensions — built from the
+// shared skeleton system (src/components/skeleton/) so this card's shimmer
+// runs on the same animation driver as every other skeleton in the app,
+// and automatically goes static under Reduce Motion. No layout shift once
 // real cards swap in since the shape is identical.
 function ArticleCardSkeleton() {
-  const pulse = useRef(new Animated.Value(0.4)).current;
-
-  useEffect(() => {
-    const loop = Animated.loop(
-      Animated.sequence([
-        Animated.timing(pulse, { toValue: 1, duration: 650, easing: Easing.inOut(Easing.ease), useNativeDriver: true }),
-        Animated.timing(pulse, { toValue: 0.4, duration: 650, easing: Easing.inOut(Easing.ease), useNativeDriver: true }),
-      ])
-    );
-    loop.start();
-    return () => loop.stop();
-  }, []);
-
   return (
-    <Animated.View style={{ opacity: pulse, width: CARD_WIDTH }}>
-      <Stack width={CARD_WIDTH} height={CARD_HEIGHT} backgroundColor={COLORS.white} borderRadius={CARD_RADIUS} overflow="hidden" style={SHADOW_CARD}>
-        <Stack backgroundColor={COLORS.chromeBorder} style={{ height: IMAGE_HEIGHT }} />
-        <Stack flex={1} padding={14} gap={8}>
-          <Stack width={60} height={10} borderRadius={4} backgroundColor={COLORS.chromeBorder} />
-          <Stack width="90%" height={14} borderRadius={4} backgroundColor={COLORS.chromeBorder} />
-          <Stack width="70%" height={14} borderRadius={4} backgroundColor={COLORS.chromeBorder} />
-          <Stack gap={5} style={{ marginTop: 6 }}>
-            <Stack width="100%" height={10} borderRadius={4} backgroundColor={COLORS.chromeBorder} />
-            <Stack width="85%" height={10} borderRadius={4} backgroundColor={COLORS.chromeBorder} />
-          </Stack>
+    <Stack width={CARD_WIDTH} height={CARD_HEIGHT} backgroundColor={COLORS.white} borderRadius={CARD_RADIUS} overflow="hidden" style={SHADOW_CARD}>
+      <Skeleton width="100%" height={IMAGE_HEIGHT} borderRadius={0} />
+      <Stack flex={1} padding={14} gap={8}>
+        <Skeleton width={60} height={10} borderRadius={4} />
+        <Skeleton width="90%" height={14} borderRadius={4} />
+        <Skeleton width="70%" height={14} borderRadius={4} />
+        <Stack gap={5} style={{ marginTop: 6 }}>
+          <Skeleton width="100%" height={10} borderRadius={4} />
+          <Skeleton width="85%" height={10} borderRadius={4} />
         </Stack>
       </Stack>
-    </Animated.View>
+    </Stack>
   );
 }

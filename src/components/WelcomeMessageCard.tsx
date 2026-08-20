@@ -1,10 +1,12 @@
 import type { ReactNode } from "react";
-import { StyledText, StyledImageBackground, Stack, StyledSpacer } from "fluent-styles";
+import {
+  StyledText,
+  Stack,
+  StyledSpacer,
+} from "fluent-styles";
 import { COLORS } from "../theme/colors";
 import { SHADOW_CARD, SHADOW_SOFT } from "../theme/shadows";
 import type { ChurchSettings } from "../api/types";
-
-const WELCOME_BG = require("../../assets/welcome_message.png");
 
 const FALLBACK_DESCRIPTION =
   "Whatever season you’re walking through, you don’t have to walk through it alone. Come as you are — we’ll believe with you for what’s next.";
@@ -54,7 +56,12 @@ function HighlightableText({
   return (
     <StyledText fontSize={fontSize} color={color} style={style}>
       {text.slice(0, idx)}
-      <StyledText fontSize={fontSize} fontWeight="700" color={COLORS.gold} style={{ fontStyle: "italic" }}>
+      <StyledText
+        fontSize={fontSize}
+        fontWeight="700"
+        color={COLORS.gold}
+        style={{ fontStyle: "italic" }}
+      >
         {phrase}
       </StyledText>
       {text.slice(idx + phrase.length)}
@@ -100,9 +107,17 @@ export function WelcomeMessageCard({
   const text = pastor?.description ?? FALLBACK_DESCRIPTION;
   const attribution = showAttribution && (
     <>
-      <Stack width={56} height={1.5} backgroundColor={COLORS.gold} marginTop={24} marginBottom={16} />
+      <Stack
+        width={56}
+        height={1.5}
+        backgroundColor={COLORS.gold}
+        marginTop={24}
+        marginBottom={16}
+      />
       <StyledText fontSize={14} fontWeight="800" color={COLORS.ink}>
-        {pastor ? `${pastor.first_name} ${pastor.last_name}` : "The pastoral team"}
+        {pastor
+          ? `${pastor.first_name} ${pastor.last_name}`
+          : "The pastoral team"}
       </StyledText>
       <StyledText fontSize={12} color={COLORS.inkSoft} style={{ marginTop: 3 }}>
         {pastor?.title ?? "Lead Pastor"}, Winners Chapel Peterborough
@@ -119,23 +134,50 @@ export function WelcomeMessageCard({
       )}
 
       {plain ? (
-        <Stack backgroundColor={COLORS.paperWarm} borderRadius={22} padding={24} style={SHADOW_SOFT}>
-          <StyledText fontSize={26} fontWeight="800" color={COLORS.gold} style={{ lineHeight: 22, marginBottom: 8 }}>
+        <Stack
+          backgroundColor={COLORS.paperWarm}
+          borderRadius={22}
+          padding={24}
+          style={SHADOW_SOFT}
+        >
+          <StyledText
+            fontSize={26}
+            fontWeight="800"
+            color={COLORS.gold}
+            style={{ lineHeight: 22, marginBottom: 8 }}
+          >
             “
           </StyledText>
-          <HighlightableText text={text} phrase={highlightPhrase} fontSize={15} color={COLORS.inkSoft} style={{ lineHeight: 23 }} />
+          <HighlightableText
+            text={text}
+            phrase={highlightPhrase}
+            fontSize={15}
+            color={COLORS.inkSoft}
+            style={{ lineHeight: 23 }}
+          />
           {attribution}
         </Stack>
       ) : text.length > LONG_TEXT_THRESHOLD ? (
-        <PlainQuoteCard text={text} attribution={attribution} showAttribution={showAttribution} />
+        <PlainQuoteCard
+          text={text}
+          attribution={attribution}
+          showAttribution={showAttribution}
+        />
       ) : (
-        <StyledImageBackground source={WELCOME_BG} borderRadius={22} resizeMode="cover" style={SHADOW_CARD}>
-          <Stack marginVertical={8} padding={26} paddingBottom={showAttribution ? 8 : 22}>
-            <StyledSpacer marginVertical={8} />
-            <HighlightableText text={text} phrase={HOME_HIGHLIGHT_PHRASE} fontSize={18} style={{ lineHeight: 29 }} />
-            {attribution}
-          </Stack>
-        </StyledImageBackground>
+        <Stack
+          marginVertical={8}
+          padding={26}
+          paddingBottom={showAttribution ? 8 : 22}
+        >
+          <StyledSpacer marginVertical={8} />
+          <HighlightableText
+            text={text}
+            phrase={HOME_HIGHLIGHT_PHRASE}
+            fontSize={18}
+            style={{ lineHeight: 29 }}
+          />
+          {attribution}
+        </Stack>
       )}
     </Stack>
   );
@@ -146,15 +188,43 @@ export function WelcomeMessageCard({
  * decorative quote glyph instead, so it stays premium at any height a long
  * message needs rather than stretching a fixed-aspect image to fit.
  */
-function PlainQuoteCard({ text, attribution, showAttribution }: { text: string; attribution: ReactNode; showAttribution: boolean }) {
+function PlainQuoteCard({
+  text,
+  attribution,
+  showAttribution,
+}: {
+  text: string;
+  attribution: ReactNode;
+  showAttribution: boolean;
+}) {
   return (
-    <Stack backgroundColor={COLORS.paperAlt} borderRadius={22} padding={26} paddingTop={34} paddingBottom={showAttribution ? 8 : 26} style={[{ overflow: "hidden" }, SHADOW_CARD]}>
+    <Stack
+      backgroundColor={COLORS.paperAlt}
+      borderRadius={22}
+      padding={26}
+      paddingTop={34}
+      paddingBottom={showAttribution ? 8 : 26}
+      style={[{ overflow: "hidden" }, SHADOW_CARD]}
+    >
       <StyledText
-        style={{ position: "absolute", top: -6, left: 18, fontSize: 84, fontWeight: "800", color: COLORS.gold, opacity: 0.16 }}
+        style={{
+          position: "absolute",
+          top: -6,
+          left: 18,
+          fontSize: 84,
+          fontWeight: "800",
+          color: COLORS.gold,
+          opacity: 0.16,
+        }}
       >
         “
       </StyledText>
-      <HighlightableText text={text} phrase={HOME_HIGHLIGHT_PHRASE} fontSize={18} style={{ lineHeight: 29 }} />
+      <HighlightableText
+        text={text}
+        phrase={HOME_HIGHLIGHT_PHRASE}
+        fontSize={18}
+        style={{ lineHeight: 29 }}
+      />
       {attribution}
     </Stack>
   );

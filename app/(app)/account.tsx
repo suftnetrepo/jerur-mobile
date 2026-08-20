@@ -17,24 +17,29 @@ import {
 import { useMemberSession } from "../../src/member/MemberSessionContext";
 import { AppBackHeader } from "../../src/components/AppBackHeader";
 import { FormSubmitButton } from "../../src/components/FormSubmitButton";
+import { AccountSkeleton } from "../../src/components/skeleton";
 import { useFeatureFlags } from "../../src/hooks/useFeatureFlags";
 import { apiErrorMessage, apiErrorCode } from "../../src/api/client";
 import { COLORS } from "../../src/theme/colors";
 import { SHADOW_SOFT } from "../../src/theme/shadows";
 
 export default function AccountScreen() {
-  const { member, logout, deleteAccount } = useMemberSession();
+  const { member, isLoading, logout, deleteAccount } = useMemberSession();
 
   return (
     <StyledPage flex={1} backgroundColor={COLORS.paper}>
       <AppBackHeader title="Account" />
       <StyledScrollView contentContainerStyle={{  paddingTop: 10, paddingBottom: 60  }}>
+        {isLoading ? (
+          <AccountSkeleton />
+        ) : (
+          <>
          <Stack
           width={42}
           height={4}
           borderRadius={999}
           backgroundColor={COLORS.gold}
-          paddingHorizontal={24} 
+          paddingHorizontal={24}
           marginHorizontal={24}
         />
         <Stack backgroundColor={COLORS.paper} paddingHorizontal={24} paddingTop={16} paddingBottom={member ? 44 : 68}>
@@ -55,6 +60,8 @@ export default function AccountScreen() {
             <AuthForms />
           )}
         </Stack>
+          </>
+        )}
       </StyledScrollView>
     </StyledPage>
   );

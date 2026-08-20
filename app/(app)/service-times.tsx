@@ -10,6 +10,7 @@ import {
 } from "fluent-styles";
 import { FeatureGate } from "../../src/components/FeatureGate";
 import { AppBackHeader } from "../../src/components/AppBackHeader";
+import { ServiceTimesSkeleton } from "../../src/components/skeleton";
 import {
   ChurchIllustration,
   BibleIllustration,
@@ -42,7 +43,7 @@ export default function ServiceTimesScreen() {
 }
 
 function ServiceTimesScreenContent() {
-  const { data: services } = useRegularServices();
+  const { data: services, isLoading } = useRegularServices();
   const { hasFeature } = useFeatureFlags();
 
   // Attendance always starts here — service is fully known from this card's
@@ -104,8 +105,12 @@ function ServiceTimesScreenContent() {
           service times.
         </StyledText>
 
-        {/* Empty state */}
-        {(!services || services.length === 0) && (
+        {/* First fetch, nothing cached yet — skeleton, not the empty-state
+            text below (that's reserved for a genuinely empty response). */}
+        {isLoading && !services && <ServiceTimesSkeleton />}
+
+        {/* Empty state — only once loading has actually finished. */}
+        {!isLoading && (!services || services.length === 0) && (
           <StyledText
             fontSize={14}
             color={COLORS.inkSoft}

@@ -1,10 +1,11 @@
 import { Image, Linking, Share, useWindowDimensions } from "react-native";
 import { router, useLocalSearchParams } from "expo-router";
 import { Feather as Icon } from "@expo/vector-icons";
-import { StyledPage, StyledScrollView, StyledText, StyledButton, Stack, Loader } from "fluent-styles";
+import { StyledPage, StyledScrollView, StyledText, StyledButton, Stack } from "fluent-styles";
 import Svg, { Defs, LinearGradient, Stop, Rect } from "react-native-svg";
 import RenderHTML, { type MixedStyleDeclaration } from "react-native-render-html";
 import { FeatureGate } from "../../../src/components/FeatureGate";
+import { ArticleDetailSkeleton } from "../../../src/components/skeleton";
 import { useArticleDetail } from "../../../src/hooks/useChurchData";
 import { getFeatureById } from "../../../src/config/mobileFeatures";
 import { SHADOW_SOFT } from "../../../src/theme/shadows";
@@ -75,9 +76,9 @@ function ArticleDetailScreenContent() {
       <StyledPage.Header marginHorizontal={16} title="Article" titleAlignment="center" showBackArrow onBackPress={() => router.back()} />
 
       {isLoading ? (
-        <Stack flex={1} alignItems="center" justifyContent="center">
-          <Loader color={COLORS.indigo} />
-        </Stack>
+        <StyledScrollView contentContainerStyle={{ paddingBottom: 40 }}>
+          <ArticleDetailSkeleton />
+        </StyledScrollView>
       ) : isError || !article ? (
         <Stack flex={1} alignItems="center" justifyContent="center" paddingHorizontal={32} gap={6}>
           <StyledText fontSize={15} fontWeight="700" color={COLORS.ink} style={{ textAlign: "center" }}>

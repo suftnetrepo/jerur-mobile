@@ -9,6 +9,7 @@ import {
   useToast,
 } from "fluent-styles";
 import { ContactInfoRow } from "../../src/components/ContactInfoRow";
+import { AboutSkeleton } from "../../src/components/skeleton";
 import { useSettings } from "../../src/hooks/useChurchData";
 import { useDenominations } from "../../src/hooks/useDenominations";
 import { COLORS } from "../../src/theme/colors";
@@ -25,7 +26,7 @@ import { AppBackHeader } from "../../src/components/AppBackHeader";
  * ChurchDetailsSheet.tsx (no denomination -> no denomination line).
  */
 export default function AboutScreen() {
-  const { data: settings } = useSettings();
+  const { data: settings, isLoading } = useSettings();
   const { getDenominationLabel } = useDenominations();
   const toast = useToast();
 
@@ -142,6 +143,10 @@ export default function AboutScreen() {
           marginBottom={12}
           marginHorizontal={24}
         />
+        {isLoading && !settings ? (
+          <AboutSkeleton />
+        ) : (
+          <>
         {/* ── Banner + floating logo — no banner means no logo either;    ── */}
         {/* the floating badge is explicitly banner-relative, not a       */}
         {/* stand-alone treatment (see ChurchDetailsSheet's own logo for  */}
@@ -321,6 +326,8 @@ export default function AboutScreen() {
             </Stack>
           ) : null}
         </Stack>
+          </>
+        )}
       </StyledScrollView>
     </StyledPage>
   );

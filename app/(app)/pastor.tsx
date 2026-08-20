@@ -10,6 +10,7 @@ import {
   Stack,
 } from "fluent-styles";
 import { WelcomeMessageCard } from "../../src/components/WelcomeMessageCard";
+import { PastorSkeleton } from "../../src/components/skeleton";
 import { useSettings } from "../../src/hooks/useChurchData";
 import { COLORS } from "../../src/theme/colors";
 import { SHADOW_SOFT } from "../../src/theme/shadows";
@@ -21,7 +22,7 @@ import { SHADOW_SOFT } from "../../src/theme/shadows";
  * version, so the welcome message looks identical wherever it appears.
  */
 export default function PastorScreen() {
-  const { data: settings } = useSettings();
+  const { data: settings, isLoading } = useSettings();
   const pastor = settings?.pastor_section;
 
   const name = pastor
@@ -68,6 +69,10 @@ export default function PastorScreen() {
       <StyledScrollView
         contentContainerStyle={{ paddingHorizontal: 24, paddingTop: 18, paddingBottom: 60 }}
       >
+        {isLoading && !settings ? (
+          <PastorSkeleton />
+        ) : (
+          <>
         <Stack alignItems="center" marginBottom={22}>
           {showPhoto ? (
             <Image
@@ -140,6 +145,8 @@ export default function PastorScreen() {
             }
           />
         </Stack>
+          </>
+        )}
       </StyledScrollView>
     </StyledPage>
   );
