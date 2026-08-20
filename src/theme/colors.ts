@@ -10,6 +10,7 @@ export const COLORS = {
   inkDeep: "#4B453A",
   paper: "#FCFBF7",
   paperAlt: "#F2ECDE",
+  paperAltSoft :"#e9e6e1",
   paperSoft: "#F9F7F2",
   paperSoftest: "#FDFCF9",
   paperWarm: "#FDF9F2",

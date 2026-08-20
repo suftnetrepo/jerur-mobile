@@ -2,6 +2,7 @@ import { createContext, useContext, useEffect, useState, type ReactNode } from "
 import { setActiveMemberToken } from "../api/client";
 import { loadMemberSession, saveMemberSession, clearMemberSession } from "./member-session-storage";
 import { registerMember, loginMember, deleteMember } from "../api/member";
+import { useSelectedChurch } from "../church/SelectedChurchContext";
 import type { Member } from "../api/types";
 
 type MemberSessionContextValue = {
@@ -16,6 +17,10 @@ type MemberSessionContextValue = {
 const MemberSessionContext = createContext<MemberSessionContextValue | null>(null);
 
 export function MemberSessionProvider({ children }: { children: ReactNode }) {
+  // MemberSessionProvider is always rendered inside SelectedChurchProvider
+  // (see app/_layout.tsx), so this is safe — it's reading an ancestor's
+  // context, not a sibling's.
+  const { changeChurch } = useSelectedChurch();
   const [member, setMember] = useState<Member | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -51,12 +56,24 @@ export function MemberSessionProvider({ children }: { children: ReactNode }) {
   // local session exactly like logout() does — but only once the API call
   // has actually succeeded. If deleteMember() throws, none of the session
   // clearing below runs, so the member stays logged in on failure.
+  //
+  // Unlike ordinary logout(), deletion also clears the ACTIVE CHURCH
+  // (persisted AsyncStorage + SelectedChurchContext + the whole React
+  // Query cache) via the existing changeChurch() — reusing it rather than
+  // re-implementing the same three steps here. A member record only ever
+  // belongs to one church; once it's gone, nothing about the previously
+  // selected church should carry into the next session. This is the one
+  // explicit reset condition — normal logout deliberately leaves the
+  // selected church alone, since browsing/using a church doesn't require
+  // being logged in as a member. changeChurch() also re-clears the member
+  // session it just cleared above; that's a harmless no-op, not a bug.
   async function deleteAccount() {
     if (!member) return;
     await deleteMember(member._id);
     await clearMemberSession();
     setActiveMemberToken(null);
     setMember(null);
+    await changeChurch();
   }
 
   return (

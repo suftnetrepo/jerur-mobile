@@ -2,6 +2,17 @@ import { useMemo } from "react";
 import { useSettings } from "./useChurchData";
 import { MOBILE_FEATURES, getFeatureById, type MobileFeature } from "../config/mobileFeatures";
 
+// Flags that are baseline platform capabilities rather than
+// MOBILE_FEATURES catalogue entries — deliberately checked against the
+// raw enabled-ids list only, never against denomination/route rules (see
+// hasFeature() below). "notifications" is the one that exists today; see
+// jerur-next's constants/mobileFeatures.js, DEFAULT_ENABLED_FEATURE_IDS
+// comment, for the matching note on the backend side. Add a flag here
+// ONLY when it's genuinely not meant to have a catalogue entry — for
+// anything else, the fix is adding the missing MOBILE_FEATURES entry,
+// not silencing the warning below.
+const NON_CATALOGUE_FLAGS = new Set(["notifications"]);
+
 /**
  * Central feature-flag hook. The selected church's enabled feature ids
  * live on `ChurchSettings.features` (GET /church/get, see src/api/church.ts)
@@ -57,7 +68,28 @@ export function useFeatureFlags() {
 
   function hasFeature(id: string): boolean {
     const feature = getFeatureById(id);
-    return !!feature && isAvailable(feature);
+    if (!feature) {
+      // Dev-only guardrail against the exact bug this fallback exists to
+      // fix: hasFeature("notifications") silently always returning false
+      // because that id has no MOBILE_FEATURES entry. Any *other* id that
+      // reaches here without one is almost always a typo or a forgotten
+      // catalogue entry for a newly-added feature — this fires in dev
+      // builds only (never production) so it can't affect real behavior,
+      // but it turns "silently wrong for months" into "console warning
+      // the moment you exercise that code path."
+      if (__DEV__ && !NON_CATALOGUE_FLAGS.has(id)) {
+        console.warn(
+          `hasFeature("${id}") has no matching entry in MOBILE_FEATURES ` +
+            `(src/config/mobileFeatures.ts). Falling back to the raw ` +
+            `enabled-ids check, which skips denomination gating. If "${id}" ` +
+            `is a real feature, add it to MOBILE_FEATURES; if it's a ` +
+            `deliberate baseline flag like "notifications", add it to ` +
+            `NON_CATALOGUE_FLAGS in useFeatureFlags.ts.`,
+        );
+      }
+      return featureIds.includes(id);
+    }
+    return isAvailable(feature);
   }
 
   return {

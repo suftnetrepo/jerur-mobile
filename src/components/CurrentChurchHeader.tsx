@@ -1,5 +1,11 @@
 import { Feather as Icon } from "@expo/vector-icons";
-import { Stack, StyledText, StyledPressable, StyledShape } from "fluent-styles";
+import {
+  Stack,
+  StyledText,
+  StyledPressable,
+  StyledShape,
+  StyledImage,
+} from "fluent-styles";
 import { COLORS } from "../theme/colors";
 import type { ChurchSearchResult } from "../api/types";
 
@@ -16,12 +22,21 @@ import type { ChurchSearchResult } from "../api/types";
  * This component doesn't decide what pressing it does — that's still
  * handleChangeChurch in app/(app)/index.tsx, unchanged, just handed to it
  * via `onPress`.
+ *
+ * The badge shows the church's own logo (ChurchSettings.logo_url) when
+ * one is set, filling the exact same 48px circle the location pin icon
+ * otherwise occupies — never resized up/down, just swapped in place.
+ * Falls back to the pin whenever there's no logo (or none yet — Home
+ * hands this over from its own useSettings() call, same source of truth
+ * as everywhere else logo_url is read).
  */
 export function CurrentChurchHeader({
   church,
+  logoUrl,
   onPress,
 }: {
   church: ChurchSearchResult | null;
+  logoUrl?: string | null;
   onPress: () => void;
 }) {
   const address = church?.address;
@@ -30,6 +45,7 @@ export function CurrentChurchHeader({
       [address?.addressLine1, address?.town].filter(Boolean).join(", ") ||
       church.name
     : "Tap to choose a church";
+  const trimmedLogoUrl = logoUrl?.trim();
 
   return (
     <StyledPressable
@@ -49,7 +65,17 @@ export function CurrentChurchHeader({
           backgroundColor={COLORS.white}
           style={{ borderWidth: 1, borderColor: COLORS.chromeBorder }}
         >
-          <Icon name="map-pin" size={24} color={COLORS.inkSoft} />
+          {trimmedLogoUrl ? (
+            <StyledImage
+              source={{ uri: trimmedLogoUrl }}
+              cycle
+              size={48}
+              resizeMode="cover"
+              accessibilityLabel="Church logo"
+            />
+          ) : (
+            <Icon name="map-pin" size={24} color={COLORS.inkSoft} />
+          )}
         </StyledShape>
         <Stack gap={1} flexShrink={1}>
           <StyledText fontSize={11.5} fontWeight="600" color={COLORS.inkSoft}>

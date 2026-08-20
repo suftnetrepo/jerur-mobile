@@ -99,15 +99,15 @@ export default function SelectChurchScreen() {
       <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: 40 }}>
         <Stack paddingHorizontal={20} paddingTop={20}>
           <Animated.View style={heroAnim}>
-            <Stack alignItems="center" marginBottom={26} gap={6}>
-              <StyledShape size={56} cycle backgroundColor={COLORS.goldPale} style={SHADOW_SOFT}>
-                <Icon name="compass" size={24} color={COLORS.goldDeep} />
+            <Stack alignItems="center" marginBottom={22} gap={4}>
+              <StyledShape size={52} cycle backgroundColor={COLORS.goldPale}>
+                <Icon name="compass" size={22} color={COLORS.goldDeep} />
               </StyledShape>
-              <StyledText fontSize={22} fontWeight="800" color={COLORS.ink} style={{ marginTop: 10 }}>
+              <StyledText fontSize={22} fontWeight="800" color={COLORS.ink}>
                 Find your church
               </StyledText>
               <StyledText fontSize={13.5} color={COLORS.inkSoft} style={{ textAlign: "center" }}>
-                Search by name, city, or postcode — or find what's near you.
+                Find a church community near you.
               </StyledText>
             </Stack>
 
@@ -115,17 +115,18 @@ export default function SelectChurchScreen() {
               <Stack
                 horizontal
                 alignItems="center"
-                gap={4}
+                gap={8}
                 flex={1}
-                borderRadius={999}
-                paddingHorizontal={14}
+                minHeight={56}
+                borderRadius={18}
+                paddingHorizontal={16}
                 backgroundColor={COLORS.white}
-                style={SHADOW_SOFT}
+                style={[SHADOW_SOFT, { borderWidth: 1, borderColor: COLORS.chromeBorder }]}
               >
-                <Icon name="search" size={16} color={COLORS.inkSoft} />
+                <Icon name="search" size={17} color={COLORS.inkSoft} />
                 <StyledTextInput
                   variant="ghost"
-                  placeholder="Search church, city, or postcode"
+                  placeholder="Church, city or postcode"
                   value={query}
                   onChangeText={setQuery}
                   clearable
@@ -144,35 +145,76 @@ export default function SelectChurchScreen() {
                 accessibilityRole="button"
               >
                 <Stack
-                  width={44}
-                  height={44}
-                  borderRadius={22}
+                  width={56}
+                  height={56}
+                  borderRadius={28}
                   alignItems="center"
                   justifyContent="center"
                   backgroundColor={selectedDenomination === ALL_DENOMINATIONS ? COLORS.white : COLORS.indigo}
-                  style={SHADOW_SOFT}
+                  style={[
+                    SHADOW_SOFT,
+                    selectedDenomination === ALL_DENOMINATIONS
+                      ? { borderWidth: 1, borderColor: COLORS.chromeBorder }
+                      : null,
+                  ]}
                 >
-                  <Icon name="filter" size={17} color={selectedDenomination === ALL_DENOMINATIONS ? COLORS.ink : COLORS.white} />
+                  <Icon name="filter" size={18} color={selectedDenomination === ALL_DENOMINATIONS ? COLORS.ink : COLORS.white} />
                 </Stack>
               </StyledPressable>
             </Stack>
           </Animated.View>
         </Stack>
 
-        <Stack paddingHorizontal={20} paddingTop={20}>
+        <Stack paddingHorizontal={20} paddingTop={22}>
           {results.length === 0 && !loading && (
-            <Stack backgroundColor={COLORS.white} borderRadius={20} padding={22} alignItems="center" gap={14} style={SHADOW_CARD}>
-              <Icon name="navigation" size={34} color={COLORS.indigo} />
-              <StyledText fontSize={16} fontWeight="700" color={COLORS.ink}>
+            <Stack
+              backgroundColor={COLORS.paperWarm}
+              borderRadius={24}
+              padding={24}
+              alignItems="center"
+              gap={12}
+              style={[SHADOW_SOFT, { borderWidth: 1, borderColor: COLORS.chromeBorder }]}
+            >
+              <Stack
+                width={44}
+                height={44}
+                borderRadius={16}
+                alignItems="center"
+                justifyContent="center"
+                backgroundColor="rgba(27,35,64,0.1)"
+              >
+                <Icon name="navigation" size={20} color={COLORS.indigo} />
+              </Stack>
+              <StyledText fontSize={16} fontWeight="700" color={COLORS.ink} style={{ textAlign: "center" }}>
                 Show churches near me
               </StyledText>
+              <StyledText
+                fontSize={13}
+                color={COLORS.inkSoft}
+                style={{ textAlign: "center", lineHeight: 19, marginTop: -6 }}
+              >
+                Use your location to discover churches in your area.
+              </StyledText>
               <ScalePressable onPress={handleNearMe} style={{ width: "100%" }}>
-                <Stack backgroundColor={COLORS.indigo} borderRadius={999} paddingVertical={15} alignItems="center" style={shadowCta(COLORS.indigo)}>
-                  <StyledText fontSize={14.5} fontWeight="700" color={COLORS.white}>
-                    Let's get started
+                <Stack
+                  backgroundColor={COLORS.indigo}
+                  borderRadius={17}
+                  height={54}
+                  alignItems="center"
+                  justifyContent="center"
+                  style={shadowCta(COLORS.indigo)}
+                >
+                  <StyledText fontSize={15} fontWeight="700" color={COLORS.white}>
+                    Find churches near me
                   </StyledText>
                 </Stack>
               </ScalePressable>
+              <Stack horizontal alignItems="center" gap={5} style={{ marginTop: -6 }}>
+                <Icon name="lock" size={11} color={COLORS.inkSoft} />
+                <StyledText fontSize={11} color={COLORS.inkSoft}>
+                  Location is only used to find nearby churches.
+                </StyledText>
+              </Stack>
             </Stack>
           )}
 

@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 import { StyledText, StyledImageBackground, Stack, StyledSpacer } from "fluent-styles";
 import { COLORS } from "../theme/colors";
-import { SHADOW_CARD } from "../theme/shadows";
+import { SHADOW_CARD, SHADOW_SOFT } from "../theme/shadows";
 import type { ChurchSettings } from "../api/types";
 
 const WELCOME_BG = require("../../assets/welcome_message.png");
@@ -18,27 +18,46 @@ const FALLBACK_DESCRIPTION =
 // of letting the background stretch into an ugly crop.
 const LONG_TEXT_THRESHOLD = 260;
 
+// The one phrase Home's two quote-card treatments (background artwork and
+// PlainQuoteCard) have always highlighted — unchanged. Never auto-guessed:
+// it's a fixed constant, same as before this file introduced
+// HighlightableText below.
+const HOME_HIGHLIGHT_PHRASE = "Come as you are";
+
 /**
- * Renders the pastor quote, highlighting "Come as you are" in gold/italic
- * when that phrase appears in the description.
+ * Renders `text` as plain body copy, optionally highlighting one exact
+ * `phrase` (gold/italic) if it's found inside it. No highlighting happens
+ * unless a `phrase` is explicitly passed in — this never guesses which
+ * words matter in someone else's message.
  */
-function WelcomeQuoteText({ text }: { text: string }) {
-  const PHRASE = "Come as you are";
-  const idx = text.indexOf(PHRASE);
-  if (idx === -1) {
+function HighlightableText({
+  text,
+  phrase,
+  fontSize = 18,
+  color = COLORS.ink,
+  style,
+}: {
+  text: string;
+  phrase?: string;
+  fontSize?: number;
+  color?: string;
+  style?: object;
+}) {
+  const idx = phrase ? text.indexOf(phrase) : -1;
+  if (!phrase || idx === -1) {
     return (
-      <StyledText fontSize={18} color={COLORS.ink} style={{ lineHeight: 29 }}>
+      <StyledText fontSize={fontSize} color={color} style={style}>
         {text}
       </StyledText>
     );
   }
   return (
-    <StyledText fontSize={18} color={COLORS.ink} style={{ lineHeight: 29 }}>
+    <StyledText fontSize={fontSize} color={color} style={style}>
       {text.slice(0, idx)}
-      <StyledText fontSize={18} fontWeight="700" color={COLORS.gold} style={{ fontStyle: "italic" }}>
-        {PHRASE}
+      <StyledText fontSize={fontSize} fontWeight="700" color={COLORS.gold} style={{ fontStyle: "italic" }}>
+        {phrase}
       </StyledText>
-      {text.slice(idx + PHRASE.length)}
+      {text.slice(idx + phrase.length)}
     </StyledText>
   );
 }
@@ -56,15 +75,27 @@ function WelcomeQuoteText({ text }: { text: string }) {
  * Pastor screen passes false - it already has its own avatar/name/title
  * header above this card, so repeating them here would just be the same
  * information twice.
+ *
+ * `plain` opts a caller out of the quote-card treatment entirely (no
+ * background artwork, no giant decorative watermark glyph) in favour of a
+ * simple warm/cream card: a small gold quote mark, the message as plain
+ * body text, optionally highlighting `highlightPhrase` (gold/italic) if
+ * it's explicitly given and actually found in the text — never guessed.
+ * Home doesn't pass either (its own request was specifically "in the
+ * pastor page"); Pastor does.
  */
 export function WelcomeMessageCard({
   pastor,
   heading = "",
   showAttribution = true,
+  plain = false,
+  highlightPhrase,
 }: {
   pastor?: ChurchSettings["pastor_section"];
   heading?: string;
   showAttribution?: boolean;
+  plain?: boolean;
+  highlightPhrase?: string;
 }) {
   const text = pastor?.description ?? FALLBACK_DESCRIPTION;
   const attribution = showAttribution && (
@@ -87,13 +118,21 @@ export function WelcomeMessageCard({
         </StyledText>
       )}
 
-      {text.length > LONG_TEXT_THRESHOLD ? (
+      {plain ? (
+        <Stack backgroundColor={COLORS.paperWarm} borderRadius={22} padding={24} style={SHADOW_SOFT}>
+          <StyledText fontSize={26} fontWeight="800" color={COLORS.gold} style={{ lineHeight: 22, marginBottom: 8 }}>
+            “
+          </StyledText>
+          <HighlightableText text={text} phrase={highlightPhrase} fontSize={15} color={COLORS.inkSoft} style={{ lineHeight: 23 }} />
+          {attribution}
+        </Stack>
+      ) : text.length > LONG_TEXT_THRESHOLD ? (
         <PlainQuoteCard text={text} attribution={attribution} showAttribution={showAttribution} />
       ) : (
         <StyledImageBackground source={WELCOME_BG} borderRadius={22} resizeMode="cover" style={SHADOW_CARD}>
           <Stack marginVertical={8} padding={26} paddingBottom={showAttribution ? 8 : 22}>
             <StyledSpacer marginVertical={8} />
-            <WelcomeQuoteText text={text} />
+            <HighlightableText text={text} phrase={HOME_HIGHLIGHT_PHRASE} fontSize={18} style={{ lineHeight: 29 }} />
             {attribution}
           </Stack>
         </StyledImageBackground>
@@ -115,7 +154,7 @@ function PlainQuoteCard({ text, attribution, showAttribution }: { text: string; 
       >
         “
       </StyledText>
-      <WelcomeQuoteText text={text} />
+      <HighlightableText text={text} phrase={HOME_HIGHLIGHT_PHRASE} fontSize={18} style={{ lineHeight: 29 }} />
       {attribution}
     </Stack>
   );

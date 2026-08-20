@@ -153,7 +153,11 @@ export default function HomeScreen() {
           paddingTop={12}
           paddingBottom={4}
         >
-          <CurrentChurchHeader church={church} onPress={handleChangeChurch} />
+          <CurrentChurchHeader
+            church={church}
+            logoUrl={settings?.logo_url}
+            onPress={handleChangeChurch}
+          />
           <Stack marginLeft={16} horizontal alignItems="center" gap={14}>
             <StyledPressable
               onPress={() => router.push("/account")}
@@ -236,17 +240,11 @@ export default function HomeScreen() {
             marginVertical={16}
           >
             <Stack>
-              <StyledText fontSize={20} fontWeight="400" color={COLORS.inkSoft}>
+              <StyledText fontSize={16} fontWeight="400" color={COLORS.inkSoftest}>
                 Latest Message
               </StyledText>
 
-              <StyledText
-                fontSize={12.5}
-                color={COLORS.inkSoft}
-                style={{ marginTop: 3 }}
-              >
-                Watch the latest word from our church
-              </StyledText>
+             
             </Stack>
           </Stack>
 
@@ -263,7 +261,7 @@ export default function HomeScreen() {
             marginVertical={16}
           >
             <Stack>
-              <StyledText fontSize={20} fontWeight="400" color={COLORS.inkSoft}>
+              <StyledText fontSize={16} fontWeight="400" color={COLORS.inkSoft}>
                 More Article 
               </StyledText>
 

@@ -45,7 +45,7 @@ export function PropheticThemeCard({
         marginVertical={16}
       >
         <Stack>
-          <StyledText fontSize={20} fontWeight="400" color={COLORS.ink}>
+          <StyledText fontSize={16} fontWeight="400" color={COLORS.inkSoftest}>
               Prophetic Theme 
           </StyledText>
         </Stack>

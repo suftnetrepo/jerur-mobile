@@ -11,6 +11,7 @@ import {
 import { FeatureGate } from "../../src/components/FeatureGate";
 import { AppBackHeader } from "../../src/components/AppBackHeader";
 import { FormSubmitButton } from "../../src/components/FormSubmitButton";
+import { ContactInfoRow } from "../../src/components/ContactInfoRow";
 import { useFadeUp } from "../../src/hooks/useFadeUp";
 import { useSettings } from "../../src/hooks/useChurchData";
 import { openChurchEmailDraft } from "../../src/lib/church-email";
@@ -189,7 +190,7 @@ function ContactScreenContent() {
             padding={18}
             style={SHADOW_SOFT}
           >
-            <ContactRow
+            <ContactInfoRow
               icon="map-pin"
               label="Address"
               value={`${address?.completeAddress} `}
@@ -211,9 +212,9 @@ function ContactScreenContent() {
               Get in touch
             </StyledText>
 
-            <ContactRow icon="mail" label="Email" value={email} onPress={handleEmailPress} showChevron />
+            <ContactInfoRow icon="mail" label="Email" value={email} onPress={handleEmailPress} showChevron />
             <Stack height={1} backgroundColor={COLORS.chromeBorder} style={{ marginLeft: 58, marginVertical: 14 }} />
-            <ContactRow icon="phone" label="Call" value={primaryPhone} onPress={handlePhonePress} showChevron />
+            <ContactInfoRow icon="phone" label="Call" value={primaryPhone} onPress={handlePhonePress} showChevron />
           </Stack>
         </Animated.View>
 
@@ -324,36 +325,5 @@ function ContactScreenContent() {
         </Animated.View>
       </StyledScrollView>
     </StyledPage>
-  );
-}
-
-function ContactRow({
-  icon,
-  label,
-  value,
-  onPress,
-  showChevron = false,
-}: {
-  icon: string;
-  label: string;
-  value: string;
-  onPress?: () => void;
-  showChevron?: boolean;
-}) {
-  return (
-    <Stack horizontal gap={14} alignItems="center" onTouchEnd={onPress} style={{ minHeight: 58 }}>
-      <Stack width={46} height={46} borderRadius={23} backgroundColor={COLORS.goldPale} alignItems="center" justifyContent="center">
-        <Icon name={icon as any} size={20} color={COLORS.goldDeep} />
-      </Stack>
-      <Stack flex={1}>
-        <StyledText fontSize={14} fontWeight="800" color={COLORS.ink} style={{ marginBottom: 2 }}>
-          {label}
-        </StyledText>
-        <StyledText fontSize={13.5} color={COLORS.inkSoft} numberOfLines={2} style={{ lineHeight: 19 }}>
-          {value}
-        </StyledText>
-      </Stack>
-      {showChevron && <Icon name="chevron-right" size={22} color={COLORS.inkSoft} />}
-    </Stack>
   );
 }

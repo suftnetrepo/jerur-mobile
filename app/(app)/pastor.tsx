@@ -28,6 +28,7 @@ export default function PastorScreen() {
     ? `${pastor.first_name} ${pastor.last_name}`
     : "The pastoral team";
   const title = pastor?.title ?? "Lead Pastor";
+  const churchName = settings?.name?.trim() || "your church";
   const initials = pastor
     ? `${pastor.first_name[0] ?? ""}${pastor.last_name[0] ?? ""}`
     : "WC";
@@ -65,26 +66,26 @@ export default function PastorScreen() {
         onBackPress={() => router.back()}
       />
       <StyledScrollView
-        contentContainerStyle={{ padding: 24, paddingBottom: 60 }}
+        contentContainerStyle={{ paddingHorizontal: 24, paddingTop: 18, paddingBottom: 60 }}
       >
         <Stack alignItems="center" marginBottom={22}>
           {showPhoto ? (
             <Image
               source={{ uri: pastor!.secure_url }}
-              style={{ width: 96, height: 96, borderRadius: 48 }}
+              style={{ width: 92, height: 92, borderRadius: 46 }}
               onError={() => setPhotoFailed(true)}
             />
           ) : (
             <Stack
-              width={96}
-              height={96}
-              borderRadius={48}
+              width={92}
+              height={92}
+              borderRadius={46}
               backgroundColor={COLORS.goldPale}
               alignItems="center"
               justifyContent="center"
             >
               <StyledText
-                fontSize={30}
+                fontSize={29}
                 fontWeight="800"
                 color={COLORS.goldDeep}
               >
@@ -96,7 +97,7 @@ export default function PastorScreen() {
             fontSize={20}
             fontWeight="800"
             color={COLORS.ink}
-            style={{ marginTop: 14 }}
+            style={{ marginTop: 12 }}
           >
             {name}
           </StyledText>
@@ -105,12 +106,12 @@ export default function PastorScreen() {
             color={COLORS.inkSoft}
             style={{ marginTop: 2 }}
           >
-            {title}, Winners Chapel Peterborough
+            {title}, {churchName}
           </StyledText>
         </Stack>
 
         <Stack marginBottom={22}>
-          <WelcomeMessageCard pastor={pastor} showAttribution={false} />
+          <WelcomeMessageCard pastor={pastor} showAttribution={false} plain />
         </Stack>
 
         <Stack

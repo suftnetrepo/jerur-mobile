@@ -1,9 +1,10 @@
 import { useEffect, type ReactNode } from "react";
-import { Stack, useRouter, useSegments } from "expo-router";
+import { Stack as RouterStack, useRouter, useSegments } from "expo-router";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { GlobalPortalProvider, PortalManager } from "fluent-styles";
+import { GlobalPortalProvider, PortalManager, StyledPage, Stack, Loader } from "fluent-styles";
 import { SelectedChurchProvider, useSelectedChurch } from "../src/church/SelectedChurchContext";
 import { MemberSessionProvider } from "../src/member/MemberSessionContext";
+import { COLORS } from "../src/theme/colors";
 import "../src/notifications/notification-handler";
 
 const queryClient = new QueryClient({
@@ -32,6 +33,18 @@ const queryClient = new QueryClient({
  * Two route groups both claiming "/" is an actual conflict, not just a
  * style choice — Expo Router can't reliably tell them apart. Giving this
  * one a real path segment avoids that entirely.
+ *
+ * `isLoading` IS the hydration flag — true only for the brief window
+ * before SelectedChurchProvider has read AsyncStorage's persisted church
+ * (or confirmed there isn't one). The effect below already refuses to
+ * redirect during that window, but that alone still let <RouterStack/>
+ * (and therefore whichever screen the current URL resolves to — Home by
+ * default) mount and paint before the persisted church was known. Data
+ * hooks were already protected from that same window by
+ * useChurchQueryEnabled() (src/hooks/useChurchData.ts), but the screen
+ * itself would still flash briefly with no data. Now the navigator isn't
+ * mounted at all until hydration resolves, so there's nothing to flash —
+ * see the `if (isLoading)` branch below.
  */
 function RouteGuard({ children }: { children: ReactNode }) {
   const { church, isLoading } = useSelectedChurch();
@@ -52,6 +65,16 @@ function RouteGuard({ children }: { children: ReactNode }) {
     }
   }, [church, isLoading, segments, router]);
 
+  if (isLoading) {
+    return (
+      <StyledPage flex={1} backgroundColor={COLORS.paper}>
+        <Stack flex={1} alignItems="center" justifyContent="center">
+          <Loader color={COLORS.indigo} />
+        </Stack>
+      </StyledPage>
+    );
+  }
+
   return <>{children}</>;
 }
 
@@ -63,7 +86,7 @@ export default function RootLayout() {
           <GlobalPortalProvider>
             <PortalManager>
               <RouteGuard>
-                <Stack screenOptions={{ headerShown: false }} />
+                <RouterStack screenOptions={{ headerShown: false }} />
               </RouteGuard>
             </PortalManager>
           </GlobalPortalProvider>

@@ -13,6 +13,11 @@ export type ChurchSearchResult = {
   email?: string;
   mobile?: string;
   description?: string;
+  // Same field as ChurchSettings.short_message — rides along on every
+  // search result already (no `.select()` on the backend, see the
+  // comment below), just previously undeclared here. Shown prominently
+  // on ChurchDetailsSheet.
+  short_message?: string;
   // The church's official banner/primary image (jerur-next
   // app/models/church.js: top-level `secure_url`/`public_id`, uploaded via
   // the admin's "About Us" form — see updateBulk in churchService.js). The
@@ -22,6 +27,13 @@ export type ChurchSearchResult = {
   // uploaded one.
   secure_url?: string;
   public_id?: string;
+  // The church's LOGO — a separate asset from secure_url/public_id above,
+  // which is the banner (jerur-next app/models/church.js:
+  // Church.logo_url/logo_id, set on Settings -> About Us -> Church
+  // Identity). Small brand identifier shown beside the church name on
+  // ChurchResultCard — never used as the card's hero image.
+  logo_url?: string;
+  logo_id?: string;
   // GET /church/search returns the full, unfiltered Church document
   // (searchChurches/searchChurchesWithinRadius in
   // jerur-next/app/services/churchService.js do a plain `Church.find()`,
@@ -123,6 +135,10 @@ export type ChurchSettings = {
   name: string;
   mobile: string;
   email?: string;
+  // Same field as ChurchSearchResult.description — rides along on GET
+  // /church/get already (in getChurch()'s select whitelist), just
+  // previously undeclared here. Shown on About Us.
+  description?: string;
   currency?: string;
   bank_name?: string;
   sort_code?: string;
@@ -135,6 +151,13 @@ export type ChurchSettings = {
   // include it - now fixed on the backend.
   secure_url?: string;
   public_id?: string;
+  // The church's LOGO — a separate asset from secure_url/public_id above
+  // (which is the banner). Set on Settings -> About Us -> Church Identity
+  // (jerur-next app/models/church.js: Church.logo_url/logo_id). See
+  // src/components/CurrentChurchHeader.tsx, the one place this is shown
+  // today, in place of the location pin icon.
+  logo_url?: string;
+  logo_id?: string;
   // Home screen banner copy (see jerur-next app/models/church.js), set on
   // Settings -> About Us alongside description/denomination — a short
   // welcome/tagline and an optional scripture text/reference, both
