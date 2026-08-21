@@ -3,6 +3,15 @@ import { Image } from "react-native";
 import { Stack as RouterStack, useRouter, useSegments } from "expo-router";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { GlobalPortalProvider, PortalManager, StyledPage, Stack } from "fluent-styles";
+import {
+  useFonts,
+  PlusJakartaSans_300Light,
+  PlusJakartaSans_400Regular,
+  PlusJakartaSans_500Medium,
+  PlusJakartaSans_600SemiBold,
+  PlusJakartaSans_700Bold,
+  PlusJakartaSans_800ExtraBold,
+} from '@expo-google-fonts/plus-jakarta-sans'
 import { SelectedChurchProvider, useSelectedChurch } from "../src/church/SelectedChurchContext";
 import { MemberSessionProvider } from "../src/member/MemberSessionContext";
 import { ShimmerProvider } from "../src/components/skeleton";
@@ -64,6 +73,15 @@ function RouteGuard({ children }: { children: ReactNode }) {
   const segments = useSegments() as string[];
   const router = useRouter();
 
+  const [fontsLoaded] = useFonts({
+    PlusJakartaSans_300Light,
+    PlusJakartaSans_400Regular,
+    PlusJakartaSans_500Medium,
+    PlusJakartaSans_600SemiBold,
+    PlusJakartaSans_700Bold,
+    PlusJakartaSans_800ExtraBold,
+  })
+
   useEffect(() => {
     if (isLoading) return;
 
@@ -78,7 +96,7 @@ function RouteGuard({ children }: { children: ReactNode }) {
     }
   }, [church, isLoading, segments, router]);
 
-  if (isLoading) {
+  if (isLoading || !fontsLoaded) {
     return (
       <StyledPage flex={1} backgroundColor="#FFFFFF">
         <Stack flex={1} alignItems="center" justifyContent="center">

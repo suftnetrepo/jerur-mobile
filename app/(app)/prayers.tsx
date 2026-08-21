@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { MaterialCommunityIcons as MCIcon } from "@expo/vector-icons";
-import { StyledPage, StyledScrollView, StyledText, StyledForm, Stack } from "fluent-styles";
+import { StyledPage, StyledScrollView, StyledForm, Stack } from "fluent-styles";
+import { Text } from "../../src/components/text";
 import { BottomTabBar } from "../../src/components/BottomTabBar";
 import { FeatureGate } from "../../src/components/FeatureGate";
 import { PrayerHeroIllustration } from "../../src/components/illustrations/PrayerIllustration";
@@ -78,19 +79,19 @@ function PrayersScreenContent() {
               <Stack width={34} height={34} borderRadius={17} backgroundColor={COLORS.goldPale} alignItems="center" justifyContent="center">
                 <MCIcon name="hands-pray" size={17} color={COLORS.gold} />
               </Stack>
-              <StyledText fontSize={11} fontWeight="700" letterSpacing={1} color={COLORS.gold}>
+              <Text variant="overline" fontSize={11} letterSpacing={1} color={COLORS.gold}>
                 PRAYER
-              </StyledText>
+              </Text>
             </Stack>
-            <StyledText fontSize={28} fontWeight="800" color={COLORS.ink} style={{ lineHeight: 34 }}>
+            <Text variant="header" fontSize={28} fontWeight="800" color={COLORS.ink} style={{ lineHeight: 34 }}>
               We believe in the{" "}
-              <StyledText fontSize={28} fontWeight="800" color={COLORS.gold} style={{ lineHeight: 34 }}>
+              <Text variant="header" fontSize={28} fontWeight="800" color={COLORS.gold} style={{ lineHeight: 34 }}>
                 power of prayer
-              </StyledText>
-            </StyledText>
-            <StyledText fontSize={14} color={COLORS.inkSoft} style={{ marginTop: 10, lineHeight: 21 }}>
+              </Text>
+            </Text>
+            <Text fontSize={14} color={COLORS.inkSoft} style={{ marginTop: 10, lineHeight: 21 }}>
               Whatever you're facing, you're not alone. Let us stand with you in prayer.
-            </StyledText>
+            </Text>
           </Stack>
 
           <PrayerHeroIllustration />
@@ -117,27 +118,27 @@ function PrayersScreenContent() {
         )}
 
         <Stack marginBottom={18}>
-          <StyledText fontSize={20} fontWeight="800" color={COLORS.ink} style={{ marginBottom: 8 }}>
+          <Text variant="title" fontWeight="800" color={COLORS.ink} style={{ marginBottom: 8 }}>
             We're praying with you
-          </StyledText>
+          </Text>
           <Stack width={40} height={3} borderRadius={2} backgroundColor={COLORS.gold} style={{ marginBottom: 10 }} />
-          <StyledText fontSize={13.5} color={COLORS.inkSoft} style={{ lineHeight: 20 }}>
+          <Text fontSize={13.5} color={COLORS.inkSoft} style={{ lineHeight: 20 }}>
             Share your heart, your struggles, or your praise. Our prayer team is committed to interceding on your behalf.
-          </StyledText>
+          </Text>
         </Stack>
 
         {success && (
           <Stack backgroundColor={COLORS.sageSoft} borderRadius={8} padding={14} marginBottom={16}>
-            <StyledText fontSize={13.5} fontWeight="600" color={COLORS.sage}>
+            <Text variant="label" fontSize={13.5} color={COLORS.sage}>
               Your email draft is ready. Review it and tap send in your email app.
-            </StyledText>
+            </Text>
           </Stack>
         )}
         {error && (
           <Stack backgroundColor={COLORS.errorLight} borderRadius={8} padding={14} marginBottom={16}>
-            <StyledText fontSize={13.5} fontWeight="600" color={COLORS.error}>
+            <Text variant="label" fontSize={13.5} color={COLORS.error}>
               {error}
-            </StyledText>
+            </Text>
           </Stack>
         )}
 

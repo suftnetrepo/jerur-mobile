@@ -4,12 +4,12 @@ import { router, useFocusEffect } from "expo-router";
 import { Feather as Icon } from "@expo/vector-icons";
 import {
   StyledPage,
-  StyledText,
   StyledTextInput,
   StyledButton,
   Stack,
   Loader,
 } from "fluent-styles";
+import { Text } from "../../../src/components/text";
 import { FeatureGate } from "../../../src/components/FeatureGate";
 import { NoteCard } from "../../../src/components/NoteCard";
 import { getNotes } from "../../../src/notes/notes-repository";
@@ -85,13 +85,13 @@ function NotesScreenContent() {
       {/* ── Intro ─────────────────────────────────────────────────────── */}
       <Stack paddingHorizontal={24} paddingTop={2} paddingBottom={16}>
         <Stack alignItems="center" marginBottom={18}>
-          <StyledText
+          <Text
             fontSize={13}
             color={COLORS.inkSoft}
             style={{ textAlign: "center", lineHeight: 19 }}
           >
             Write, reflect and grow in God's Word
-          </StyledText>
+          </Text>
         </Stack>
 
         {/* Search is deliberately contained and elevated instead of spanning
@@ -105,9 +105,7 @@ function NotesScreenContent() {
           <StyledTextInput
             variant="filled"
             placeholder="Search your notes..."
-            leftIcon={
-              <Icon name="search" size={15} color={COLORS.inkSoft} />
-            }
+            leftIcon={<Icon name="search" size={15} color={COLORS.inkSoft} />}
             value={query}
             onChangeText={setQuery}
             clearable
@@ -137,14 +135,9 @@ function NotesScreenContent() {
             >
               <Icon name="book-open" size={12} color={COLORS.goldDeep} />
             </Stack>
-            <StyledText
-              fontSize={12}
-              fontWeight="800"
-              letterSpacing={0.35}
-              color={COLORS.ink}
-            >
+            <Text variant="overline" letterSpacing={0.35} color={COLORS.ink}>
               {query.trim() ? "Search results" : "Your notes"}
-            </StyledText>
+            </Text>
           </Stack>
 
           <Stack
@@ -153,13 +146,14 @@ function NotesScreenContent() {
             borderRadius={12}
             backgroundColor={COLORS.paperAlt}
           >
-            <StyledText
+            <Text
+              variant="subLabel"
               fontSize={11.5}
               fontWeight="700"
               color={COLORS.inkSoft}
             >
               {filtered.length} note{filtered.length === 1 ? "" : "s"}
-            </StyledText>
+            </Text>
           </Stack>
         </Stack>
       )}
@@ -214,11 +208,7 @@ function NotesScreenContent() {
                     justifyContent="center"
                     style={SHADOW_SOFT}
                   >
-                    <Icon
-                      name="book-open"
-                      size={32}
-                      color={COLORS.goldDeep}
-                    />
+                    <Icon name="book-open" size={32} color={COLORS.goldDeep} />
                   </Stack>
 
                   <Icon
@@ -235,16 +225,17 @@ function NotesScreenContent() {
                   />
                 </Stack>
 
-                <StyledText
+                <Text
+                  variant="title"
                   fontSize={18}
                   fontWeight="800"
                   color={COLORS.ink}
                   style={{ marginBottom: 7 }}
                 >
                   Your notes start here
-                </StyledText>
+                </Text>
 
-                <StyledText
+                <Text
                   fontSize={13}
                   color={COLORS.inkSoft}
                   style={{
@@ -256,24 +247,29 @@ function NotesScreenContent() {
                 >
                   Capture what God is speaking to you as you read, study and
                   reflect on His Word.
-                </StyledText>
+                </Text>
 
-                <StyledButton
-                  primary
-                  compact
-                  onPress={() => router.push("/notes/new" as any)}
-                >
-                  <Stack horizontal alignItems="center" gap={7}>
-                    <Icon name="plus" size={14} color={COLORS.white} />
-                    <StyledText
-                      fontSize={13}
-                      fontWeight="800"
-                      color={COLORS.white}
-                    >
-                      Create your first note
-                    </StyledText>
-                  </Stack>
-                </StyledButton>
+                <Stack horizontal alignItems="center" gap={7}>
+                  <StyledButton
+                    backgroundColor={COLORS.gold}
+                    compact
+                    justifyContent="center"
+                    alignItems="center"
+                    onPress={() => router.push("/notes/new" as any)}
+                  >
+                    <Stack horizontal alignItems="center" gap={7}>
+                      <Icon name="plus" size={14} color={COLORS.white} />
+                      <Text
+                        variant="button"
+                        fontSize={13}
+                        fontWeight="800"
+                        color={COLORS.ink}
+                      >
+                        Create your first note
+                      </Text>
+                    </Stack>
+                  </StyledButton>
+                </Stack>
 
                 <Stack
                   horizontal
@@ -297,22 +293,23 @@ function NotesScreenContent() {
                   </Stack>
 
                   <Stack flex={1}>
-                    <StyledText
+                    <Text
+                      variant="label"
                       fontSize={12}
                       fontWeight="800"
                       color={COLORS.goldDeep}
                       style={{ marginBottom: 3 }}
                     >
                       Make one your Bible Note
-                    </StyledText>
-                    <StyledText
+                    </Text>
+                    <Text
                       fontSize={11.5}
                       color={COLORS.goldDeep}
                       style={{ opacity: 0.82, lineHeight: 17 }}
                     >
                       Save verses from the Bible directly into one dedicated
                       note.
-                    </StyledText>
+                    </Text>
                   </Stack>
                 </Stack>
               </Stack>
@@ -335,21 +332,22 @@ function NotesScreenContent() {
                 >
                   <Icon name="search" size={21} color={COLORS.inkSoft} />
                 </Stack>
-                <StyledText
+                <Text
+                  variant="subtitle"
                   fontSize={15}
                   fontWeight="800"
                   color={COLORS.ink}
                   style={{ marginBottom: 5 }}
                 >
                   No matching notes
-                </StyledText>
-                <StyledText
+                </Text>
+                <Text
                   fontSize={12.5}
                   color={COLORS.inkSoft}
                   style={{ textAlign: "center" }}
                 >
                   Try a different title, verse or keyword.
-                </StyledText>
+                </Text>
               </Stack>
             )
           }

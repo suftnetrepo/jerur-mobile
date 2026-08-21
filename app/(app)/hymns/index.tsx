@@ -4,12 +4,12 @@ import { router } from "expo-router";
 import { Feather as Icon } from "@expo/vector-icons";
 import {
   StyledPage,
-  StyledText,
   StyledPressable,
   Stack,
   StyledSpacer,
   StyledShape,
 } from "fluent-styles";
+import { Text } from "../../../src/components/text";
 import { FeatureGate } from "../../../src/components/FeatureGate";
 import { AppBackHeader } from "../../../src/components/AppBackHeader";
 import { BottomTabBar } from "../../../src/components/BottomTabBar";
@@ -69,14 +69,14 @@ function HymnsScreenContent() {
       />
 
       <Stack paddingHorizontal={24} paddingTop={4} paddingBottom={16}>
-        <StyledText
+        <Text
           textAlign="center"
           fontSize={13.5}
           color={COLORS.inkSoft}
           style={{ marginBottom: 18, lineHeight: 20 }}
         >
           Songs of faith, worship and praise
-        </StyledText>
+        </Text>
         <Stack
           horizontal
           alignItems="center"
@@ -126,9 +126,9 @@ function HymnsScreenContent() {
                 justifyContent="center"
                 backgroundColor="#f4f4f5"
               >
-                <StyledText fontSize={9.75} fontWeight="700" color="#a1a1aa">
+                <Text fontSize={9.75} fontWeight="700" color="#a1a1aa">
                   ✕
-                </StyledText>
+                </Text>
               </Stack>
             </StyledPressable>
           )}
@@ -147,11 +147,11 @@ function HymnsScreenContent() {
           backgroundColor={COLORS.goldPale}
         >
           <Icon name="music" size={13} color={COLORS.goldDeep} />
-          <StyledText fontSize={13} fontWeight="700" color={COLORS.goldDeep}>
+          <Text variant="subLabel" fontSize={13} fontWeight="700" color={COLORS.goldDeep}>
             {query.trim()
               ? `${results.length} hymn${results.length === 1 ? "" : "s"} found`
               : `${results.length} hymns`}
-          </StyledText>
+          </Text>
         </Stack>
       </Stack>
 
@@ -172,16 +172,16 @@ function HymnsScreenContent() {
         removeClippedSubviews
         ListEmptyComponent={
           <Stack alignItems="center" paddingVertical={48} gap={6}>
-            <StyledText fontSize={15} fontWeight="700" color={COLORS.ink}>
+            <Text variant="subtitle" fontSize={15} fontWeight="700" color={COLORS.ink}>
               No hymns found
-            </StyledText>
-            <StyledText
+            </Text>
+            <Text
               fontSize={13}
               color={COLORS.inkSoft}
               style={{ textAlign: "center" }}
             >
               Try searching by hymn title or number.
-            </StyledText>
+            </Text>
           </Stack>
         }
       />

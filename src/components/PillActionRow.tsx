@@ -1,7 +1,8 @@
 import { ScrollView } from "react-native";
 import { Feather as Icon } from "@expo/vector-icons";
 import { router } from "expo-router";
-import { Stack, StyledText, StyledPressable } from "fluent-styles";
+import { Stack, StyledPressable } from "fluent-styles";
+import { Text } from "./text";
 import { COLORS } from "../theme/colors";
 
 export type PillAction = { key: string; label: string; icon: string; route: string };
@@ -24,9 +25,9 @@ export function PillActionRow({ actions }: { actions: PillAction[] }) {
    
           >
             <Icon name={action.icon as any} size={15} color={COLORS.ink} />
-            <StyledText fontSize={13} fontWeight="700" color={COLORS.ink}>
+            <Text variant="button" fontSize={13} color={COLORS.ink}>
               {action.label}
-            </StyledText>
+            </Text>
           </Stack>
         </StyledPressable>
       ))}

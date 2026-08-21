@@ -1,6 +1,7 @@
 import { router } from "expo-router";
 import { Feather as Icon } from "@expo/vector-icons";
-import { Stack, StyledText, StyledPressable } from "fluent-styles";
+import { Stack, StyledPressable } from "fluent-styles";
+import { Text } from "./text";
 import { COLORS } from "../theme/colors";
 import { SHADOW_SOFT } from "../theme/shadows";
 import { useFeatureFlags } from "../hooks/useFeatureFlags";
@@ -66,9 +67,9 @@ export function BottomTabBar({ active }: { active?: Tab }) {
             accessibilityState={{ selected: isActive }}
           >
             <Icon name={tab.icon as any} size={20} color={isActive ? COLORS.indigo : COLORS.inkSoft} />
-            <StyledText fontSize={10.5} fontWeight={isActive ? "800" : "500"} color={isActive ? COLORS.indigo : COLORS.inkSoft}>
+            <Text variant="label" fontSize={10.5} fontWeight={isActive ? "800" : "500"} color={isActive ? COLORS.indigo : COLORS.inkSoft}>
               {tab.label}
-            </StyledText>
+            </Text>
           </StyledPressable>
         );
       })}

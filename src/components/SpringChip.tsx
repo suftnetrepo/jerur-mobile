@@ -1,7 +1,8 @@
 import { useRef } from "react";
 import { Animated, type StyleProp, type ViewStyle } from "react-native";
 import { Feather as Icon } from "@expo/vector-icons";
-import { StyledPressable, StyledText } from "fluent-styles";
+import { StyledPressable } from "fluent-styles";
+import { Text } from "./text";
 import { COLORS } from "../theme/colors";
 
 /**
@@ -57,9 +58,9 @@ export function SpringChip({
         accessibilityState={{ disabled, selected: active }}
       >
         {active ? <Icon name="check" size={12} color={COLORS.white} /> : null}
-        <StyledText fontSize={12.5} fontWeight="700" color={disabled ? COLORS.inkSoft : active ? COLORS.white : COLORS.ink}>
+        <Text variant="button" fontSize={12.5} color={disabled ? COLORS.inkSoft : active ? COLORS.white : COLORS.ink}>
           {label}
-        </StyledText>
+        </Text>
       </StyledPressable>
     </Animated.View>
   );

@@ -1,6 +1,7 @@
 import { Image, Linking } from "react-native";
 import { Feather as Icon } from "@expo/vector-icons";
-import { Stack, StyledText, StyledPressable, Popup, Loader } from "fluent-styles";
+import { Stack, StyledPressable, Popup, Loader } from "fluent-styles";
+import { Text } from "./text";
 import { ScalePressable } from "./ScalePressable";
 import { useDenominations } from "../hooks/useDenominations";
 import { COLORS } from "../theme/colors";
@@ -102,7 +103,8 @@ export function ChurchDetailsSheet({
               <Icon name="home" size={28} color={COLORS.inkSoft} />
             )}
           </Stack>
-          <StyledText
+          <Text
+            variant="title"
             fontSize={19}
             fontWeight="800"
             color={COLORS.ink}
@@ -110,11 +112,11 @@ export function ChurchDetailsSheet({
             style={{ textAlign: "center", marginTop: 10 }}
           >
             {church.name}
-          </StyledText>
+          </Text>
           {denominationLabel ? (
-            <StyledText fontSize={12.5} color={COLORS.inkSoft} style={{ textAlign: "center" }}>
+            <Text variant="bodySmall" fontSize={12.5} color={COLORS.inkSoft} style={{ textAlign: "center" }}>
               {denominationLabel}
-            </StyledText>
+            </Text>
           ) : null}
         </Stack>
 
@@ -123,13 +125,13 @@ export function ChurchDetailsSheet({
           <Stack horizontal justifyContent="center" alignItems="flex-start" gap={8}>
             <Icon name="map-pin" size={13} color={COLORS.goldDeep} style={{ marginTop: 3 }} />
             <Stack alignItems="center">
-              <StyledText fontSize={14} fontWeight="600" color={COLORS.ink} style={{ textAlign: "center" }}>
+              <Text variant="label" color={COLORS.ink} style={{ textAlign: "center" }}>
                 {addressLine1}
-              </StyledText>
+              </Text>
               {town ? (
-                <StyledText fontSize={13} color={COLORS.inkSoft} style={{ textAlign: "center" }}>
+                <Text variant="body" fontSize={13} color={COLORS.inkSoft} style={{ textAlign: "center" }}>
                   {town}
-                </StyledText>
+                </Text>
               ) : null}
             </Stack>
           </Stack>
@@ -138,30 +140,30 @@ export function ChurchDetailsSheet({
         {/* ── Short message — capped at 2 lines, never grows the sheet ─── */}
         {shortMessage ? (
           <Stack borderRadius={16} padding={4}>
-            <StyledText
-              fontSize={14}
-              fontWeight="600"
+            <Text
+              variant="label"
               color={COLORS.goldDeep}
               numberOfLines={2}
               ellipsizeMode="tail"
-              style={{ textAlign: "center", lineHeight: 20 }}
+              style={{ textAlign: "center" }}
             >
               “{shortMessage}”
-            </StyledText>
+            </Text>
           </Stack>
         ) : null}
 
         {/* ── About — capped at 3 lines, plain secondary text, no heading ── */}
         {description ? (
-          <StyledText
+          <Text
+            variant="body"
             fontSize={13.5}
             color={COLORS.inkSoft}
             numberOfLines={3}
             ellipsizeMode="tail"
-            style={{ textAlign: "center", lineHeight: 20 }}
+            style={{ textAlign: "center" }}
           >
             {description}
-          </StyledText>
+          </Text>
         ) : null}
 
         {/* ── Contact actions — icon-only, no heading, no labels below ─── */}
@@ -205,9 +207,9 @@ export function ChurchDetailsSheet({
               <Loader variant="spinner" color={COLORS.white} />
             ) : (
               <>
-                <StyledText fontSize={15} fontWeight="700" color={COLORS.white}>
+                <Text variant="button" fontSize={15} color={COLORS.white}>
                   Select Church
-                </StyledText>
+                </Text>
                 <Icon name="arrow-right" size={16} color={COLORS.white} />
               </>
             )}

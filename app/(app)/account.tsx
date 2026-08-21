@@ -4,7 +4,6 @@ import { Feather as Icon } from "@expo/vector-icons";
 import {
   StyledPage,
   StyledScrollView,
-  StyledText,
   StyledForm,
   StyledTextInput,
   StyledPressable,
@@ -14,6 +13,7 @@ import {
   useDialogue,
   type StyledTextInputHandle,
 } from "fluent-styles";
+import { Text } from "../../src/components/text";
 import { useMemberSession } from "../../src/member/MemberSessionContext";
 import { AppBackHeader } from "../../src/components/AppBackHeader";
 import { FormSubmitButton } from "../../src/components/FormSubmitButton";
@@ -46,12 +46,12 @@ export default function AccountScreen() {
           <Stack width={46} height={46} borderRadius={23} backgroundColor={COLORS.paperAlt} alignItems="center" justifyContent="center" marginBottom={18}>
             <Icon name={member ? "user-check" : "lock"} size={21} color={COLORS.ink} />
           </Stack>
-          <StyledText fontSize={27} fontWeight="800" color={COLORS.ink} style={{ marginBottom: 7 }}>
+          <Text variant="header" fontSize={27} fontWeight="800" color={COLORS.ink} style={{ marginBottom: 7 }}>
             {member ? "Your membership" : "Welcome "}
-          </StyledText>
-          <StyledText fontSize={13.5} color={COLORS.inkSoft} style={{ lineHeight: 21 }}>
+          </Text>
+          <Text variant="body" fontSize={13.5} color={COLORS.inkSoft} style={{ lineHeight: 21 }}>
             {member ? "Your church profile, all in one place." : "Sign in to take part, stay connected and keep your details secure."}
-          </StyledText>
+          </Text>
         </Stack>
         <Stack marginHorizontal={20} marginTop={-28} backgroundColor={COLORS.paper} borderRadius={24} padding={22} style={[SHADOW_SOFT, { borderWidth: 1, borderColor: COLORS.paperAlt }]}>
           {member ? (
@@ -132,24 +132,24 @@ function LoggedInView({
         marginBottom={12}
         style={{ borderWidth: 3, borderColor: COLORS.paperWarm }}
       >
-        <StyledText fontSize={26} fontWeight="800" color={COLORS.ink}>
+        <Text fontSize={26} fontWeight="800" color={COLORS.ink}>
           {member.first_name[0]}
           {member.last_name[0]}
-        </StyledText>
+        </Text>
       </Stack>
-      <StyledText
-        fontSize={20}
+      <Text
+        variant="title"
         fontWeight="800"
         color={COLORS.ink}
         style={{ textAlign: "center", marginBottom: isProvisional ? 8 : 24 }}
       >
         {member.first_name} {member.last_name}
-      </StyledText>
+      </Text>
       {isProvisional && (
         <Stack backgroundColor={COLORS.goldPale} borderRadius={999} paddingHorizontal={13} paddingVertical={6} marginBottom={24}>
-          <StyledText fontSize={12} fontWeight="700" color={COLORS.goldDeep}>
+          <Text variant="button" fontSize={12} color={COLORS.goldDeep}>
             Pending confirmation by church staff
-          </StyledText>
+          </Text>
         </Stack>
       )}
       {hasFeature("attendance") && (
@@ -172,9 +172,9 @@ function LoggedInView({
               <Stack width={35} height={35} borderRadius={17.5} backgroundColor={COLORS.sageSoft} alignItems="center" justifyContent="center">
                 <Icon name="check-circle" size={16} color={COLORS.sage} />
               </Stack>
-              <StyledText fontSize={14.5} fontWeight="700" color={COLORS.ink}>
+              <Text variant="button" fontSize={14.5} color={COLORS.ink}>
                 Submit attendance
-              </StyledText>
+              </Text>
             </Stack>
             <Icon name="chevron-right" size={16} color={COLORS.inkSoft} />
           </Stack>
@@ -196,9 +196,9 @@ function LoggedInView({
           backgroundColor={COLORS.errorLight}
         >
           <Icon name="log-out" size={16} color={COLORS.error} />
-          <StyledText fontSize={14} fontWeight="700" color={COLORS.error}>
+          <Text variant="button" color={COLORS.error}>
             Log out
-          </StyledText>
+          </Text>
         </Stack>
       </StyledPressable>
 
@@ -215,9 +215,9 @@ function LoggedInView({
       >
         <Stack horizontal alignItems="center" justifyContent="center" gap={6} paddingVertical={6}>
           <Icon name="trash-2" size={13} color={COLORS.error} />
-          <StyledText fontSize={12.5} fontWeight="600" color={COLORS.error}>
+          <Text variant="button" fontSize={12.5} fontWeight="600" color={COLORS.error}>
             {deleting ? "Deleting…" : "Delete profile"}
-          </StyledText>
+          </Text>
         </Stack>
       </StyledPressable>
     </Stack>
@@ -376,22 +376,22 @@ function AuthForms() {
               accessibilityRole="button"
               accessibilityState={{ selected: active }}
             >
-              <StyledText fontSize={13} fontWeight={active ? "800" : "600"} color={active ? COLORS.ink : COLORS.inkSoft}>
+              <Text variant="label" fontSize={13} fontWeight={active ? "800" : "600"} color={active ? COLORS.ink : COLORS.inkSoft}>
                 {item === "login" ? "Log in" : "Create account"}
-              </StyledText>
+              </Text>
             </StyledPressable>
           );
         })}
       </Stack>
 
-      <StyledText fontSize={20} fontWeight="800" color={COLORS.ink} style={{ marginBottom: 6 }}>
+      <Text variant="title" fontWeight="800" color={COLORS.ink} style={{ marginBottom: 6 }}>
         {mode === "login" ? "Welcome back" : "Create your account"}
-      </StyledText>
-      <StyledText fontSize={13.5} color={COLORS.inkSoft} style={{ marginBottom: 22 }}>
+      </Text>
+      <Text variant="body" fontSize={13.5} color={COLORS.inkSoft} style={{ marginBottom: 22 }}>
         {mode === "login"
           ? "Log in to submit attendance and more."
           : "Set a PIN — you'll use it to log in next time, no password to remember."}
-      </StyledText>
+      </Text>
 
       {mode === "login" ? (
         <StyledForm gap={16} avoidKeyboard={false}>

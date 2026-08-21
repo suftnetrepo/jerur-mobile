@@ -4,10 +4,10 @@ import { Feather as Icon } from "@expo/vector-icons";
 import {
   StyledPage,
   StyledScrollView,
-  StyledText,
   StyledButton,
   Stack,
 } from "fluent-styles";
+import { Text } from "../../src/components/text";
 import { FeatureGate } from "../../src/components/FeatureGate";
 import { AppBackHeader } from "../../src/components/AppBackHeader";
 import { ServiceTimesSkeleton } from "../../src/components/skeleton";
@@ -91,7 +91,7 @@ function ServiceTimesScreenContent() {
           marginBottom={12}
         />
         {/* Tagline */}
-        <StyledText
+        <Text
           fontSize={14}
           color={COLORS.inkSoft}
           style={{
@@ -103,7 +103,7 @@ function ServiceTimesScreenContent() {
         >
           Come and be refreshed in God&apos;s presence{"\n"}during our uplifting
           service times.
-        </StyledText>
+        </Text>
 
         {/* First fetch, nothing cached yet — skeleton, not the empty-state
             text below (that's reserved for a genuinely empty response). */}
@@ -111,13 +111,13 @@ function ServiceTimesScreenContent() {
 
         {/* Empty state — only once loading has actually finished. */}
         {!isLoading && (!services || services.length === 0) && (
-          <StyledText
+          <Text
             fontSize={14}
             color={COLORS.inkSoft}
             style={{ textAlign: "center" }}
           >
             Service times are being updated — please check back shortly.
-          </StyledText>
+          </Text>
         )}
 
         {/* Service cards */}
@@ -164,23 +164,25 @@ function ServiceTimesScreenContent() {
                         <Icon name="clock" size={21} color={tone.fg} />
                       </Stack>
                       <Stack style={{ flex: 1 }}>
-                        <StyledText
+                        <Text
+                          variant="title"
                           fontSize={18}
                           fontWeight="800"
                           color={COLORS.ink}
                           numberOfLines={2}
                         >
                           {service.title}
-                        </StyledText>
+                        </Text>
                         {recurrence ? (
-                          <StyledText
+                          <Text
+                            variant="subLabel"
                             fontSize={12.5}
                             fontWeight="700"
                             color={tone.fg}
                             style={{ marginTop: 2 }}
                           >
                             {recurrence}
-                          </StyledText>
+                          </Text>
                         ) : null}
                       </Stack>
                     </Stack>
@@ -200,16 +202,16 @@ function ServiceTimesScreenContent() {
                     {recurrence ? (
                       <Stack horizontal alignItems="center" gap={9}>
                         <Icon name="calendar" size={13} color={tone.fg} />
-                        <StyledText fontSize={13} color={COLORS.inkSoft}>
+                        <Text fontSize={13} color={COLORS.inkSoft}>
                           {recurrence}
-                        </StyledText>
+                        </Text>
                       </Stack>
                     ) : null}
                     <Stack horizontal alignItems="center" gap={9}>
                       <Icon name="clock" size={13} color={tone.fg} />
-                      <StyledText fontSize={13} color={COLORS.inkSoft}>
+                      <Text fontSize={13} color={COLORS.inkSoft}>
                         {service.start_time} – {service.end_time}
-                      </StyledText>
+                      </Text>
                     </Stack>
                     {!service.remote ? (
                       <Stack horizontal alignItems="flex-start" gap={9}>
@@ -219,27 +221,27 @@ function ServiceTimesScreenContent() {
                           color={tone.fg}
                           style={{ marginTop: 1 }}
                         />
-                        <StyledText
+                        <Text
                           fontSize={13}
                           color={COLORS.inkSoft}
                           style={{ flex: 1, lineHeight: 18 }}
                         >
                           Ormiston Bushfield Academy, Peterborough PE2 5RQ
                           
-                        </StyledText>
+                        </Text>
                       </Stack>
                     ) : null}
                   </Stack>
 
                   {/* ── Description ── */}
                   {service.description ? (
-                    <StyledText
+                    <Text
                       fontSize={13}
                       color={COLORS.inkSoft}
                       style={{ lineHeight: 19, marginBottom: 14 }}
                     >
                       {service.description}
-                    </StyledText>
+                    </Text>
                   ) : null}
 
                   {/* ── Divider ── */}
@@ -272,13 +274,13 @@ function ServiceTimesScreenContent() {
                             size={14}
                             color={COLORS.indigoDeep}
                           />
-                          <StyledText
+                          <Text
+                            variant="button"
                             fontSize={12.5}
-                            fontWeight="700"
                             color={COLORS.ink}
                           >
                             Join online
-                          </StyledText>
+                          </Text>
                         </Stack>
                       </StyledButton>
                     )}
@@ -303,13 +305,13 @@ function ServiceTimesScreenContent() {
                           gap={6}
                         >
                           <Icon name="check-circle" size={14} color={tone.fg} />
-                          <StyledText
+                          <Text
+                            variant="button"
                             fontSize={12.5}
-                            fontWeight="700"
                             color={tone.fg}
                           >
                             Check In
-                          </StyledText>
+                          </Text>
                         </Stack>
                       </StyledButton>
                     )}
@@ -329,13 +331,13 @@ function ServiceTimesScreenContent() {
                           gap={6}
                         >
                           <Icon name="calendar" size={14} color={tone.fg} />
-                          <StyledText
+                          <Text
+                            variant="button"
                             fontSize={12.5}
-                            fontWeight="700"
                             color={tone.fg}
                           >
                             View agenda
-                          </StyledText>
+                          </Text>
                         </Stack>
                       </StyledButton>
                     )}
@@ -355,9 +357,9 @@ function ServiceTimesScreenContent() {
           marginTop={28}
         >
           <Icon name="shield" size={13} color={COLORS.inkSoft} />
-          <StyledText fontSize={12} color={COLORS.inkSoft}>
+          <Text fontSize={12} color={COLORS.inkSoft}>
             Service times may be subject to change.
-          </StyledText>
+          </Text>
         </Stack>
       </StyledScrollView>
     </StyledPage>

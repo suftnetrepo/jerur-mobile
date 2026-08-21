@@ -1,7 +1,8 @@
 import { Linking } from "react-native";
 import { router } from "expo-router";
 import { Feather as Icon } from "@expo/vector-icons";
-import { StyledPage, StyledScrollView, StyledText, StyledButton, Stack } from "fluent-styles";
+import { StyledPage, StyledScrollView, StyledButton, Stack } from "fluent-styles";
+import { Text } from "../../src/components/text";
 import { useNotificationPermissionStatus } from "../../src/notifications/use-notification-permission";
 import { COLORS } from "../../src/theme/colors";
 import { SHADOW_SOFT } from "../../src/theme/shadows";
@@ -43,12 +44,12 @@ export default function NotificationsScreen() {
           <Stack width={48} height={48} borderRadius={24} backgroundColor={COLORS.paperAlt} alignItems="center" justifyContent="center" marginBottom={18}>
             <Icon name="bell" size={21} color={COLORS.ink} />
           </Stack>
-          <StyledText fontSize={28} fontWeight="800" color={COLORS.ink} style={{ marginBottom: 7 }}>
+          <Text variant="header" fontSize={28} fontWeight="800" color={COLORS.ink} style={{ marginBottom: 7 }}>
             Notifications
-          </StyledText>
-          <StyledText fontSize={14} color={COLORS.inkSoft} style={{ lineHeight: 21, maxWidth: 320 }}>
+          </Text>
+          <Text fontSize={14} color={COLORS.inkSoft} style={{ lineHeight: 21, maxWidth: 320 }}>
             Manage whether this device can receive updates from the app.
-          </StyledText>
+          </Text>
         </Stack>
 
 

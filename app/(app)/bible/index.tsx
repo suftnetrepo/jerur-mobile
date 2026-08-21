@@ -4,11 +4,11 @@ import { Feather as Icon } from "@expo/vector-icons";
 import {
   StyledPage,
   StyledScrollView,
-  StyledText,
   StyledTextInput,
   StyledButton,
   Stack,
 } from "fluent-styles";
+import { Text } from "../../../src/components/text";
 import { FeatureGate } from "../../../src/components/FeatureGate";
 import { BottomTabBar } from "../../../src/components/BottomTabBar";
 import { BibleBookRow } from "../../../src/components/BibleBookRow";
@@ -132,13 +132,13 @@ function BibleScreenContent() {
         contentContainerStyle={{ paddingHorizontal: 20, paddingBottom: 32 }}
       >
         {filtered.length === 0 ? (
-          <StyledText
+          <Text
             fontSize={14}
             color={COLORS.inkSoft}
             style={{ textAlign: "center", paddingVertical: 32 }}
           >
             No books match "{query}".
-          </StyledText>
+          </Text>
         ) : (
           <>
             <BookSection
@@ -187,16 +187,16 @@ function BookSection({
   if (books.length === 0) return null;
   return (
     <Stack marginBottom={22} onLayout={onLayout}>
-      <StyledText
+      <Text
+        variant="overline"
         fontSize={11}
-        fontWeight="700"
         letterSpacing={1}
         color={COLORS.inkSoft}
         marginBottom={10}
         paddingHorizontal={8}
       >
         {title}
-      </StyledText>
+      </Text>
       <Stack gap={9}>
         {books.map((book) => (
           <BibleBookRow

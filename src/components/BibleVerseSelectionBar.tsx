@@ -1,5 +1,6 @@
 import { Feather as Icon } from "@expo/vector-icons";
-import { Stack, StyledText, StyledPressable } from "fluent-styles";
+import { Stack, StyledPressable } from "fluent-styles";
+import { Text } from "./text";
 import { COLORS } from "../theme/colors";
 import { SHADOW_CARD } from "../theme/shadows";
 
@@ -46,9 +47,9 @@ export function BibleVerseSelectionBar({
         >
           <Icon name="x" size={15} color={COLORS.white} />
         </StyledPressable>
-        <StyledText fontSize={13} fontWeight="700" color={COLORS.white} numberOfLines={1} style={{ flexShrink: 1 }}>
+        <Text variant="button" fontSize={13} color={COLORS.white} numberOfLines={1} style={{ flexShrink: 1 }}>
           {referenceLabel}
-        </StyledText>
+        </Text>
       </Stack>
       <Stack horizontal alignItems="center" gap={6}>
         <ActionButton icon="edit-3" label="Note" onPress={onAddToNote} />
@@ -73,9 +74,9 @@ function ActionButton({ icon, label, onPress }: { icon: string; label: string; o
       accessibilityLabel={label}
     >
       <Icon name={icon as any} size={14} color={COLORS.white} />
-      <StyledText fontSize={12.5} fontWeight="700" color={COLORS.white}>
+      <Text variant="button" fontSize={12.5} color={COLORS.white}>
         {label}
-      </StyledText>
+      </Text>
     </StyledPressable>
   );
 }

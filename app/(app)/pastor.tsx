@@ -5,10 +5,10 @@ import { Feather as Icon } from "@expo/vector-icons";
 import {
   StyledPage,
   StyledScrollView,
-  StyledText,
   StyledPressable,
   Stack,
 } from "fluent-styles";
+import { Text } from "../../src/components/text";
 import { WelcomeMessageCard } from "../../src/components/WelcomeMessageCard";
 import { PastorSkeleton } from "../../src/components/skeleton";
 import { useSettings } from "../../src/hooks/useChurchData";
@@ -89,30 +89,30 @@ export default function PastorScreen() {
               alignItems="center"
               justifyContent="center"
             >
-              <StyledText
+              <Text
                 fontSize={29}
                 fontWeight="800"
                 color={COLORS.goldDeep}
               >
                 {initials}
-              </StyledText>
+              </Text>
             </Stack>
           )}
-          <StyledText
-            fontSize={20}
+          <Text
+            variant="title"
             fontWeight="800"
             color={COLORS.ink}
             style={{ marginTop: 12 }}
           >
             {name}
-          </StyledText>
-          <StyledText
+          </Text>
+          <Text
             fontSize={13}
             color={COLORS.inkSoft}
             style={{ marginTop: 2 }}
           >
             {title}, {churchName}
-          </StyledText>
+          </Text>
         </Stack>
 
         <Stack marginBottom={22}>
@@ -185,17 +185,18 @@ function ContactRow({
         <Icon name={icon as any} size={16} color={COLORS.goldDeep} />
       </Stack>
       <Stack flex={1}>
-        <StyledText
+        <Text
+          variant="label"
           fontSize={13}
           fontWeight="700"
           color={COLORS.ink}
           style={{ marginBottom: 1 }}
         >
           {label}
-        </StyledText>
-        <StyledText fontSize={13} color={COLORS.inkSoft} numberOfLines={1}>
+        </Text>
+        <Text fontSize={13} color={COLORS.inkSoft} numberOfLines={1}>
           {value}
-        </StyledText>
+        </Text>
       </Stack>
       <Icon name="chevron-right" size={17} color={COLORS.inkSoft} />
     </StyledPressable>

@@ -2,7 +2,8 @@ import { useEffect, useMemo, useState } from "react";
 import { Animated, ScrollView } from "react-native";
 import { router } from "expo-router";
 import { Feather as Icon } from "@expo/vector-icons";
-import { StyledPage, StyledText, StyledShape, StyledTextInput, StyledPressable, StyledChip, Popup, Stack, Loader } from "fluent-styles";
+import { StyledPage, StyledShape, StyledTextInput, StyledPressable, StyledChip, Popup, Stack, Loader } from "fluent-styles";
+import { Text } from "../../src/components/text";
 import { useSelectedChurch } from "../../src/church/SelectedChurchContext";
 import { searchChurchesByQuery, searchChurchesByRadius } from "../../src/api/churchSearch";
 import { getCurrentCoordinates } from "../../src/lib/location";
@@ -104,12 +105,12 @@ export default function SelectChurchScreen() {
               <StyledShape size={52} cycle backgroundColor={COLORS.goldPale}>
                 <Icon name="compass" size={22} color={COLORS.goldDeep} />
               </StyledShape>
-              <StyledText fontSize={22} fontWeight="800" color={COLORS.ink}>
+              <Text variant="header" fontSize={22} fontWeight="800" color={COLORS.ink}>
                 Find your church
-              </StyledText>
-              <StyledText fontSize={13.5} color={COLORS.inkSoft} style={{ textAlign: "center" }}>
+              </Text>
+              <Text fontSize={13.5} color={COLORS.inkSoft} style={{ textAlign: "center" }}>
                 Find a church community near you.
-              </StyledText>
+              </Text>
             </Stack>
 
             <Stack horizontal alignItems="center" gap={10}>
@@ -186,16 +187,16 @@ export default function SelectChurchScreen() {
               >
                 <Icon name="navigation" size={20} color={COLORS.indigo} />
               </Stack>
-              <StyledText fontSize={16} fontWeight="700" color={COLORS.ink} style={{ textAlign: "center" }}>
+              <Text variant="subtitle" fontWeight="700" color={COLORS.ink} style={{ textAlign: "center" }}>
                 Show churches near me
-              </StyledText>
-              <StyledText
+              </Text>
+              <Text
                 fontSize={13}
                 color={COLORS.inkSoft}
                 style={{ textAlign: "center", lineHeight: 19, marginTop: -6 }}
               >
                 Use your location to discover churches in your area.
-              </StyledText>
+              </Text>
               <ScalePressable onPress={handleNearMe} style={{ width: "100%" }}>
                 <Stack
                   backgroundColor={COLORS.indigo}
@@ -205,16 +206,16 @@ export default function SelectChurchScreen() {
                   justifyContent="center"
                   style={shadowCta(COLORS.indigo)}
                 >
-                  <StyledText fontSize={15} fontWeight="700" color={COLORS.white}>
+                  <Text variant="button" fontSize={15} color={COLORS.white}>
                     Find churches near me
-                  </StyledText>
+                  </Text>
                 </Stack>
               </ScalePressable>
               <Stack horizontal alignItems="center" gap={5} style={{ marginTop: -6 }}>
                 <Icon name="lock" size={11} color={COLORS.inkSoft} />
-                <StyledText fontSize={11} color={COLORS.inkSoft}>
+                <Text fontSize={11} color={COLORS.inkSoft}>
                   Location is only used to find nearby churches.
-                </StyledText>
+                </Text>
               </Stack>
             </Stack>
           )}
@@ -234,9 +235,9 @@ export default function SelectChurchScreen() {
 
           {error && (
             <Stack backgroundColor={COLORS.errorLight} borderRadius={12} padding={14} marginTop={16}>
-              <StyledText fontSize={13.5} fontWeight="600" color={COLORS.error}>
+              <Text variant="label" fontSize={13.5} color={COLORS.error}>
                 {error}
-              </StyledText>
+              </Text>
             </Stack>
           )}
 
@@ -246,13 +247,13 @@ export default function SelectChurchScreen() {
           {!loading && results.length > 0 && filteredResults.length === 0 && (
             <Stack backgroundColor={COLORS.white} borderRadius={20} padding={22} alignItems="center" gap={10} style={SHADOW_CARD}>
               <Icon name="filter" size={26} color={COLORS.inkSoft} />
-              <StyledText fontSize={14.5} fontWeight="700" color={COLORS.ink} style={{ textAlign: "center" }}>
+              <Text variant="subtitle" fontSize={14.5} fontWeight="700" color={COLORS.ink} style={{ textAlign: "center" }}>
                 No {denominations.find((d) => d.id === selectedDenomination)?.label ?? ""} churches in these results
-              </StyledText>
+              </Text>
               <ScalePressable onPress={() => setSelectedDenomination(ALL_DENOMINATIONS)}>
-                <StyledText fontSize={13.5} fontWeight="700" color={COLORS.goldDeep}>
+                <Text variant="button" fontSize={13.5} color={COLORS.goldDeep}>
                   Clear filter
-                </StyledText>
+                </Text>
               </ScalePressable>
             </Stack>
           )}

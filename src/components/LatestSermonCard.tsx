@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Image, Linking } from "react-native";
 import { Feather as Icon } from "@expo/vector-icons";
-import { Stack, StyledText, StyledPressable } from "fluent-styles";
+import { Stack, StyledPressable } from "fluent-styles";
+import { Text } from "./text";
 import { extractYouTubeVideoId, getYouTubeThumbnailUrls } from "../lib/youtube";
 import { getNotificationType } from "../config/notificationTypes";
 import { useFeatureFlags } from "../hooks/useFeatureFlags";
@@ -81,37 +82,37 @@ export function LatestSermonCard({ sermon }: { sermon: LatestSermon | null | und
           </Stack>
 
           <Stack padding={18} gap={8}>
-            <StyledText fontSize={11} fontWeight="700" letterSpacing={0.8} color={ACCENT_COLOR} style={{ textTransform: "uppercase" }}>
+            <Text variant="overline" fontSize={11} letterSpacing={0.8} color={ACCENT_COLOR}>
               Latest Sermon
-            </StyledText>
-            <StyledText fontSize={17} fontWeight="800" color={COLORS.ink} numberOfLines={2} style={{ lineHeight: 22 }}>
+            </Text>
+            <Text variant="title" fontSize={17} fontWeight="800" color={COLORS.ink} numberOfLines={2} style={{ lineHeight: 22 }}>
               {sermon.title}
-            </StyledText>
+            </Text>
 
             <Stack gap={2}>
               {sermon.speakerName ? (
-                <StyledText fontSize={13} fontWeight="600" color={COLORS.inkSoft}>
+                <Text variant="label" fontSize={13} color={COLORS.inkSoft}>
                   {sermon.speakerName}
-                </StyledText>
+                </Text>
               ) : null}
               {metaParts.length > 0 && (
-                <StyledText fontSize={12} color={COLORS.inkSoft}>
+                <Text variant="bodySmall" color={COLORS.inkSoft}>
                   {metaParts.join(" · ")}
-                </StyledText>
+                </Text>
               )}
             </Stack>
 
             {sermon.summary?.trim() ? (
-              <StyledText fontSize={13} color={COLORS.inkSoft} numberOfLines={2} style={{ lineHeight: 18 }}>
+              <Text variant="body" fontSize={13} color={COLORS.inkSoft} numberOfLines={2} style={{ lineHeight: 18 }}>
                 {sermon.summary}
-              </StyledText>
+              </Text>
             ) : null}
 
             <Stack horizontal alignItems="center" gap={6} marginTop={4}>
               <Icon name="youtube" size={14} color={ACCENT_COLOR} />
-              <StyledText fontSize={13} fontWeight="700" color={ACCENT_COLOR}>
+              <Text variant="button" fontSize={13} color={ACCENT_COLOR}>
                 Watch on YouTube
-              </StyledText>
+              </Text>
               <Icon name="arrow-right" size={13} color={ACCENT_COLOR} />
             </Stack>
           </Stack>

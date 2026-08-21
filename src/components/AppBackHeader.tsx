@@ -1,5 +1,6 @@
 import { router } from "expo-router";
-import { StyledPage, StyledText, Stack } from "fluent-styles";
+import { StyledPage, Stack } from "fluent-styles";
+import { Text } from "./text";
 import { COLORS } from "../theme/colors";
 
 /** Shared detail-screen chrome. Keeps navigation geometry identical while
@@ -22,15 +23,9 @@ export function AppBackHeader({ title }: { title?: string }) {
       />
       {title ? (
         <Stack paddingHorizontal={24} paddingTop={18} paddingBottom={2}>
-          <StyledText
-            fontSize={11}
-            fontWeight="700"
-            letterSpacing={1}
-            color={COLORS.gold}
-            style={{ textTransform: "uppercase" }}
-          >
+          <Text variant="overline" fontSize={11} letterSpacing={1} color={COLORS.gold}>
             {title}
-          </StyledText>
+          </Text>
         </Stack>
       ) : null}
     </>

@@ -2,7 +2,8 @@ import { useState } from "react";
 import { Image } from "react-native";
 import Svg, { Defs, LinearGradient, Stop, Rect } from "react-native-svg";
 import { Feather as Icon } from "@expo/vector-icons";
-import { Stack, StyledText, StyledPressable, Loader } from "fluent-styles";
+import { Stack, StyledPressable, Loader } from "fluent-styles";
+import { Text } from "./text";
 import { ScalePressable } from "./ScalePressable";
 import { ChurchDetailsSheet } from "./ChurchDetailsSheet";
 import { SHADOW_CARD } from "../theme/shadows";
@@ -76,9 +77,9 @@ export function ChurchResultCard({
               the card's hero image (that's bannerUri above). Hidden
               entirely (not a fallback icon) when the church has no logo. */}
           <Stack horizontal alignItems="center" justifyContent="space-between" gap={10}>
-            <StyledText fontSize={19} fontWeight="800" color={COLORS.ink} numberOfLines={1} style={{ flex: 1 }}>
+            <Text variant="title" fontSize={19} fontWeight="800" color={COLORS.ink} numberOfLines={1} style={{ flex: 1 }}>
               {church.name}
-            </StyledText>
+            </Text>
             {logoUri ? (
               <Stack
                 width={44}
@@ -98,15 +99,15 @@ export function ChurchResultCard({
           {addressLine ? (
             <Stack horizontal alignItems="center" gap={5}>
               <Icon name="map-pin" size={12} color={COLORS.inkSoft} />
-              <StyledText fontSize={13} color={COLORS.inkSoft}>
+              <Text variant="body" fontSize={13} color={COLORS.inkSoft}>
                 {addressLine}
-              </StyledText>
+              </Text>
             </Stack>
           ) : null}
           {church.description ? (
-            <StyledText fontSize={12.5} color={COLORS.inkSoft} numberOfLines={2} style={{ lineHeight: 18 }}>
+            <Text variant="bodySmall" fontSize={12.5} color={COLORS.inkSoft} numberOfLines={2}>
               {church.description}
-            </StyledText>
+            </Text>
           ) : null}
 
           {/* Two fixed actions — everything else (Call/Email/Directions,
@@ -130,9 +131,9 @@ export function ChurchResultCard({
                 style={{ borderWidth: 1, borderColor: COLORS.chromeBorder }}
               >
                 <Icon name="eye" size={15} color={COLORS.ink} />
-                <StyledText fontSize={13.5} fontWeight="700" color={COLORS.ink}>
+                <Text variant="button" fontSize={13.5} color={COLORS.ink}>
                   View details
-                </StyledText>
+                </Text>
               </Stack>
             </StyledPressable>
 
@@ -155,9 +156,9 @@ export function ChurchResultCard({
                   <Loader variant="spinner" color={COLORS.white} />
                 ) : (
                   <>
-                    <StyledText fontSize={13.5} fontWeight="700" color={COLORS.white}>
+                    <Text variant="button" fontSize={13.5} color={COLORS.white}>
                       Select
-                    </StyledText>
+                    </Text>
                     <Icon name="arrow-right" size={14} color={COLORS.white} />
                   </>
                 )}

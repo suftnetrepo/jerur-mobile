@@ -1,5 +1,6 @@
 import { Feather as Icon } from "@expo/vector-icons";
-import { Stack, StyledText } from "fluent-styles";
+import { Stack } from "fluent-styles";
+import { Text } from "./text";
 import { ScalePressable } from "./ScalePressable";
 import { COLORS } from "../theme/colors";
 import { SHADOW_SOFT } from "../theme/shadows";
@@ -53,26 +54,26 @@ export function BibleBookRow({
           justifyContent="center"
           marginRight={13}
         >
-          <StyledText
+          <Text
             fontSize={11}
             fontWeight="800"
             letterSpacing={0.6}
             color={tone.fg}
           >
             {bookNumber}
-          </StyledText>
+          </Text>
         </Stack>
 
         {/* Book information */}
         <Stack flex={1} gap={3}>
-          <StyledText
+          <Text
             fontSize={titleFontSize}
             fontWeight="800"
             color={COLORS.ink}
             numberOfLines={1}
           >
             {book.name}
-          </StyledText>
+          </Text>
 
           <Stack horizontal alignItems="center" gap={5}>
             <Icon
@@ -81,13 +82,13 @@ export function BibleBookRow({
               color={COLORS.inkSoft}
             />
 
-            <StyledText
+            <Text
               fontSize={Math.max(titleFontSize - 2.5, 10)}
               color={COLORS.inkSoft}
             >
               {book.chapterCount} chapter
               {book.chapterCount === 1 ? "" : "s"}
-            </StyledText>
+            </Text>
           </Stack>
         </Stack>
 

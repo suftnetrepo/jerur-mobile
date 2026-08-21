@@ -1,7 +1,8 @@
 import { useEffect, useRef } from "react";
 import { Animated, Dimensions, Easing, Image, ScrollView } from "react-native";
 import { Feather as Icon } from "@expo/vector-icons";
-import { Stack, StyledText } from "fluent-styles";
+import { Stack } from "fluent-styles";
+import { Text } from "./text";
 import Svg, { Defs, LinearGradient, Stop, Rect } from "react-native-svg";
 import { router } from "expo-router";
 import { ScalePressable } from "./ScalePressable";
@@ -141,25 +142,25 @@ function ArticleCard({ article, index }: { article: Article; index: number }) {
           </Stack>
 
           <Stack flex={1} padding={14} gap={5}>
-            <StyledText fontSize={10.5} fontWeight="700" letterSpacing={0.8} color={ACCENT_COLOR} style={{ textTransform: "uppercase" }}>
+            <Text variant="overline" fontSize={10.5} letterSpacing={0.8} color={ACCENT_COLOR}>
               Article
-            </StyledText>
-            <StyledText fontSize={16} fontWeight="800" color={COLORS.ink} numberOfLines={2} style={{ lineHeight: 20 }}>
+            </Text>
+            <Text variant="subtitle" fontWeight="800" fontSize={16} color={COLORS.ink} numberOfLines={2} style={{ lineHeight: 20 }}>
               {article.title}
-            </StyledText>
-            <StyledText fontSize={12.5} color={COLORS.inkSoft} numberOfLines={3} style={{ lineHeight: 17 }}>
+            </Text>
+            <Text variant="bodySmall" fontSize={12.5} color={COLORS.inkSoft} numberOfLines={3} style={{ lineHeight: 17 }}>
               {article.summary}
-            </StyledText>
+            </Text>
             <Stack flex={1} />
             {dateLabel ? (
-              <StyledText fontSize={11} color={COLORS.inkSoft}>
+              <Text variant="caption" color={COLORS.inkSoft}>
                 {dateLabel}
-              </StyledText>
+              </Text>
             ) : null}
             <Stack horizontal alignItems="center" gap={5}>
-              <StyledText fontSize={12.5} fontWeight="700" color={ACCENT_COLOR}>
+              <Text variant="button" fontSize={12.5} color={ACCENT_COLOR}>
                 Read Article
-              </StyledText>
+              </Text>
               <Icon name="arrow-right" size={12} color={ACCENT_COLOR} />
             </Stack>
           </Stack>

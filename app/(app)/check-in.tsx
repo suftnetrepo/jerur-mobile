@@ -5,13 +5,13 @@ import { Feather as Icon } from "@expo/vector-icons";
 import {
   StyledPage,
   StyledScrollView,
-  StyledText,
   StyledForm,
   StyledButton,
   StyledPressable,
   Stack,
   useToast,
 } from "fluent-styles";
+import { Text } from "../../src/components/text";
 import { FeatureGate } from "../../src/components/FeatureGate";
 import { FormSubmitButton } from "../../src/components/FormSubmitButton";
 import { useMemberSession } from "../../src/member/MemberSessionContext";
@@ -149,13 +149,13 @@ function CheckInScreenContent() {
           justifyContent="center"
           padding={24}
         >
-          <StyledText
+          <Text
             fontSize={14.5}
             color={COLORS.inkSoft}
             style={{ textAlign: "center", marginBottom: 16 }}
           >
             Log in to submit your attendance.
-          </StyledText>
+          </Text>
           <StyledButton
             backgroundColor={COLORS.gold}
             onPress={() => router.push("/account")}
@@ -190,13 +190,13 @@ function CheckInScreenContent() {
           padding={24}
           gap={16}
         >
-          <StyledText
+          <Text
             fontSize={14.5}
             color={COLORS.inkSoft}
             style={{ textAlign: "center" }}
           >
             Choose a service from Service Times to submit your attendance.
-          </StyledText>
+          </Text>
           <StyledButton
             primary
             onPress={() => router.replace("/service-times")}
@@ -253,22 +253,22 @@ function CheckInScreenContent() {
           >
             <Icon name="calendar" size={22} color={COLORS.inkSoft} />
           </Stack>
-          <StyledText
-            fontSize={16}
+          <Text
+            variant="subtitle"
             fontWeight="800"
             color={COLORS.ink}
             style={{ textAlign: "center" }}
           >
             Not a service day
-          </StyledText>
-          <StyledText
+          </Text>
+          <Text
             fontSize={13.5}
             color={COLORS.inkSoft}
             style={{ textAlign: "center" }}
           >
             Attendance for {serviceTitle} can only be submitted on{" "}
             {formatServiceDayNames(serviceDays) ?? "its scheduled day"}.
-          </StyledText>
+          </Text>
           <StyledButton
             backgroundColor={COLORS.gold}
             onPress={() => router.replace("/service-times")}
@@ -359,9 +359,9 @@ function CheckInScreenContent() {
             <Icon name="calendar" size={20} color={ACCENT} />
           </Stack>
           <Stack style={{ flex: 1 }}>
-            <StyledText fontSize={15} fontWeight="800" color={COLORS.ink}>
+            <Text variant="subtitle" fontSize={15} fontWeight="800" color={COLORS.ink}>
               {serviceTitle}
-            </StyledText>
+            </Text>
             {summaryLine ? (
               <Stack
                 horizontal
@@ -370,22 +370,22 @@ function CheckInScreenContent() {
                 style={{ marginTop: 2, flexWrap: "wrap" }}
               >
                 <Icon name="calendar" size={11} color={COLORS.inkSoft} />
-                <StyledText fontSize={12.5} color={COLORS.inkSoft}>
+                <Text fontSize={12.5} color={COLORS.inkSoft}>
                   {dayLabel ?? ""}
-                </StyledText>
+                </Text>
                 {dayLabel && timeRange ? (
-                  <StyledText fontSize={12.5} color={COLORS.inkSoft}>
+                  <Text fontSize={12.5} color={COLORS.inkSoft}>
                     {" "}
                     ·{" "}
-                  </StyledText>
+                  </Text>
                 ) : null}
                 {timeRange ? (
                   <>
                     <Icon name="clock" size={11} color={COLORS.inkSoft} />
-                    <StyledText fontSize={12.5} color={COLORS.inkSoft}>
+                    <Text fontSize={12.5} color={COLORS.inkSoft}>
                       {" "}
                       {timeRange}
-                    </StyledText>
+                    </Text>
                   </>
                 ) : null}
               </Stack>
@@ -393,21 +393,22 @@ function CheckInScreenContent() {
           </Stack>
         </Stack>
 
-        <StyledText
+        <Text
+          variant="title"
           fontSize={17}
           fontWeight="800"
           color={COLORS.ink}
           style={{ marginBottom: 4 }}
         >
           How are you joining today?
-        </StyledText>
-        <StyledText
+        </Text>
+        <Text
           fontSize={13}
           color={COLORS.inkSoft}
           style={{ marginBottom: 18 }}
         >
           Choose one option.
-        </StyledText>
+        </Text>
         <Stack
           style={{
             flexDirection: "row",
@@ -447,7 +448,8 @@ function CheckInScreenContent() {
                   color={selected ? ACCENT : option.iconColor}
                 />
                 {/* Label */}
-                <StyledText
+                <Text
+                  variant="label"
                   fontSize={13}
                   fontWeight={selected ? "700" : "500"}
                   color={selected ? ACCENT : COLORS.ink}
@@ -455,7 +457,7 @@ function CheckInScreenContent() {
                   style={{ flex: 1, lineHeight: 17 }}
                 >
                   {option.label}
-                </StyledText>
+                </Text>
                 {/* Check badge */}
                 {selected && (
                   <Stack
@@ -483,13 +485,13 @@ function CheckInScreenContent() {
             marginBottom={4}
           >
             <Icon name="heart" size={13} color={COLORS.sage} />
-            <StyledText
+            <Text
               fontSize={12.5}
               color={COLORS.inkSoft}
               style={{ flex: 1 }}
             >
               We'll let the pastoral team know you'd like prayer.
-            </StyledText>
+            </Text>
           </Stack>
         )}
 
@@ -526,14 +528,14 @@ function CheckInScreenContent() {
           marginTop={20}
         >
       
-          <StyledText
+          <Text
             fontSize={12}
             color={COLORS.inkSoft}
             style={{ textAlign: "center" }}
           >
             Your information is private and is only shared with the pastoral
             team.
-          </StyledText>
+          </Text>
         </Stack>
       </StyledScrollView>
     </StyledPage>

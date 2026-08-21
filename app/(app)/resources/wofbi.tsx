@@ -4,11 +4,11 @@ import { Feather as Icon } from "@expo/vector-icons";
 import {
   StyledPage,
   StyledScrollView,
-  StyledText,
   StyledCard,
   StyledForm,
   Stack,
 } from "fluent-styles";
+import { Text } from "../../../src/components/text";
 import { FeatureGate } from "../../../src/components/FeatureGate";
 import { ScalePressable } from "../../../src/components/ScalePressable";
 import { FormSubmitButton } from "../../../src/components/FormSubmitButton";
@@ -128,41 +128,44 @@ function WofbiScreenContent() {
               >
                 <Icon name="book-open" size={14} color={COLORS.goldDeep} />
               </Stack>
-              <StyledText
+              <Text
+                variant="overline"
                 fontSize={10.5}
-                fontWeight="800"
                 letterSpacing={1}
                 color={COLORS.goldDeep}
               >
                 WORD OF FAITH BIBLE INSTITUTE
-              </StyledText>
+              </Text>
             </Stack>
 
-            <StyledText
+            <Text
+              variant="display"
               fontSize={27}
               fontWeight="800"
               color={COLORS.ink}
               style={{ lineHeight: 32, marginBottom: 3 }}
             >
               Basic Certificate
-            </StyledText>
-            <StyledText
+            </Text>
+            <Text
+              variant="display"
               fontSize={27}
               fontWeight="800"
               color={COLORS.goldDeep}
               style={{ lineHeight: 32, marginBottom: 13 }}
             >
               Course
-            </StyledText>
+            </Text>
 
-            <StyledText
+            <Text
+              variant="body"
               fontSize={13}
               color={COLORS.inkSoft}
               style={{ lineHeight: 20, marginBottom: 18, maxWidth: 300 }}
             >
               Transform your life through deep spiritual enlightenment and
               practical empowerment for victorious living.
-            </StyledText>
+            </Text>
 
             <Stack
               backgroundColor={COLORS.white}
@@ -183,15 +186,17 @@ function WofbiScreenContent() {
                   <Icon name="sunrise" size={17} color={COLORS.sage} />
                 </Stack>
                 <Stack flex={1}>
-                  <StyledText
+                  <Text
+                    variant="label"
                     fontSize={13.5}
                     fontWeight="800"
                     color={COLORS.ink}
                     style={{ marginBottom: 5 }}
                   >
                     More than education
-                  </StyledText>
-                  <StyledText
+                  </Text>
+                  <Text
+                    variant="bodySmall"
                     fontSize={12.5}
                     color={COLORS.inkSoft}
                     style={{ lineHeight: 19 }}
@@ -199,7 +204,7 @@ function WofbiScreenContent() {
                     At WOFBI, we do not offer mere secular education; we also
                     provide deep spiritual enlightenment and mental empowerment
                     for exploits.
-                  </StyledText>
+                  </Text>
                 </Stack>
               </Stack>
             </Stack>
@@ -225,12 +230,13 @@ function WofbiScreenContent() {
             >
               <Icon name="compass" size={16} color={COLORS.goldDeep} />
             </Stack>
-            <StyledText fontSize={15} fontWeight="800" color={COLORS.ink}>
+            <Text variant="subtitle" fontSize={15} fontWeight="800" color={COLORS.ink}>
               Looking for clarity and direction?
-            </StyledText>
+            </Text>
           </Stack>
 
-          <StyledText
+          <Text
+            variant="body"
             fontSize={13}
             color={COLORS.inkSoft}
             style={{ lineHeight: 20 }}
@@ -239,7 +245,7 @@ function WofbiScreenContent() {
             challenges? Is life fuzzy and unpredictable for you? You struggle in
             one area or the other — finance, business, health, family, career —
             and you don't really seem to understand what is going on.
-          </StyledText>
+          </Text>
         </Stack>
 
         {/* ── Campus selector ──────────────────────────────────────────── */}
@@ -258,16 +264,17 @@ function WofbiScreenContent() {
               >
                 <Icon name="map-pin" size={14} color={COLORS.goldDeep} />
               </Stack>
-              <StyledText fontSize={18} fontWeight="800" color={COLORS.ink}>
+              <Text variant="metric" color={COLORS.ink}>
                 Choose a campus
-              </StyledText>
-              <StyledText
+              </Text>
+              <Text
+                variant="bodySmall"
                 fontSize={11.5}
                 color={COLORS.inkSoft}
                 style={{ marginTop: 2 }}
               >
                 Select the location and dates that suit you.
-              </StyledText>
+              </Text>
             </Stack>
             <Stack flex={1} height={1} backgroundColor={COLORS.goldPale} />
           </Stack>
@@ -313,24 +320,25 @@ function WofbiScreenContent() {
                       alignItems="center"
                       justifyContent="center"
                     >
-                      <StyledText
+                      <Text
                         fontSize={12}
                         fontWeight="800"
                         color={selected ? COLORS.white : COLORS.inkSoft}
                       >
                         {String(index + 1).padStart(2, "0")}
-                      </StyledText>
+                      </Text>
                     </Stack>
 
                     <Stack flex={1}>
-                      <StyledText
+                      <Text
+                        variant="label"
                         fontSize={14.5}
                         fontWeight="800"
                         color={COLORS.ink}
                         style={{ marginBottom: 5 }}
                       >
                         {c.label}
-                      </StyledText>
+                      </Text>
 
                       <Stack horizontal alignItems="center" gap={6}>
                         <Icon
@@ -338,13 +346,14 @@ function WofbiScreenContent() {
                           size={12}
                           color={selected ? COLORS.goldDeep : COLORS.inkSoft}
                         />
-                        <StyledText
+                        <Text
+                          variant="subLabel"
                           fontSize={12.5}
                           fontWeight="600"
                           color={COLORS.inkSoft}
                         >
                           {c.dates}
-                        </StyledText>
+                        </Text>
                       </Stack>
                     </Stack>
 
@@ -398,22 +407,23 @@ function WofbiScreenContent() {
                   <Icon name="check-circle" size={19} color={COLORS.sage} />
                 </Stack>
                 <Stack flex={1}>
-                  <StyledText
-                    fontSize={14}
+                  <Text
+                    variant="label"
                     fontWeight="800"
                     color={COLORS.sage}
                     style={{ marginBottom: 3 }}
                   >
                     Registration ready
-                  </StyledText>
-                  <StyledText
+                  </Text>
+                  <Text
+                    variant="bodySmall"
                     fontSize={12.5}
                     color={COLORS.inkSoft}
                     style={{ lineHeight: 18 }}
                   >
                     Your registration email is ready. Review it and tap send in
                     your email app.
-                  </StyledText>
+                  </Text>
                 </Stack>
               </Stack>
             </Stack>
@@ -436,17 +446,16 @@ function WofbiScreenContent() {
                   <Icon name="edit-3" size={17} color={COLORS.goldDeep} />
                 </Stack>
                 <Stack flex={1}>
-                  <StyledText
-                    fontSize={18}
-                    fontWeight="800"
+                  <Text
+                    variant="metric"
                     color={COLORS.ink}
                     style={{ marginBottom: 2 }}
                   >
                     Register your interest
-                  </StyledText>
-                  <StyledText fontSize={12} color={COLORS.inkSoft}>
+                  </Text>
+                  <Text variant="bodySmall" color={COLORS.inkSoft}>
                     Complete your details to continue.
-                  </StyledText>
+                  </Text>
                 </Stack>
               </Stack>
 
@@ -461,14 +470,14 @@ function WofbiScreenContent() {
                   marginBottom={16}
                 >
                   <Icon name="map-pin" size={14} color={COLORS.goldDeep} />
-                  <StyledText
+                  <Text
+                    variant="button"
                     flex={1}
                     fontSize={12}
-                    fontWeight="700"
                     color={COLORS.goldDeep}
                   >
                     {campus}
-                  </StyledText>
+                  </Text>
                 </Stack>
               )}
 
@@ -479,13 +488,13 @@ function WofbiScreenContent() {
                   padding={14}
                   marginBottom={16}
                 >
-                  <StyledText
+                  <Text
+                    variant="label"
                     fontSize={13}
-                    fontWeight="600"
                     color={COLORS.error}
                   >
                     {error}
-                  </StyledText>
+                  </Text>
                 </Stack>
               )}
 

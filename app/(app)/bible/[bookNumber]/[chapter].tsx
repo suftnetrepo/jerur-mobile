@@ -1,11 +1,10 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { Share, Text } from "react-native";
+import { Share, Text as RNText } from "react-native";
 import { router, useLocalSearchParams } from "expo-router";
 import { Feather as Icon } from "@expo/vector-icons";
 import {
   StyledPage,
   StyledScrollView,
-  StyledText,
   Stack,
   Popup,
   useToast,
@@ -13,6 +12,7 @@ import {
   StyledPressable,
   StyledSpacer,
 } from "fluent-styles";
+import { Text } from "../../../../src/components/text";
 import { FeatureGate } from "../../../../src/components/FeatureGate";
 import { BibleReaderToolbar } from "../../../../src/components/BibleReaderToolbar";
 import { BibleVerseSelectionBar } from "../../../../src/components/BibleVerseSelectionBar";
@@ -209,13 +209,13 @@ function BibleChapterReaderScreenContent() {
           justifyContent="center"
           paddingHorizontal={32}
         >
-          <StyledText
+          <Text
             fontSize={14}
             color={COLORS.inkSoft}
             style={{ textAlign: "center" }}
           >
             That chapter couldn't be found.
-          </StyledText>
+          </Text>
         </Stack>
       </StyledPage>
     );
@@ -251,13 +251,14 @@ function BibleChapterReaderScreenContent() {
               borderRadius={20}
               backgroundColor={COLORS.goldPale}
             >
-              <StyledText
+              <Text
+                variant="overline"
                 fontSize={11}
                 fontWeight="800"
                 color={COLORS.goldDeep}
               >
                 KJV
-              </StyledText>
+              </Text>
             </Stack>
             <StyledPressable onPress={() => router.push(`/notes` as any)}>
               <StyledShape
@@ -275,9 +276,9 @@ function BibleChapterReaderScreenContent() {
       />
       <StyledSpacer marginVertical={8} />
       <Stack paddingHorizontal={H_PAD} paddingTop={2} paddingBottom={8}>
-        <StyledText fontSize={21} fontWeight="800" color={COLORS.ink}>
+        <Text variant="header" fontSize={21} fontWeight="800" color={COLORS.ink}>
           Chapter {chapter}
-        </StyledText>
+        </Text>
       </Stack>
 
       <StyledScrollView
@@ -286,7 +287,7 @@ function BibleChapterReaderScreenContent() {
         contentContainerStyle={{ paddingHorizontal: H_PAD, paddingBottom: 24 }}
       >
         {/* Flowing paragraph, not one row per verse - reads like scripture, not a list. */}
-        <Text
+        <RNText
           style={{ lineHeight: fontSize * 1.7 }}
           onLayout={(e) => {
             if (targetVerse == null) return;
@@ -305,7 +306,7 @@ function BibleChapterReaderScreenContent() {
               verse.verse >= selection.start &&
               verse.verse <= selection.end;
             return (
-              <Text
+              <RNText
                 key={verse.verse}
                 onPress={() => handleVersePress(verse.verse)}
                 onLongPress={() => handleVerseLongPress(verse.verse)}
@@ -316,20 +317,20 @@ function BibleChapterReaderScreenContent() {
                     : undefined
                 }
               >
-                <Text
+                <RNText
                   style={{
                     fontSize: Math.round(fontSize * 0.6),
                     fontWeight: "800",
                     color: COLORS.gold,
                   }}
-                >{`  ${verse.verse} `}</Text>
-                <Text
+                >{`  ${verse.verse} `}</RNText>
+                <RNText
                   style={{ fontSize, color: COLORS.ink, fontWeight: "400" }}
-                >{`${verse.text} `}</Text>
-              </Text>
+                >{`${verse.text} `}</RNText>
+              </RNText>
             );
           })}
-        </Text>
+        </RNText>
       </StyledScrollView>
 
       <Stack paddingHorizontal={16} paddingBottom={16} paddingTop={8}>

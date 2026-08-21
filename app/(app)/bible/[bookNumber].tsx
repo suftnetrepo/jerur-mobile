@@ -4,10 +4,10 @@ import { Feather as Icon } from "@expo/vector-icons";
 import {
   StyledPage,
   StyledScrollView,
-  StyledText,
   StyledShape,
   Stack,
 } from "fluent-styles";
+import { Text } from "../../../src/components/text";
 import { FeatureGate } from "../../../src/components/FeatureGate";
 import {
   BibleChapterGrid,
@@ -50,13 +50,13 @@ function BibleBookScreenContent() {
           justifyContent="center"
           paddingHorizontal={32}
         >
-          <StyledText
+          <Text
             fontSize={14}
             color={COLORS.inkSoft}
             style={{ textAlign: "center" }}
           >
             That book couldn't be found.
-          </StyledText>
+          </Text>
         </Stack>
       </StyledPage>
     );

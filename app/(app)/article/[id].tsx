@@ -1,7 +1,8 @@
 import { Image, Linking, Share, useWindowDimensions } from "react-native";
 import { router, useLocalSearchParams } from "expo-router";
 import { Feather as Icon } from "@expo/vector-icons";
-import { StyledPage, StyledScrollView, StyledText, StyledButton, Stack } from "fluent-styles";
+import { StyledPage, StyledScrollView, StyledButton, Stack } from "fluent-styles";
+import { Text } from "../../../src/components/text";
 import Svg, { Defs, LinearGradient, Stop, Rect } from "react-native-svg";
 import RenderHTML, { type MixedStyleDeclaration } from "react-native-render-html";
 import { FeatureGate } from "../../../src/components/FeatureGate";
@@ -10,6 +11,7 @@ import { useArticleDetail } from "../../../src/hooks/useChurchData";
 import { getFeatureById } from "../../../src/config/mobileFeatures";
 import { SHADOW_SOFT } from "../../../src/theme/shadows";
 import { COLORS } from "../../../src/theme/colors";
+import { AppBackHeader } from "../../../src/components/AppBackHeader";
 
 const H_PAD = 24;
 const HERO_HEIGHT = 220;
@@ -73,20 +75,20 @@ function ArticleDetailScreenContent() {
 
   return (
     <StyledPage showStatusBar backgroundColor={COLORS.paper}>
-      <StyledPage.Header marginHorizontal={16} title="Article" titleAlignment="center" showBackArrow onBackPress={() => router.back()} />
-
+        <AppBackHeader title="Article" />
+     
       {isLoading ? (
         <StyledScrollView contentContainerStyle={{ paddingBottom: 40 }}>
           <ArticleDetailSkeleton />
         </StyledScrollView>
       ) : isError || !article ? (
         <Stack flex={1} alignItems="center" justifyContent="center" paddingHorizontal={32} gap={6}>
-          <StyledText fontSize={15} fontWeight="700" color={COLORS.ink} style={{ textAlign: "center" }}>
+          <Text variant="subtitle" fontSize={15} fontWeight="700" color={COLORS.ink} style={{ textAlign: "center" }}>
             This article isn't available
-          </StyledText>
-          <StyledText fontSize={13} color={COLORS.inkSoft} style={{ textAlign: "center" }}>
+          </Text>
+          <Text fontSize={13} color={COLORS.inkSoft} style={{ textAlign: "center" }}>
             It may have been unpublished or removed.
-          </StyledText>
+          </Text>
         </Stack>
       ) : (
         <StyledScrollView contentContainerStyle={{ paddingBottom: 40 }}>
@@ -109,15 +111,15 @@ function ArticleDetailScreenContent() {
           </Stack>
 
           <Stack paddingHorizontal={H_PAD} marginTop={20} gap={8}>
-            <StyledText fontSize={24} fontWeight="800" color={COLORS.ink} style={{ lineHeight: 30 }}>
+            <Text variant="header" fontWeight="800" color={COLORS.ink} style={{ lineHeight: 30 }}>
               {article.title}
-            </StyledText>
+            </Text>
             {formatDate(article.publishedAt) ? (
               <Stack horizontal alignItems="center" gap={6}>
                 <Icon name="calendar" size={13} color={COLORS.inkSoft} />
-                <StyledText fontSize={12.5} color={COLORS.inkSoft}>
+                <Text fontSize={12.5} color={COLORS.inkSoft}>
                   {formatDate(article.publishedAt)}
-                </StyledText>
+                </Text>
               </Stack>
             ) : null}
           </Stack>
@@ -142,9 +144,9 @@ function ArticleDetailScreenContent() {
             <StyledButton outline block onPress={handleShare} accessibilityLabel="Share this article">
               <Stack horizontal alignItems="center" justifyContent="center" gap={8}>
                 <Icon name="share-2" size={15} color={COLORS.ink} />
-                <StyledText fontSize={14} fontWeight="700" color={COLORS.ink}>
+                <Text variant="button" color={COLORS.ink}>
                   Share Article
-                </StyledText>
+                </Text>
               </Stack>
             </StyledButton>
           </Stack>

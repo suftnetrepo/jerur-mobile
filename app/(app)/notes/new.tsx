@@ -1,7 +1,8 @@
 import { useRef, useState } from "react";
 import { KeyboardAvoidingView, Platform } from "react-native";
 import { router } from "expo-router";
-import { StyledPage, StyledButton, StyledText, Stack, useToast } from "fluent-styles";
+import { StyledPage, StyledButton, Stack, useToast } from "fluent-styles";
+import { Text } from "../../../src/components/text";
 import { FeatureGate } from "../../../src/components/FeatureGate";
 import { NoteFormFields } from "../../../src/components/NoteFormFields";
 import { createNote } from "../../../src/notes/notes-repository";
@@ -51,9 +52,9 @@ function NewNoteScreenContent() {
         backgroundColor={COLORS.paper}
         rightIcon={
           <StyledButton compact primary loading={saving} onPress={handleSave} accessibilityLabel="Save note">
-            <StyledText fontSize={13} fontWeight="700" color={COLORS.white}>
+            <Text variant="button" fontSize={13} color={COLORS.white}>
               Save
-            </StyledText>
+            </Text>
           </StyledButton>
         }
       />

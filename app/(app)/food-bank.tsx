@@ -1,6 +1,7 @@
 import { Animated, Linking } from "react-native";
 import { Feather as Icon } from "@expo/vector-icons";
-import { StyledPage, StyledScrollView, StyledText, Stack } from "fluent-styles";
+import { StyledPage, StyledScrollView, Stack } from "fluent-styles";
+import { Text } from "../../src/components/text";
 import { FeatureGate } from "../../src/components/FeatureGate";
 import { AppBackHeader } from "../../src/components/AppBackHeader";
 import { ScalePressable } from "../../src/components/ScalePressable";
@@ -52,17 +53,17 @@ function FoodBankScreenContent() {
             <Stack horizontal minHeight={232} backgroundColor={COLORS.goldPale}>
               {/* Left: text column */}
               <Stack flex={1} padding={20} paddingRight={10} justifyContent="center">
-                <StyledText fontSize={25} fontWeight="800" color={COLORS.ink} style={{ lineHeight: 30, marginBottom: 2 }}>
+                <Text variant="display" fontSize={25} fontWeight="800" color={COLORS.ink} style={{ lineHeight: 30, marginBottom: 2 }}>
                   It only takes a little to{" "}
-                </StyledText>
-                <StyledText fontSize={25} fontWeight="800" color={COLORS.goldDeep} style={{ lineHeight: 30, marginBottom: 10 }}>
+                </Text>
+                <Text variant="display" fontSize={25} fontWeight="800" color={COLORS.goldDeep} style={{ lineHeight: 30, marginBottom: 10 }}>
                   make a lot
-                </StyledText>
+                </Text>
                 {/* Gold accent underline */}
                 <Stack width={34} height={3} backgroundColor={COLORS.gold} borderRadius={2} marginBottom={12} />
-                <StyledText fontSize={12.5} color={COLORS.inkSoft} style={{ lineHeight: 18 }}>
+                <Text fontSize={12.5} color={COLORS.inkSoft} style={{ lineHeight: 18 }}>
                   Just like the two fish and five loaves, your small gift can make a huge impact.
-                </StyledText>
+                </Text>
               </Stack>
               {/* Right: food illustration */}
               <FoodBoxIllustration />
@@ -88,10 +89,10 @@ function FoodBankScreenContent() {
               </Stack>
               {/* Mission text */}
               <Stack flex={1}>
-                <StyledText fontSize={13.5} color={COLORS.inkSoft} style={{ lineHeight: 21 }}>
+                <Text fontSize={13.5} color={COLORS.inkSoft} style={{ lineHeight: 21 }}>
                   Every third Sunday, Winners Chapel Peterborough extends a hand of hope through our food bank at Ormiston Bushfield
                   Academy. Your generous donation helps fill bags with essential food items for those in need.
-                </StyledText>
+                </Text>
               </Stack>
             </Stack>
           </Stack>
@@ -102,9 +103,9 @@ function FoodBankScreenContent() {
           <Icon name="heart" size={20} color={COLORS.gold} style={{ marginBottom: 8 }} />
           <Stack horizontal alignItems="center" gap={10}>
             <Stack flex={1} height={1.5} backgroundColor={COLORS.gold} opacity={0.5} />
-            <StyledText fontSize={18} fontWeight="800" color={COLORS.sage}>
+            <Text variant="title" fontSize={18} fontWeight="800" color={COLORS.sage}>
               Ways you can help
-            </StyledText>
+            </Text>
             <Stack flex={1} height={1.5} backgroundColor={COLORS.gold} opacity={0.5} />
           </Stack>
         </Animated.View>
@@ -126,13 +127,13 @@ function FoodBankScreenContent() {
                   >
                     <Icon name="shopping-bag" size={19} color={COLORS.sage} />
                   </Stack>
-                  <StyledText fontSize={15} fontWeight="800" color={COLORS.ink} style={{ flex: 1, lineHeight: 21 }}>
+                  <Text variant="subtitle" fontSize={15} fontWeight="800" color={COLORS.ink} style={{ flex: 1, lineHeight: 21 }}>
                     Donate Food
-                  </StyledText>
+                  </Text>
                 </Stack>
-                <StyledText fontSize={13} color={COLORS.inkSoft} style={{ lineHeight: 19 }}>
+                <Text fontSize={13} color={COLORS.inkSoft} style={{ lineHeight: 19 }}>
                   Such as rice, pasta, tinned foods, cereals, and toiletries — dropped off directly at the church.
-                </StyledText>
+                </Text>
               </Stack>
               {/* Right: grocery illustration */}
               <Stack opacity={0.9} marginTop={-4}>
@@ -160,13 +161,13 @@ function FoodBankScreenContent() {
                   >
                     <Icon name="home" size={20} color={COLORS.goldDeep} />
                   </Stack>
-                  <StyledText fontSize={15} fontWeight="800" color={COLORS.ink} style={{ flex: 1, lineHeight: 21 }}>
+                  <Text variant="subtitle" fontSize={15} fontWeight="800" color={COLORS.ink} style={{ flex: 1, lineHeight: 21 }}>
                     Give financially
-                  </StyledText>
+                  </Text>
                 </Stack>
-                <StyledText fontSize={13} color={COLORS.inkSoft} style={{ lineHeight: 19 }}>
+                <Text fontSize={13} color={COLORS.inkSoft} style={{ lineHeight: 19 }}>
                   Speak to any church official, or contact us to arrange your donation:
-                </StyledText>
+                </Text>
               </Stack>
               {/* Right: donation illustration */}
               <Stack opacity={0.85} marginTop={-4}>
@@ -197,9 +198,9 @@ function FoodBankScreenContent() {
                   <Stack horizontal alignItems="center" justifyContent="space-between" gap={8}>
                     <Stack horizontal alignItems="center" gap={8}>
                       <Icon name="phone" size={14} color={COLORS.goldDeep} />
-                      <StyledText fontSize={13} fontWeight="700" color={COLORS.ink}>
+                      <Text variant="button" fontSize={13} color={COLORS.ink}>
                       {number}
-                      </StyledText>
+                      </Text>
                     </Stack>
                     <Icon name="chevron-right" size={18} color={COLORS.goldDeep} />
                   </Stack>
@@ -224,9 +225,9 @@ function FoodBankScreenContent() {
               >
                 <Icon name="shield" size={16} color={COLORS.sage} />
               </Stack>
-              <StyledText fontSize={13} color={COLORS.sage} style={{ flex: 1, lineHeight: 20 }}>
+              <Text fontSize={13} color={COLORS.sage} style={{ flex: 1, lineHeight: 20 }}>
                 Your kindness makes a difference.{"\n"}Thank you for being a blessing to our community.
-              </StyledText>
+              </Text>
             </Stack>
           </Stack>
         </Animated.View>

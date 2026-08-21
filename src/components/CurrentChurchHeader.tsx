@@ -1,11 +1,11 @@
 import { Feather as Icon } from "@expo/vector-icons";
 import {
   Stack,
-  StyledText,
   StyledPressable,
   StyledShape,
   StyledImage,
 } from "fluent-styles";
+import { Text } from "./text";
 import { COLORS } from "../theme/colors";
 import type { ChurchSearchResult } from "../api/types";
 
@@ -78,23 +78,23 @@ export function CurrentChurchHeader({
           )}
         </StyledShape>
         <Stack gap={1} flexShrink={1}>
-          <StyledText fontSize={11.5} fontWeight="600" color={COLORS.inkSoft}>
+          <Text variant="subLabel" fontSize={11.5} fontWeight="600" color={COLORS.inkSoft}>
             {church ? "Your Location" : "Select Church"}
-          </StyledText>
+          </Text>
           {/* Chevron lives in this row, right against the address text —
               not in the outer row's `gap`, which is what was spacing it
               away before. */}
           <Stack horizontal alignItems="center" flexShrink={1}>
-            <StyledText
+            <Text
+              variant="subtitle"
               fontSize={15.5}
-              fontWeight="600"
               color={COLORS.ink}
               numberOfLines={1}
               ellipsizeMode="tail"
               flexShrink={1}
             >
               {displayAddress}
-            </StyledText>
+            </Text>
             <Icon
               name="chevron-down"
               size={14}

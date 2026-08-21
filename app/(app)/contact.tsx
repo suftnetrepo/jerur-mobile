@@ -4,10 +4,10 @@ import { Feather as Icon } from "@expo/vector-icons";
 import {
   StyledPage,
   StyledScrollView,
-  StyledText,
   StyledForm,
   Stack,
 } from "fluent-styles";
+import { Text } from "../../src/components/text";
 import { FeatureGate } from "../../src/components/FeatureGate";
 import { AppBackHeader } from "../../src/components/AppBackHeader";
 import { FormSubmitButton } from "../../src/components/FormSubmitButton";
@@ -146,38 +146,40 @@ function ContactScreenContent() {
                 >
                   <Icon name="mail" size={16} color={COLORS.gold} />
                 </Stack>
-                <StyledText
+                <Text
+                  variant="overline"
                   fontSize={11}
-                  fontWeight="700"
                   letterSpacing={1}
                   color={COLORS.gold}
                 >
                   CONTACT
-                </StyledText>
+                </Text>
               </Stack>
-              <StyledText
+              <Text
+                variant="header"
                 fontSize={26}
                 fontWeight="800"
                 color={COLORS.ink}
                 style={{ lineHeight: 32 }}
               >
                 Got any{" "}
-                <StyledText
+                <Text
+                  variant="header"
                   fontSize={26}
                   fontWeight="800"
                   color={COLORS.gold}
                   style={{ lineHeight: 32 }}
                 >
                   questions?
-                </StyledText>
-              </StyledText>
-              <StyledText
+                </Text>
+              </Text>
+              <Text
                 fontSize={14}
                 color={COLORS.inkSoft}
                 style={{ marginTop: 8, lineHeight: 21 }}
               >
                 Don't hesitate to get in touch — we'd love to hear from you.
-              </StyledText>
+              </Text>
             </Stack>
           </Stack>
         </Animated.View>
@@ -202,15 +204,15 @@ function ContactScreenContent() {
               marginVertical={ 18}
             />
 
-            <StyledText
+            <Text
+              variant="overline"
               fontSize={11}
-              fontWeight="700"
               letterSpacing={1}
               color={COLORS.inkSoft}
-              style={{ marginBottom: 14, textTransform: "uppercase" }}
+              style={{ marginBottom: 14 }}
             >
               Get in touch
-            </StyledText>
+            </Text>
 
             <ContactInfoRow icon="mail" label="Email" value={email} onPress={handleEmailPress} showChevron />
             <Stack height={1} backgroundColor={COLORS.chromeBorder} style={{ marginLeft: 58, marginVertical: 14 }} />
@@ -229,14 +231,14 @@ function ContactScreenContent() {
             marginBottom={16}
           >
             <Icon name="check-circle" size={16} color={COLORS.sage} />
-            <StyledText
+            <Text
+              variant="label"
               fontSize={13.5}
-              fontWeight="600"
               color={COLORS.sage}
               style={{ flex: 1 }}
             >
               Your email draft is ready. Review it and tap send in your email app.
-            </StyledText>
+            </Text>
           </Stack>
         )}
         {error && (
@@ -250,14 +252,14 @@ function ContactScreenContent() {
             marginBottom={16}
           >
             <Icon name="alert-circle" size={16} color={COLORS.error} />
-            <StyledText
+            <Text
+              variant="label"
               fontSize={13.5}
-              fontWeight="600"
               color={COLORS.error}
               style={{ flex: 1 }}
             >
               {error}
-            </StyledText>
+            </Text>
           </Stack>
         )}
 
@@ -269,21 +271,22 @@ function ContactScreenContent() {
             padding={20}
             style={SHADOW_SOFT}
           >
-            <StyledText
+            <Text
+              variant="title"
               fontSize={17}
               fontWeight="800"
               color={COLORS.ink}
               style={{ marginBottom: 4 }}
             >
               Send us a message
-            </StyledText>
-            <StyledText
+            </Text>
+            <Text
               fontSize={13}
               color={COLORS.inkSoft}
               style={{ marginBottom: 18, lineHeight: 19 }}
             >
               Fill in the form below and our team will get back to you.
-            </StyledText>
+            </Text>
 
             <StyledForm gap={16} avoidKeyboard={false}>
               <StyledForm.Row gap={12}>

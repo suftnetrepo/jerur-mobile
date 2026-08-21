@@ -1,6 +1,7 @@
 import { Linking, ScrollView } from "react-native";
 import { Feather as Icon } from "@expo/vector-icons";
-import { Stack, StyledText, StyledPressable, Loader } from "fluent-styles";
+import { Stack, StyledPressable, Loader } from "fluent-styles";
+import { Text } from "./text";
 import { COLORS } from "../theme/colors";
 
 // A chip that runs an arbitrary action instead of opening a contact
@@ -81,17 +82,17 @@ export function ContactChips({ leading = [], phone, email, websiteUrl, facebookU
               <Loader variant="spinner" color={COLORS.white} />
             ) : chip.primary ? (
               <>
-                <StyledText fontSize={13} fontWeight="700" color={COLORS.white}>
+                <Text variant="button" fontSize={13} color={COLORS.white}>
                   {chip.label}
-                </StyledText>
+                </Text>
                 <Icon name={chip.icon as any} size={13} color={COLORS.white} />
               </>
             ) : (
               <>
                 <Icon name={chip.icon as any} size={14} color={COLORS.ink} />
-                <StyledText fontSize={12.5} fontWeight="700" color={COLORS.ink} numberOfLines={1}>
+                <Text variant="button" fontSize={12.5} color={COLORS.ink} numberOfLines={1}>
                   {chip.label}
-                </StyledText>
+                </Text>
               </>
             )}
           </Stack>

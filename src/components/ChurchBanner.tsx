@@ -1,6 +1,7 @@
 import { Dimensions, Image } from "react-native";
 import Svg, { Defs, LinearGradient, Stop, Rect } from "react-native-svg";
-import { Stack, StyledText } from "fluent-styles";
+import { Stack } from "fluent-styles";
+import { Text } from "./text";
 import { SHADOW_HERO } from "../theme/shadows";
 import { COLORS } from "../theme/colors";
 import type { ChurchSettings } from "../api/types";
@@ -79,14 +80,14 @@ export function ChurchBanner({ settings }: { settings: ChurchSettings | null | u
             }}
           >
             {shortMessage && (
-              <StyledText fontSize={20} fontWeight="700" color={COLORS.white} numberOfLines={2} style={{ textAlign: "center", lineHeight: 26 }}>
+              <Text variant="header" fontSize={20} color={COLORS.white} numberOfLines={2} style={{ textAlign: "center", lineHeight: 26 }}>
                 {shortMessage}
-              </StyledText>
+              </Text>
             )}
             {verse && (
-              <StyledText fontSize={13} color="rgba(255,255,255,0.85)" numberOfLines={3} style={{ textAlign: "center", lineHeight: 18 }}>
+              <Text variant="body" fontSize={13} color="rgba(255,255,255,0.85)" numberOfLines={3} style={{ textAlign: "center", lineHeight: 18 }}>
                 {verse}
-              </StyledText>
+              </Text>
             )}
           </Stack>
         )}

@@ -5,13 +5,13 @@ import { Feather as Icon } from "@expo/vector-icons";
 import {
   StyledPage,
   StyledButton,
-  StyledText,
   StyledPressable,
   Stack,
   Loader,
   useToast,
   useDialogue,
 } from "fluent-styles";
+import { Text } from "../../../src/components/text";
 import { FeatureGate } from "../../../src/components/FeatureGate";
 import { NoteFormFields } from "../../../src/components/NoteFormFields";
 import { getNoteById, updateNote, deleteNote } from "../../../src/notes/notes-repository";
@@ -111,9 +111,9 @@ function NoteDetailScreenContent() {
       <StyledPage showStatusBar flex={1} backgroundColor={COLORS.paper}>
         <StyledPage.Header showBackArrow onBackPress={() => router.back()} title="Notes" titleAlignment="center" paddingHorizontal={16} />
         <Stack flex={1} alignItems="center" justifyContent="center" paddingHorizontal={32}>
-          <StyledText fontSize={14} color={COLORS.inkSoft} style={{ textAlign: "center" }}>
+          <Text fontSize={14} color={COLORS.inkSoft} style={{ textAlign: "center" }}>
             That note couldn't be found.
-          </StyledText>
+          </Text>
         </Stack>
       </StyledPage>
     );
@@ -178,17 +178,17 @@ function NoteDetailScreenContent() {
             accessibilityLabel={note.isMarked ? "Bible Note, tap to unset" : "Set as Bible Note"}
           >
             <Icon name="book-open" size={12} color={note.isMarked ? COLORS.goldDeep : COLORS.inkSoft} />
-            <StyledText fontSize={11.5} fontWeight="800" color={note.isMarked ? COLORS.goldDeep : COLORS.inkSoft}>
+            <Text variant="label" fontSize={11.5} fontWeight="800" color={note.isMarked ? COLORS.goldDeep : COLORS.inkSoft}>
               {note.isMarked ? "Bible Note" : "Set as Bible Note"}
-            </StyledText>
+            </Text>
             {note.isMarked && <Icon name="check" size={12} color={COLORS.goldDeep} />}
           </StyledPressable>
 
           <Stack horizontal alignItems="center" gap={5} flexShrink={1}>
             <Icon name="clock" size={11} color={COLORS.inkSoft} />
-            <StyledText fontSize={10.5} color={COLORS.inkSoft} numberOfLines={1}>
+            <Text fontSize={10.5} color={COLORS.inkSoft} numberOfLines={1}>
               {formatNoteDateTime(note.updatedAt)}
-            </StyledText>
+            </Text>
           </Stack>
         </Stack>
       </Stack>

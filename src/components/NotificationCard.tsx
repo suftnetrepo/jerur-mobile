@@ -2,7 +2,8 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { Animated, Image } from "react-native";
 import { router } from "expo-router";
 import { Feather as Icon } from "@expo/vector-icons";
-import { Stack, StyledText, StyledPressable } from "fluent-styles";
+import { Stack, StyledPressable } from "fluent-styles";
+import { Text } from "./text";
 import { FullScreenImageViewer } from "./FullScreenImageViewer";
 import { useFeatureFlags } from "../hooks/useFeatureFlags";
 import { getFeatureById } from "../config/mobileFeatures";
@@ -228,39 +229,40 @@ export function NotificationCard({
                 }}
               >
                 <Icon name="bell" size={16} color={priority.color} />
-                <StyledText
+                <Text
+                  variant="overline"
                   fontSize={11}
                   fontWeight="800"
                   letterSpacing={0.7}
                   color={priority.color}
-                  style={{ textTransform: "uppercase" }}
                 >
                   {priority.id === "urgent" ? "Urgent" : "Important"}
-                </StyledText>
+                </Text>
               </Stack>
             )}
           </Stack>
 
           {/* Primary content */}
           <Stack gap={7}>
-            <StyledText
+            <Text
+              variant="header"
               fontSize={23}
               fontWeight="800"
               color={COLORS.ink}
               style={{ lineHeight: 29, letterSpacing: -0.35 }}
             >
               {notification!.title}
-            </StyledText>
+            </Text>
 
             {notification!.message?.trim() ? (
-              <StyledText
-                fontSize={14}
+              <Text
+                variant="body"
                 color={COLORS.inkSoft}
                 numberOfLines={4}
                 style={{ lineHeight: 21 }}
               >
                 {notification!.message}
-              </StyledText>
+              </Text>
             ) : null}
           </Stack>
 
@@ -339,23 +341,23 @@ export function NotificationCard({
                     <Icon name="calendar" size={18} color="#FFFFFF" />
                   </Stack>
                   <Stack gap={1} style={{ flex: 1 }}>
-                    <StyledText
+                    <Text
+                      variant="overline"
                       fontSize={9.5}
                       fontWeight="800"
                       letterSpacing={0.9}
                       color={COLORS.inkSoft}
-                      style={{ textTransform: "uppercase" }}
                     >
                       Date
-                    </StyledText>
-                    <StyledText
-                      fontSize={14.5}
+                    </Text>
+                    <Text
+                      variant="label"
                       fontWeight="700"
+                      fontSize={14.5}
                       color={COLORS.ink}
-                      style={{ lineHeight: 20 }}
                     >
                       {dateRange}
-                    </StyledText>
+                    </Text>
                   </Stack>
                 </Stack>
               )}
@@ -387,23 +389,23 @@ export function NotificationCard({
                     <Icon name="clock" size={18} color="#FFFFFF" />
                   </Stack>
                   <Stack gap={1} style={{ flex: 1 }}>
-                    <StyledText
+                    <Text
+                      variant="overline"
                       fontSize={9.5}
                       fontWeight="800"
                       letterSpacing={0.9}
                       color={COLORS.inkSoft}
-                      style={{ textTransform: "uppercase" }}
                     >
                       Time
-                    </StyledText>
-                    <StyledText
-                      fontSize={14.5}
+                    </Text>
+                    <Text
+                      variant="label"
                       fontWeight="700"
+                      fontSize={14.5}
                       color={COLORS.ink}
-                      style={{ lineHeight: 20 }}
                     >
                       {timeRange}
-                    </StyledText>
+                    </Text>
                   </Stack>
                 </Stack>
               )}
@@ -429,13 +431,13 @@ export function NotificationCard({
                 backgroundColor={type.color}
                 style={SHADOW_CARD}
               >
-                <StyledText
-                  fontSize={14}
+                <Text
+                  variant="label"
                   fontWeight="800"
                   color="#FFFFFF"
                 >
                   {cta.label}
-                </StyledText>
+                </Text>
                 <Icon name="arrow-right" size={16} color="#FFFFFF" />
               </Stack>
             </StyledPressable>

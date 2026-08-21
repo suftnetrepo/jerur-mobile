@@ -1,9 +1,9 @@
 import type { ReactNode } from "react";
 import {
-  StyledText,
   Stack,
   StyledSpacer,
 } from "fluent-styles";
+import { Text } from "./text";
 import { COLORS } from "../theme/colors";
 import { SHADOW_CARD, SHADOW_SOFT } from "../theme/shadows";
 import type { ChurchSettings } from "../api/types";
@@ -48,24 +48,24 @@ function HighlightableText({
   const idx = phrase ? text.indexOf(phrase) : -1;
   if (!phrase || idx === -1) {
     return (
-      <StyledText fontSize={fontSize} color={color} style={style}>
+      <Text fontSize={fontSize} color={color} style={style}>
         {text}
-      </StyledText>
+      </Text>
     );
   }
   return (
-    <StyledText fontSize={fontSize} color={color} style={style}>
+    <Text fontSize={fontSize} color={color} style={style}>
       {text.slice(0, idx)}
-      <StyledText
+      <Text
         fontSize={fontSize}
         fontWeight="700"
         color={COLORS.gold}
         style={{ fontStyle: "italic" }}
       >
         {phrase}
-      </StyledText>
+      </Text>
       {text.slice(idx + phrase.length)}
-    </StyledText>
+    </Text>
   );
 }
 
@@ -114,23 +114,23 @@ export function WelcomeMessageCard({
         marginTop={24}
         marginBottom={16}
       />
-      <StyledText fontSize={14} fontWeight="800" color={COLORS.ink}>
+      <Text variant="label" fontWeight="800" color={COLORS.ink}>
         {pastor
           ? `${pastor.first_name} ${pastor.last_name}`
           : "The pastoral team"}
-      </StyledText>
-      <StyledText fontSize={12} color={COLORS.inkSoft} style={{ marginTop: 3 }}>
+      </Text>
+      <Text variant="bodySmall" color={COLORS.inkSoft} style={{ marginTop: 3 }}>
         {pastor?.title ?? "Lead Pastor"}, Winners Chapel Peterborough
-      </StyledText>
+      </Text>
     </>
   );
 
   return (
     <Stack gap={12}>
       {heading && (
-        <StyledText fontSize={16} fontWeight="800" color={COLORS.ink}>
+        <Text variant="subtitle" fontWeight="800" color={COLORS.ink}>
           {heading}
-        </StyledText>
+        </Text>
       )}
 
       {plain ? (
@@ -140,14 +140,14 @@ export function WelcomeMessageCard({
           padding={24}
           style={SHADOW_SOFT}
         >
-          <StyledText
+          <Text
             fontSize={26}
             fontWeight="800"
             color={COLORS.gold}
             style={{ lineHeight: 22, marginBottom: 8 }}
           >
             “
-          </StyledText>
+          </Text>
           <HighlightableText
             text={text}
             phrase={highlightPhrase}
@@ -206,19 +206,19 @@ function PlainQuoteCard({
       paddingBottom={showAttribution ? 8 : 26}
       style={[{ overflow: "hidden" }, SHADOW_CARD]}
     >
-      <StyledText
+      <Text
+        fontSize={84}
+        fontWeight="800"
+        color={COLORS.gold}
         style={{
           position: "absolute",
           top: -6,
           left: 18,
-          fontSize: 84,
-          fontWeight: "800",
-          color: COLORS.gold,
           opacity: 0.16,
         }}
       >
         “
-      </StyledText>
+      </Text>
       <HighlightableText
         text={text}
         phrase={HOME_HIGHLIGHT_PHRASE}

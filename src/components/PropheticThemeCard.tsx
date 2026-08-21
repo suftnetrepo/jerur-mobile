@@ -1,5 +1,6 @@
 import { Feather as Icon } from "@expo/vector-icons";
-import { Stack, StyledText } from "fluent-styles";
+import { Stack } from "fluent-styles";
+import { Text } from "./text";
 import { useFeatureFlags } from "../hooks/useFeatureFlags";
 import { SHADOW_SOFT } from "../theme/shadows";
 import { COLORS } from "../theme/colors";
@@ -45,9 +46,9 @@ export function PropheticThemeCard({
         marginVertical={16}
       >
         <Stack>
-          <StyledText fontSize={16} fontWeight="400" color={COLORS.inkSoftest}>
-              Prophetic Theme 
-          </StyledText>
+          <Text variant="subtitle" fontWeight="400" color={COLORS.inkSoftest}>
+              Prophetic Theme
+          </Text>
         </Stack>
       </Stack>
       <Stack paddingHorizontal={CARD_H_PAD}>
@@ -71,19 +72,19 @@ export function PropheticThemeCard({
             </Stack>
 
             <Stack flex={1}>
-              <StyledText
+              <Text
+                variant="overline"
                 fontSize={10.5}
-                fontWeight="800"
                 letterSpacing={1}
                 color={COLORS.sage}
-                style={{ marginBottom: 3, textTransform: "uppercase" }}
+                style={{ marginBottom: 3 }}
               >
                 Prophetic Theme of the Month
-              </StyledText>
+              </Text>
               {month ? (
-                <StyledText fontSize={18} fontWeight="800" color={COLORS.ink}>
+                <Text variant="metric" color={COLORS.ink}>
                   {month}
-                </StyledText>
+                </Text>
               ) : null}
             </Stack>
           </Stack>
@@ -95,13 +96,14 @@ export function PropheticThemeCard({
               padding={17}
             >
               {description ? (
-                <StyledText
+                <Text
+                  variant="body"
                   fontSize={13}
                   color={COLORS.inkSoft}
                   style={{ lineHeight: 20 }}
                 >
                   {description}
-                </StyledText>
+                </Text>
               ) : null}
 
               {verse ? (
@@ -112,13 +114,13 @@ export function PropheticThemeCard({
                   marginTop={description ? 14 : 0}
                 >
                   <Icon name="book" size={13} color={COLORS.goldDeep} />
-                  <StyledText
+                  <Text
+                    variant="button"
                     fontSize={11.5}
-                    fontWeight="700"
                     color={COLORS.goldDeep}
                   >
                     {verse}
-                  </StyledText>
+                  </Text>
                 </Stack>
               ) : null}
             </Stack>

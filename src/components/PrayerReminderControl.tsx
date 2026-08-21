@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Feather as Icon } from "@expo/vector-icons";
-import { Stack, StyledText, StyledPressable, Popup, useToast } from "fluent-styles";
+import { Stack, StyledPressable, Popup, useToast } from "fluent-styles";
+import { Text } from "./text";
 import { ScalePressable } from "./ScalePressable";
 import { REMINDER_OFFSETS, offsetLabel, reminderClockLabel, type PrayerReminder } from "../notifications/prayer-reminders";
 import type { SetReminderResult } from "../notifications/use-prayer-reminders";
@@ -70,17 +71,17 @@ export function PrayerReminderControl({
           style={!reminder ? { borderWidth: 1, borderColor: COLORS.chromeBorder } : undefined}
         >
           <Icon name={reminder ? "check-circle" : "bell"} size={13} color={reminder ? tone.fg : COLORS.ink} />
-          <StyledText fontSize={12} fontWeight="700" color={reminder ? tone.fg : COLORS.ink}>
+          <Text variant="button" fontSize={12} color={reminder ? tone.fg : COLORS.ink}>
             {reminder && clockLabel ? `Reminder set · ${clockLabel}` : "Remind me"}
-          </StyledText>
+          </Text>
         </Stack>
       </ScalePressable>
 
       <Popup visible={visible} onClose={() => setVisible(false)} title={`${sessionTitle} reminder`} showClose safeAreaBottom>
         <Stack padding={20} gap={10}>
-          <StyledText fontSize={13} color={COLORS.inkSoft} style={{ marginBottom: 4 }}>
+          <Text variant="body" fontSize={13} color={COLORS.inkSoft} style={{ marginBottom: 4 }}>
             {reminder ? "Change when we remind you, or turn it off." : "We'll send a daily reminder on this device."}
-          </StyledText>
+          </Text>
 
           {REMINDER_OFFSETS.map((offset) => {
             const selected = reminder?.offsetMinutes === offset;
@@ -99,9 +100,9 @@ export function PrayerReminderControl({
                 accessibilityRole="button"
                 accessibilityState={{ selected }}
               >
-                <StyledText fontSize={14} fontWeight="600" color={COLORS.ink}>
+                <Text variant="label" color={COLORS.ink}>
                   {offsetLabel(offset)}
-                </StyledText>
+                </Text>
                 {selected && <Icon name="check" size={16} color={COLORS.goldDeep} />}
               </StyledPressable>
             );
@@ -118,9 +119,9 @@ export function PrayerReminderControl({
               accessibilityRole="button"
               accessibilityLabel="Remove reminder"
             >
-              <StyledText fontSize={14} fontWeight="700" color={COLORS.error}>
+              <Text variant="button" color={COLORS.error}>
                 Remove reminder
-              </StyledText>
+              </Text>
             </StyledPressable>
           )}
         </Stack>

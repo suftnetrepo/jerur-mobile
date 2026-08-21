@@ -1,5 +1,6 @@
 import { Feather as Icon } from "@expo/vector-icons";
-import { Stack, StyledText, StyledPressable } from "fluent-styles";
+import { Stack, StyledPressable } from "fluent-styles";
+import { Text } from "./text";
 import { COLORS } from "../theme/colors";
 
 /**
@@ -40,12 +41,12 @@ export function ContactInfoRow({
         <Icon name={icon as any} size={20} color={iconColor} />
       </Stack>
       <Stack flex={1}>
-        <StyledText fontSize={14} fontWeight="800" color={COLORS.ink} style={{ marginBottom: 2 }}>
+        <Text variant="label" fontWeight="800" color={COLORS.ink} style={{ marginBottom: 2 }}>
           {label}
-        </StyledText>
-        <StyledText fontSize={13.5} color={COLORS.inkSoft} numberOfLines={2} style={{ lineHeight: 19 }}>
+        </Text>
+        <Text variant="body" fontSize={13.5} color={COLORS.inkSoft} numberOfLines={2} style={{ lineHeight: 19 }}>
           {value}
-        </StyledText>
+        </Text>
       </Stack>
       {showChevron && <Icon name="chevron-right" size={22} color={COLORS.inkSoft} />}
     </Stack>

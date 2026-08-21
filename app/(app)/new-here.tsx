@@ -2,10 +2,10 @@ import { router } from "expo-router";
 import {
   StyledPage,
   StyledScrollView,
-  StyledText,
   Collapse,
   Stack,
 } from "fluent-styles";
+import { Text } from "../../src/components/text";
 import { FeatureGate } from "../../src/components/FeatureGate";
 import { COLORS } from "../../src/theme/colors";
 
@@ -94,15 +94,15 @@ function NewHereScreenContent() {
       <StyledScrollView
         contentContainerStyle={{ paddingHorizontal: 24, paddingTop: 10, paddingBottom: 60  }}
       >
-        <StyledText
+        <Text
+          variant="overline"
           fontSize={11}
-          fontWeight="700"
           letterSpacing={1}
           color={COLORS.gold}
           style={{ marginBottom: 8 }}
         >
           NEW HERE?
-        </StyledText>
+        </Text>
         <Stack
           width={42}
           height={4}
@@ -110,32 +110,33 @@ function NewHereScreenContent() {
           backgroundColor={COLORS.gold}
           marginBottom={12}
         />
-        <StyledText
+        <Text
+          variant="header"
           fontSize={22}
           fontWeight="800"
           color={COLORS.ink}
           style={{ marginBottom: 6 }}
         >
           You're welcome here.
-        </StyledText>
-        <StyledText
+        </Text>
+        <Text
           fontSize={13.5}
           color={COLORS.inkSoft}
           style={{ marginBottom: 22, lineHeight: 20 }}
         >
           We're excited to meet you. Discover what to expect and how to get
           connected.
-        </StyledText>
+        </Text>
         <Stack gap={10}>
           {FAQ.map((item) => (
             <Collapse key={item.q} title={item.q} variant="cell">
-              <StyledText
+              <Text
                 fontSize={13.5}
                 color={COLORS.inkSoft}
                 style={{ padding: 14, lineHeight: 20 }}
               >
                 {item.a}
-              </StyledText>
+              </Text>
             </Collapse>
           ))}
         </Stack>

@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { TextInput } from "react-native";
 import { Feather as Icon } from "@expo/vector-icons";
-import { StyledText, Stack } from "fluent-styles";
+import { Stack } from "fluent-styles";
+import { Text } from "./text";
 import { COLORS } from "../theme/colors";
 import { SHADOW_SOFT } from "../theme/shadows";
 
@@ -23,7 +24,8 @@ export function NoteFormFields({
     <Stack flex={1} gap={18}>
       {/* Document-style title */}
       <Stack gap={7}>
-        <StyledText
+        <Text
+          variant="overline"
           paddingHorizontal={4}
           fontSize={10.5}
           fontWeight="800"
@@ -31,7 +33,7 @@ export function NoteFormFields({
           color={COLORS.inkSoft}
         >
           TITLE · OPTIONAL
-        </StyledText>
+        </Text>
 
         <Stack
           backgroundColor={COLORS.white}
@@ -65,20 +67,21 @@ export function NoteFormFields({
       {/* Premium writing surface */}
       <Stack flex={1} gap={7}>
         <Stack horizontal alignItems="center" justifyContent="space-between" paddingHorizontal={4}>
-          <StyledText
+          <Text
+            variant="overline"
             fontSize={10.5}
             fontWeight="800"
             letterSpacing={0.8}
             color={COLORS.inkSoft}
           >
             NOTE
-          </StyledText>
+          </Text>
 
           <Stack horizontal alignItems="center" gap={5}>
             <Icon name="edit-3" size={11} color={COLORS.goldDeep} />
-            <StyledText fontSize={10.5} fontWeight="700" color={COLORS.goldDeep}>
+            <Text variant="subLabel" fontSize={10.5} fontWeight="700" color={COLORS.goldDeep}>
               Writing
-            </StyledText>
+            </Text>
           </Stack>
         </Stack>
 
@@ -137,9 +140,9 @@ export function NoteFormFields({
               borderTopColor: COLORS.paperAlt,
             }}
           >
-            <StyledText fontSize={10.5} color={COLORS.inkSoft}>
+            <Text variant="caption" fontSize={10.5} color={COLORS.inkSoft}>
               {content.length} character{content.length === 1 ? "" : "s"}
-            </StyledText>
+            </Text>
           </Stack>
         </Stack>
       </Stack>

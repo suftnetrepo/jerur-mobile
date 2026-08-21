@@ -1,6 +1,7 @@
 import { memo } from "react";
 import { Feather as Icon } from "@expo/vector-icons";
-import { Stack, StyledText } from "fluent-styles";
+import { Stack } from "fluent-styles";
+import { Text } from "./text";
 import { ScalePressable } from "./ScalePressable";
 import { COLORS } from "../theme/colors";
 import { SHADOW_SOFT } from "../theme/shadows";
@@ -30,12 +31,12 @@ function NoteCardComponent({ note, accentColor, onPress }: { note: Note; accentC
       >
         <Stack horizontal alignItems="flex-start" justifyContent="space-between" gap={10}>
           <Stack flex={1} gap={4}>
-            <StyledText fontSize={15.5} fontWeight="800" color={COLORS.ink} numberOfLines={1}>
+            <Text variant="subtitle" fontSize={15.5} fontWeight="800" color={COLORS.ink} numberOfLines={1}>
               {getDisplayTitle(note)}
-            </StyledText>
-            <StyledText fontSize={13} color={COLORS.inkSoft} numberOfLines={2} style={{ lineHeight: 18 }}>
+            </Text>
+            <Text variant="body" fontSize={13} color={COLORS.inkSoft} numberOfLines={2} style={{ lineHeight: 18 }}>
               {getContentPreview(note.content)}
-            </StyledText>
+            </Text>
           </Stack>
           {note.isMarked && (
             <Stack
@@ -49,16 +50,16 @@ function NoteCardComponent({ note, accentColor, onPress }: { note: Note; accentC
               flexShrink={0}
             >
               <Icon name="book" size={11} color={COLORS.goldDeep} />
-              <StyledText fontSize={10.5} fontWeight="700" color={COLORS.goldDeep}>
+              <Text variant="button" fontSize={10.5} color={COLORS.goldDeep}>
                 Bible Note
-              </StyledText>
+              </Text>
             </Stack>
           )}
         </Stack>
         <Stack horizontal alignItems="center" justifyContent="space-between">
-          <StyledText fontSize={11.5} color={COLORS.inkSoft}>
+          <Text variant="bodySmall" fontSize={11.5} color={COLORS.inkSoft}>
             {formatNoteDate(note.updatedAt)} · Updated {formatNoteTime(note.updatedAt)}
-          </StyledText>
+          </Text>
           <Icon name="chevron-right" size={16} color={COLORS.inkSoft} />
         </Stack>
       </Stack>

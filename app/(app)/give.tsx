@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Feather as Icon } from "@expo/vector-icons";
-import { StyledPage, StyledScrollView, StyledText, StyledButton, Popup, Stack } from "fluent-styles";
+import { StyledPage, StyledScrollView, StyledButton, Popup, Stack } from "fluent-styles";
+import { Text } from "../../src/components/text";
 import Svg, { Path, Circle } from "react-native-svg";
 import { BottomTabBar } from "../../src/components/BottomTabBar";
 import { FeatureGate } from "../../src/components/FeatureGate";
@@ -49,12 +50,12 @@ function BankField({ label, value, copyValue }: { label: string; value: string; 
       style={{ borderBottomWidth: 1, borderColor: "rgba(255,255,255,0.1)" }}
     >
       <Stack gap={3}>
-        <StyledText fontSize={10} fontWeight="700" letterSpacing={1} color="#8A90AC">
+        <Text variant="overline" fontSize={10} letterSpacing={1} color="#8A90AC">
           {label.toUpperCase()}
-        </StyledText>
-        <StyledText fontSize={16} fontWeight="600" color={COLORS.white}>
+        </Text>
+        <Text variant="subtitle" color={COLORS.white}>
           {value}
-        </StyledText>
+        </Text>
       </Stack>
       {copyValue && (
         <StyledButton icon compact backgroundColor="rgba(255,255,255,0.08)" onPress={handleCopy}>
@@ -112,12 +113,12 @@ function GiveScreenContent() {
           backgroundColor={COLORS.gold}
           marginBottom={12}
         />
-        <StyledText fontSize={26} fontWeight="800" color={COLORS.ink} style={{ marginBottom: 6 }}>
+        <Text variant="header" fontSize={26} fontWeight="800" color={COLORS.ink} style={{ marginBottom: 6 }}>
           Covenant of blessing
-        </StyledText>
-        <StyledText fontSize={14.5} color={COLORS.inkSoft} style={{ marginBottom: 28, lineHeight: 22 }}>
+        </Text>
+        <Text fontSize={14.5} color={COLORS.inkSoft} style={{ marginBottom: 28, lineHeight: 22 }}>
           When you give your tithe and offering, you unlock kingdom blessings — prepare for divine provision.
-        </StyledText>
+        </Text>
 
         {/* ── Giving method cards ─────────────────────────────────────── */}
         <Stack gap={16}>
@@ -144,12 +145,12 @@ function GiveScreenContent() {
               <Icon name="cloud" size={26} color={ONLINE_TONE.accent} />
             </Stack>
             <Stack flex={1} gap={5}>
-              <StyledText fontSize={17} fontWeight="800" color={COLORS.ink}>
+              <Text variant="title" fontSize={17} fontWeight="800" color={COLORS.ink}>
                 Give online
-              </StyledText>
-              <StyledText fontSize={13.5} color={COLORS.inkSoft} style={{ lineHeight: 20 }}>
+              </Text>
+              <Text fontSize={13.5} color={COLORS.inkSoft} style={{ lineHeight: 20 }}>
                 Via the Tithe.ly app or website. It's quick, easy, and secure.
-              </StyledText>
+              </Text>
             </Stack>
             <ChevronCircle />
           </Stack>
@@ -177,15 +178,15 @@ function GiveScreenContent() {
                 <Icon name="home" size={26} color={BANK_TONE.accent} />
               </Stack>
               <Stack flex={1} gap={5}>
-                <StyledText fontSize={17} fontWeight="800" color={COLORS.ink}>
+                <Text variant="title" fontSize={17} fontWeight="800" color={COLORS.ink}>
                   Bank transfer
-                </StyledText>
-                <StyledText fontSize={13.5} color={COLORS.inkSoft} style={{ lineHeight: 20 }}>
+                </Text>
+                <Text fontSize={13.5} color={COLORS.inkSoft} style={{ lineHeight: 20 }}>
                   Give directly from your bank using our account details.
-                </StyledText>
-                <StyledText fontSize={13} fontWeight="700" color={BANK_TONE.accent} style={{ marginTop: 2 }}>
+                </Text>
+                <Text variant="button" fontSize={13} color={BANK_TONE.accent} style={{ marginTop: 2 }}>
                   View bank details →
-                </StyledText>
+                </Text>
               </Stack>
               <ChevronCircle />
             </Stack>
@@ -213,12 +214,12 @@ function GiveScreenContent() {
               <Icon name="mail" size={26} color={ENV_TONE.accent} />
             </Stack>
             <Stack flex={1} gap={5}>
-              <StyledText fontSize={17} fontWeight="800" color={COLORS.ink}>
+              <Text variant="title" fontSize={17} fontWeight="800" color={COLORS.ink}>
                 Use a giving envelope
-              </StyledText>
-              <StyledText fontSize={13.5} color={COLORS.inkSoft} style={{ lineHeight: 20 }}>
+              </Text>
+              <Text fontSize={13.5} color={COLORS.inkSoft} style={{ lineHeight: 20 }}>
                 Available during any of our services — you'll find these at the back of the church.
-              </StyledText>
+              </Text>
             </Stack>
             <ChevronCircle />
           </Stack>
@@ -246,12 +247,12 @@ function GiveScreenContent() {
           >
             <Icon name="home" size={22} color={COLORS.gold} />
           </Stack>
-          <StyledText fontSize={20} fontWeight="800" color={COLORS.white} style={{ marginBottom: 4 }}>
+          <Text variant="title" fontWeight="800" color={COLORS.white} style={{ marginBottom: 4 }}>
             Bank transfer
-          </StyledText>
-          <StyledText fontSize={13} color="#C7CBDA" style={{ marginBottom: 8 }}>
+          </Text>
+          <Text fontSize={13} color="#C7CBDA" style={{ marginBottom: 8 }}>
             Use the details below to give directly from your bank.
-          </StyledText>
+          </Text>
           <BankField label="Bank name" value={bankName} />
           <BankField label="Account name" value={accountName} />
           <BankField label="Sort code" value={formatSortCode(settings?.sort_code)} copyValue={settings?.sort_code} />

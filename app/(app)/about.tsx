@@ -4,10 +4,10 @@ import { Feather as Icon } from "@expo/vector-icons";
 import {
   StyledPage,
   StyledScrollView,
-  StyledText,
   Stack,
   useToast,
 } from "fluent-styles";
+import { Text } from "../../src/components/text";
 import { ContactInfoRow } from "../../src/components/ContactInfoRow";
 import { AboutSkeleton } from "../../src/components/skeleton";
 import { useSettings } from "../../src/hooks/useChurchData";
@@ -197,31 +197,32 @@ export default function AboutScreen() {
 
         <Stack paddingHorizontal={24}>
           {/* ── Our story ──────────────────────────────────────────────── */}
-          <StyledText
+          <Text
+            variant="overline"
             fontSize={11}
-            fontWeight="700"
             letterSpacing={1}
             color={COLORS.goldDeep}
             style={{ marginBottom: 8 }}
           >
             OUR STORY
-          </StyledText>
-          <StyledText
+          </Text>
+          <Text
+            variant="header"
             fontSize={22}
             fontWeight="800"
             color={COLORS.ink}
             style={{ lineHeight: 28 }}
           >
             Welcome to {churchName}.
-          </StyledText>
+          </Text>
           {shortMessage ? (
-            <StyledText
+            <Text
               fontSize={14}
               color={COLORS.inkSoft}
               style={{ lineHeight: 21, marginTop: 8 }}
             >
               {shortMessage}
-            </StyledText>
+            </Text>
           ) : null}
 
           {/* ── Verse ──────────────────────────────────────────────────── */}
@@ -248,22 +249,23 @@ export default function AboutScreen() {
                 <Icon name="book-open" size={17} color={COLORS.goldDeep} />
               </Stack>
               <Stack style={{ flex: 1 }}>
-                <StyledText
+                <Text
+                  variant="overline"
                   fontSize={11}
                   fontWeight="800"
                   letterSpacing={0.6}
                   color={COLORS.goldDeep}
-                  style={{ textTransform: "uppercase", marginBottom: 3 }}
+                  style={{ marginBottom: 3 }}
                 >
                   Verse
-                </StyledText>
-                <StyledText
+                </Text>
+                <Text
                   fontSize={14}
                   color={COLORS.ink}
                   style={{ lineHeight: 20 }}
                 >
                   {verse}
-                </StyledText>
+                </Text>
               </Stack>
             </Stack>
           ) : null}
@@ -315,13 +317,13 @@ export default function AboutScreen() {
                    borderWidth={0.2}
                 borderColor={COLORS.goldSoft}
               >
-                <StyledText
+                <Text
                   fontSize={14}
                   color={COLORS.inkSoft}
                   style={{ lineHeight: 21 }}
                 >
                   {description}
-                </StyledText>
+                </Text>
               </Stack>
             </Stack>
           ) : null}

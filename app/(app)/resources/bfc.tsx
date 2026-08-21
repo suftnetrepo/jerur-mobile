@@ -3,11 +3,11 @@ import { Feather as Icon } from "@expo/vector-icons";
 import {
   StyledPage,
   StyledScrollView,
-  StyledText,
   StyledPressable,
   Stack,
   useToast,
 } from "fluent-styles";
+import { Text } from "../../../src/components/text";
 import { FeatureGate } from "../../../src/components/FeatureGate";
 import { AppBackHeader } from "../../../src/components/AppBackHeader";
 import { useFadeUp } from "../../../src/hooks/useFadeUp";
@@ -92,21 +92,22 @@ function BfcScreenContent() {
               </Stack>
 
               <Stack flex={1}>
-                <StyledText
+                <Text
+                  variant="title"
                   fontSize={17}
                   fontWeight="800"
                   color={COLORS.ink}
                   style={{ marginBottom: 2 }}
                 >
                   Build on solid ground
-                </StyledText>
-                <StyledText fontSize={11.5} color={COLORS.inkSoft}>
+                </Text>
+                <Text fontSize={11.5} color={COLORS.inkSoft}>
                   Grounded in the foundations of faith
-                </StyledText>
+                </Text>
               </Stack>
             </Stack>
 
-            <StyledText
+            <Text
               fontSize={13.5}
               color={COLORS.inkSoft}
               style={{ lineHeight: 21, marginBottom: 14 }}
@@ -116,7 +117,7 @@ function BfcScreenContent() {
               important to address the foundations of the faith. We are
               admonished to contend for the faith that was once delivered to the
               saints — Jude 3.
-            </StyledText>
+            </Text>
 
             <Stack
               height={1}
@@ -124,7 +125,7 @@ function BfcScreenContent() {
               marginBottom={14}
             />
 
-            <StyledText
+            <Text
               fontSize={13.5}
               color={COLORS.inkSoft}
               style={{ lineHeight: 21 }}
@@ -132,7 +133,7 @@ function BfcScreenContent() {
               The purpose of the Believers Foundation Class is to ensure that we
               are all grounded in the foundations of faith that will ensure a
               profitable and colorful adventure in the Lord.
-            </StyledText>
+            </Text>
           </Stack>
         </Animated.View>
 
@@ -158,7 +159,8 @@ function BfcScreenContent() {
               </Stack>
 
               <Stack flex={1}>
-                <StyledText
+                <Text
+                  variant="overline"
                   fontSize={10.5}
                   fontWeight="800"
                   letterSpacing={1}
@@ -166,14 +168,15 @@ function BfcScreenContent() {
                   style={{ marginBottom: 3 }}
                 >
                   WEEKLY CLASS
-                </StyledText>
-                <StyledText
+                </Text>
+                <Text
+                  variant="title"
                   fontSize={18}
                   fontWeight="800"
                   color={COLORS.ink}
                 >
                   Every Tuesday · 7PM
-                </StyledText>
+                </Text>
               </Stack>
             </Stack>
 
@@ -182,23 +185,23 @@ function BfcScreenContent() {
               borderRadius={18}
               padding={17}
             >
-              <StyledText
-                fontSize={16}
+              <Text
+                variant="subtitle"
                 fontWeight="800"
                 color={COLORS.ink}
                 style={{ marginBottom: 7 }}
               >
                 Join the foundation class
-              </StyledText>
+              </Text>
 
-              <StyledText
+              <Text
                 fontSize={13}
                 color={COLORS.inkSoft}
                 style={{ lineHeight: 20 }}
               >
                 See how to connect with the blessings that come from building
                 your life on solid ground.
-              </StyledText>
+              </Text>
 
               <Stack
                 horizontal
@@ -207,13 +210,14 @@ function BfcScreenContent() {
                 marginTop={14}
               >
                 <Icon name="clock" size={13} color={COLORS.goldDeep} />
-                <StyledText
+                <Text
+                  variant="subLabel"
                   fontSize={11.5}
                   fontWeight="700"
                   color={COLORS.goldDeep}
                 >
                   Tuesdays at 7PM
-                </StyledText>
+                </Text>
               </Stack>
 
               {/* Church-wide conference link (Settings -> Config in the
@@ -240,13 +244,13 @@ function BfcScreenContent() {
                       size={16}
                       color={COLORS.indigoDeep}
                     />
-                    <StyledText
+                    <Text
+                      variant="button"
                       fontSize={13.5}
-                      fontWeight="700"
                       color={COLORS.indigoDeep}
                     >
                       Join online
-                    </StyledText>
+                    </Text>
                   </Stack>
                 </StyledPressable>
               ) : null}

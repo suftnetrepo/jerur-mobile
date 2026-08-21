@@ -3,11 +3,11 @@ import { Feather as Icon } from "@expo/vector-icons";
 import {
   StyledPage,
   StyledScrollView,
-  StyledText,
   StyledCard,
   StyledForm,
   Stack,
 } from "fluent-styles";
+import { Text } from "../../src/components/text";
 import { FeatureGate } from "../../src/components/FeatureGate";
 import { AppBackHeader } from "../../src/components/AppBackHeader";
 import { FormSubmitButton } from "../../src/components/FormSubmitButton";
@@ -99,21 +99,21 @@ function TestimoniesScreenContent() {
             backgroundColor={COLORS.gold}
             marginBottom={12}
           />
-          <StyledText
-            fontSize={24}
+          <Text
+            variant="header"
             fontWeight="800"
             color={COLORS.ink}
             style={{ lineHeight: 34, marginBottom: 8 }}
           >
             Celebrate the goodness of God
-          </StyledText>
-          <StyledText
+          </Text>
+          <Text
             fontSize={15}
             color={COLORS.inkSoft}
             style={{ lineHeight: 22 }}
           >
             Share testimonies that reveal God's love, power, and faithfulness.
-          </StyledText>
+          </Text>
         </Stack>
 
         <StyledCard
@@ -140,27 +140,27 @@ function TestimoniesScreenContent() {
               backgroundColor={COLORS.goldSoft}
               marginBottom={16}
             >
-              <StyledText
+              <Text
                 fontSize={28}
                 fontWeight="800"
                 color={COLORS.gold}
                 style={{ lineHeight: 34 }}
               >
                 “
-              </StyledText>
+              </Text>
             </Stack>
 
-            <StyledText
+            <Text
               fontSize={16}
               color={COLORS.ink}
               style={{ fontStyle: "italic", lineHeight: 25, marginBottom: 16 }}
             >
               "{FEATURED.quote}"
-            </StyledText>
+            </Text>
 
-            <StyledText fontSize={13} fontWeight="700" color={COLORS.gold}>
+            <Text variant="button" fontSize={13} color={COLORS.gold}>
               — {FEATURED.name}
-            </StyledText>
+            </Text>
           </Stack>
         </StyledCard>
 
@@ -184,17 +184,18 @@ function TestimoniesScreenContent() {
             <Icon name="heart" size={19} color="#FFFFFF" />
           </Stack>
           <Stack flex={1}>
-            <StyledText
+            <Text
+              variant="subtitle"
               fontSize={15}
               fontWeight="800"
               color={COLORS.ink}
               style={{ marginBottom: 2 }}
             >
               Have a testimony to share?
-            </StyledText>
-            <StyledText fontSize={13} color={COLORS.inkSoft}>
+            </Text>
+            <Text fontSize={13} color={COLORS.inkSoft}>
               We'd love to hear it!
-            </StyledText>
+            </Text>
           </Stack>
         </Stack>
 
@@ -209,15 +210,15 @@ function TestimoniesScreenContent() {
             marginBottom={18}
           >
             <Icon name="check-circle" size={18} color={COLORS.sage} />
-            <StyledText
+            <Text
               flex={1}
+              variant="label"
               fontSize={13.5}
-              fontWeight="600"
               color={COLORS.sage}
               style={{ lineHeight: 19 }}
             >
               Your email draft is ready. Review it and tap send in your email app.
-            </StyledText>
+            </Text>
           </Stack>
         )}
 
@@ -232,15 +233,15 @@ function TestimoniesScreenContent() {
             marginBottom={18}
           >
             <Icon name="alert-circle" size={18} color={COLORS.error} />
-            <StyledText
+            <Text
               flex={1}
+              variant="label"
               fontSize={13.5}
-              fontWeight="600"
               color={COLORS.error}
               style={{ lineHeight: 19 }}
             >
               {error}
-            </StyledText>
+            </Text>
           </Stack>
         )}
 
@@ -282,13 +283,13 @@ function TestimoniesScreenContent() {
                 setForm((f) => ({ ...f, message: v.slice(0, 1500) }))
               }
             />
-            <StyledText
+            <Text
               fontSize={11.5}
               color={COLORS.inkSoft}
               style={{ textAlign: "right", marginTop: 6 }}
             >
               {form.message.length}/1500
-            </StyledText>
+            </Text>
           </Stack>
 
           <StyledForm.Actions>
@@ -310,13 +311,13 @@ function TestimoniesScreenContent() {
           paddingHorizontal={12}
         >
           <Icon name="lock" size={13} color={COLORS.inkSoft} />
-          <StyledText
+          <Text
             fontSize={11.5}
             color={COLORS.inkSoft}
             style={{ lineHeight: 17, textAlign: "center" }}
           >
             Your testimony is safe and will be reviewed before sharing.
-          </StyledText>
+          </Text>
         </Stack>
       </StyledScrollView>
     </StyledPage>

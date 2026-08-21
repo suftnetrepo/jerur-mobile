@@ -1,6 +1,7 @@
 import { memo } from "react";
 import { Feather as Icon } from "@expo/vector-icons";
-import { Stack, StyledText, StyledShape } from "fluent-styles";
+import { Stack, StyledShape } from "fluent-styles";
+import { Text } from "./text";
 import { ScalePressable } from "./ScalePressable";
 import { COLORS } from "../theme/colors";
 import { SHADOW_SOFT } from "../theme/shadows";
@@ -27,17 +28,17 @@ function HymnRowComponent({ hymn, tone, onPress }: { hymn: HymnSummary; tone: { 
       >
         <Stack horizontal alignItems="center" gap={12} flex={1}>
           <StyledShape size={44} cycle backgroundColor={tone.bg} alignItems="center" justifyContent="center" flexShrink={0}>
-            <StyledText fontSize={12.5} fontWeight="800" color={tone.fg}>
+            <Text fontSize={12.5} fontWeight="800" color={tone.fg}>
               {hymn.id}
-            </StyledText>
+            </Text>
           </StyledShape>
           <Stack gap={2} flex={1}>
-            <StyledText fontSize={14.5} fontWeight="700" color={COLORS.ink} style={{ lineHeight: 20 }}>
+            <Text variant="label" fontWeight="700" fontSize={14.5} color={COLORS.ink}>
               {hymn.title}
-            </StyledText>
-            <StyledText fontSize={12} color={COLORS.inkSoft}>
+            </Text>
+            <Text variant="bodySmall" color={COLORS.inkSoft}>
               Hymn / Worship
-            </StyledText>
+            </Text>
           </Stack>
         </Stack>
         <Icon name="chevron-right" size={17} color={COLORS.inkSoft} style={{ marginLeft: 8 }} />

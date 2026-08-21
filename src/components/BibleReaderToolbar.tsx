@@ -1,9 +1,9 @@
 import { Feather as Icon } from "@expo/vector-icons";
 import {
   Stack,
-  StyledText,
   StyledPressable,
 } from "fluent-styles";
+import { Text } from "./text";
 import { COLORS } from "../theme/colors";
 import { SHADOW_CARD } from "../theme/shadows";
 
@@ -61,14 +61,15 @@ export function BibleReaderToolbar({
         accessibilityRole="button"
         accessibilityLabel={`Select chapter, currently ${chapterLabel}`}
       >
-        <StyledText
+        <Text
+          variant="button"
           fontSize={13}
           fontWeight="800"
           color={COLORS.goldDeep}
           numberOfLines={1}
         >
           {chapterLabel}
-        </StyledText>
+        </Text>
 
         <Icon
           name="chevron-down"

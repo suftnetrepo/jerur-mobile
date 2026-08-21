@@ -4,13 +4,13 @@ import { Feather as Icon } from "@expo/vector-icons";
 import {
   StyledPage,
   StyledScrollView,
-  StyledText,
   StyledTextInput,
   Stack,
   Popup,
   StyledSpacer,
   StyledShape,
 } from "fluent-styles";
+import { Text } from "../../src/components/text";
 import { router } from "expo-router";
 import { BottomTabBar } from "../../src/components/BottomTabBar";
 import { FeatureGate } from "../../src/components/FeatureGate";
@@ -100,15 +100,15 @@ function FellowshipScreenContent() {
         onBackPress={() => router.back()}
       />
       <Stack paddingHorizontal={24} paddingTop={20} paddingBottom={16}>
-        <StyledText
+        <Text
+          variant="overline"
           fontSize={11}
-          fontWeight="700"
           letterSpacing={1}
           color={COLORS.gold}
           style={{ marginBottom: 8 }}
         >
           FELLOWSHIP
-        </StyledText>
+        </Text>
           <Stack
           width={42}
           height={4}
@@ -116,22 +116,23 @@ function FellowshipScreenContent() {
           backgroundColor={COLORS.gold}
           marginBottom={12}
         />
-        <StyledText
+        <Text
+          variant="header"
           fontSize={26}
           fontWeight="800"
           color={COLORS.ink}
           style={{ marginBottom: 6 }}
         >
           Find your people
-        </StyledText>
-        <StyledText
+        </Text>
+        <Text
           fontSize={13.5}
           color={COLORS.inkSoft}
           style={{ marginBottom: 18, lineHeight: 20 }}
         >
           Small groups meeting through the week for prayer, Bible study, and
           friendship.
-        </StyledText>
+        </Text>
 
         {/* Search + Filter row */}
         <Stack horizontal alignItems="center" gap={10}>
@@ -181,9 +182,9 @@ function FellowshipScreenContent() {
             backgroundColor={COLORS.goldPale}
           >
             <Icon name="users" size={13} color={COLORS.goldDeep} />
-            <StyledText fontSize={13} fontWeight="700" color={COLORS.goldDeep}>
+            <Text variant="subLabel" fontSize={13} fontWeight="700" color={COLORS.goldDeep}>
               {filtered.length} fellowship{filtered.length === 1 ? "" : "s"}
-            </StyledText>
+            </Text>
           </Stack>
         )}
       </Stack>
@@ -199,14 +200,14 @@ function FellowshipScreenContent() {
         ) : (
         <Stack gap={14}>
           {filtered.length === 0 && (
-            <StyledText
+            <Text
               fontSize={14}
               color={COLORS.inkSoft}
               textAlign="center"
               paddingVertical={32}
             >
               No fellowship groups match your search.
-            </StyledText>
+            </Text>
           )}
           {filtered.map((group, i) => {
             const tone = CARD_ACCENTS[i % CARD_ACCENTS.length];
@@ -242,22 +243,23 @@ function FellowshipScreenContent() {
 
                   {/* Content */}
                   <Stack flex={1} gap={3}>
-                    <StyledText
-                      fontSize={16}
+                    <Text
+                      variant="subtitle"
                       fontWeight="800"
                       color={COLORS.ink}
                       style={{ lineHeight: 22 }}
                     >
                       {group.name}
-                    </StyledText>
+                    </Text>
                     {group.town && (
-                      <StyledText
+                      <Text
+                        variant="subLabel"
                         fontSize={13}
                         fontWeight="700"
                         color={tone.accent}
                       >
                         {group.town}
-                      </StyledText>
+                      </Text>
                     )}
                     {address ? (
                       <Stack
@@ -272,21 +274,21 @@ function FellowshipScreenContent() {
                           color={COLORS.inkSoft}
                           style={{ marginTop: 2 }}
                         />
-                        <StyledText
+                        <Text
                           fontSize={12.5}
                           color={COLORS.inkSoft}
                           style={{ flex: 1, lineHeight: 18 }}
                         >
                           {address}
-                        </StyledText>
+                        </Text>
                       </Stack>
                     ) : null}
                     {group.mobile ? (
                       <Stack horizontal alignItems="center" gap={6}>
                         <Icon name="phone" size={12} color={COLORS.inkSoft} />
-                        <StyledText fontSize={12.5} color={COLORS.inkSoft}>
+                        <Text fontSize={12.5} color={COLORS.inkSoft}>
                           {group.mobile}
-                        </StyledText>
+                        </Text>
                       </Stack>
                     ) : null}
                   </Stack>
@@ -334,13 +336,12 @@ function FellowshipScreenContent() {
                   : undefined
               }
             >
-              <StyledText
-                fontSize={14}
-                fontWeight="700"
+              <Text
+                variant="button"
                 color={!cityFilter ? COLORS.goldDeep : COLORS.ink}
               >
                 All cities
-              </StyledText>
+              </Text>
             </Stack>
           </TouchableOpacity>
 
@@ -366,13 +367,12 @@ function FellowshipScreenContent() {
                     : undefined
                 }
               >
-                <StyledText
-                  fontSize={14}
-                  fontWeight="700"
+                <Text
+                  variant="button"
                   color={cityFilter === city ? COLORS.goldDeep : COLORS.ink}
                 >
                   {city}
-                </StyledText>
+                </Text>
               </Stack>
             </TouchableOpacity>
           ))}

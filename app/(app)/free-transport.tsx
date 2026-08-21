@@ -3,9 +3,9 @@ import { Feather as Icon } from "@expo/vector-icons";
 import {
   StyledPage,
   StyledScrollView,
-  StyledText,
   Stack,
 } from "fluent-styles";
+import { Text } from "../../src/components/text";
 import { FeatureGate } from "../../src/components/FeatureGate";
 import { AppBackHeader } from "../../src/components/AppBackHeader";
 import { ScalePressable } from "../../src/components/ScalePressable";
@@ -73,30 +73,32 @@ function FreeTransportScreenContent() {
                     borderRadius={2}
                   />
                   <Stack flex={1}>
-                    <StyledText
+                    <Text
+                      variant="display"
                       fontSize={25}
                       fontWeight="800"
                       color={COLORS.ink}
                       style={{ lineHeight: 30, marginBottom: 2 }}
                     >
                       Need a ride?
-                    </StyledText>
-                    <StyledText
+                    </Text>
+                    <Text
+                      variant="display"
                       fontSize={25}
                       fontWeight="800"
                       color={COLORS.goldDeep}
                       style={{ lineHeight: 30, marginBottom: 12}}
                     >
                       We’ve got you!
-                    </StyledText>
-                    <StyledText
+                    </Text>
+                    <Text
                       fontSize={12.5}
                       color={COLORS.inkSoft}
                       style={{ lineHeight: 18 }}
                     >
                       Book a taxi, bring the receipt, and we’ll refund your fare
                       — it’s that simple.
-                    </StyledText>
+                    </Text>
                   </Stack>
                 </Stack>
                 {/* Reassurance badge */}
@@ -106,13 +108,13 @@ function FreeTransportScreenContent() {
             </Stack>
             <Stack horizontal alignItems="center" gap={8} paddingHorizontal={20} paddingBottom={18}>
               <Icon name="shield" size={14} color={COLORS.goldDeep} />
-              <StyledText
+              <Text
                 fontSize={11.5}
                 color={COLORS.inkSoft}
                 style={{ flex: 1, lineHeight: 16 }}
               >
                 We’re here to make your journey to church stress-free.
-              </StyledText>
+              </Text>
             </Stack>
           </Stack>
         </Animated.View>
@@ -125,9 +127,9 @@ function FreeTransportScreenContent() {
               <Stack width={30} height={30} borderRadius={15} backgroundColor={COLORS.goldPale} alignItems="center" justifyContent="center" marginBottom={5}>
                 <Icon name="map" size={13} color={COLORS.goldDeep} />
               </Stack>
-              <StyledText fontSize={18} fontWeight="800" color={COLORS.ink}>
+              <Text variant="title" fontSize={18} fontWeight="800" color={COLORS.ink}>
                 How it works
-              </StyledText>
+              </Text>
             </Stack>
             <Stack flex={1} height={1} backgroundColor={COLORS.goldPale} />
           </Stack>
@@ -167,22 +169,23 @@ function FreeTransportScreenContent() {
                 </Stack>
 </Stack>
               <Stack flex={1}>
-                <StyledText
+                <Text
+                  variant="subtitle"
                   fontSize={15}
                   fontWeight="800"
                   color={COLORS.ink}
                   style={{ marginBottom: 4 }}
                 >
                   Book your taxi
-                </StyledText>
-                <StyledText
+                </Text>
+                <Text
                   fontSize={13}
                   color={COLORS.inkSoft}
                   style={{ lineHeight: 19 }}
                 >
                   Arrange your own taxi to attend the service at a time that
                   suits you best.
-                </StyledText>
+                </Text>
               </Stack>
               <Stack
                   width={26}
@@ -192,13 +195,13 @@ function FreeTransportScreenContent() {
                   alignItems="center"
                   justifyContent="center"
                 >
-                  <StyledText
+                  <Text
                     fontSize={11}
                     fontWeight="800"
                     color={COLORS.white}
                   >
                     1
-                  </StyledText>
+                  </Text>
                 </Stack>
             </Stack>
           </Stack>
@@ -239,22 +242,23 @@ function FreeTransportScreenContent() {
 </Stack>
 
               <Stack flex={1}>
-                <StyledText
+                <Text
+                  variant="subtitle"
                   fontSize={15}
                   fontWeight="800"
                   color={COLORS.ink}
                   style={{ marginBottom: 4 }}
                 >
                   Pay the fare
-                </StyledText>
-                <StyledText
+                </Text>
+                <Text
                   fontSize={13}
                   color={COLORS.inkSoft}
                   style={{ lineHeight: 19 }}
                 >
                   Pay the taxi driver as usual and make sure to ask for a
                   printed or digital receipt.
-                </StyledText>
+                </Text>
               </Stack>
              <Stack
                   width={26}
@@ -264,13 +268,13 @@ function FreeTransportScreenContent() {
                   alignItems="center"
                   justifyContent="center"
                 >
-                  <StyledText
+                  <Text
                     fontSize={11}
                     fontWeight="800"
                     color={COLORS.white}
                   >
                     2
-                  </StyledText>
+                  </Text>
                 </Stack>
             </Stack>
           </Stack>
@@ -310,22 +314,23 @@ function FreeTransportScreenContent() {
                 </Stack>
 </Stack>
               <Stack flex={1}>
-                <StyledText
+                <Text
+                  variant="subtitle"
                   fontSize={15}
                   fontWeight="800"
                   color={COLORS.ink}
                   style={{ marginBottom: 4 }}
                 >
                   Submit your receipt
-                </StyledText>
-                <StyledText
+                </Text>
+                <Text
                   fontSize={13}
                   color={COLORS.inkSoft}
                   style={{ lineHeight: 19 }}
                 >
                   Give us your taxi receipt after the service and we’ll fully
                   refund your fare.
-                </StyledText>
+                </Text>
               </Stack>
              <Stack
                   width={26}
@@ -335,13 +340,13 @@ function FreeTransportScreenContent() {
                   alignItems="center"
                   justifyContent="center"
                 >
-                  <StyledText
+                  <Text
                     fontSize={11}
                     fontWeight="800"
                     color={COLORS.white}
                   >
                     3
-                  </StyledText>
+                  </Text>
                 </Stack>
             </Stack>
           </Stack>
@@ -373,21 +378,21 @@ function FreeTransportScreenContent() {
                 <Icon name="headphones" size={20} color={COLORS.sage} />
               </Stack>
               <Stack flex={1}>
-                <StyledText
-                  fontSize={16}
+                <Text
+                  variant="subtitle"
                   fontWeight="800"
                   color={COLORS.ink}
                   style={{ marginBottom: 4 }}
                 >
                   Need help?
-                </StyledText>
-                <StyledText
+                </Text>
+                <Text
                   fontSize={13}
                   color={COLORS.inkSoft}
                   style={{ lineHeight: 19 }}
                 >
                   If you need assistance with booking or claiming, call:
-                </StyledText>
+                </Text>
               </Stack>
               <Stack opacity={0.85} marginTop={-4}>
                 <SupportIllustration />
@@ -419,12 +424,12 @@ function FreeTransportScreenContent() {
                       <Icon name="phone" size={14} color={COLORS.sage} />
                     </Stack>
                     <Stack flex={1}>
-                      <StyledText fontSize={10.5} fontWeight="700" color={COLORS.inkSoft} style={{ marginBottom: 1 }}>
+                      <Text variant="overline" fontSize={10.5} color={COLORS.inkSoft} style={{ marginBottom: 1 }}>
                         CALL US
-                      </StyledText>
-                      <StyledText fontSize={13.5} fontWeight="800" color={COLORS.ink}>
+                      </Text>
+                      <Text variant="button" fontSize={13.5} fontWeight="800" color={COLORS.ink}>
                         {number}
-                      </StyledText>
+                      </Text>
                     </Stack>
                     <Icon name="chevron-right" size={19} color={COLORS.sage} />
                   </Stack>
@@ -449,14 +454,14 @@ function FreeTransportScreenContent() {
               >
                 <Icon name="info" size={16} color={COLORS.goldDeep} />
               </Stack>
-              <StyledText
+              <Text
                 fontSize={13}
                 color={COLORS.goldDeep}
                 style={{ flex: 1, lineHeight: 20 }}
               >
                 This service is provided to help you attend church.{"\n"}We’re
                 happy to support you!
-              </StyledText>
+              </Text>
               <Stack opacity={0.7}>
                 <FooterChurchIllustration />
               </Stack>

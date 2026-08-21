@@ -1,7 +1,8 @@
 import { Animated } from "react-native";
 import { router } from "expo-router";
 import { Feather as Icon } from "@expo/vector-icons";
-import { StyledPage, StyledScrollView, StyledText, StyledPressable, StyledShape, Stack } from "fluent-styles";
+import { StyledPage, StyledScrollView, StyledPressable, StyledShape, Stack } from "fluent-styles";
+import { Text } from "../../src/components/text";
 import { BottomTabBar } from "../../src/components/BottomTabBar";
 import { useFadeUp } from "../../src/hooks/useFadeUp";
 import { useFeatureFlags } from "../../src/hooks/useFeatureFlags";
@@ -65,12 +66,12 @@ export default function MoreScreen() {
         <Stack backgroundColor={COLORS.paper} paddingHorizontal={22} paddingTop={24} paddingBottom={34}>
           <Stack horizontal alignItems="center" gap={9} marginBottom={14}>
             <Stack width={28} height={1} backgroundColor={COLORS.inkSoft} />
-            <StyledText fontSize={10.5} fontWeight="800" letterSpacing={1.5} color={COLORS.inkSoft}>YOUR SPACE</StyledText>
+            <Text variant="overline" fontSize={10.5} fontWeight="800" letterSpacing={1.5} color={COLORS.inkSoft}>YOUR SPACE</Text>
           </Stack>
-          <StyledText fontSize={30} fontWeight="800" color={COLORS.ink} style={{ marginBottom: 7 }}>Settings</StyledText>
-          <StyledText fontSize={14} color={COLORS.inkSoft} style={{ lineHeight: 21, maxWidth: 300 }}>
+          <Text variant="header" fontSize={30} fontWeight="800" color={COLORS.ink} style={{ marginBottom: 7 }}>Settings</Text>
+          <Text fontSize={14} color={COLORS.inkSoft} style={{ lineHeight: 21, maxWidth: 300 }}>
             Personalise your account and stay connected with your church family.
-          </StyledText>
+          </Text>
         </Stack>
 
         <Animated.View style={listAnim}>
@@ -92,8 +93,8 @@ export default function MoreScreen() {
                         <Icon name={item.icon as any} size={16} color={tone.fg} />
                       </StyledShape>
                       <Stack gap={2}>
-                        <StyledText fontSize={14.5} fontWeight="800" color={COLORS.ink}>{item.label}</StyledText>
-                        <StyledText fontSize={11.5} color={COLORS.inkSoft}>{item.description}</StyledText>
+                        <Text variant="label" fontSize={14.5} fontWeight="800" color={COLORS.ink}>{item.label}</Text>
+                        <Text fontSize={11.5} color={COLORS.inkSoft}>{item.description}</Text>
                       </Stack>
                     </Stack>
                     <Icon name="chevron-right" size={17} color={COLORS.inkSoft} />

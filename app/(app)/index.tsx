@@ -5,12 +5,12 @@ import { useQueryClient } from "@tanstack/react-query";
 import { Feather as Icon } from "@expo/vector-icons";
 import {
   StyledPage,
-  StyledText,
   StyledShape,
   StyledPressable,
   Stack,
   StyledSeperator,
 } from "fluent-styles";
+import { Text } from "../../src/components/text";
 import { BottomTabBar } from "../../src/components/BottomTabBar";
 import {
   PillActionRow,
@@ -191,12 +191,12 @@ export default function HomeScreen() {
       >
         <Animated.View style={headerAnim}>
           <Stack paddingHorizontal={H_PAD} marginTop={10} marginBottom={18}>
-            <StyledText fontSize={26} fontWeight="800" color={COLORS.ink}>
+            <Text variant="header" fontSize={26} fontWeight="800" color={COLORS.ink}>
               {church?.name ?? "Your church"}
-            </StyledText>
-            <StyledText fontSize={13} color={COLORS.inkSoft}>
+            </Text>
+            <Text fontSize={13} color={COLORS.inkSoft}>
               Welcome — glad you're here.
-            </StyledText>
+            </Text>
           </Stack>
 
           {/* Quick actions — horizontal pill row, one per enabled feature.
@@ -243,9 +243,9 @@ export default function HomeScreen() {
             marginVertical={16}
           >
             <Stack>
-              <StyledText fontSize={16} fontWeight="400" color={COLORS.inkSoftest}>
+              <Text variant="subtitle" fontWeight="400" color={COLORS.inkSoftest}>
                 Latest Message
-              </StyledText>
+              </Text>
 
              
             </Stack>
@@ -271,9 +271,9 @@ export default function HomeScreen() {
             marginVertical={16}
           >
             <Stack>
-              <StyledText fontSize={16} fontWeight="400" color={COLORS.inkSoft}>
-                More Article 
-              </StyledText>
+              <Text variant="subtitle" fontWeight="400" color={COLORS.inkSoft}>
+                More Article
+              </Text>
 
              
             </Stack>

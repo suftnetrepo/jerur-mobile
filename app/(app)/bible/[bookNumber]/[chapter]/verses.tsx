@@ -1,7 +1,8 @@
 import { useMemo } from "react";
 import { router, useLocalSearchParams } from "expo-router";
 import { Feather as Icon } from "@expo/vector-icons";
-import { StyledPage, StyledScrollView, StyledText, StyledPressable, Stack } from "fluent-styles";
+import { StyledPage, StyledScrollView, StyledPressable, Stack } from "fluent-styles";
+import { Text } from "../../../../../src/components/text";
 import { FeatureGate } from "../../../../../src/components/FeatureGate";
 import { BibleChapterGrid, useBibleGridWidth } from "../../../../../src/components/BibleChapterGrid";
 import { getBook, getVerseCount } from "../../../../../src/bible/bible-lookup";
@@ -39,9 +40,9 @@ function BibleVerseSelectionScreenContent() {
       <StyledPage showStatusBar flex={1} backgroundColor={COLORS.paper}>
         <StyledPage.Header showBackArrow onBackPress={() => router.back()} title="Bible" titleAlignment="center" />
         <Stack flex={1} alignItems="center" justifyContent="center" paddingHorizontal={32}>
-          <StyledText fontSize={14} color={COLORS.inkSoft} style={{ textAlign: "center" }}>
+          <Text fontSize={14} color={COLORS.inkSoft} style={{ textAlign: "center" }}>
             That chapter couldn't be found.
-          </StyledText>
+          </Text>
         </Stack>
       </StyledPage>
     );

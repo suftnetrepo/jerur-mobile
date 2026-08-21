@@ -1,5 +1,6 @@
 import { useWindowDimensions } from "react-native";
-import { Stack, StyledText, StyledPressable } from "fluent-styles";
+import { Stack, StyledPressable } from "fluent-styles";
+import { Text } from "./text";
 import { COLORS } from "../theme/colors";
 
 const GRID_GAP = 10;
@@ -61,13 +62,13 @@ export function BibleChapterGrid({
             accessibilityLabel={`Chapter ${chapter}`}
             accessibilityState={{ selected: isActive }}
           >
-            <StyledText
-              fontSize={14}
+            <Text
+              variant="label"
               fontWeight={isActive ? "800" : "600"}
               color={isActive ? COLORS.white : COLORS.ink}
             >
               {chapter}
-            </StyledText>
+            </Text>
           </StyledPressable>
         );
       })}

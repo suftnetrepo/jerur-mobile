@@ -4,12 +4,12 @@ import { Feather as Icon } from "@expo/vector-icons";
 import {
   StyledPage,
   StyledScrollView,
-  StyledText,
   StyledButton,
   StyledForm,
   Popup,
   Stack,
 } from "fluent-styles";
+import { Text } from "../../../src/components/text";
 import { BottomTabBar } from "../../../src/components/BottomTabBar";
 import { FeatureGate } from "../../../src/components/FeatureGate";
 import { AppBackHeader } from "../../../src/components/AppBackHeader";
@@ -56,17 +56,17 @@ function EventsScreenContent() {
           backgroundColor={COLORS.gold}
           marginBottom={12}
         />
-        <StyledText
-          fontSize={24}
+        <Text
+          variant="header"
           fontWeight="800"
           color={COLORS.ink}
           style={{ marginBottom: 6 }}
         >
           What's coming up
-        </StyledText>
-        <StyledText fontSize={13.5} color={COLORS.inkSoft}>
+        </Text>
+        <Text fontSize={13.5} color={COLORS.inkSoft}>
           Conferences, prayer nights, and community days — see what's on.
-        </StyledText>
+        </Text>
       </Stack>
 
       <StyledScrollView
@@ -82,13 +82,13 @@ function EventsScreenContent() {
         ) : (
         <Stack gap={14}>
           {published.length === 0 && (
-            <StyledText
+            <Text
               fontSize={14}
               color={COLORS.inkSoft}
               style={{ textAlign: "center", paddingVertical: 24 }}
             >
               No upcoming events right now — check back soon.
-            </StyledText>
+            </Text>
           )}
           {published.map((event, i) => {
             const dateRange =
@@ -119,14 +119,14 @@ function EventsScreenContent() {
                 {/* Card body */}
                 <Stack padding={20} paddingTop={18} gap={0}>
                   {/* Title */}
-                  <StyledText
-                    fontSize={20}
+                  <Text
+                    variant="title"
                     fontWeight="800"
                     color={COLORS.ink}
                     style={{ marginBottom: 12, lineHeight: 26 }}
                   >
                     {event.title}
-                  </StyledText>
+                  </Text>
 
                   {/* Date row */}
                   {dateRange && (
@@ -151,13 +151,13 @@ function EventsScreenContent() {
                           color={COLORS.goldDeep}
                         />
                       </Stack>
-                      <StyledText
+                      <Text
                         fontSize={13}
                         color={COLORS.inkSoft}
                         style={{ flex: 1 }}
                       >
                         {dateRange}
-                      </StyledText>
+                      </Text>
                     </Stack>
                   )}
 
@@ -184,19 +184,19 @@ function EventsScreenContent() {
                           color={COLORS.goldDeep}
                         />
                       </Stack>
-                      <StyledText
+                      <Text
                         fontSize={13}
                         color={COLORS.inkSoft}
                         style={{ flex: 1 }}
                       >
                         {location}
-                      </StyledText>
+                      </Text>
                     </Stack>
                   )}
 
                   {/* Description */}
                   {event.description && (
-                    <StyledText
+                    <Text
                       fontSize={13.5}
                       color={COLORS.inkSoft}
                       numberOfLines={3}
@@ -206,7 +206,7 @@ function EventsScreenContent() {
                       }}
                     >
                       {event.description}
-                    </StyledText>
+                    </Text>
                   )}
 
                   {/* Full-width Register CTA */}
@@ -226,13 +226,13 @@ function EventsScreenContent() {
                         justifyContent="center"
                         gap={8}
                       >
-                        <StyledText
+                        <Text
+                          variant="button"
                           fontSize={15}
-                          fontWeight="700"
                           color={COLORS.ink}
                         >
                           Register
-                        </StyledText>
+                        </Text>
                         <Icon
                           name="arrow-right"
                           size={15}
@@ -303,9 +303,9 @@ function EventRegisterPopup({
             borderRadius={8}
             padding={14}
           >
-            <StyledText fontSize={14} fontWeight="600" color={COLORS.sage}>
+            <Text variant="label" color={COLORS.sage}>
               You're registered — we'll see you there.
-            </StyledText>
+            </Text>
           </Stack>
         ) : (
           <StyledForm gap={14} avoidKeyboard={false}>
@@ -315,9 +315,9 @@ function EventRegisterPopup({
                 borderRadius={8}
                 padding={12}
               >
-                <StyledText fontSize={13} fontWeight="600" color={COLORS.error}>
+                <Text variant="label" fontSize={13} color={COLORS.error}>
                   {error}
-                </StyledText>
+                </Text>
               </Stack>
             )}
             <StyledForm.Input

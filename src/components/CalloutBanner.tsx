@@ -1,6 +1,7 @@
 import { Feather as Icon } from "@expo/vector-icons";
 import { router } from "expo-router";
-import { Stack, StyledText, StyledPressable, StyledShape } from "fluent-styles";
+import { Stack, StyledPressable, StyledShape } from "fluent-styles";
+import { Text } from "./text";
 import { COLORS } from "../theme/colors";
 
 export function CalloutBanner({
@@ -27,20 +28,20 @@ export function CalloutBanner({
       <Stack horizontal backgroundColor={backgroundColor} borderRadius={20} padding={20} alignItems="center" gap={16}>
         <Stack flex={1} gap={6}>
           {eyebrow && (
-            <StyledText fontSize={11} fontWeight="700" letterSpacing={0.8} color={accentColor} style={{ textTransform: "uppercase" }}>
+            <Text variant="overline" fontSize={11} letterSpacing={0.8} color={accentColor}>
               {eyebrow}
-            </StyledText>
+            </Text>
           )}
-          <StyledText fontSize={17} fontWeight="800" color={COLORS.ink} style={{ lineHeight: 22 }}>
+          <Text variant="title" fontSize={17} fontWeight="800" color={COLORS.ink} style={{ lineHeight: 22 }}>
             {title}
-          </StyledText>
-          <StyledText fontSize={12.5} color={COLORS.inkSoft} style={{ lineHeight: 18 }}>
+          </Text>
+          <Text variant="bodySmall" fontSize={12.5} color={COLORS.inkSoft}>
             {body}
-          </StyledText>
+          </Text>
           <Stack horizontal alignItems="center" gap={5} marginTop={4}>
-            <StyledText fontSize={13} fontWeight="700" color={accentColor}>
+            <Text variant="button" fontSize={13} color={accentColor}>
               {linkLabel}
-            </StyledText>
+            </Text>
             <Icon name="arrow-right" size={13} color={accentColor} />
           </Stack>
         </Stack>

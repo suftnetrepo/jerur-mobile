@@ -1,7 +1,8 @@
 import { useMemo, useState } from "react";
-import { Share, Text } from "react-native";
+import { Share, Text as RNText } from "react-native";
 import { router, useLocalSearchParams } from "expo-router";
-import { StyledPage, StyledScrollView, StyledText, Stack, StyledShape } from "fluent-styles";
+import { StyledPage, StyledScrollView, Stack, StyledShape } from "fluent-styles";
+import { Text } from "../../../src/components/text";
 import { FeatureGate } from "../../../src/components/FeatureGate";
 import { HymnReaderToolbar } from "../../../src/components/HymnReaderToolbar";
 import { ReaderFontSizePopup } from "../../../src/components/ReaderFontSizePopup";
@@ -62,13 +63,13 @@ function HymnReaderScreenContent() {
           justifyContent="center"
           paddingHorizontal={32}
         >
-          <StyledText
+          <Text
             fontSize={14}
             color={COLORS.inkSoft}
             style={{ textAlign: "center" }}
           >
             That hymn couldn't be found.
-          </StyledText>
+          </Text>
         </Stack>
       </StyledPage>
     );
@@ -99,14 +100,14 @@ function HymnReaderScreenContent() {
       />
 
       <Stack paddingHorizontal={H_PAD} marginTop={8} paddingBottom={10}>
-        <StyledText
-          fontSize={24}
+        <Text
+          variant="header"
           fontWeight="800"
           color={COLORS.ink}
           style={{ lineHeight: 30 }}
         >
           {hymn.title}
-        </StyledText>
+        </Text>
       </Stack>
 
       <StyledScrollView
@@ -116,11 +117,11 @@ function HymnReaderScreenContent() {
         {/* One flowing text block, not a card per stanza - the source
             data's blank lines between stanzas render as natural paragraph
             spacing once \r\n is normalized to \n. */}
-        <Text
+        <RNText
           style={{ fontSize, lineHeight: fontSize * 1.7, color: COLORS.ink }}
         >
           {lyrics}
-        </Text>
+        </RNText>
       </StyledScrollView>
 
       <Stack paddingHorizontal={16} paddingBottom={16} paddingTop={8}>

@@ -1,6 +1,7 @@
 import { Linking } from "react-native";
 import { Feather as Icon } from "@expo/vector-icons";
-import { StyledText, Stack } from "fluent-styles";
+import { Stack } from "fluent-styles";
+import { Text } from "./text";
 import { PrayerReminderControl } from "./PrayerReminderControl";
 import { ScalePressable } from "./ScalePressable";
 import { sessionKey, type PrayerReminder } from "../notifications/prayer-reminders";
@@ -49,9 +50,9 @@ export function PrayerSessionCard({
           <Stack width={42} height={42} borderRadius={21} backgroundColor={tone.bg} alignItems="center" justifyContent="center">
             <Icon name="clock" size={17} color={tone.fg} />
           </Stack>
-          <StyledText fontSize={16} fontWeight="800" color={COLORS.ink} numberOfLines={2} flex={1}>
+          <Text variant="subtitle" fontWeight="800" color={COLORS.ink} numberOfLines={2} flex={1}>
             {meeting.title}
-          </StyledText>
+          </Text>
         </Stack>
         {remoteLink && (
           <Stack
@@ -65,9 +66,9 @@ export function PrayerSessionCard({
             style={{ borderWidth: 1, borderColor: COLORS.chromeBorder }}
           >
             <Icon name="wifi" size={10} color={COLORS.inkSoft} />
-            <StyledText fontSize={9} fontWeight="800" letterSpacing={0.8} color={COLORS.inkSoft}>
+            <Text variant="overline" fontSize={9} fontWeight="800" letterSpacing={0.8} color={COLORS.inkSoft}>
               ONLINE
-            </StyledText>
+            </Text>
           </Stack>
         )}
       </Stack>
@@ -85,22 +86,22 @@ export function PrayerSessionCard({
           <Icon name="clock" size={15} color={COLORS.inkSoft} />
         </Stack>
         <Stack marginLeft={11} flex={1}>
-          <StyledText fontSize={9} fontWeight="800" letterSpacing={0.9} color={COLORS.inkSoft} style={{ marginBottom: 2 }}>
+          <Text variant="overline" fontSize={9} fontWeight="800" letterSpacing={0.9} color={COLORS.inkSoft} style={{ marginBottom: 2 }}>
             PRAYER TIME
-          </StyledText>
+          </Text>
           <Stack horizontal alignItems="center" gap={9}>
-            <StyledText fontSize={17} fontWeight="800" color={COLORS.ink}>{meeting.start_time}</StyledText>
+            <Text variant="metric" fontSize={17} color={COLORS.ink}>{meeting.start_time}</Text>
             <Icon name="arrow-right" size={14} color={COLORS.inkSoft} />
-            <StyledText fontSize={17} fontWeight="800" color={COLORS.ink}>{meeting.end_time}</StyledText>
+            <Text variant="metric" fontSize={17} color={COLORS.ink}>{meeting.end_time}</Text>
           </Stack>
         </Stack>
       </Stack>
 
       <Stack>
         {meeting.description && (
-          <StyledText fontSize={13} color={COLORS.inkSoft} style={{ marginBottom: 12, lineHeight: 19 }}>
+          <Text variant="body" fontSize={13} color={COLORS.inkSoft} style={{ marginBottom: 12, lineHeight: 19 }}>
             {meeting.description}
-          </StyledText>
+          </Text>
         )}
         <Stack horizontal alignItems="center" gap={8} style={{ flexWrap: "wrap" }}>
           <PrayerReminderControl
@@ -127,9 +128,9 @@ export function PrayerSessionCard({
                 style={{ borderWidth: 1, borderColor: COLORS.chromeBorder }}
               >
                 <Icon name="video" size={13} color={COLORS.ink} />
-                <StyledText fontSize={12} fontWeight="800" color={COLORS.ink}>
+                <Text variant="button" fontSize={12} fontWeight="800" color={COLORS.ink}>
                   Join online
-                </StyledText>
+                </Text>
                 <Icon name="external-link" size={12} color={COLORS.inkSoft} />
               </Stack>
             </ScalePressable>

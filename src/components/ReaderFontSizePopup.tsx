@@ -1,4 +1,5 @@
-import { Popup, Stack, StyledText, StyledPressable } from "fluent-styles";
+import { Popup, Stack, StyledPressable } from "fluent-styles";
+import { Text } from "./text";
 import { COLORS } from "../theme/colors";
 
 /**
@@ -44,9 +45,9 @@ export function ReaderFontSizePopup({
           accessibilityRole="button"
           accessibilityLabel="Reset font size to default"
         >
-          <StyledText fontSize={Math.min(fontSize, 22)} fontWeight="800" color={COLORS.goldDeep}>
+          <Text fontSize={Math.min(fontSize, 22)} fontWeight="800" color={COLORS.goldDeep}>
             Aa
-          </StyledText>
+          </Text>
         </StyledPressable>
         <SizeButton label="A+" disabled={!canIncrease} onPress={onIncrease} />
       </Stack>
@@ -69,9 +70,9 @@ function SizeButton({ label, disabled, onPress }: { label: string; disabled: boo
       accessibilityLabel={label === "A-" ? "Decrease font size" : "Increase font size"}
       accessibilityState={{ disabled }}
     >
-      <StyledText fontSize={label === "A-" ? 15 : 21} fontWeight="800" color={disabled ? COLORS.inkSoft : COLORS.ink}>
+      <Text fontSize={label === "A-" ? 15 : 21} fontWeight="800" color={disabled ? COLORS.inkSoft : COLORS.ink}>
         {label}
-      </StyledText>
+      </Text>
     </StyledPressable>
   );
 }
