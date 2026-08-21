@@ -25,7 +25,10 @@ type SettingsItem = { label: string; description: string; icon: string; route: s
 const SETTINGS_ITEMS: SettingsItem[] = [
   { label: "My account", description: "Profile and membership", icon: "user", route: "/account" },
   { label: "Pastor", description: "Meet our resident pastor", icon: "book-open", route: "/pastor" },
-  { label: "Notifications", description: "Choose what reaches you", icon: "bell", route: "/notifications" },
+  // Notifications row hidden for now (2026-08-21) — /notifications screen
+  // itself is untouched, just not linked from here. Re-add this entry to
+  // bring it back:
+  // { label: "Notifications", description: "Choose what reaches you", icon: "bell", route: "/notifications" },
 ];
 
 // Moved out of Home's Quick Actions pill row into Settings, directly

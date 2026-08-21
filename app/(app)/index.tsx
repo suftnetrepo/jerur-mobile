@@ -8,7 +8,6 @@ import {
   StyledShape,
   StyledPressable,
   Stack,
-  StyledSeperator,
 } from "fluent-styles";
 import { Text } from "../../src/components/text";
 import { BottomTabBar } from "../../src/components/BottomTabBar";
@@ -94,6 +93,14 @@ export default function HomeScreen() {
     [services, prayerTimes, scheduleNow],
   );
 
+  // "Latest Message"/"More Article" header rows are just a label above
+  // each section — nothing to separate while that section itself has
+  // nothing to show. Kept visible through the loading state (paired with
+  // that section's own skeleton) and hidden only once loading has
+  // finished with genuinely nothing found.
+  const hasLatestMessage = sermonLoading || Boolean(latestSermon);
+  const hasMoreArticles = articlesLoading || Boolean(latestArticles?.length);
+
   // Pull-to-refresh — invalidates the exact React Query cache entries this
   // screen already reads from (useSettings' "settings" key backs the
   // banner/notification/pastor/contact/feature-flags — they're all read
@@ -140,7 +147,7 @@ export default function HomeScreen() {
   }
 
   return (
-    <StyledPage showStatusBar flex={1} backgroundColor={COLORS.paper}>
+    <StyledPage showStatusBar flex={1} backgroundColor={COLORS.paperSoft}>
       {/* Top chrome — current-church selector / notifications / avatar.
           Same row/spacing as before; the only change from the hamburger
           version is this one swap (menu icon -> CurrentChurchHeader). */}
@@ -235,21 +242,21 @@ export default function HomeScreen() {
               for its own hasFeature/content visibility checks. */}
           {!settingsLoading && <PropheticThemeCard settings={settings} />}
 
-          <Stack
-            horizontal
-            alignItems="center"
-            justifyContent="space-between"
-            paddingHorizontal={32}
-            marginVertical={16}
-          >
-            <Stack>
-              <Text variant="subtitle" fontWeight="400" color={COLORS.inkSoftest}>
-                Latest Message
-              </Text>
-
-             
+          {hasLatestMessage && (
+            <Stack
+              horizontal
+              alignItems="center"
+              justifyContent="space-between"
+              paddingHorizontal={32}
+              marginVertical={16}
+            >
+              <Stack>
+                <Text variant="subtitle" fontWeight="400" color={COLORS.inkSoftest}>
+                  Latest Message
+                </Text>
+              </Stack>
             </Stack>
-          </Stack>
+          )}
 
           {/* Latest Sermon — one card only, never a list. Fully
               self-contained: hides itself for hasFeature("sermons")=false,
@@ -263,21 +270,21 @@ export default function HomeScreen() {
             <LatestSermonCard sermon={latestSermon} />
           )}
 
-          <Stack
-            horizontal
-            alignItems="center"
-            justifyContent="space-between"
-            paddingHorizontal={32}
-            marginVertical={16}
-          >
-            <Stack>
-              <Text variant="subtitle" fontWeight="400" color={COLORS.inkSoft}>
-                More Article
-              </Text>
-
-             
+          {hasMoreArticles && (
+            <Stack
+              horizontal
+              alignItems="center"
+              justifyContent="space-between"
+              paddingHorizontal={32}
+              marginVertical={16}
+            >
+              <Stack>
+                <Text variant="subtitle" fontWeight="400" color={COLORS.inkSoft}>
+                  More Article
+                </Text>
+              </Stack>
             </Stack>
-          </Stack>
+          )}
 
           {/* Christian Articles — up to 4 latest published articles,
               horizontally scrolling. Fully self-contained: hides itself

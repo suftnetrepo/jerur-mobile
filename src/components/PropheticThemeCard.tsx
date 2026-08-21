@@ -5,6 +5,7 @@ import { useFeatureFlags } from "../hooks/useFeatureFlags";
 import { SHADOW_SOFT } from "../theme/shadows";
 import { COLORS } from "../theme/colors";
 import { CARD_H_PAD } from "../theme/layout";
+import { toTitleCase, toSentenceCase } from "../utils/textCase";
 import type { ChurchSettings } from "../api/types";
 
 /**
@@ -32,8 +33,18 @@ export function PropheticThemeCard({
 
   const focus = settings?.prophetic_focus;
   const month = focus?.month?.trim();
-  const verse = focus?.verse?.trim();
-  const description = focus?.description?.trim();
+  // Admin portal doesn't enforce a case on this field — churches have
+  // typed it ALL CAPS, all lowercase, or mixed. Normalize to Title Case
+  // for display so it reads as a proper reference ("Jeremiah 29:11")
+  // no matter how it was entered.
+  const rawVerse = focus?.verse?.trim();
+  const verse = rawVerse ? toTitleCase(rawVerse) : rawVerse;
+  // The statement itself (shown in the white inner card) — sentence
+  // case, not title case: only the very first word capitalized, same
+  // reasoning as verse above but a full statement reads oddly with
+  // every word capitalized the way a short reference doesn't.
+  const rawDescription = focus?.description?.trim();
+  const description = rawDescription ? toSentenceCase(rawDescription) : rawDescription;
   if (!month && !verse && !description) return null;
 
   return (
@@ -97,8 +108,7 @@ export function PropheticThemeCard({
             >
               {description ? (
                 <Text
-                  variant="body"
-                  fontSize={13}
+                  variant="bodyLarge"
                   color={COLORS.inkSoft}
                   style={{ lineHeight: 20 }}
                 >
@@ -111,7 +121,7 @@ export function PropheticThemeCard({
                   horizontal
                   alignItems="center"
                   gap={7}
-                  marginTop={description ? 14 : 0}
+                  marginTop={description ? 4 : 0}
                 >
                   <Icon name="book" size={13} color={COLORS.goldDeep} />
                   <Text

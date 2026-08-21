@@ -197,15 +197,7 @@ export default function AboutScreen() {
 
         <Stack paddingHorizontal={24}>
           {/* ── Our story ──────────────────────────────────────────────── */}
-          <Text
-            variant="overline"
-            fontSize={11}
-            letterSpacing={1}
-            color={COLORS.goldDeep}
-            style={{ marginBottom: 8 }}
-          >
-            OUR STORY
-          </Text>
+        
           <Text
             variant="header"
             fontSize={22}
@@ -213,7 +205,8 @@ export default function AboutScreen() {
             color={COLORS.ink}
             style={{ lineHeight: 28 }}
           >
-            Welcome to {churchName}.
+            Welcome to{"\n"}
+            {churchName}.
           </Text>
           {shortMessage ? (
             <Text

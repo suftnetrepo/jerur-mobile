@@ -135,24 +135,18 @@ export function WelcomeMessageCard({
 
       {plain ? (
         <Stack
-          backgroundColor={COLORS.paperWarm}
+          backgroundColor={COLORS.chrome}
+          borderWidth={1}
+          borderColor={COLORS.chrome}
           borderRadius={22}
           padding={24}
-          style={SHADOW_SOFT}
+       
         >
-          <Text
-            fontSize={26}
-            fontWeight="800"
-            color={COLORS.gold}
-            style={{ lineHeight: 22, marginBottom: 8 }}
-          >
-            “
-          </Text>
           <HighlightableText
             text={text}
             phrase={highlightPhrase}
-            fontSize={15}
-            color={COLORS.inkSoft}
+            fontSize={24}
+            color={COLORS.ink}
             style={{ lineHeight: 23 }}
           />
           {attribution}
@@ -199,7 +193,7 @@ function PlainQuoteCard({
 }) {
   return (
     <Stack
-      backgroundColor={COLORS.paperAlt}
+      backgroundColor={COLORS.goldDeep}
       borderRadius={22}
       padding={26}
       paddingTop={34}

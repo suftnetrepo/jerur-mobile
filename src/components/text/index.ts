@@ -49,6 +49,7 @@ type TextVariant =
   | 'subtitle'
   | 'body'
   | 'bodySmall'
+  | 'bodyLarge'
   | 'label'
   | 'subLabel'
   | 'caption'
@@ -103,6 +104,11 @@ const TEXT_VARIANTS: Record<TextVariant, any> = {
     fontSize: 12,
     fontWeight: '400',
     lineHeight: 18,
+  },
+   bodyLarge: {
+    fontSize: 16,
+    fontWeight: '400',
+    lineHeight: 22, 
   },
   label: {
     fontSize: 14,
