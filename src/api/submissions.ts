@@ -37,10 +37,13 @@ export async function registerForWofbi(payload: {
 
 // Event registration IS a real Jerur feature (api/event/register, no auth
 // required) — unlike the four above, this one correctly stays on the Jerur
-// apiClient. Path and payload match Jerur's addEventRegister(body); the
-// exact required fields weren't fully confirmed from the route handler
-// alone, so double-check against Jerur's validation if registrations start
-// failing silently.
-export async function registerForEvent(payload: { event_id: string; name: string; email: string; phone?: string }) {
+// apiClient. Confirmed against eventRegisterServices.js's addEventRegister():
+// it reads `body.eventId` (camelCase, matching the rest of Jerur's API —
+// serviceId, memberId, churchId, etc.) — NOT `event_id`. Sending event_id
+// meant Event.findOneAndUpdate({ _id: body.eventId }) always got undefined,
+// so every registration failed regardless of what was entered — this is
+// what Apple's review caught as "an error message was displayed when we
+// entered any email for registration".
+export async function registerForEvent(payload: { eventId: string; name: string; email: string; phone?: string }) {
   await apiClient.post("/event/register", payload);
 }

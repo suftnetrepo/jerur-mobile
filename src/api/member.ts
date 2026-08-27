@@ -17,6 +17,18 @@ export async function loginMember(payload: { identifier: string; pin: string }):
   return data.data;
 }
 
+// Self-service "forgot PIN" — deliberately less restrictive than a full
+// password-reset flow: no old PIN, no email/SMS verification step. Proving
+// you know the phone/email already on file is the only gate (same trust
+// level member/login already runs on), matching jerur-next's
+// forgotPin()/member/forgot-pin — see that route's comment for why. Doesn't
+// return a session — MemberSessionContext.forgotPin() logs in right after
+// with the same identifier + new pin, same "register immediately logs in"
+// pattern as registerMember() above.
+export async function forgotPin(payload: { identifier: string; pin: string }): Promise<void> {
+  await apiClient.post("/member/forgot-pin", payload);
+}
+
 // Permanently deletes the logged-in member's own record. Authorization
 // header (member token) is attached automatically by the apiClient
 // interceptor — see setActiveMemberToken() in client.ts — and the backend

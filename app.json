@@ -21,11 +21,18 @@
       "expo-sqlite",
       "expo-secure-store",
       "expo-font",
-      "expo-notifications"
+      "expo-notifications",
+      [
+        "expo-location",
+        {
+          "locationWhenInUsePermission": "Jerur uses your location to find Winners Chapel campuses near you. For example, when you tap \"Find churches near me\" on the church search screen, we use your current location to show the nearest campuses so you can pick the right one to attend."
+        }
+      ]
     ],
     "ios": {
       "supportsTablet": false,
       "bundleIdentifier": "com.suftnet.jerur",
+      "buildNumber": "2",
       "infoPlist": {
         "ITSAppUsesNonExemptEncryption": false
       }

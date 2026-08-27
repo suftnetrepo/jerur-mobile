@@ -22,10 +22,6 @@ const FEATURED = {
   name: "A member of our church family",
 };
 
-const PURPLE = "#6C45F5";
-const PURPLE_SOFT = "#F3EEFF";
-const PURPLE_BORDER = "#E8DEFF";
-
 export default function TestimoniesScreen() {
   return (
     <FeatureGate feature="testimony">
@@ -246,22 +242,20 @@ function TestimoniesScreenContent() {
         )}
 
         <StyledForm gap={18} avoidKeyboard={false}>
-          <StyledForm.Row gap={12}>
-            <StyledForm.Input
+          <StyledForm.Input
               label="First name"
               placeholder="First name"
               value={form.first_name}
               onChangeText={(v) => setForm((f) => ({ ...f, first_name: v }))}
-              style={{ flex: 1 }}
+              
             />
             <StyledForm.Input
               label="Last name"
               placeholder="Last name"
               value={form.last_name}
               onChangeText={(v) => setForm((f) => ({ ...f, last_name: v }))}
-              style={{ flex: 1 }}
+        
             />
-          </StyledForm.Row>
 
           <StyledForm.Input
             label="Email"
@@ -310,7 +304,7 @@ function TestimoniesScreenContent() {
           marginTop={15}
           paddingHorizontal={12}
         >
-          <Icon name="lock" size={13} color={COLORS.inkSoft} />
+          <Icon name="lock" size={24} color={COLORS.inkSoft} />
           <Text
             fontSize={11.5}
             color={COLORS.inkSoft}

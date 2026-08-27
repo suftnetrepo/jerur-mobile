@@ -289,8 +289,7 @@ function ContactScreenContent() {
             </Text>
 
             <StyledForm gap={16} avoidKeyboard={false}>
-              <StyledForm.Row gap={12}>
-                <StyledForm.Input
+              <StyledForm.Input
                   label="First name"
                   value={form.first_name}
                   onChangeText={(v) =>
@@ -304,7 +303,6 @@ function ContactScreenContent() {
                   onChangeText={(v) => setForm((f) => ({ ...f, last_name: v }))}
                   style={{ flex: 1 }}
                 />
-              </StyledForm.Row>
               <StyledForm.Input
                 label="Email"
                 keyboardType="email-address"

@@ -44,7 +44,9 @@ export function PropheticThemeCard({
   // reasoning as verse above but a full statement reads oddly with
   // every word capitalized the way a short reference doesn't.
   const rawDescription = focus?.description?.trim();
-  const description = rawDescription ? toSentenceCase(rawDescription) : rawDescription;
+  const description = rawDescription
+    ? toSentenceCase(rawDescription)
+    : rawDescription;
   if (!month && !verse && !description) return null;
 
   return (
@@ -58,7 +60,7 @@ export function PropheticThemeCard({
       >
         <Stack>
           <Text variant="subtitle" fontWeight="400" color={COLORS.inkSoftest}>
-              Prophetic Theme
+            Prophetic Theme of the Month
           </Text>
         </Stack>
       </Stack>
@@ -66,73 +68,41 @@ export function PropheticThemeCard({
         <Stack
           backgroundColor={COLORS.sageSoft}
           borderRadius={24}
-          padding={20}
+          padding={8}
           overflow="hidden"
           style={SHADOW_SOFT}
         >
-          <Stack horizontal alignItems="center" gap={12} marginBottom={18}>
-            <Stack
-              width={46}
-              height={46}
-              borderRadius={23}
-              backgroundColor={COLORS.sage}
-              alignItems="center"
-              justifyContent="center"
-            >
-              <Icon name="compass" size={19} color={COLORS.white} />
-            </Stack>
-
-            <Stack flex={1}>
-              <Text
-                variant="overline"
-                fontSize={10.5}
-                letterSpacing={1}
-                color={COLORS.sage}
-                style={{ marginBottom: 3 }}
-              >
-                Prophetic Theme of the Month
-              </Text>
-              {month ? (
-                <Text variant="metric" color={COLORS.ink}>
-                  {month}
-                </Text>
-              ) : null}
-            </Stack>
-          </Stack>
-
-          {(description || verse) && (
+          {description && verse && (
             <Stack
               backgroundColor={COLORS.white}
               borderRadius={18}
-              padding={17}
+              padding={16}
             >
-              {description ? (
-                <Text
-                  variant="bodyLarge"
-                  color={COLORS.inkSoft}
-                  style={{ lineHeight: 20 }}
-                >
-                  {description}
+              <Stack horizontal alignItems="center" gap={6} marginBottom={8}>
+                <Icon name="compass" size={24} color={COLORS.inkDeep} />
+                <Text variant="metric" color={COLORS.ink}>
+                  {month}
                 </Text>
-              ) : null}
+              </Stack>
+              <Text
+                variant="bodyLarge"
+                color={COLORS.inkSoft}
+                style={{ lineHeight: 20 }}
+              >
+                {description}
+              </Text>
 
-              {verse ? (
-                <Stack
-                  horizontal
-                  alignItems="center"
-                  gap={7}
-                  marginTop={description ? 4 : 0}
-                >
-                  <Icon name="book" size={13} color={COLORS.goldDeep} />
-                  <Text
-                    variant="button"
-                    fontSize={11.5}
-                    color={COLORS.goldDeep}
-                  >
-                    {verse}
-                  </Text>
-                </Stack>
-              ) : null}
+              <Stack
+                horizontal
+                alignItems="center"
+                gap={7}
+                marginTop={description ? 4 : 0}
+              >
+                <Icon name="book" size={13} color={COLORS.goldDeep} />
+                <Text variant="button" fontSize={11.5} color={COLORS.goldDeep}>
+                  {verse}
+                </Text>
+              </Stack>
             </Stack>
           )}
         </Stack>

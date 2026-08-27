@@ -2,10 +2,23 @@ import { useEffect, useMemo, useState } from "react";
 import { Animated, ScrollView } from "react-native";
 import { router } from "expo-router";
 import { Feather as Icon } from "@expo/vector-icons";
-import { StyledPage, StyledShape, StyledTextInput, StyledPressable, StyledChip, Popup, Stack, Loader } from "fluent-styles";
+import {
+  StyledPage,
+  StyledForm,
+  StyledShape,
+  StyledTextInput,
+  StyledPressable,
+  StyledChip,
+  Popup,
+  Stack,
+  Loader,
+} from "fluent-styles";
 import { Text } from "../../src/components/text";
 import { useSelectedChurch } from "../../src/church/SelectedChurchContext";
-import { searchChurchesByQuery, searchChurchesByRadius } from "../../src/api/churchSearch";
+import {
+  searchChurchesByQuery,
+  searchChurchesByRadius,
+} from "../../src/api/churchSearch";
 import { getCurrentCoordinates } from "../../src/lib/location";
 import { apiErrorMessage } from "../../src/api/client";
 import { ScalePressable } from "../../src/components/ScalePressable";
@@ -31,7 +44,8 @@ export default function SelectChurchScreen() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [selecting, setSelecting] = useState<string | null>(null);
-  const [selectedDenomination, setSelectedDenomination] = useState(ALL_DENOMINATIONS);
+  const [selectedDenomination, setSelectedDenomination] =
+    useState(ALL_DENOMINATIONS);
   const [filterOpen, setFilterOpen] = useState(false);
 
   const heroAnim = useFadeUp(0);
@@ -45,7 +59,9 @@ export default function SelectChurchScreen() {
   // over the same cached `results`, not a network round-trip.
   const filteredResults = useMemo(() => {
     if (selectedDenomination === ALL_DENOMINATIONS) return results;
-    return results.filter((church) => church.denomination === selectedDenomination);
+    return results.filter(
+      (church) => church.denomination === selectedDenomination,
+    );
   }, [results, selectedDenomination]);
 
   useEffect(() => {
@@ -77,9 +93,17 @@ export default function SelectChurchScreen() {
         setError("Location permission is needed to find churches near you.");
         return;
       }
-      setResults(await searchChurchesByRadius(coords.latitude, coords.longitude, DEFAULT_RADIUS_KM));
+      setResults(
+        await searchChurchesByRadius(
+          coords.latitude,
+          coords.longitude,
+          DEFAULT_RADIUS_KM,
+        ),
+      );
     } catch (err) {
-      setError(apiErrorMessage(err, "Couldn't find churches near you right now."));
+      setError(
+        apiErrorMessage(err, "Couldn't find churches near you right now."),
+      );
     } finally {
       setLoading(false);
     }
@@ -98,43 +122,43 @@ export default function SelectChurchScreen() {
           why a longer results list just overflowed off-screen with no way
           to scroll to it. Wrapped the whole body in a single ScrollView,
           same pattern used on every other screen in this app. */}
-      <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: 40 }}>
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={{ paddingBottom: 40 }}
+      >
         <Stack paddingHorizontal={20} paddingTop={20}>
           <Animated.View style={heroAnim}>
             <Stack alignItems="center" marginBottom={22} gap={4}>
               <StyledShape size={52} cycle backgroundColor={COLORS.goldPale}>
                 <Icon name="compass" size={22} color={COLORS.goldDeep} />
               </StyledShape>
-              <Text variant="header" fontSize={22} fontWeight="800" color={COLORS.ink}>
+              <Text
+                variant="header"
+                fontSize={22}
+                fontWeight="800"
+                color={COLORS.ink}
+              >
                 Find your church
               </Text>
-              <Text fontSize={13.5} color={COLORS.inkSoft} style={{ textAlign: "center" }}>
+              <Text
+                fontSize={13.5}
+                color={COLORS.inkSoft}
+                style={{ textAlign: "center" }}
+              >
                 Find a church community near you.
               </Text>
             </Stack>
 
-            <Stack horizontal alignItems="center" gap={10}>
-              <Stack
-                horizontal
-                alignItems="center"
-                gap={8}
-                flex={1}
-                minHeight={56}
-                borderRadius={18}
-                paddingHorizontal={16}
-                backgroundColor={COLORS.white}
-                style={[SHADOW_SOFT, { borderWidth: 1, borderColor: COLORS.chromeBorder }]}
-              >
-                <Icon name="search" size={17} color={COLORS.inkSoft} />
-                <StyledTextInput
-                  variant="ghost"
+            <Stack marginHorizontal={8} horizontal alignItems="center" gap={10}>
+              <StyledForm flex={1} gap={8} avoidKeyboard={false}>
+                <StyledForm.Input
+                  leftIcon={<Icon e="🔍" />}
                   placeholder="Church, city or postcode"
                   value={query}
                   onChangeText={setQuery}
                   clearable
-                  style={{ flex: 1 }}
                 />
-              </Stack>
+              </StyledForm>
 
               {/* Denomination filter — opens a bottom sheet of chips built
                   from the local denomination catalogue (no backend call).
@@ -152,7 +176,11 @@ export default function SelectChurchScreen() {
                   borderRadius={28}
                   alignItems="center"
                   justifyContent="center"
-                  backgroundColor={selectedDenomination === ALL_DENOMINATIONS ? COLORS.white : COLORS.indigo}
+                  backgroundColor={
+                    selectedDenomination === ALL_DENOMINATIONS
+                      ? COLORS.white
+                      : COLORS.indigo
+                  }
                   style={[
                     SHADOW_SOFT,
                     selectedDenomination === ALL_DENOMINATIONS
@@ -160,7 +188,15 @@ export default function SelectChurchScreen() {
                       : null,
                   ]}
                 >
-                  <Icon name="filter" size={18} color={selectedDenomination === ALL_DENOMINATIONS ? COLORS.ink : COLORS.white} />
+                  <Icon
+                    name="filter"
+                    size={18}
+                    color={
+                      selectedDenomination === ALL_DENOMINATIONS
+                        ? COLORS.ink
+                        : COLORS.white
+                    }
+                  />
                 </Stack>
               </StyledPressable>
             </Stack>
@@ -175,7 +211,10 @@ export default function SelectChurchScreen() {
               padding={24}
               alignItems="center"
               gap={12}
-              style={[SHADOW_SOFT, { borderWidth: 1, borderColor: COLORS.chromeBorder }]}
+              style={[
+                SHADOW_SOFT,
+                { borderWidth: 1, borderColor: COLORS.chromeBorder },
+              ]}
             >
               <Stack
                 width={44}
@@ -187,7 +226,12 @@ export default function SelectChurchScreen() {
               >
                 <Icon name="navigation" size={20} color={COLORS.indigo} />
               </Stack>
-              <Text variant="subtitle" fontWeight="700" color={COLORS.ink} style={{ textAlign: "center" }}>
+              <Text
+                variant="subtitle"
+                fontWeight="700"
+                color={COLORS.ink}
+                style={{ textAlign: "center" }}
+              >
                 Show churches near me
               </Text>
               <Text
@@ -211,7 +255,12 @@ export default function SelectChurchScreen() {
                   </Text>
                 </Stack>
               </ScalePressable>
-              <Stack horizontal alignItems="center" gap={5} style={{ marginTop: -6 }}>
+              <Stack
+                horizontal
+                alignItems="center"
+                gap={5}
+                style={{ marginTop: -6 }}
+              >
                 <Icon name="lock" size={11} color={COLORS.inkSoft} />
                 <Text fontSize={11} color={COLORS.inkSoft}>
                   Location is only used to find nearby churches.
@@ -234,7 +283,12 @@ export default function SelectChurchScreen() {
           )}
 
           {error && (
-            <Stack backgroundColor={COLORS.errorLight} borderRadius={12} padding={14} marginTop={16}>
+            <Stack
+              backgroundColor={COLORS.errorLight}
+              borderRadius={12}
+              padding={14}
+              marginTop={16}
+            >
               <Text variant="label" fontSize={13.5} color={COLORS.error}>
                 {error}
               </Text>
@@ -245,12 +299,30 @@ export default function SelectChurchScreen() {
               denomination — distinct from the "no search yet" prompt
               above, which only depends on the raw (unfiltered) results. */}
           {!loading && results.length > 0 && filteredResults.length === 0 && (
-            <Stack backgroundColor={COLORS.white} borderRadius={20} padding={22} alignItems="center" gap={10} style={SHADOW_CARD}>
+            <Stack
+              backgroundColor={COLORS.white}
+              borderRadius={20}
+              padding={22}
+              alignItems="center"
+              gap={10}
+              style={SHADOW_CARD}
+            >
               <Icon name="filter" size={26} color={COLORS.inkSoft} />
-              <Text variant="subtitle" fontSize={14.5} fontWeight="700" color={COLORS.ink} style={{ textAlign: "center" }}>
-                No {denominations.find((d) => d.id === selectedDenomination)?.label ?? ""} churches in these results
+              <Text
+                variant="subtitle"
+                fontSize={14.5}
+                fontWeight="700"
+                color={COLORS.ink}
+                style={{ textAlign: "center" }}
+              >
+                No{" "}
+                {denominations.find((d) => d.id === selectedDenomination)
+                  ?.label ?? ""}{" "}
+                churches in these results
               </Text>
-              <ScalePressable onPress={() => setSelectedDenomination(ALL_DENOMINATIONS)}>
+              <ScalePressable
+                onPress={() => setSelectedDenomination(ALL_DENOMINATIONS)}
+              >
                 <Text variant="button" fontSize={13.5} color={COLORS.goldDeep}>
                   Clear filter
                 </Text>

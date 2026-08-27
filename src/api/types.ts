@@ -215,6 +215,12 @@ export type ChurchSettings = {
   // back to `email` (the church's general address) wherever it's used,
   // since it's commonly unset.
   support_email?: string;
+  // External online-giving link (Settings -> Config, admin portal) — e.g.
+  // a Tithe.ly page or the church's own donation site. '' (the schema
+  // default), not absent, on churches that haven't set one — only added
+  // to getChurch()'s select whitelist alongside this field. Backs the
+  // "Give online" card on app/(app)/give.tsx.
+  giving_url?: string;
 };
 
 export type RegularService = {

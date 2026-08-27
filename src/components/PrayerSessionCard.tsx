@@ -50,7 +50,7 @@ export function PrayerSessionCard({
           <Stack width={42} height={42} borderRadius={21} backgroundColor={tone.bg} alignItems="center" justifyContent="center">
             <Icon name="clock" size={17} color={tone.fg} />
           </Stack>
-          <Text variant="subtitle" fontWeight="800" color={COLORS.ink} numberOfLines={2} flex={1}>
+          <Text variant="body" fontWeight="800" color={COLORS.ink} numberOfLines={2} flex={1}>
             {meeting.title}
           </Text>
         </Stack>
@@ -90,20 +90,20 @@ export function PrayerSessionCard({
             PRAYER TIME
           </Text>
           <Stack horizontal alignItems="center" gap={9}>
-            <Text variant="metric" fontSize={17} color={COLORS.ink}>{meeting.start_time}</Text>
+            <Text variant="bodySmall" fontSize={14} color={COLORS.ink}>{meeting.start_time}</Text>
             <Icon name="arrow-right" size={14} color={COLORS.inkSoft} />
-            <Text variant="metric" fontSize={17} color={COLORS.ink}>{meeting.end_time}</Text>
+            <Text variant="bodySmall" fontSize={14} color={COLORS.ink}>{meeting.end_time}</Text>
           </Stack>
         </Stack>
       </Stack>
 
-      <Stack>
+      <Stack flex={1} gap={12}>
         {meeting.description && (
-          <Text variant="body" fontSize={13} color={COLORS.inkSoft} style={{ marginBottom: 12, lineHeight: 19 }}>
+          <Text textAlign="auto" variant="body" fontSize={13} color={COLORS.inkSoft} style={{ marginBottom: 12, lineHeight: 19 }}>
             {meeting.description}
           </Text>
         )}
-        <Stack horizontal alignItems="center" gap={8} style={{ flexWrap: "wrap" }}>
+        <Stack horizontal alignItems="center" justifyContent="space-between" gap={8} flexWrap="wrap">
           <PrayerReminderControl
             sessionTitle={meeting.title}
             tone={tone}

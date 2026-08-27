@@ -93,7 +93,7 @@ function WofbiScreenContent() {
       <AppBackHeader title="WOFBI" />
 
       <StyledScrollView
-      showsVerticalScrollIndicator={false}
+        showsVerticalScrollIndicator={false}
         contentContainerStyle={{
           paddingHorizontal: 24,
           paddingTop: 10,
@@ -230,7 +230,12 @@ function WofbiScreenContent() {
             >
               <Icon name="compass" size={16} color={COLORS.goldDeep} />
             </Stack>
-            <Text variant="subtitle" fontSize={15} fontWeight="800" color={COLORS.ink}>
+            <Text
+              variant="subtitle"
+              fontSize={15}
+              fontWeight="800"
+              color={COLORS.ink}
+            >
               Looking for clarity and direction?
             </Text>
           </Stack>
@@ -297,9 +302,7 @@ function WofbiScreenContent() {
                     gap={14}
                     padding={16}
                     borderRadius={20}
-                    backgroundColor={
-                      selected ? COLORS.goldPale : COLORS.white
-                    }
+                    backgroundColor={selected ? COLORS.goldPale : COLORS.white}
                     style={[
                       SHADOW_SOFT,
                       {
@@ -314,9 +317,7 @@ function WofbiScreenContent() {
                       width={46}
                       height={46}
                       borderRadius={23}
-                      backgroundColor={
-                        selected ? COLORS.gold : COLORS.paperAlt
-                      }
+                      backgroundColor={selected ? COLORS.gold : COLORS.paperAlt}
                       alignItems="center"
                       justifyContent="center"
                     >
@@ -363,9 +364,7 @@ function WofbiScreenContent() {
                       borderRadius={14}
                       alignItems="center"
                       justifyContent="center"
-                      backgroundColor={
-                        selected ? COLORS.gold : COLORS.paper
-                      }
+                      backgroundColor={selected ? COLORS.gold : COLORS.paper}
                       style={
                         !selected
                           ? {
@@ -488,53 +487,38 @@ function WofbiScreenContent() {
                   padding={14}
                   marginBottom={16}
                 >
-                  <Text
-                    variant="label"
-                    fontSize={13}
-                    color={COLORS.error}
-                  >
+                  <Text variant="label" fontSize={13} color={COLORS.error}>
                     {error}
                   </Text>
                 </Stack>
               )}
 
               <StyledForm gap={14} avoidKeyboard={false}>
-                <StyledForm.Row gap={12}>
-                  <StyledForm.Input
-                    label="First name"
-                    value={form.firstName}
-                    onChangeText={(v) =>
-                      setForm((f) => ({ ...f, firstName: v }))
-                    }
-                    style={{ flex: 1 }}
-                  />
-                  <StyledForm.Input
-                    label="Last name"
-                    value={form.lastName}
-                    onChangeText={(v) =>
-                      setForm((f) => ({ ...f, lastName: v }))
-                    }
-                    style={{ flex: 1 }}
-                  />
-                </StyledForm.Row>
-
                 <StyledForm.Input
                   label="Email"
                   keyboardType="email-address"
                   autoCapitalize="none"
                   value={form.email}
-                  onChangeText={(v) =>
-                    setForm((f) => ({ ...f, email: v }))
-                  }
+                  onChangeText={(v) => setForm((f) => ({ ...f, email: v }))}
                 />
 
+                <StyledForm.Input
+                  label="First name"
+                  value={form.firstName}
+                  onChangeText={(v) => setForm((f) => ({ ...f, firstName: v }))}
+                  style={{ flex: 1 }}
+                />
+                <StyledForm.Input
+                  label="Last name"
+                  value={form.lastName}
+                  onChangeText={(v) => setForm((f) => ({ ...f, lastName: v }))}
+                  style={{ flex: 1 }}
+                />
                 <StyledForm.Input
                   label="Phone number"
                   keyboardType="phone-pad"
                   value={form.phone}
-                  onChangeText={(v) =>
-                    setForm((f) => ({ ...f, phone: v }))
-                  }
+                  onChangeText={(v) => setForm((f) => ({ ...f, phone: v }))}
                 />
 
                 <StyledForm.Actions>

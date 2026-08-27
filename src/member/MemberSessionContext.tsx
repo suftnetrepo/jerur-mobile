@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
 import { setActiveMemberToken } from "../api/client";
 import { loadMemberSession, saveMemberSession, clearMemberSession } from "./member-session-storage";
-import { registerMember, loginMember, deleteMember } from "../api/member";
+import { registerMember, loginMember, deleteMember, forgotPin as forgotPinApi } from "../api/member";
 import { useSelectedChurch } from "../church/SelectedChurchContext";
 import type { Member } from "../api/types";
 
@@ -10,6 +10,7 @@ type MemberSessionContextValue = {
   isLoading: boolean;
   register: (payload: { first_name: string; last_name: string; mobile?: string; email?: string; pin: string }) => Promise<void>;
   login: (payload: { identifier: string; pin: string }) => Promise<void>;
+  forgotPin: (payload: { identifier: string; pin: string }) => Promise<void>;
   logout: () => Promise<void>;
   deleteAccount: () => Promise<void>;
 };
@@ -46,6 +47,15 @@ export function MemberSessionProvider({ children }: { children: ReactNode }) {
     setMember(loggedInMember);
   }
 
+  // Sets a new PIN on the backend, then logs straight in with it — same
+  // "one step, not two" shape as register() above. Both API calls use the
+  // same identifier, so a stale/mistyped identifier fails the same way
+  // whichever step catches it first.
+  async function forgotPin(payload: { identifier: string; pin: string }) {
+    await forgotPinApi(payload);
+    await login(payload);
+  }
+
   async function logout() {
     await clearMemberSession();
     setActiveMemberToken(null);
@@ -77,7 +87,7 @@ export function MemberSessionProvider({ children }: { children: ReactNode }) {
   }
 
   return (
-    <MemberSessionContext.Provider value={{ member, isLoading, register, login, logout, deleteAccount }}>
+    <MemberSessionContext.Provider value={{ member, isLoading, register, login, forgotPin, logout, deleteAccount }}>
       {children}
     </MemberSessionContext.Provider>
   );

@@ -83,7 +83,7 @@ function NotesScreenContent() {
       />
 
       {/* ── Intro ─────────────────────────────────────────────────────── */}
-      <Stack paddingHorizontal={24} paddingTop={2} paddingBottom={16}>
+      <Stack paddingHorizontal={16} paddingTop={2} paddingBottom={16}>
         <Stack alignItems="center" marginBottom={18}>
           <Text
             fontSize={13}
@@ -120,7 +120,7 @@ function NotesScreenContent() {
           horizontal
           alignItems="center"
           justifyContent="space-between"
-          paddingHorizontal={28}
+          paddingHorizontal={16}
           paddingTop={4}
           paddingBottom={12}
         >
@@ -174,7 +174,7 @@ function NotesScreenContent() {
             />
           )}
           contentContainerStyle={{
-            paddingHorizontal: 20,
+            paddingHorizontal: 16,
             paddingTop: 4,
             paddingBottom: 42,
             gap: 12,
@@ -279,33 +279,31 @@ function NotesScreenContent() {
                   borderRadius={18}
                   padding={15}
                   marginTop={24}
-                  width="100%"
                 >
-                  <Stack
-                    width={32}
-                    height={32}
-                    borderRadius={16}
-                    backgroundColor={COLORS.white}
-                    alignItems="center"
-                    justifyContent="center"
-                  >
-                    <Icon name="bookmark" size={14} color={COLORS.goldDeep} />
-                  </Stack>
-
-                  <Stack flex={1}>
-                    <Text
-                      variant="label"
-                      fontSize={12}
-                      fontWeight="800"
-                      color={COLORS.goldDeep}
-                      style={{ marginBottom: 3 }}
+                  <Stack flex={1} vertical gap={2}>
+                    <Stack
+                      horizontal
+                      alignItems="center"
+                      justifyContent="flex-start"
+                      gap={5}
                     >
-                      Make one your Bible Note
-                    </Text>
+                      <Icon name="bookmark" size={16} color={COLORS.goldDeep} />
+                      <Text
+                        variant="label"
+                        fontSize={12}
+                        fontWeight="800"
+                        color={COLORS.goldDeep}
+                        style={{ marginBottom: 3 }}
+                      >
+                        Make one your Bible Note
+                      </Text>
+                    </Stack>
+
                     <Text
                       fontSize={11.5}
                       color={COLORS.goldDeep}
                       style={{ opacity: 0.82, lineHeight: 17 }}
+                      textAlign="left"
                     >
                       Save verses from the Bible directly into one dedicated
                       note.

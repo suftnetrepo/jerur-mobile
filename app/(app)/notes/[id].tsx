@@ -157,7 +157,7 @@ function NoteDetailScreenContent() {
       />
 
       {/* Compact document metadata */}
-      <Stack paddingHorizontal={24} paddingTop={6} paddingBottom={14}>
+      <Stack paddingHorizontal={24} paddingVertical={16} paddingBottom={14}>
         <Stack horizontal alignItems="center" justifyContent="space-between" gap={10}>
           <StyledPressable
             onPress={handleToggleBibleNote}
@@ -185,7 +185,7 @@ function NoteDetailScreenContent() {
           </StyledPressable>
 
           <Stack horizontal alignItems="center" gap={5} flexShrink={1}>
-            <Icon name="clock" size={11} color={COLORS.inkSoft} />
+            <Icon name="clock" size={16} color={COLORS.inkSoft} />
             <Text fontSize={10.5} color={COLORS.inkSoft} numberOfLines={1}>
               {formatNoteDateTime(note.updatedAt)}
             </Text>

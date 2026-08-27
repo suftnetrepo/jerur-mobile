@@ -280,7 +280,7 @@ function EventRegisterPopup({
       return;
     }
     try {
-      await mutateAsync({ event_id: event._id ?? "", ...form });
+      await mutateAsync({ eventId: event._id ?? "", ...form });
       setSuccess(true);
     } catch (err) {
       setError(apiErrorMessage(err, "Registration failed. Please try again."));

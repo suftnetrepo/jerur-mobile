@@ -226,17 +226,22 @@ function LoggedInView({
 
 type LoginField = "identifier" | "pin";
 type RegisterField = "first_name" | "last_name" | "mobile" | "email" | "pin";
+type ForgotField = "identifier" | "pin";
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const PHONE_PATTERN = /^[0-9()+\-\s]{7,20}$/;
 const PIN_PATTERN = /^\d{4,6}$/;
 
 function AuthForms() {
-  const { register, login } = useMemberSession();
+  const { register, login, forgotPin } = useMemberSession();
   const toast = useToast();
   const notification = useNotification();
 
-  const [mode, setMode] = useState<"login" | "register">("login");
+  // "forgot" isn't a tab alongside login/register — it's only ever reached
+  // via the "Forgot PIN?" link inside login mode (see below), with its own
+  // "Back to log in" way out, same idea as a typical login screen's
+  // forgot-password sub-flow.
+  const [mode, setMode] = useState<"login" | "register" | "forgot">("login");
   const [loading, setLoading] = useState(false);
 
   const [loginForm, setLoginForm] = useState({ identifier: "", pin: "" });
@@ -244,6 +249,9 @@ function AuthForms() {
 
   const [registerForm, setRegisterForm] = useState({ first_name: "", last_name: "", mobile: "", email: "", pin: "" });
   const [registerErrors, setRegisterErrors] = useState<Partial<Record<RegisterField, string>>>({});
+
+  const [forgotForm, setForgotForm] = useState({ identifier: "", pin: "" });
+  const [forgotErrors, setForgotErrors] = useState<Partial<Record<ForgotField, string>>>({});
 
   // Imperative refs purely so a failed validation can call .focus() on the
   // exact field that failed — StyledForm.Input doesn't forward refs (its
@@ -257,11 +265,14 @@ function AuthForms() {
   const mobileRef = useRef<StyledTextInputHandle>(null);
   const emailRef = useRef<StyledTextInputHandle>(null);
   const pinRef = useRef<StyledTextInputHandle>(null);
+  const forgotIdentifierRef = useRef<StyledTextInputHandle>(null);
+  const forgotPinRef = useRef<StyledTextInputHandle>(null);
 
-  function switchMode(next: "login" | "register") {
+  function switchMode(next: "login" | "register" | "forgot") {
     setMode(next);
     setLoginErrors({});
     setRegisterErrors({});
+    setForgotErrors({});
   }
 
   function clearLoginError(field: LoginField) {
@@ -270,6 +281,10 @@ function AuthForms() {
 
   function clearRegisterError(field: RegisterField) {
     setRegisterErrors((e) => (e[field] ? { ...e, [field]: undefined } : e));
+  }
+
+  function clearForgotError(field: ForgotField) {
+    setForgotErrors((e) => (e[field] ? { ...e, [field]: undefined } : e));
   }
 
   function validateLogin(): { field: LoginField; message: string } | null {
@@ -288,6 +303,12 @@ function AuthForms() {
     if (f.email.trim() && !EMAIL_PATTERN.test(f.email.trim())) return { field: "email", message: "Enter a valid email address." };
     if (!f.mobile.trim() && !f.email.trim()) return { field: "mobile", message: "Enter your phone or email." };
     if (!PIN_PATTERN.test(f.pin.trim())) return { field: "pin", message: "PIN must contain 4–6 digits." };
+    return null;
+  }
+
+  function validateForgot(): { field: ForgotField; message: string } | null {
+    if (!forgotForm.identifier.trim()) return { field: "identifier", message: "Enter your phone or email." };
+    if (!PIN_PATTERN.test(forgotForm.pin.trim())) return { field: "pin", message: "New PIN must contain 4–6 digits." };
     return null;
   }
 
@@ -349,6 +370,89 @@ function AuthForms() {
     } finally {
       setLoading(false);
     }
+  }
+
+  async function handleForgotPin() {
+    const invalid = validateForgot();
+    if (invalid) {
+      setForgotErrors({ [invalid.field]: invalid.message });
+      toast.error(invalid.message);
+      (invalid.field === "identifier" ? forgotIdentifierRef : forgotPinRef).current?.focus();
+      return;
+    }
+    setForgotErrors({});
+    setLoading(true);
+    try {
+      await forgotPin(forgotForm);
+      toast.success("PIN updated. You're logged in.");
+      router.back();
+    } catch (err) {
+      toast.error(apiErrorMessage(err, "Couldn't reset your PIN. Please try again."));
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  if (mode === "forgot") {
+    return (
+      <Stack>
+        <StyledPressable
+          onPress={() => {
+            switchMode("login");
+            setForgotForm({ identifier: "", pin: "" });
+          }}
+          accessibilityRole="button"
+          accessibilityLabel="Back to log in"
+          style={{ marginBottom: 18, alignSelf: "flex-start" }}
+        >
+          <Stack horizontal alignItems="center" gap={6}>
+            <Icon name="chevron-left" size={16} color={COLORS.inkSoft} />
+            <Text variant="button" fontSize={13.5} color={COLORS.inkSoft}>
+              Back to log in
+            </Text>
+          </Stack>
+        </StyledPressable>
+
+        <Text variant="title" fontWeight="800" color={COLORS.ink} style={{ marginBottom: 6 }}>
+          Reset your PIN
+        </Text>
+        <Text variant="body" fontSize={13.5} color={COLORS.inkSoft} style={{ marginBottom: 22 }}>
+          Enter the phone or email on your account and choose a new PIN — no need to remember the old one.
+        </Text>
+
+        <StyledForm gap={16} avoidKeyboard={false}>
+          <StyledTextInput
+            ref={forgotIdentifierRef}
+            label="Phone or email"
+            autoCapitalize="none"
+            value={forgotForm.identifier}
+            onChangeText={(v) => {
+              setForgotForm((f) => ({ ...f, identifier: v }));
+              clearForgotError("identifier");
+            }}
+            error={!!forgotErrors.identifier}
+            errorMessage={forgotErrors.identifier}
+          />
+          <StyledTextInput
+            ref={forgotPinRef}
+            label="New PIN (4–6 digits)"
+            secureTextEntry
+            keyboardType="number-pad"
+            maxLength={6}
+            value={forgotForm.pin}
+            onChangeText={(v) => {
+              setForgotForm((f) => ({ ...f, pin: v }));
+              clearForgotError("pin");
+            }}
+            error={!!forgotErrors.pin}
+            errorMessage={forgotErrors.pin}
+          />
+          <StyledForm.Actions>
+            <FormSubmitButton label="Reset PIN" loadingLabel="Resetting…" loading={loading} onPress={handleForgotPin} />
+          </StyledForm.Actions>
+        </StyledForm>
+      </Stack>
+    );
   }
 
   return (
@@ -421,14 +525,26 @@ function AuthForms() {
             error={!!loginErrors.pin}
             errorMessage={loginErrors.pin}
           />
+          <StyledPressable
+            onPress={() => {
+              setForgotForm((f) => ({ ...f, identifier: loginForm.identifier }));
+              switchMode("forgot");
+            }}
+            accessibilityRole="button"
+            accessibilityLabel="Forgot PIN?"
+            style={{ alignSelf: "flex-end", marginTop: -8 }}
+          >
+            <Text variant="button" fontSize={13} color={COLORS.ink}>
+              Forgot PIN?
+            </Text>
+          </StyledPressable>
           <StyledForm.Actions>
             <FormSubmitButton label="Log in" loadingLabel="Logging in…" loading={loading} onPress={handleLogin} />
           </StyledForm.Actions>
         </StyledForm>
       ) : (
         <StyledForm gap={16} avoidKeyboard={false}>
-          <StyledForm.Row gap={12}>
-            <StyledTextInput
+           <StyledTextInput
               ref={firstNameRef}
               label="First name"
               value={registerForm.first_name}
@@ -454,7 +570,6 @@ function AuthForms() {
               style={{ flex: 1 }}
                 returnKeyType="next"
             />
-          </StyledForm.Row>
           <StyledTextInput
             ref={mobileRef}
             label="Phone"

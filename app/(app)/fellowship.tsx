@@ -109,7 +109,7 @@ function FellowshipScreenContent() {
         >
           FELLOWSHIP
         </Text>
-          <Stack
+        <Stack
           width={42}
           height={4}
           borderRadius={999}
@@ -182,7 +182,12 @@ function FellowshipScreenContent() {
             backgroundColor={COLORS.goldPale}
           >
             <Icon name="users" size={13} color={COLORS.goldDeep} />
-            <Text variant="subLabel" fontSize={13} fontWeight="700" color={COLORS.goldDeep}>
+            <Text
+              variant="subLabel"
+              fontSize={13}
+              fontWeight="700"
+              color={COLORS.goldDeep}
+            >
               {filtered.length} fellowship{filtered.length === 1 ? "" : "s"}
             </Text>
           </Stack>
@@ -198,114 +203,112 @@ function FellowshipScreenContent() {
         {isLoading && !groups ? (
           <FellowshipSkeleton />
         ) : (
-        <Stack gap={14}>
-          {filtered.length === 0 && (
-            <Text
-              fontSize={14}
-              color={COLORS.inkSoft}
-              textAlign="center"
-              paddingVertical={32}
-            >
-              No fellowship groups match your search.
-            </Text>
-          )}
-          {filtered.map((group, i) => {
-            const tone = CARD_ACCENTS[i % CARD_ACCENTS.length];
-            const address = [group.addressLine1, group.postcode]
-              .filter(Boolean)
-              .join(", ");
-
-            return (
-              <ScalePressable
-                key={group._id ?? i}
-                onPress={() => openInMaps(group)}
+          <Stack gap={14}>
+            {filtered.length === 0 && (
+              <Text
+                fontSize={14}
+                color={COLORS.inkSoft}
+                textAlign="center"
+                paddingVertical={32}
               >
-                <Stack
-                  backgroundColor={COLORS.white}
-                  borderRadius={16}
-                  padding={16}
-                  horizontal
-                  alignItems="center"
-                  gap={14}
-                  style={SHADOW_CARD}
+                No fellowship groups match your search.
+              </Text>
+            )}
+            {filtered.map((group, i) => {
+              const tone = CARD_ACCENTS[i % CARD_ACCENTS.length];
+              const address = [group.addressLine1, group.postcode]
+                .filter(Boolean)
+                .join(", ");
+
+              return (
+                <ScalePressable
+                  key={group._id ?? i}
+                  onPress={() => openInMaps(group)}
                 >
-                  {/* Left circle icon */}
-                  <StyledShape
-                    size={48}
-                    cycle
-                    backgroundColor={tone.pale}
+                  <Stack
+                    backgroundColor={COLORS.white}
+                    borderRadius={16}
+                    padding={16}
+                    horizontal
                     alignItems="center"
-                    justifyContent="center"
-                    flexShrink={0}
+                    gap={14}
+                    style={SHADOW_CARD}
                   >
-                    <Icon name="home" size={24} color={tone.accent} />
-                  </StyledShape>
-
-                  {/* Content */}
-                  <Stack flex={1} gap={3}>
-                    <Text
-                      variant="subtitle"
-                      fontWeight="800"
-                      color={COLORS.ink}
-                      style={{ lineHeight: 22 }}
-                    >
-                      {group.name}
-                    </Text>
-                    {group.town && (
-                      <Text
-                        variant="subLabel"
-                        fontSize={13}
-                        fontWeight="700"
-                        color={tone.accent}
-                      >
-                        {group.town}
-                      </Text>
-                    )}
-                    {address ? (
-                      <Stack
-                        horizontal
-                        alignItems="flex-start"
-                        gap={6}
-                        marginTop={2}
-                      >
-                        <Icon
-                          name="map-pin"
-                          size={12}
-                          color={COLORS.inkSoft}
-                          style={{ marginTop: 2 }}
-                        />
-                        <Text
-                          fontSize={12.5}
-                          color={COLORS.inkSoft}
-                          style={{ flex: 1, lineHeight: 18 }}
+                    {/* Content */}
+                    <Stack flex={1} gap={3}>
+                      {/* Left circle icon */}
+                      <Stack horizontal alignItems="center" gap={5}>
+                        <StyledShape
+                          size={32}
+                          cycle
+                          backgroundColor={tone.pale}
+                          alignItems="center"
+                          justifyContent="center"
+                          flexShrink={0}
                         >
-                          {address}
+                          <Icon name="home" size={16} color={tone.accent} />
+                        </StyledShape>
+                        <Text
+                          variant="subtitle"
+                          fontWeight="800"
+                          color={COLORS.ink}
+                          style={{ lineHeight: 22 }}
+                        >
+                          {group.name}
                         </Text>
                       </Stack>
-                    ) : null}
-                    {group.mobile ? (
-                      <Stack horizontal alignItems="center" gap={6}>
-                        <Icon name="phone" size={12} color={COLORS.inkSoft} />
-                        <Text fontSize={12.5} color={COLORS.inkSoft}>
-                          {group.mobile}
-                        </Text>
-                      </Stack>
-                    ) : null}
-                  </Stack>
 
-                  {/* Right: map pin button + chevron */}
-                  <Stack horizontal alignItems="center" gap={6} flexShrink={0}>
-                    <Icon
-                      name="chevron-right"
-                      size={16}
-                      color={COLORS.inkSoft}
-                    />
+                      {address ? (
+                        <Stack
+                          horizontal
+                          alignItems="flex-start"
+                          marginHorizontal={8}
+                          gap={6}
+                          marginTop={2}
+                        >
+                          <Icon
+                            name="map-pin"
+                            size={12}
+                            color={COLORS.inkSoft}
+                            style={{ marginTop: 2 }}
+                          />
+                          <Text
+                            fontSize={12.5}
+                            color={COLORS.inkSoft}
+                            style={{ flex: 1, lineHeight: 18 }}
+                          >
+                            {address}
+                          </Text>
+                        </Stack>
+                      ) : null}
+                      {group.mobile ? (
+                        <Stack   marginHorizontal={8} horizontal alignItems="center" gap={6}>
+                          <Icon name="phone" size={12} color={COLORS.inkSoft} />
+                          <Text fontSize={12.5} color={COLORS.inkSoft}>
+                            {group.mobile}
+                          </Text>
+                        </Stack>
+                      ) : null}
+                    </Stack>
+
+                    {/* Right: map pin button + chevron */}
+                    <Stack
+                      horizontal
+                      alignItems="center"
+                      gap={6}
+                      flexShrink={0}
+                    >
+                      <Icon
+                        name="chevron-right"
+                        size={16}
+                        color={COLORS.inkSoft}
+                      />
+                    </Stack>
                   </Stack>
-                </Stack>
-              </ScalePressable>
-            );
-          })}
-        </Stack>
+                </ScalePressable>
+              );
+            })}
+          </Stack>
         )}
       </StyledScrollView>
 

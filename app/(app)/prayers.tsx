@@ -26,9 +26,15 @@ export default function PrayersScreen() {
 function PrayersScreenContent() {
   const { data: prayerTimes, isLoading: prayerTimesLoading } = usePrayerTimes();
   const { data: settings } = useSettings();
-  const { reminders, setReminder, clearReminder } = usePrayerReminders(prayerTimes);
+  const { reminders, setReminder, clearReminder } =
+    usePrayerReminders(prayerTimes);
 
-  const [form, setForm] = useState({ first_name: "", last_name: "", email: "", message: "" });
+  const [form, setForm] = useState({
+    first_name: "",
+    last_name: "",
+    email: "",
+    message: "",
+  });
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [isPending, setIsPending] = useState(false);
@@ -54,7 +60,11 @@ function PrayersScreenContent() {
       setSuccess(true);
       setForm({ first_name: "", last_name: "", email: "", message: "" });
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Couldn't open your email app. Please try again.");
+      setError(
+        err instanceof Error
+          ? err.message
+          : "Couldn't open your email app. Please try again.",
+      );
     } finally {
       setIsPending(false);
     }
@@ -62,35 +72,81 @@ function PrayersScreenContent() {
 
   return (
     <StyledPage flex={1} backgroundColor={COLORS.paper}>
-      <StyledPage.Header shapeProps={{
-                cycle: true,
-                size: 48,
-                borderRadius: 24,
-                borderWidth: 1,
-                borderColor: COLORS.chromeBorder,
-              }}
-             
-              marginHorizontal={16}  titleAlignment="center" showBackArrow onBackPress={() => router.back()} />
-      
-      <StyledScrollView contentContainerStyle={{ padding: 24, paddingBottom: 28 }}>
-        <Stack horizontal alignItems="flex-start" justifyContent="space-between" gap={12} marginBottom={24}>
+      <StyledPage.Header
+        shapeProps={{
+          cycle: true,
+          size: 48,
+          borderRadius: 24,
+          borderWidth: 1,
+          borderColor: COLORS.chromeBorder,
+        }}
+        marginHorizontal={16}
+        titleAlignment="center"
+        showBackArrow
+        onBackPress={() => router.back()}
+      />
+
+      <StyledScrollView
+        contentContainerStyle={{ padding: 24, paddingBottom: 28 }}
+      >
+        <Stack
+          horizontal
+          alignItems="flex-start"
+          justifyContent="space-between"
+          gap={12}
+          marginBottom={24}
+        >
           <Stack flex={1}>
-            <Stack horizontal alignItems="center" gap={8} style={{ marginBottom: 14 }}>
-              <Stack width={34} height={34} borderRadius={17} backgroundColor={COLORS.goldPale} alignItems="center" justifyContent="center">
+            <Stack
+              horizontal
+              alignItems="center"
+              gap={8}
+              style={{ marginBottom: 14 }}
+            >
+              <Stack
+                width={34}
+                height={34}
+                borderRadius={17}
+                backgroundColor={COLORS.goldPale}
+                alignItems="center"
+                justifyContent="center"
+              >
                 <MCIcon name="hands-pray" size={17} color={COLORS.gold} />
               </Stack>
-              <Text variant="overline" fontSize={11} letterSpacing={1} color={COLORS.gold}>
+              <Text
+                variant="overline"
+                fontSize={11}
+                letterSpacing={1}
+                color={COLORS.gold}
+              >
                 PRAYER
               </Text>
             </Stack>
-            <Text variant="header" fontSize={28} fontWeight="800" color={COLORS.ink} style={{ lineHeight: 34 }}>
+            <Text
+              variant="header"
+              fontSize={28}
+              fontWeight="800"
+              color={COLORS.ink}
+              style={{ lineHeight: 34 }}
+            >
               We believe in the{" "}
-              <Text variant="header" fontSize={28} fontWeight="800" color={COLORS.gold} style={{ lineHeight: 34 }}>
+              <Text
+                variant="header"
+                fontSize={28}
+                fontWeight="800"
+                color={COLORS.gold}
+                style={{ lineHeight: 34 }}
+              >
                 power of prayer
               </Text>
             </Text>
-            <Text fontSize={14} color={COLORS.inkSoft} style={{ marginTop: 10, lineHeight: 21 }}>
-              Whatever you're facing, you're not alone. Let us stand with you in prayer.
+            <Text
+              fontSize={14}
+              color={COLORS.inkSoft}
+              style={{ marginTop: 10, lineHeight: 21 }}
+            >
+              Whatever you're facing, you're not alone. Let us stand with you in
+              prayer.
             </Text>
           </Stack>
 
@@ -118,24 +174,51 @@ function PrayersScreenContent() {
         )}
 
         <Stack marginBottom={18}>
-          <Text variant="title" fontWeight="800" color={COLORS.ink} style={{ marginBottom: 8 }}>
+          <Text
+            variant="title"
+            fontWeight="800"
+            color={COLORS.ink}
+            style={{ marginBottom: 8 }}
+          >
             We're praying with you
           </Text>
-          <Stack width={40} height={3} borderRadius={2} backgroundColor={COLORS.gold} style={{ marginBottom: 10 }} />
-          <Text fontSize={13.5} color={COLORS.inkSoft} style={{ lineHeight: 20 }}>
-            Share your heart, your struggles, or your praise. Our prayer team is committed to interceding on your behalf.
+          <Stack
+            width={40}
+            height={3}
+            borderRadius={2}
+            backgroundColor={COLORS.gold}
+            style={{ marginBottom: 10 }}
+          />
+          <Text
+            fontSize={13.5}
+            color={COLORS.inkSoft}
+            style={{ lineHeight: 20 }}
+          >
+            Share your heart, your struggles, or your praise. Our prayer team is
+            committed to interceding on your behalf.
           </Text>
         </Stack>
 
         {success && (
-          <Stack backgroundColor={COLORS.sageSoft} borderRadius={8} padding={14} marginBottom={16}>
+          <Stack
+            backgroundColor={COLORS.sageSoft}
+            borderRadius={8}
+            padding={14}
+            marginBottom={16}
+          >
             <Text variant="label" fontSize={13.5} color={COLORS.sage}>
-              Your email draft is ready. Review it and tap send in your email app.
+              Your email draft is ready. Review it and tap send in your email
+              app.
             </Text>
           </Stack>
         )}
         {error && (
-          <Stack backgroundColor={COLORS.errorLight} borderRadius={8} padding={14} marginBottom={16}>
+          <Stack
+            backgroundColor={COLORS.errorLight}
+            borderRadius={8}
+            padding={14}
+            marginBottom={16}
+          >
             <Text variant="label" fontSize={13.5} color={COLORS.error}>
               {error}
             </Text>
@@ -143,8 +226,7 @@ function PrayersScreenContent() {
         )}
 
         <StyledForm gap={16} avoidKeyboard={false}>
-          <StyledForm.Row gap={12}>
-            <StyledForm.Input
+         <StyledForm.Input
               label="First name"
               placeholder="Jane"
               value={form.first_name}
@@ -158,7 +240,6 @@ function PrayersScreenContent() {
               onChangeText={(v) => setForm((f) => ({ ...f, last_name: v }))}
               style={{ flex: 1 }}
             />
-          </StyledForm.Row>
           <StyledForm.Input
             label="Email"
             placeholder="jane.doe@example.com"

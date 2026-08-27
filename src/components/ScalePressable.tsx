@@ -9,6 +9,7 @@ export function ScalePressable({
   toValue = 0.96,
   accessibilityRole,
   accessibilityLabel,
+  disabled,
 }: {
   onPress?: () => void;
   children: ReactNode;
@@ -16,22 +17,26 @@ export function ScalePressable({
   toValue?: number;
   accessibilityRole?: "button" | "link" | "none";
   accessibilityLabel?: string;
+  disabled?: boolean;
 }) {
   const anim = useRef(new Animated.Value(1)).current;
 
   function pressIn() {
+    if (disabled) return;
     Animated.timing(anim, { toValue, duration: 90, easing: Easing.out(Easing.quad), useNativeDriver: true }).start();
   }
   function pressOut() {
+    if (disabled) return;
     Animated.spring(anim, { toValue: 1, friction: 5, useNativeDriver: true }).start();
   }
 
   return (
     <Animated.View style={[style, { transform: [{ scale: anim }] }]}>
       <StyledPressable
-        onPress={onPress}
+        onPress={disabled ? undefined : onPress}
         onPressIn={pressIn}
         onPressOut={pressOut}
+        disabled={disabled}
         accessibilityRole={accessibilityRole}
         accessibilityLabel={accessibilityLabel}
       >

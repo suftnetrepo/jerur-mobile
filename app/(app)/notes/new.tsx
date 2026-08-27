@@ -1,8 +1,8 @@
 import { useRef, useState } from "react";
 import { KeyboardAvoidingView, Platform } from "react-native";
 import { router } from "expo-router";
+import { Feather as Icon } from "@expo/vector-icons";
 import { StyledPage, StyledButton, Stack, useToast } from "fluent-styles";
-import { Text } from "../../../src/components/text";
 import { FeatureGate } from "../../../src/components/FeatureGate";
 import { NoteFormFields } from "../../../src/components/NoteFormFields";
 import { createNote } from "../../../src/notes/notes-repository";
@@ -51,15 +51,13 @@ function NewNoteScreenContent() {
         titleAlignment="center"
         backgroundColor={COLORS.paper}
         rightIcon={
-          <StyledButton compact primary loading={saving} onPress={handleSave} accessibilityLabel="Save note">
-            <Text variant="button" fontSize={13} color={COLORS.white}>
-              Save
-            </Text>
-          </StyledButton>
+         <StyledButton icon compact backgroundColor={COLORS.sage} loading={saving} onPress={handleSave} accessibilityLabel="Save note">
+              <Icon name="check" size={16} color={COLORS.white} />
+            </StyledButton>
         }
       />
       <KeyboardAvoidingView style={{ flex: 1 }} behavior={Platform.OS === "ios" ? "padding" : undefined} keyboardVerticalOffset={12}>
-        <Stack flex={1} paddingHorizontal={24} paddingTop={10} paddingBottom={20}>
+        <Stack flex={1} paddingHorizontal={16} paddingVertical={16} paddingBottom={20}>
           <NoteFormFields title={title} onTitleChange={setTitle} content={content} onContentChange={setContent} />
         </Stack>
       </KeyboardAvoidingView>
