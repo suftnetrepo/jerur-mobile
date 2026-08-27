@@ -1,0 +1,29 @@
+Hello,
+
+Thank you for the detailed feedback. We've addressed all four items below and resubmitted (build 1.0.16 (2)).
+
+Guideline 5.1.1(ii) — Location purpose string
+We've rewritten NSLocationWhenInUseUsageDescription to clearly explain the feature and give a concrete example:
+"Jerur uses your location to find Winners Chapel campuses near you. For example, when you tap 'Find churches near me' on the church search screen, we use your current location to show the nearest campuses so you can pick the right one to attend."
+We also found and fixed three other permission strings (Always-location and Motion) that were falling back to generic system boilerplate rather than describing actual app behavior, even though those permissions are never actually requested by the app.
+
+Guideline 2.1(a) — Give Online / giving envelope buttons unresponsive
+These cards had a stray chevron/arrow element left over from an earlier layout that wasn't wired to any action. It's been removed, and Give Online now opens the church's online giving link when one is configured.
+
+Guideline 2.1(a) — Error when registering for an event with any email
+Found and fixed a field-name mismatch between the app and our backend (the app was sending event_id where the backend expected eventId), which caused every event registration to fail regardless of what was entered. Verified working end to end.
+
+Guideline 2.1 — Unable to sign in when a PIN was required
+This was caused by a missing server configuration value that made every member login fail after the token was verified, right before a session token could be issued. That's been fixed on our backend and verified working. We've also updated the demo account credentials in App Store Connect's App Review Information with a working phone/email and PIN — we tested this exact account against production before submitting.
+
+Demo account:
+Phone/Email: [see App Store Connect App Review Information]
+PIN: [see App Store Connect App Review Information]
+
+Guideline 2.3.3 — Outdated 6.7" screenshots
+Replaced with new screenshots taken from the current build, showing the app's actual UI and core features.
+
+Please let us know if anything else is needed — happy to provide more detail on any of the above.
+
+Thank you,
+Abel Aghorighor
