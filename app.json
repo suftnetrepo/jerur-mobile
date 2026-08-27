@@ -22,11 +22,13 @@
       "expo-secure-store",
       "expo-font",
       "expo-notifications",
-      "./plugins/withStripUnusedLocationPurposeStrings",
       [
         "expo-location",
         {
-          "locationWhenInUsePermission": "Jerur uses your location to find Winners Chapel campuses near you. For example, when you tap \"Find churches near me\" on the church search screen, we use your current location to show the nearest campuses so you can pick the right one to attend."
+          "locationWhenInUsePermission": "Jerur uses your location to find Winners Chapel campuses near you. For example, when you tap \"Find churches near me\" on the church search screen, we use your current location to show the nearest campuses so you can pick the right one to attend.",
+          "locationAlwaysAndWhenInUsePermission": "Jerur only ever uses your location while the app is open, to show nearby Winners Chapel campuses when you tap \"Find churches near me\" — background location access is never requested.",
+          "locationAlwaysPermission": "Jerur only ever uses your location while the app is open, to show nearby Winners Chapel campuses when you tap \"Find churches near me\" — background location access is never requested.",
+          "motionUsagePermission": "Jerur does not use motion or fitness data. This permission string is required by a bundled library dependency but is never actually requested by the app."
         }
       ]
     ],
