@@ -157,7 +157,7 @@ export default function HomeScreen() {
           alignItems="center"
           justifyContent="space-between"
           paddingHorizontal={H_PAD}
-          paddingTop={12}
+        
           paddingBottom={4}
         >
           <CurrentChurchHeader

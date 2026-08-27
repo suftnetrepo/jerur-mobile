@@ -46,6 +46,14 @@ function NewNoteScreenContent() {
     <StyledPage showStatusBar flex={1} backgroundColor={COLORS.paper}>
       <StyledPage.Header
         showBackArrow
+         shapeProps={{
+          cycle: true,
+          size: 46,
+          borderRadius: 23,
+          borderWidth: 1,
+          borderColor: COLORS.chromeBorder,
+        }}
+        marginHorizontal={16}
         onBackPress={() => router.back()}
         title="New Note"
         titleAlignment="center"

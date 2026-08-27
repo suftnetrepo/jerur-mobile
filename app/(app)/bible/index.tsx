@@ -100,7 +100,7 @@ function BibleScreenContent() {
         }
       />
 
-      <Stack paddingHorizontal={24} paddingTop={4} paddingBottom={16}>
+      <Stack paddingHorizontal={24} marginVertical={16} paddingBottom={16}>
         <StyledTextInput
           variant="outline"
           placeholder="Search books..."
@@ -111,7 +111,7 @@ function BibleScreenContent() {
           maxLength={30}
         />
 
-        <Stack horizontal gap={10} marginTop={8}>
+        <Stack horizontal gap={10} marginTop={16}>
           <SpringChip
             label="Old Testament"
             active={activeTestament === "OT"}

@@ -66,7 +66,7 @@ export default function MoreScreen() {
   return (
     <StyledPage showStatusBar flex={1} backgroundColor={COLORS.paper}>
       <StyledScrollView contentContainerStyle={{ paddingBottom: 32 }}>
-        <Stack backgroundColor={COLORS.paper} paddingHorizontal={22} paddingTop={24} paddingBottom={34}>
+        <Stack backgroundColor={COLORS.paper} paddingHorizontal={22}  paddingBottom={34}>
           <Stack horizontal alignItems="center" gap={9} marginBottom={14}>
             <Stack width={28} height={1} backgroundColor={COLORS.inkSoft} />
             <Text variant="overline" fontSize={10.5} fontWeight="800" letterSpacing={1.5} color={COLORS.inkSoft}>YOUR SPACE</Text>
