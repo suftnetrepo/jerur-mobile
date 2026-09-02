@@ -139,7 +139,7 @@ function FellowshipScreenContent() {
           <Stack flex={1}>
             <StyledTextInput
               variant="outline"
-              placeholder="Search fellowships (e.g. Manchester, Leeds)"
+              placeholder="Search fellowships (e.g. Manchester)"
               leftIcon={<Icon name="search" size={15} color={COLORS.inkSoft} />}
               value={query}
               onChangeText={setQuery}
@@ -232,7 +232,7 @@ function FellowshipScreenContent() {
                     horizontal
                     alignItems="center"
                     gap={14}
-                    style={SHADOW_CARD}
+
                   >
                     {/* Content */}
                     <Stack flex={1} gap={3}>

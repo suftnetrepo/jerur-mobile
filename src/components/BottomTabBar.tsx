@@ -47,7 +47,7 @@ export function BottomTabBar({ active }: { active?: Tab }) {
       paddingHorizontal={10}
       alignItems="center"
       justifyContent="space-around"
-      style={{ borderTopWidth: 1, borderColor: "rgba(27,35,64,0.07)", ...SHADOW_SOFT }}
+      style={{ borderTopWidth: 0.5, borderColor: COLORS.goldPale }}
     >
       {tabs.map((tab) => {
         const isActive = active === tab.key;

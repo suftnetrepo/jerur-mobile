@@ -122,6 +122,11 @@ export type ChurchNotification = {
   type: string;
   title: string;
   message: string;
+  // Per-notification Zoom/Teams/etc. link (buildNotificationResponse in
+  // churchService.js) - distinct from the church-wide ChurchSettings.
+  // conference_link below. '' (the schema default), not absent, when
+  // unset - see NotificationCard.tsx's "Join conference" button.
+  conference_link?: string;
   secure_url: string;
   public_id?: string;
   priority: string;

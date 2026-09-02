@@ -41,7 +41,6 @@ export function BibleBookRow({
         style={{
           borderWidth: 1,
           borderColor: COLORS.paperAlt,
-          ...SHADOW_SOFT,
         }}
       >
         {/* Book number */}

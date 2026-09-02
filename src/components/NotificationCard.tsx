@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { Animated, Image } from "react-native";
+import { Animated, Image, Linking } from "react-native";
 import { router } from "expo-router";
 import { Feather as Icon } from "@expo/vector-icons";
 import { Stack, StyledPressable } from "fluent-styles";
@@ -130,6 +130,7 @@ export function NotificationCard({
   const opacity = useRef(new Animated.Value(0)).current;
   const [imageViewerVisible, setImageViewerVisible] = useState(false);
   const imageUri = notification?.secure_url?.trim() ?? "";
+  const conferenceLink = notification?.conference_link?.trim() ?? "";
 
   useEffect(() => {
     if (shouldRender) {
@@ -172,6 +173,14 @@ export function NotificationCard({
     ? { label: ctaConfig!.label, route: ctaFeature.route }
     : null;
 
+  function joinConference() {
+    if (!conferenceLink) return;
+    const url = /^https?:\/\//i.test(conferenceLink)
+      ? conferenceLink
+      : `https://${conferenceLink}`;
+    Linking.openURL(url);
+  }
+
   return (
     // Keep the same horizontal footprint as ChurchBanner so swapping the
     // shared home hero slot does not move surrounding content.
@@ -181,7 +190,6 @@ export function NotificationCard({
         borderRadius={28}
         overflow="hidden"
         style={[
-          SHADOW_CARD,
           {
             borderWidth: 1,
             borderColor: `${type.color}18`,
@@ -410,6 +418,37 @@ export function NotificationCard({
                 </Stack>
               )}
             </Stack>
+          )}
+
+          {/* Per-notification conference link (Church.notification.
+              conference_link) - a Zoom/Teams/etc. invite for this specific
+              notice, distinct from the church-wide fallback on
+              ChurchSettings.conference_link. Rendered ahead of the
+              type-based CTA below since joining a live/upcoming session is
+              the more time-sensitive action when both are present. */}
+          {!!conferenceLink && (
+            <StyledPressable
+              onPress={joinConference}
+              accessibilityRole="link"
+              accessibilityLabel={`Join ${notification!.title} conference`}
+            >
+              <Stack
+                horizontal
+                alignItems="center"
+                justifyContent="center"
+                gap={8}
+                minHeight={48}
+                borderRadius={16}
+                paddingHorizontal={16}
+                backgroundColor={type.color}
+                style={SHADOW_CARD}
+              >
+                <Icon name="video" size={16} color="#FFFFFF" />
+                <Text variant="label" fontWeight="800" color="#FFFFFF">
+                  Join conference
+                </Text>
+              </Stack>
+            </StyledPressable>
           )}
 
           {/* Keep the existing feature-aware CTA logic, but give it a clearer

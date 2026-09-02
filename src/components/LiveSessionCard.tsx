@@ -20,7 +20,7 @@ export function LiveSessionCard({ item }: { item: LiveSession }) {
       borderRadius={20}
       padding={17}
       gap={12}
-      style={[SHADOW_CARD, { borderWidth: 1, borderColor: `${accent}2E` }]}
+      style={[{ borderWidth: 1, borderColor: `${accent}2E` }]}
     >
       <Stack horizontal alignItems="center" justifyContent="space-between" gap={12}>
         <Stack width={40} height={40} borderRadius={13} alignItems="center" justifyContent="center" backgroundColor={`${accent}16`}>

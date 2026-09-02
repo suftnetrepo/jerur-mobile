@@ -199,7 +199,7 @@ export default function AboutScreen() {
           {/* ── Our story ──────────────────────────────────────────────── */}
         
           <Text
-            variant="header"
+            variant="title"
             fontSize={22}
             fontWeight="800"
             color={COLORS.ink}
@@ -218,53 +218,9 @@ export default function AboutScreen() {
             </Text>
           ) : null}
 
-          {/* ── Verse ──────────────────────────────────────────────────── */}
-          {verse ? (
-            <Stack
-              horizontal
-              alignItems="flex-start"
-              gap={14}
-              backgroundColor={COLORS.paperWarm}
-              borderRadius={18}
-              padding={16}
-              marginTop={22}
-                borderWidth={0.4}
-                borderColor={COLORS.goldSoft}
-            >
-              <Stack
-                width={40}
-                height={40}
-                borderRadius={14}
-                backgroundColor={COLORS.goldPale}
-                alignItems="center"
-                justifyContent="center"
-              >
-                <Icon name="book-open" size={17} color={COLORS.goldDeep} />
-              </Stack>
-              <Stack style={{ flex: 1 }}>
-                <Text
-                  variant="overline"
-                  fontSize={11}
-                  fontWeight="800"
-                  letterSpacing={0.6}
-                  color={COLORS.goldDeep}
-                  style={{ marginBottom: 3 }}
-                >
-                  Verse
-                </Text>
-                <Text
-                  fontSize={14}
-                  color={COLORS.ink}
-                  style={{ lineHeight: 20 }}
-                >
-                  {verse}
-                </Text>
-              </Stack>
-            </Stack>
-          ) : null}
           {/* ── Contact information ────────────────────────────────────── */}
           {contactRows.length > 0 ? (
-            <Stack marginTop={8}>
+            <Stack marginTop={16}>
              
               <Stack
                 backgroundColor={COLORS.white}

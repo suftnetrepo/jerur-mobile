@@ -198,7 +198,7 @@ export default function HomeScreen() {
       >
         <Animated.View style={headerAnim}>
           <Stack paddingHorizontal={H_PAD} marginTop={10} marginBottom={18}>
-            <Text variant="header" fontSize={26} fontWeight="800" color={COLORS.ink}>
+            <Text variant="title" fontSize={26} fontWeight="800" color={COLORS.ink}>
               {church?.name ?? "Your church"}
             </Text>
             <Text fontSize={13} color={COLORS.inkSoft}>

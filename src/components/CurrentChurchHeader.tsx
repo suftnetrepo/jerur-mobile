@@ -86,8 +86,8 @@ export function CurrentChurchHeader({
               away before. */}
           <Stack horizontal alignItems="center" flexShrink={1}>
             <Text
-              variant="subtitle"
-              fontSize={15.5}
+              variant="caption"
+              fontSize={13.5}
               color={COLORS.ink}
               numberOfLines={1}
               ellipsizeMode="tail"

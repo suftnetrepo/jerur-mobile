@@ -70,7 +70,6 @@ export function PropheticThemeCard({
           borderRadius={24}
           padding={8}
           overflow="hidden"
-          style={SHADOW_SOFT}
         >
           {description && verse && (
             <Stack

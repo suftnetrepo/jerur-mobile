@@ -6,7 +6,7 @@ export const SHADOW_SOFT = {
   shadowOffset: { width: 0, height: 3 },
   shadowOpacity: 0.08,
   shadowRadius: 10,
-  elevation: 3,
+  elevation: 1,
 };
 
 export const SHADOW_CHIP = {
@@ -22,7 +22,7 @@ export const SHADOW_CARD = {
   shadowOffset: { width: 0, height: 10 },
   shadowOpacity: 0.09,
   shadowRadius: 22,
-  elevation: 5,
+  elevation: 2,
 };
 
 export const SHADOW_HERO = {
@@ -30,7 +30,7 @@ export const SHADOW_HERO = {
   shadowOffset: { width: 0, height: 14 },
   shadowOpacity: 0.18,
   shadowRadius: 28,
-  elevation: 10,
+  elevation: 2,
 };
 
 export function shadowCta(color: string) {

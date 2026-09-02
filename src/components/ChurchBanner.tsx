@@ -45,7 +45,6 @@ export function ChurchBanner({ settings }: { settings: ChurchSettings | null | u
         height={BANNER_HEIGHT}
         borderRadius={BANNER_RADIUS}
         overflow="hidden"
-        style={SHADOW_HERO}
       >
         <Image source={bannerSource} style={{ width: "100%", height: "100%" }} resizeMode="cover" />
 
