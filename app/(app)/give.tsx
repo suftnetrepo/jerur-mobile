@@ -84,7 +84,7 @@ function BankField({
         >
           {label.toUpperCase()}
         </Text>
-        <Text variant="subtitle" color={COLORS.white}>
+        <Text variant="subtitle" color={COLORS.onPrimary}>
           {value}
         </Text>
       </Stack>
@@ -363,7 +363,7 @@ function GiveScreenContent() {
           <Text
             variant="title"
             fontWeight="800"
-            color={COLORS.white}
+            color={COLORS.onPrimary}
             style={{ marginBottom: 4 }}
           >
             Bank transfer

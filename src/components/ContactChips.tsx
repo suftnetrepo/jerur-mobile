@@ -79,13 +79,13 @@ export function ContactChips({ leading = [], phone, email, websiteUrl, facebookU
             style={chip.primary ? undefined : { borderWidth: 1, borderColor: COLORS.chromeBorder }}
           >
             {chip.loading ? (
-              <Loader variant="spinner" color={COLORS.white} />
+              <Loader variant="spinner" color={COLORS.onPrimary} />
             ) : chip.primary ? (
               <>
-                <Text variant="button" fontSize={13} color={COLORS.white}>
+                <Text variant="button" fontSize={13} color={COLORS.onPrimary}>
                   {chip.label}
                 </Text>
-                <Icon name={chip.icon as any} size={13} color={COLORS.white} />
+                <Icon name={chip.icon as any} size={13} color={COLORS.onPrimary} />
               </>
             ) : (
               <>

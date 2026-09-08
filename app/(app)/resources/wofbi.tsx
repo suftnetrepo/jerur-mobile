@@ -324,7 +324,7 @@ function WofbiScreenContent() {
                       <Text
                         fontSize={12}
                         fontWeight="800"
-                        color={selected ? COLORS.white : COLORS.inkSoft}
+                        color={selected ? COLORS.onPrimary : COLORS.inkSoft}
                       >
                         {String(index + 1).padStart(2, "0")}
                       </Text>
@@ -375,7 +375,7 @@ function WofbiScreenContent() {
                       }
                     >
                       {selected && (
-                        <Icon name="check" size={15} color={COLORS.white} />
+                        <Icon name="check" size={15} color={COLORS.onPrimary} />
                       )}
                     </Stack>
                   </Stack>

@@ -1,3 +1,4 @@
+import { ThemeHeader } from "@/src/components/ThemeHeader";
 import { useRef, useState } from "react";
 import { Dimensions } from "react-native";
 import { router, useLocalSearchParams } from "expo-router";
@@ -131,7 +132,7 @@ function CheckInScreenContent() {
   if (!member) {
     return (
       <StyledPage flex={1} backgroundColor={COLORS.paper}>
-        <StyledPage.Header
+        <ThemeHeader
           shapeProps={{
             cycle: true,
             size: 48,
@@ -177,7 +178,7 @@ function CheckInScreenContent() {
   if (!params.serviceId) {
     return (
       <StyledPage flex={1} backgroundColor={COLORS.paper}>
-        <StyledPage.Header
+        <ThemeHeader
           title="Submit attendance"
           titleAlignment="center"
           showBackArrow
@@ -468,7 +469,7 @@ function CheckInScreenContent() {
                     justifyContent="center"
                     backgroundColor={ACCENT}
                   >
-                    <Icon name="check" size={12} color={COLORS.white} />
+                    <Icon name="check" size={12} color={COLORS.onPrimary} />
                   </Stack>
                 )}
               </StyledPressable>

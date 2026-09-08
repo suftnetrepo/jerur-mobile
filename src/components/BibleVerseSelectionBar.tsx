@@ -45,9 +45,9 @@ export function BibleVerseSelectionBar({
           accessibilityRole="button"
           accessibilityLabel="Clear selection"
         >
-          <Icon name="x" size={15} color={COLORS.white} />
+          <Icon name="x" size={15} color={COLORS.onPrimary} />
         </StyledPressable>
-        <Text variant="button" fontSize={13} color={COLORS.white} numberOfLines={1} style={{ flexShrink: 1 }}>
+        <Text variant="button" fontSize={13} color={COLORS.onPrimary} numberOfLines={1} style={{ flexShrink: 1 }}>
           {referenceLabel}
         </Text>
       </Stack>
@@ -73,8 +73,8 @@ function ActionButton({ icon, label, onPress }: { icon: string; label: string; o
       accessibilityRole="button"
       accessibilityLabel={label}
     >
-      <Icon name={icon as any} size={14} color={COLORS.white} />
-      <Text variant="button" fontSize={12.5} color={COLORS.white}>
+      <Icon name={icon as any} size={14} color={COLORS.onPrimary} />
+      <Text variant="button" fontSize={12.5} color={COLORS.onPrimary}>
         {label}
       </Text>
     </StyledPressable>

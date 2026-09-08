@@ -1,7 +1,6 @@
 import { useRef } from "react";
 import { Animated, type StyleProp, type ViewStyle } from "react-native";
-import { Feather as Icon } from "@expo/vector-icons";
-import { StyledPressable } from "fluent-styles";
+import { Stack, StyledPressable } from "fluent-styles";
 import { Text } from "./text";
 import { COLORS } from "../theme/colors";
 
@@ -17,12 +16,14 @@ import { COLORS } from "../theme/colors";
  */
 export function SpringChip({
   label,
+  count,
   active = false,
   disabled = false,
   onPress,
   style,
 }: {
   label: string;
+  count?: number;
   active?: boolean;
   disabled?: boolean;
   onPress: () => void;
@@ -47,20 +48,37 @@ export function SpringChip({
         onPressOut={disabled ? undefined : pressOut}
         flexDirection="row"
         alignItems="center"
-        justifyContent="center"
+        justifyContent="space-between"
         gap={6}
-        paddingVertical={11}
-        borderRadius={1}
+        paddingHorizontal={8}
+        paddingVertical={8}
+        borderRadius={50}
         backgroundColor={disabled ? COLORS.chrome : active ? COLORS.indigo : COLORS.white}
         style={{ borderWidth: 1, borderColor: active ? COLORS.indigo : COLORS.chromeBorder }}
         accessibilityRole="button"
         accessibilityLabel={label}
         accessibilityState={{ disabled, selected: active }}
       >
-        {active ? <Icon name="check" size={12} color={COLORS.white} /> : null}
-        <Text variant="button" fontSize={12.5} color={disabled ? COLORS.inkSoft : active ? COLORS.white : COLORS.ink}>
-          {label}
-        </Text>
+        <Stack horizontal alignItems="center" gap={6} flex={1}>
+          <Text variant="subLabel" fontSize={10.5} color={disabled ? COLORS.inkSoft : active ? COLORS.onPrimary : COLORS.ink}>
+            {label}
+          </Text>
+        </Stack>
+        {typeof count === "number" ? (
+          <Stack
+            minWidth={22}
+            height={22}
+            paddingHorizontal={5}
+            borderRadius={50}
+            alignItems="center"
+            justifyContent="center"
+            backgroundColor={active ? "rgba(255,255,255,0.18)" : COLORS.paperAlt}
+          >
+            <Text fontSize={9.5} fontWeight="800" color={active ? COLORS.onPrimary : COLORS.inkSoft}>
+              {count}
+            </Text>
+          </Stack>
+        ) : null}
       </StyledPressable>
     </Animated.View>
   );

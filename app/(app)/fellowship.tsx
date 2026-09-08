@@ -1,3 +1,4 @@
+import { ThemeHeader } from "@/src/components/ThemeHeader";
 import { useMemo, useState } from "react";
 import { Linking, TouchableOpacity } from "react-native";
 import { Feather as Icon } from "@expo/vector-icons";
@@ -86,7 +87,7 @@ function FellowshipScreenContent() {
 
   return (
     <StyledPage flex={1} backgroundColor={COLORS.paper}>
-      <StyledPage.Header
+      <ThemeHeader
         shapeProps={{
           cycle: true,
           size: 48,

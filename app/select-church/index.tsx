@@ -194,7 +194,7 @@ export default function SelectChurchScreen() {
                     color={
                       selectedDenomination === ALL_DENOMINATIONS
                         ? COLORS.ink
-                        : COLORS.white
+                        : COLORS.onPrimary
                     }
                   />
                 </Stack>
@@ -250,7 +250,7 @@ export default function SelectChurchScreen() {
                   justifyContent="center"
                   style={shadowCta(COLORS.indigo)}
                 >
-                  <Text variant="button" fontSize={15} color={COLORS.white}>
+                  <Text variant="button" fontSize={15} color={COLORS.onPrimary}>
                     Find churches near me
                   </Text>
                 </Stack>

@@ -1,3 +1,4 @@
+import { ThemeHeader } from "@/src/components/ThemeHeader";
 import { useMemo } from "react";
 import { router, useLocalSearchParams } from "expo-router";
 import { Feather as Icon } from "@expo/vector-icons";
@@ -13,7 +14,7 @@ import {
   BibleChapterGrid,
   useBibleGridWidth,
 } from "../../../src/components/BibleChapterGrid";
-import { getBook } from "../../../src/bible/bible-lookup";
+import { getBook } from "../../../src/bible/bible-books";
 import { COLORS, ICON_TONES } from "../../../src/theme/colors";
 import { SHADOW_CARD } from "../../../src/theme/shadows";
 
@@ -38,7 +39,7 @@ function BibleBookScreenContent() {
   if (!book) {
     return (
       <StyledPage showStatusBar flex={1} backgroundColor={COLORS.paper}>
-        <StyledPage.Header
+        <ThemeHeader
           showBackArrow
           onBackPress={() => router.back()}
           title="Bible"
@@ -66,7 +67,7 @@ function BibleBookScreenContent() {
 
   return (
     <StyledPage showStatusBar flex={1} backgroundColor={COLORS.paper}>
-      <StyledPage.Header
+      <ThemeHeader
         marginHorizontal={16}
         showBackArrow
          shapeProps ={{ cycle: true, size : 48, borderRadius: 24, borderWidth: 1, borderColor: COLORS.chromeBorder }}

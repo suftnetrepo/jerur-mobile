@@ -65,7 +65,7 @@ export function BibleChapterGrid({
             <Text
               variant="label"
               fontWeight={isActive ? "800" : "600"}
-              color={isActive ? COLORS.white : COLORS.ink}
+              color={isActive ? COLORS.onPrimary : COLORS.ink}
             >
               {chapter}
             </Text>

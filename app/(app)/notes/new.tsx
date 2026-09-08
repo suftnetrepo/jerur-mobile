@@ -1,3 +1,4 @@
+import { ThemeHeader } from "@/src/components/ThemeHeader";
 import { useRef, useState } from "react";
 import { KeyboardAvoidingView, Platform } from "react-native";
 import { router } from "expo-router";
@@ -44,7 +45,7 @@ function NewNoteScreenContent() {
 
   return (
     <StyledPage showStatusBar flex={1} backgroundColor={COLORS.paper}>
-      <StyledPage.Header
+      <ThemeHeader
         showBackArrow
          shapeProps={{
           cycle: true,
@@ -60,7 +61,7 @@ function NewNoteScreenContent() {
         backgroundColor={COLORS.paper}
         rightIcon={
          <StyledButton icon compact backgroundColor={COLORS.sage} loading={saving} onPress={handleSave} accessibilityLabel="Save note">
-              <Icon name="check" size={16} color={COLORS.white} />
+              <Icon name="check" size={16} color={COLORS.onPrimary} />
             </StyledButton>
         }
       />

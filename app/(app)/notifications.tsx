@@ -1,3 +1,4 @@
+import { ThemeHeader } from "@/src/components/ThemeHeader";
 import { Linking } from "react-native";
 import { router } from "expo-router";
 import { Feather as Icon } from "@expo/vector-icons";
@@ -27,7 +28,7 @@ export default function NotificationsScreen() {
 
   return (
     <StyledPage flex={1} backgroundColor={COLORS.paper}>
-      <StyledPage.Header
+      <ThemeHeader
         shapeProps={{
           cycle: true,
           size: 48,

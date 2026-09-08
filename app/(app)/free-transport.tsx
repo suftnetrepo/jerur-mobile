@@ -198,7 +198,7 @@ function FreeTransportScreenContent() {
                   <Text
                     fontSize={11}
                     fontWeight="800"
-                    color={COLORS.white}
+                    color={COLORS.onPrimary}
                   >
                     1
                   </Text>
@@ -271,7 +271,7 @@ function FreeTransportScreenContent() {
                   <Text
                     fontSize={11}
                     fontWeight="800"
-                    color={COLORS.white}
+                    color={COLORS.onPrimary}
                   >
                     2
                   </Text>
@@ -343,7 +343,7 @@ function FreeTransportScreenContent() {
                   <Text
                     fontSize={11}
                     fontWeight="800"
-                    color={COLORS.white}
+                    color={COLORS.onPrimary}
                   >
                     3
                   </Text>

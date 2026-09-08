@@ -1,3 +1,4 @@
+import { ThemeHeader } from "@/src/components/ThemeHeader";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Share, Text as RNText } from "react-native";
 import { router, useLocalSearchParams } from "expo-router";
@@ -197,7 +198,7 @@ function BibleChapterReaderScreenContent() {
   if (!book) {
     return (
       <StyledPage showStatusBar flex={1} backgroundColor={COLORS.paper}>
-        <StyledPage.Header
+        <ThemeHeader
           showBackArrow
           onBackPress={() => router.back()}
           title="Bible"
@@ -223,7 +224,7 @@ function BibleChapterReaderScreenContent() {
 
   return (
     <StyledPage showStatusBar flex={1} backgroundColor={COLORS.paper}>
-      <StyledPage.Header
+      <ThemeHeader
         showBackArrow
         shapeProps ={{ cycle: true, size : 48, borderRadius: 24, borderWidth: 1, borderColor: COLORS.chromeBorder }}
         marginHorizontal={16}

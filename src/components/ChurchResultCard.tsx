@@ -153,13 +153,13 @@ export function ChurchResultCard({
                 paddingVertical={13}
               >
                 {selecting ? (
-                  <Loader variant="spinner" color={COLORS.white} />
+                  <Loader variant="spinner" color={COLORS.onPrimary} />
                 ) : (
                   <>
-                    <Text variant="button" fontSize={13.5} color={COLORS.white}>
+                    <Text variant="button" fontSize={13.5} color={COLORS.onPrimary}>
                       Select
                     </Text>
-                    <Icon name="arrow-right" size={14} color={COLORS.white} />
+                    <Icon name="arrow-right" size={14} color={COLORS.onPrimary} />
                   </>
                 )}
               </Stack>

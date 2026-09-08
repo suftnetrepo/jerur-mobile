@@ -184,9 +184,9 @@ export function NotificationCard({
   return (
     // Keep the same horizontal footprint as ChurchBanner so swapping the
     // shared home hero slot does not move surrounding content.
-    <Animated.View style={{ opacity, paddingHorizontal: 20, marginBottom: 22 }}>
+    <Animated.View style={{ opacity, paddingHorizontal: 20 }}>
       <Stack
-        backgroundColor="#FFFFFF"
+        backgroundColor={COLORS.white}
         borderRadius={28}
         overflow="hidden"
         style={[
@@ -222,32 +222,30 @@ export function NotificationCard({
               <Icon name={type.icon as any} size={22} color={type.color} />
             </Stack>
 
-            {(priority.id === "high" || priority.id === "urgent") && (
-              <Stack
-                horizontal
-                alignItems="center"
-                gap={7}
-                borderRadius={999}
-                paddingHorizontal={13}
-                paddingVertical={8}
-                backgroundColor={`${priority.color}10`}
-                style={{
-                  borderWidth: 1,
-                  borderColor: `${priority.color}1F`,
-                }}
+            <Stack
+              horizontal
+              alignItems="center"
+              gap={7}
+              borderRadius={999}
+              paddingHorizontal={13}
+              paddingVertical={8}
+              backgroundColor={`${priority.color}10`}
+              style={{
+                borderWidth: 1,
+                borderColor: `${priority.color}1F`,
+              }}
+            >
+              <Icon name="bell" size={16} color={priority.color} />
+              <Text
+                variant="label"
+                fontSize={11}
+                fontWeight="800"
+                letterSpacing={0.7}
+                color={priority.color}
               >
-                <Icon name="bell" size={16} color={priority.color} />
-                <Text
-                  variant="overline"
-                  fontSize={11}
-                  fontWeight="800"
-                  letterSpacing={0.7}
-                  color={priority.color}
-                >
-                  {priority.id === "urgent" ? "Urgent" : "Important"}
-                </Text>
-              </Stack>
-            )}
+                {priority.id === "urgent" ? "Urgent" : "Important"}
+              </Text>
+            </Stack>
           </Stack>
 
           {/* Primary content */}
@@ -304,7 +302,7 @@ export function NotificationCard({
                   borderRadius={999}
                   paddingHorizontal={11}
                   paddingVertical={7}
-                  backgroundColor="rgba(255,255,255,0.94)"
+                  backgroundColor={COLORS.paperSoftest}
                   style={{
                     position: "absolute",
                     right: 10,
@@ -346,7 +344,7 @@ export function NotificationCard({
                     justifyContent="center"
                     backgroundColor={type.color}
                   >
-                    <Icon name="calendar" size={18} color="#FFFFFF" />
+                    <Icon name="calendar" size={18} color={COLORS.onPrimary} />
                   </Stack>
                   <Stack gap={1} style={{ flex: 1 }}>
                     <Text
@@ -394,7 +392,7 @@ export function NotificationCard({
                     justifyContent="center"
                     backgroundColor={type.color}
                   >
-                    <Icon name="clock" size={18} color="#FFFFFF" />
+                    <Icon name="clock" size={18} color={COLORS.onPrimary} />
                   </Stack>
                   <Stack gap={1} style={{ flex: 1 }}>
                     <Text
@@ -443,8 +441,8 @@ export function NotificationCard({
                 backgroundColor={type.color}
                 style={SHADOW_CARD}
               >
-                <Icon name="video" size={16} color="#FFFFFF" />
-                <Text variant="label" fontWeight="800" color="#FFFFFF">
+                <Icon name="video" size={16} color={COLORS.onPrimary} />
+                <Text variant="label" fontWeight="800" color={COLORS.onPrimary}>
                   Join conference
                 </Text>
               </Stack>
@@ -470,14 +468,10 @@ export function NotificationCard({
                 backgroundColor={type.color}
                 style={SHADOW_CARD}
               >
-                <Text
-                  variant="label"
-                  fontWeight="800"
-                  color="#FFFFFF"
-                >
+                <Text variant="label" fontWeight="800" color={COLORS.onPrimary}>
                   {cta.label}
                 </Text>
-                <Icon name="arrow-right" size={16} color="#FFFFFF" />
+                <Icon name="arrow-right" size={16} color={COLORS.onPrimary} />
               </Stack>
             </StyledPressable>
           )}

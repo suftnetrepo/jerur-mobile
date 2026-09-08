@@ -204,13 +204,13 @@ export function ChurchDetailsSheet({
             gap={8}
           >
             {selecting ? (
-              <Loader variant="spinner" color={COLORS.white} />
+              <Loader variant="spinner" color={COLORS.onPrimary} />
             ) : (
               <>
-                <Text variant="button" fontSize={15} color={COLORS.white}>
+                <Text variant="button" fontSize={15} color={COLORS.onPrimary}>
                   Select Church
                 </Text>
-                <Icon name="arrow-right" size={16} color={COLORS.white} />
+                <Icon name="arrow-right" size={16} color={COLORS.onPrimary} />
               </>
             )}
           </Stack>

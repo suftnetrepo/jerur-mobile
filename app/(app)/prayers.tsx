@@ -1,3 +1,4 @@
+import { ThemeHeader } from "@/src/components/ThemeHeader";
 import { useState } from "react";
 import { MaterialCommunityIcons as MCIcon } from "@expo/vector-icons";
 import { StyledPage, StyledScrollView, StyledForm, Stack } from "fluent-styles";
@@ -72,7 +73,7 @@ function PrayersScreenContent() {
 
   return (
     <StyledPage flex={1} backgroundColor={COLORS.paper}>
-      <StyledPage.Header
+      <ThemeHeader
         shapeProps={{
           cycle: true,
           size: 48,

@@ -1,3 +1,4 @@
+import { ThemeHeader } from "@/src/components/ThemeHeader";
 import { useCallback, useState } from "react";
 import { FlatList } from "react-native";
 import { router, useFocusEffect } from "expo-router";
@@ -50,7 +51,7 @@ function NotesScreenContent() {
 
   return (
     <StyledPage showStatusBar flex={1} backgroundColor={COLORS.paper}>
-      <StyledPage.Header
+      <ThemeHeader
         showBackArrow
         shapeProps={{
           cycle: true,
@@ -258,7 +259,7 @@ function NotesScreenContent() {
                     onPress={() => router.push("/notes/new" as any)}
                   >
                     <Stack horizontal alignItems="center" gap={7}>
-                      <Icon name="plus" size={14} color={COLORS.white} />
+                      <Icon name="plus" size={14} color={COLORS.onPrimary} />
                       <Text
                         variant="button"
                         fontSize={13}

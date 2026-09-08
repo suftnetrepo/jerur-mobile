@@ -52,6 +52,7 @@ export type ChurchSearchResult = {
   // prep so this rides along on search results already; no filter UI yet.
   // '' (the schema default) on churches that haven't set one.
   denomination?: string;
+  theme_id?: string;
   address?: {
     addressLine1?: string;
     town?: string;
@@ -203,6 +204,7 @@ export type ChurchSettings = {
   // comment. Included here too now that jerur-next's getChurch() select
   // whitelist (backing GET /church/get) includes it.
   denomination?: string;
+  theme_id?: string;
   // IDs of the mobile features this church has enabled — see
   // src/config/mobileFeatures.ts and src/hooks/useFeatureFlags.ts. Absent
   // or empty on churches that have never saved Settings -> Mobile Features

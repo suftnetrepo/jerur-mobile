@@ -15,13 +15,11 @@ import { COLORS } from "../../theme/colors";
  * per-screen accessibility handling needed.
  */
 
-const DEFAULT_COLOR = COLORS.chromeBorder;
-
 export function Skeleton({
   width,
   height,
   borderRadius = 8,
-  color = DEFAULT_COLOR,
+  color = COLORS.chromeBorder,
   style,
 }: {
   width?: DimensionValue;
@@ -44,7 +42,7 @@ export function Skeleton({
 /** A circular bone — avatars, church logos, icon badges. */
 export function SkeletonCircle({
   size,
-  color = DEFAULT_COLOR,
+  color = COLORS.chromeBorder,
   style,
 }: {
   size: number;

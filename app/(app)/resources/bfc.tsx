@@ -155,7 +155,7 @@ function BfcScreenContent() {
                 alignItems="center"
                 justifyContent="center"
               >
-                <Icon name="calendar" size={19} color={COLORS.white} />
+                <Icon name="calendar" size={19} color={COLORS.onPrimary} />
               </Stack>
 
               <Stack flex={1}>

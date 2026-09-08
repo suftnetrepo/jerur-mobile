@@ -9,6 +9,7 @@ export function AppBackHeader({ title }: { title?: string }) {
   return (
     <>
       <StyledPage.Header
+        backArrowProps={{ color: COLORS.ink }}
         shapeProps={{
           cycle: true,
           size: 48,

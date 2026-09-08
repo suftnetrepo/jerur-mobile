@@ -1,3 +1,4 @@
+import { ThemeHeader } from "@/src/components/ThemeHeader";
 import { useMemo, useState } from "react";
 import { Share, Text as RNText } from "react-native";
 import { router, useLocalSearchParams } from "expo-router";
@@ -50,7 +51,7 @@ function HymnReaderScreenContent() {
   if (!hymn) {
     return (
       <StyledPage showStatusBar flex={1} backgroundColor={COLORS.paper}>
-        <StyledPage.Header
+        <ThemeHeader
           showBackArrow
           onBackPress={() => router.back()}
           title="Hymns"
@@ -82,7 +83,7 @@ function HymnReaderScreenContent() {
 
   return (
     <StyledPage showStatusBar flex={1} backgroundColor={COLORS.paper}>
-      <StyledPage.Header
+      <ThemeHeader
         shapeProps={{
           cycle: true,
           size: 48,

@@ -1,4 +1,6 @@
-import { useMemo, useRef, useState } from "react";
+import { ThemeHeader } from "@/src/components/ThemeHeader";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { InteractionManager } from "react-native";
 import { router } from "expo-router";
 import { Feather as Icon } from "@expo/vector-icons";
 import {
@@ -14,7 +16,8 @@ import { BottomTabBar } from "../../../src/components/BottomTabBar";
 import { BibleBookRow } from "../../../src/components/BibleBookRow";
 import { ReaderFontSizePopup } from "../../../src/components/ReaderFontSizePopup";
 import { SpringChip } from "../../../src/components/SpringChip";
-import { getBooks } from "../../../src/bible/bible-lookup";
+import { getBooks } from "../../../src/bible/bible-books";
+import type { BibleBook } from "../../../src/bible/types";
 import { useBookListFontSize } from "../../../src/bible/use-book-list-font-size";
 import { COLORS, ICON_TONES } from "../../../src/theme/colors";
 
@@ -31,14 +34,21 @@ function BibleScreenContent() {
   const { fontSize, increase, decrease, reset, canIncrease, canDecrease } =
     useBookListFontSize();
   const [fontSizePopupVisible, setFontSizePopupVisible] = useState(false);
-  // Old Testament is the default landing section (the list opens scrolled
-  // there already), so its chip starts indicated as selected.
-  const [activeTestament, setActiveTestament] = useState<"OT" | "NT">("OT");
+  const [activeTestament, setActiveTestament] = useState<"ALL" | "OT" | "NT">(
+    "ALL",
+  );
 
-  // getBooks() returns the same array reference every call (module-level
-  // constant) - no need to memoize the call itself. Only the filtering
-  // below is derived per-render and worth memoizing.
-  const books = getBooks();
+  const [books, setBooks] = useState<BibleBook[]>([]);
+
+  // Let the navigation transition and page chrome paint first. The book
+  // catalogue is local and lightweight, but rendering all rows during the
+  // tab transition makes the interaction feel slower on modest devices.
+  useEffect(() => {
+    const task = InteractionManager.runAfterInteractions(() => {
+      setBooks(getBooks());
+    });
+    return () => task.cancel();
+  }, []);
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -47,44 +57,42 @@ function BibleScreenContent() {
   }, [books, query]);
 
   const oldTestament = useMemo(
-    () => filtered.filter((b) => b.testament === "OT"),
+    () => filtered.filter((book) => book.testament === "OT"),
     [filtered],
   );
   const newTestament = useMemo(
-    () => filtered.filter((b) => b.testament === "NT"),
+    () => filtered.filter((book) => book.testament === "NT"),
     [filtered],
   );
+  const oldTestamentCount = useMemo(
+    () => books.filter((book) => book.testament === "OT").length,
+    [books],
+  );
+  const newTestamentCount = books.length - oldTestamentCount;
 
-  // Testament chips scroll the list rather than navigate to a different
-  // screen - both testaments already render in the one ScrollView below.
-  // The New Testament section's on-screen y offset (within the scroll
-  // content) is captured via onLayout as it renders, so the jump stays
-  // correct even as font size/search change row heights.
   const scrollRef = useRef<{
     scrollTo: (opts: { y: number; animated: boolean }) => void;
   } | null>(null);
-  const newTestamentOffsetRef = useRef(0);
 
-  function scrollToOldTestament() {
-    setActiveTestament("OT");
+  function selectTestament(testament: "ALL" | "OT" | "NT") {
+    setActiveTestament(testament);
     scrollRef.current?.scrollTo({ y: 0, animated: true });
-  }
-  function scrollToNewTestament() {
-    setActiveTestament("NT");
-    scrollRef.current?.scrollTo({
-      y: newTestamentOffsetRef.current,
-      animated: true,
-    });
   }
 
   return (
     <StyledPage showStatusBar flex={1} backgroundColor={COLORS.paper}>
-      <StyledPage.Header
+      <ThemeHeader
         showBackArrow
-         shapeProps ={{ cycle: true, size : 48, borderRadius: 24, borderWidth: 1, borderColor: COLORS.chromeBorder }}
+        shapeProps={{
+          cycle: true,
+          size: 48,
+          borderRadius: 24,
+          borderWidth: 1,
+          borderColor: COLORS.chromeBorder,
+        }}
         title="Bible"
         titleAlignment="center"
-        onBackPress={() => (router.push("/"))}
+        onBackPress={() => router.push("/")}
         backgroundColor={COLORS.paper}
         marginHorizontal={16}
         rightIcon={
@@ -100,7 +108,7 @@ function BibleScreenContent() {
         }
       />
 
-      <Stack paddingHorizontal={24} marginVertical={16} paddingBottom={16}>
+      <Stack paddingHorizontal={24} marginTop={16} paddingBottom={16}>
         <StyledTextInput
           variant="outline"
           placeholder="Search books..."
@@ -110,28 +118,51 @@ function BibleScreenContent() {
           clearable
           maxLength={30}
         />
-
-        <Stack horizontal gap={10} marginTop={16}>
+      </Stack>
+      <Stack height={48} marginBottom={10}>
+        <StyledScrollView
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          contentContainerStyle={{
+            paddingHorizontal: 20,
+            gap: 10,
+            alignItems: "center",
+          }}
+        >
+          <SpringChip
+            label="All"
+            style={{ flex: 0, width: 88, height: 46 }}
+            count={books.length}
+            active={activeTestament === "ALL"}
+            disabled={books.length === 0}
+            onPress={() => selectTestament("ALL")}
+          />
           <SpringChip
             label="Old Testament"
+            style={{ flex: 0, width: 144, height: 46 }}
+            count={oldTestamentCount}
             active={activeTestament === "OT"}
-            disabled={oldTestament.length === 0}
-            onPress={scrollToOldTestament}
+            disabled={oldTestamentCount === 0}
+            onPress={() => selectTestament("OT")}
           />
           <SpringChip
             label="New Testament"
+            style={{ flex: 0, width: 148, height: 46 }}
+            count={newTestamentCount}
             active={activeTestament === "NT"}
-            disabled={newTestament.length === 0}
-            onPress={scrollToNewTestament}
+            disabled={newTestamentCount === 0}
+            onPress={() => selectTestament("NT")}
           />
-        </Stack>
+        </StyledScrollView>
       </Stack>
 
       <StyledScrollView
         ref={scrollRef}
         contentContainerStyle={{ paddingHorizontal: 20, paddingBottom: 32 }}
       >
-        {filtered.length === 0 ? (
+        {books.length === 0 ? (
+          <BibleBooksLoading />
+        ) : filtered.length === 0 ? (
           <Text
             fontSize={14}
             color={COLORS.inkSoft}
@@ -141,19 +172,20 @@ function BibleScreenContent() {
           </Text>
         ) : (
           <>
-            <BookSection
-              title="Old Testament"
-              books={oldTestament}
-              fontSize={fontSize}
-            />
-            <BookSection
-              title="New Testament"
-              books={newTestament}
-              fontSize={fontSize}
-              onLayout={(e) => {
-                newTestamentOffsetRef.current = e.nativeEvent.layout.y;
-              }}
-            />
+            {activeTestament !== "NT" ? (
+              <BookSection
+                title="Old Testament"
+                books={oldTestament}
+                fontSize={fontSize}
+              />
+            ) : null}
+            {activeTestament !== "OT" ? (
+              <BookSection
+                title="New Testament"
+                books={newTestament}
+                fontSize={fontSize}
+              />
+            ) : null}
           </>
         )}
       </StyledScrollView>
@@ -180,7 +212,7 @@ function BookSection({
   onLayout,
 }: {
   title: string;
-  books: ReturnType<typeof getBooks>;
+  books: BibleBook[];
   fontSize: number;
   onLayout?: (e: any) => void;
 }) {
@@ -208,6 +240,47 @@ function BookSection({
           />
         ))}
       </Stack>
+    </Stack>
+  );
+}
+
+function BibleBooksLoading() {
+  return (
+    <Stack gap={9} paddingTop={4} accessibilityLabel="Loading Bible books">
+      {Array.from({ length: 6 }).map((_, index) => (
+        <Stack
+          key={index}
+          horizontal
+          alignItems="center"
+          height={76}
+          paddingHorizontal={14}
+          borderRadius={18}
+          backgroundColor={COLORS.white}
+          style={{ borderWidth: 1, borderColor: COLORS.paperAlt }}
+        >
+          <Stack
+            width={46}
+            height={46}
+            borderRadius={14}
+            backgroundColor={COLORS.chrome}
+            marginRight={13}
+          />
+          <Stack flex={1} gap={8}>
+            <Stack
+              width="46%"
+              height={12}
+              borderRadius={6}
+              backgroundColor={COLORS.chromeBorder}
+            />
+            <Stack
+              width="30%"
+              height={9}
+              borderRadius={5}
+              backgroundColor={COLORS.chrome}
+            />
+          </Stack>
+        </Stack>
+      ))}
     </Stack>
   );
 }

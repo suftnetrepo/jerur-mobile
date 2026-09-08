@@ -76,7 +76,7 @@ export function LatestSermonCard({ sermon }: { sermon: LatestSermon | null | und
                 prop in this fluent-styles version). */}
             <Stack style={{ position: "absolute", bottom: 12, right: 12 }}>
               <Stack width={40} height={40} borderRadius={20} alignItems="center" justifyContent="center" backgroundColor="rgba(12,10,9,0.6)">
-                <Icon name="play" size={17} color={COLORS.white} />
+                <Icon name="play" size={17} color={COLORS.onPrimary} />
               </Stack>
             </Stack>
           </Stack>

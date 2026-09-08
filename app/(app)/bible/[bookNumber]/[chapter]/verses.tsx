@@ -1,3 +1,4 @@
+import { ThemeHeader } from "@/src/components/ThemeHeader";
 import { useMemo } from "react";
 import { router, useLocalSearchParams } from "expo-router";
 import { Feather as Icon } from "@expo/vector-icons";
@@ -38,7 +39,7 @@ function BibleVerseSelectionScreenContent() {
   if (!book) {
     return (
       <StyledPage showStatusBar flex={1} backgroundColor={COLORS.paper}>
-        <StyledPage.Header showBackArrow onBackPress={() => router.back()} title="Bible" titleAlignment="center" />
+        <ThemeHeader showBackArrow onBackPress={() => router.back()} title="Bible" titleAlignment="center" />
         <Stack flex={1} alignItems="center" justifyContent="center" paddingHorizontal={32}>
           <Text fontSize={14} color={COLORS.inkSoft} style={{ textAlign: "center" }}>
             That chapter couldn't be found.
@@ -52,7 +53,7 @@ function BibleVerseSelectionScreenContent() {
 
   return (
     <StyledPage showStatusBar flex={1} backgroundColor={COLORS.paper}>
-      <StyledPage.Header
+      <ThemeHeader
         showBackArrow
          shapeProps ={{ cycle: true, size : 48, borderRadius: 24, borderWidth: 1, borderColor: COLORS.chromeBorder }}
    
@@ -89,7 +90,7 @@ function BibleVerseSelectionScreenContent() {
         accessibilityRole="button"
         accessibilityLabel="Read full chapter"
       >
-        <Icon name="book-open" size={24} color={COLORS.white} />
+        <Icon name="book-open" size={24} color={COLORS.onPrimary} />
       </StyledPressable>
     </StyledPage>
   );

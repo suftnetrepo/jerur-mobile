@@ -1,5 +1,5 @@
-import { useEffect, type ReactNode } from "react";
-import { Image } from "react-native";
+import { Fragment, useEffect, type ReactNode } from "react";
+import { Image, StatusBar } from "react-native";
 import { Stack as RouterStack, useRouter, useSegments } from "expo-router";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { GlobalPortalProvider, PortalManager, StyledPage, Stack } from "fluent-styles";
@@ -15,6 +15,7 @@ import {
 import { SelectedChurchProvider, useSelectedChurch } from "../src/church/SelectedChurchContext";
 import { MemberSessionProvider } from "../src/member/MemberSessionContext";
 import { ShimmerProvider } from "../src/components/skeleton";
+import { ThemeProvider, useMobileTheme } from "../src/theme/ThemeContext";
 import "../src/notifications/notification-handler";
 
 const SPLASH_LOGO = require("../assets/splash-icon.png");
@@ -34,6 +35,7 @@ const queryClient = new QueryClient({
 
 function RouteGuard({ children }: { children: ReactNode }) {
   const { church, isLoading } = useSelectedChurch();
+  const { activeThemeId, isLoading: themeLoading } = useMobileTheme();
   const segments = useSegments() as string[];
   const router = useRouter();
 
@@ -60,7 +62,12 @@ function RouteGuard({ children }: { children: ReactNode }) {
     }
   }, [church, isLoading, segments, router]);
 
-  if (isLoading || !fontsLoaded) {
+  useEffect(() => {
+    const isDarkTheme = activeThemeId === "dark";
+    StatusBar.setBarStyle(isDarkTheme ? "light-content" : "dark-content", true);
+  }, [activeThemeId, segments]);
+
+  if (isLoading || themeLoading || !fontsLoaded) {
     return (
       <StyledPage flex={1} backgroundColor="#FFFFFF">
         <Stack flex={1} alignItems="center" justifyContent="center">
@@ -75,7 +82,7 @@ function RouteGuard({ children }: { children: ReactNode }) {
     );
   }
 
-  return <>{children}</>;
+  return <Fragment key={activeThemeId}>{children}</Fragment>;
 }
 
 export default function RootLayout() {
@@ -83,15 +90,17 @@ export default function RootLayout() {
     <QueryClientProvider client={queryClient}>
       <ShimmerProvider>
         <SelectedChurchProvider>
-          <MemberSessionProvider>
-            <GlobalPortalProvider>
-              <PortalManager>
-                <RouteGuard>
-                  <RouterStack screenOptions={{ headerShown: false }} />
-                </RouteGuard>
-              </PortalManager>
-            </GlobalPortalProvider>
-          </MemberSessionProvider>
+          <ThemeProvider>
+            <MemberSessionProvider>
+              <GlobalPortalProvider>
+                <PortalManager>
+                  <RouteGuard>
+                    <RouterStack screenOptions={{ headerShown: false }} />
+                  </RouteGuard>
+                </PortalManager>
+              </GlobalPortalProvider>
+            </MemberSessionProvider>
+          </ThemeProvider>
         </SelectedChurchProvider>
       </ShimmerProvider>
     </QueryClientProvider>

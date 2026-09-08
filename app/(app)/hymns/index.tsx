@@ -1,3 +1,4 @@
+import { ThemeHeader } from "@/src/components/ThemeHeader";
 import { useCallback, useMemo, useState } from "react";
 import { FlatList, TextInput } from "react-native";
 import { router } from "expo-router";
@@ -51,7 +52,7 @@ function HymnsScreenContent() {
 
   return (
     <StyledPage showStatusBar backgroundColor={COLORS.paper}>
-      <StyledPage.Header
+      <ThemeHeader
         showBackArrow
         shapeProps={{
           cycle: true,

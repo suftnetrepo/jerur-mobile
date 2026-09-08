@@ -1,3 +1,4 @@
+import { ThemeHeader } from "@/src/components/ThemeHeader";
 import { useCallback, useState } from "react";
 import { KeyboardAvoidingView, Platform, Share } from "react-native";
 import { router, useFocusEffect, useLocalSearchParams } from "expo-router";
@@ -98,7 +99,7 @@ function NoteDetailScreenContent() {
   if (note === undefined) {
     return (
       <StyledPage showStatusBar flex={1} backgroundColor={COLORS.paper}>
-        <StyledPage.Header showBackArrow onBackPress={() => router.back()} backgroundColor={COLORS.paper} paddingHorizontal={16} />
+        <ThemeHeader showBackArrow onBackPress={() => router.back()} backgroundColor={COLORS.paper} paddingHorizontal={16} />
         <Stack flex={1} alignItems="center" justifyContent="center">
           <Loader color={COLORS.indigo} />
         </Stack>
@@ -109,7 +110,7 @@ function NoteDetailScreenContent() {
   if (note === null) {
     return (
       <StyledPage showStatusBar flex={1} backgroundColor={COLORS.paper}>
-        <StyledPage.Header showBackArrow onBackPress={() => router.back()} title="Notes" titleAlignment="center" paddingHorizontal={16} />
+        <ThemeHeader showBackArrow onBackPress={() => router.back()} title="Notes" titleAlignment="center" paddingHorizontal={16} />
         <Stack flex={1} alignItems="center" justifyContent="center" paddingHorizontal={32}>
           <Text fontSize={14} color={COLORS.inkSoft} style={{ textAlign: "center" }}>
             That note couldn't be found.
@@ -121,7 +122,7 @@ function NoteDetailScreenContent() {
 
   return (
     <StyledPage showStatusBar flex={1} backgroundColor={COLORS.paper}>
-      <StyledPage.Header
+      <ThemeHeader
         showBackArrow
         shapeProps={{
           cycle: true,
@@ -150,7 +151,7 @@ function NoteDetailScreenContent() {
               <Icon name="trash-2" size={15} color={COLORS.error} />
             </StyledButton>
             <StyledButton icon compact backgroundColor={COLORS.sage} loading={saving} onPress={handleSave} accessibilityLabel="Save note">
-              <Icon name="check" size={16} color={COLORS.white} />
+              <Icon name="check" size={16} color={COLORS.onPrimary} />
             </StyledButton>
           </Stack>
         }

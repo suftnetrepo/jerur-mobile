@@ -10,6 +10,7 @@ export default function AppLayout() {
       <Stack.Screen name="events/index" />
       <Stack.Screen name="article/[id]" />
       <Stack.Screen name="more" />
+      <Stack.Screen name="appearance" />
       <Stack.Screen name="account" />
       <Stack.Screen name="check-in" />
       <Stack.Screen name="service-times" />

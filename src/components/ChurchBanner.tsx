@@ -91,7 +91,7 @@ export function ChurchBanner({ settings }: { settings: ChurchSettings | null | u
             }}
           >
             {shortMessage && (
-              <Text variant="header" fontSize={20} color={COLORS.white} numberOfLines={2} style={{ textAlign: "center", lineHeight: 26 }}>
+              <Text variant="header" fontSize={20} color={COLORS.onPrimary} numberOfLines={2} style={{ textAlign: "center", lineHeight: 26 }}>
                 {shortMessage}
               </Text>
             )}

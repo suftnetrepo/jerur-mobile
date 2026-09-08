@@ -1,3 +1,4 @@
+import { ThemeHeader } from "@/src/components/ThemeHeader";
 import { router } from "expo-router";
 import {
   StyledPage,
@@ -79,7 +80,7 @@ export default function NewHereScreen() {
 function NewHereScreenContent() {
   return (
     <StyledPage flex={1} backgroundColor={COLORS.paper}>
-      <StyledPage.Header
+      <ThemeHeader
         shapeProps={{
           cycle: true,
           size: 48,
