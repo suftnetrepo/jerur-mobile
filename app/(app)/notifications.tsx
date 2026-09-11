@@ -1,11 +1,11 @@
 import { ThemeHeader } from "@/src/components/ThemeHeader";
-import { Linking } from "react-native";
+import { Linking, Platform } from "react-native";
 import { router } from "expo-router";
 import { Feather as Icon } from "@expo/vector-icons";
 import { StyledPage, StyledScrollView, StyledButton, Stack } from "fluent-styles";
 import { Text } from "../../src/components/text";
 import { useNotificationPermissionStatus } from "../../src/notifications/use-notification-permission";
-import { COLORS } from "../../src/theme/colors";
+import { COLORS , isDarkTheme } from "../../src/theme/colors";
 import { SHADOW_SOFT } from "../../src/theme/shadows";
 
 const STATUS_COPY = {
@@ -27,7 +27,7 @@ export default function NotificationsScreen() {
   const copy = STATUS_COPY[status];
 
   return (
-    <StyledPage flex={1} backgroundColor={COLORS.paper}>
+    <StyledPage flex={1} backgroundColor={COLORS.paper} statusBarStyle={isDarkTheme ? "light-content" : "dark-content"} statusBarBackgroundColor={Platform.OS === "android" ? COLORS.paper : undefined}>
       <ThemeHeader
         shapeProps={{
           cycle: true,

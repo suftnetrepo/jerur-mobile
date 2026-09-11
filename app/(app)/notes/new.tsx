@@ -7,7 +7,7 @@ import { StyledPage, StyledButton, Stack, useToast } from "fluent-styles";
 import { FeatureGate } from "../../../src/components/FeatureGate";
 import { NoteFormFields } from "../../../src/components/NoteFormFields";
 import { createNote } from "../../../src/notes/notes-repository";
-import { COLORS } from "../../../src/theme/colors";
+import { COLORS , isDarkTheme } from "../../../src/theme/colors";
 
 export default function NewNoteScreen() {
   return (
@@ -44,7 +44,7 @@ function NewNoteScreenContent() {
   }
 
   return (
-    <StyledPage showStatusBar flex={1} backgroundColor={COLORS.paper}>
+    <StyledPage showStatusBar flex={1} backgroundColor={COLORS.paper} statusBarStyle={isDarkTheme ? "light-content" : "dark-content"} statusBarBackgroundColor={Platform.OS === "android" ? COLORS.paper : undefined}>
       <ThemeHeader
         showBackArrow
          shapeProps={{

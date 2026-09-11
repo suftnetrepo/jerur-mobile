@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Linking } from "react-native";
+import { Linking, Platform } from "react-native";
 import { Feather as Icon } from "@expo/vector-icons";
 import {
   StyledPage,
@@ -15,7 +15,7 @@ import { BottomTabBar } from "../../src/components/BottomTabBar";
 import { FeatureGate } from "../../src/components/FeatureGate";
 import { AppBackHeader } from "../../src/components/AppBackHeader";
 import { useSettings } from "../../src/hooks/useChurchData";
-import { COLORS } from "../../src/theme/colors";
+import { COLORS , isDarkTheme } from "../../src/theme/colors";
 import { SHADOW_CARD } from "../../src/theme/shadows";
 import { ScalePressable } from "../../src/components/ScalePressable";
 
@@ -163,7 +163,7 @@ function GiveScreenContent() {
   }
 
   return (
-    <StyledPage flex={1} backgroundColor={COLORS.paper}>
+    <StyledPage flex={1} backgroundColor={COLORS.paper} statusBarStyle={isDarkTheme ? "light-content" : "dark-content"} statusBarBackgroundColor={Platform.OS === "android" ? COLORS.paper : undefined}>
       <AppBackHeader title="Giving" />
       <StyledScrollView
         contentContainerStyle={{

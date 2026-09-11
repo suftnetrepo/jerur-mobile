@@ -1,6 +1,6 @@
 import { ThemeHeader } from "@/src/components/ThemeHeader";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { Share, Text as RNText } from "react-native";
+import { Platform, Share, Text as RNText } from "react-native";
 import { router, useLocalSearchParams } from "expo-router";
 import { Feather as Icon } from "@expo/vector-icons";
 import {
@@ -36,7 +36,7 @@ import {
 } from "../../../../src/bible/share-text";
 import { useReaderFontSize } from "../../../../src/bible/use-reader-font-size";
 import { appendToMarkedNote } from "../../../../src/notes/marked-note";
-import { COLORS } from "../../../../src/theme/colors";
+import { COLORS , isDarkTheme } from "../../../../src/theme/colors";
 import type { BibleVerse } from "../../../../src/bible/types";
 
 const H_PAD = 24;
@@ -197,7 +197,7 @@ function BibleChapterReaderScreenContent() {
 
   if (!book) {
     return (
-      <StyledPage showStatusBar flex={1} backgroundColor={COLORS.paper}>
+      <StyledPage showStatusBar flex={1} backgroundColor={COLORS.paper} statusBarStyle={isDarkTheme ? "light-content" : "dark-content"} statusBarBackgroundColor={Platform.OS === "android" ? COLORS.paper : undefined}>
         <ThemeHeader
           showBackArrow
           onBackPress={() => router.back()}
@@ -223,7 +223,7 @@ function BibleChapterReaderScreenContent() {
   }
 
   return (
-    <StyledPage showStatusBar flex={1} backgroundColor={COLORS.paper}>
+    <StyledPage showStatusBar flex={1} backgroundColor={COLORS.paper} statusBarStyle={isDarkTheme ? "light-content" : "dark-content"} statusBarBackgroundColor={Platform.OS === "android" ? COLORS.paper : undefined}>
       <ThemeHeader
         showBackArrow
         shapeProps ={{ cycle: true, size : 48, borderRadius: 24, borderWidth: 1, borderColor: COLORS.chromeBorder }}

@@ -1,4 +1,4 @@
-import { Animated } from "react-native";
+import { Animated, Platform } from "react-native";
 import { useState } from "react";
 import { Feather as Icon } from "@expo/vector-icons";
 import {
@@ -14,7 +14,7 @@ import { ScalePressable } from "../../../src/components/ScalePressable";
 import { FormSubmitButton } from "../../../src/components/FormSubmitButton";
 import { useSettings } from "../../../src/hooks/useChurchData";
 import { openChurchEmailDraft } from "../../../src/lib/church-email";
-import { COLORS } from "../../../src/theme/colors";
+import { COLORS , isDarkTheme } from "../../../src/theme/colors";
 import { SHADOW_SOFT, SHADOW_CARD } from "../../../src/theme/shadows";
 import { AppBackHeader } from "../../../src/components/AppBackHeader";
 import { useFadeUp } from "../../../src/hooks/useFadeUp";
@@ -89,7 +89,7 @@ function WofbiScreenContent() {
   }
 
   return (
-    <StyledPage flex={1} backgroundColor={COLORS.paper}>
+    <StyledPage flex={1} backgroundColor={COLORS.paper} statusBarStyle={isDarkTheme ? "light-content" : "dark-content"} statusBarBackgroundColor={Platform.OS === "android" ? COLORS.paper : undefined}>
       <AppBackHeader title="WOFBI" />
 
       <StyledScrollView

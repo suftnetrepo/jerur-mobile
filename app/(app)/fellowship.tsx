@@ -1,6 +1,6 @@
 import { ThemeHeader } from "@/src/components/ThemeHeader";
 import { useMemo, useState } from "react";
-import { Linking, TouchableOpacity } from "react-native";
+import { Linking, Platform, TouchableOpacity } from "react-native";
 import { Feather as Icon } from "@expo/vector-icons";
 import {
   StyledPage,
@@ -17,7 +17,7 @@ import { BottomTabBar } from "../../src/components/BottomTabBar";
 import { FeatureGate } from "../../src/components/FeatureGate";
 import { useFellowship } from "../../src/hooks/useChurchData";
 import { FellowshipSkeleton } from "../../src/components/skeleton";
-import { COLORS } from "../../src/theme/colors";
+import { COLORS , isDarkTheme } from "../../src/theme/colors";
 import { SHADOW_CARD, SHADOW_CHIP } from "../../src/theme/shadows";
 import { ScalePressable } from "../../src/components/ScalePressable";
 
@@ -86,7 +86,7 @@ function FellowshipScreenContent() {
   }
 
   return (
-    <StyledPage flex={1} backgroundColor={COLORS.paper}>
+    <StyledPage flex={1} backgroundColor={COLORS.paper} statusBarStyle={isDarkTheme ? "light-content" : "dark-content"} statusBarBackgroundColor={Platform.OS === "android" ? COLORS.paper : undefined}>
       <ThemeHeader
         shapeProps={{
           cycle: true,

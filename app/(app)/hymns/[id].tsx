@@ -1,6 +1,6 @@
 import { ThemeHeader } from "@/src/components/ThemeHeader";
 import { useMemo, useState } from "react";
-import { Share, Text as RNText } from "react-native";
+import { Platform, Share, Text as RNText } from "react-native";
 import { router, useLocalSearchParams } from "expo-router";
 import { StyledPage, StyledScrollView, Stack, StyledShape } from "fluent-styles";
 import { Text } from "../../../src/components/text";
@@ -14,7 +14,7 @@ import {
 } from "../../../src/hymns/hymns-lookup";
 import { formatHymnShareText } from "../../../src/hymns/share-text";
 import { useReaderFontSize } from "../../../src/hymns/use-reader-font-size";
-import { COLORS } from "../../../src/theme/colors";
+import { COLORS , isDarkTheme } from "../../../src/theme/colors";
 
 const H_PAD = 24;
 
@@ -50,7 +50,7 @@ function HymnReaderScreenContent() {
 
   if (!hymn) {
     return (
-      <StyledPage showStatusBar flex={1} backgroundColor={COLORS.paper}>
+      <StyledPage showStatusBar flex={1} backgroundColor={COLORS.paper} statusBarStyle={isDarkTheme ? "light-content" : "dark-content"} statusBarBackgroundColor={Platform.OS === "android" ? COLORS.paper : undefined}>
         <ThemeHeader
           showBackArrow
           onBackPress={() => router.back()}
@@ -82,7 +82,7 @@ function HymnReaderScreenContent() {
   const lyrics = hymn.content.replace(/\r\n/g, "\n");
 
   return (
-    <StyledPage showStatusBar flex={1} backgroundColor={COLORS.paper}>
+    <StyledPage showStatusBar flex={1} backgroundColor={COLORS.paper} statusBarStyle={isDarkTheme ? "light-content" : "dark-content"} statusBarBackgroundColor={Platform.OS === "android" ? COLORS.paper : undefined}>
       <ThemeHeader
         shapeProps={{
           cycle: true,

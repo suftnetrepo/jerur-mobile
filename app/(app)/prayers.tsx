@@ -13,7 +13,8 @@ import { usePrayerTimes } from "../../src/hooks/useChurchData";
 import { useSettings } from "../../src/hooks/useChurchData";
 import { usePrayerReminders } from "../../src/notifications/use-prayer-reminders";
 import { openChurchEmailDraft } from "../../src/lib/church-email";
-import { COLORS, ICON_TONES } from "../../src/theme/colors";
+import { Platform } from "react-native";
+import { COLORS, ICON_TONES , isDarkTheme } from "../../src/theme/colors";
 import { router } from "expo-router";
 
 export default function PrayersScreen() {
@@ -72,7 +73,7 @@ function PrayersScreenContent() {
   }
 
   return (
-    <StyledPage flex={1} backgroundColor={COLORS.paper}>
+    <StyledPage flex={1} backgroundColor={COLORS.paper} statusBarStyle={isDarkTheme ? "light-content" : "dark-content"} statusBarBackgroundColor={Platform.OS === "android" ? COLORS.paper : undefined}>
       <ThemeHeader
         shapeProps={{
           cycle: true,

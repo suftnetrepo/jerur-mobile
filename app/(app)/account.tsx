@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import { router } from "expo-router";
+import { router, useLocalSearchParams } from "expo-router";
 import { Feather as Icon } from "@expo/vector-icons";
 import {
   StyledPage,
@@ -20,14 +20,40 @@ import { FormSubmitButton } from "../../src/components/FormSubmitButton";
 import { AccountSkeleton } from "../../src/components/skeleton";
 import { useFeatureFlags } from "../../src/hooks/useFeatureFlags";
 import { apiErrorMessage, apiErrorCode } from "../../src/api/client";
-import { COLORS } from "../../src/theme/colors";
+import { Platform } from "react-native";
+import { COLORS , isDarkTheme } from "../../src/theme/colors";
 import { SHADOW_SOFT } from "../../src/theme/shadows";
 
 export default function AccountScreen() {
   const { member, isLoading, logout, deleteAccount } = useMemberSession();
+  const params = useLocalSearchParams<{
+    returnTo?: string;
+    serviceId?: string;
+    title?: string;
+    startTime?: string;
+    endTime?: string;
+    days?: string;
+  }>();
+
+  function continueAfterAuthentication() {
+    if (params.returnTo === "check-in" && params.serviceId) {
+      router.replace({
+        pathname: "/check-in",
+        params: {
+          serviceId: params.serviceId,
+          title: params.title ?? "",
+          startTime: params.startTime ?? "",
+          endTime: params.endTime ?? "",
+          days: params.days ?? "[]",
+        },
+      });
+      return;
+    }
+    router.back();
+  }
 
   return (
-    <StyledPage flex={1} backgroundColor={COLORS.paper}>
+    <StyledPage flex={1} backgroundColor={COLORS.paper} statusBarStyle={isDarkTheme ? "light-content" : "dark-content"} statusBarBackgroundColor={Platform.OS === "android" ? COLORS.paper : undefined}>
       <AppBackHeader title="Account" />
       <StyledScrollView contentContainerStyle={{  paddingTop: 10, paddingBottom: 60  }}>
         {isLoading ? (
@@ -57,7 +83,7 @@ export default function AccountScreen() {
           {member ? (
             <LoggedInView member={member} onLogout={logout} onDeleteAccount={deleteAccount} />
           ) : (
-            <AuthForms />
+            <AuthForms onAuthenticated={continueAfterAuthentication} />
           )}
         </Stack>
           </>
@@ -232,7 +258,7 @@ const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const PHONE_PATTERN = /^[0-9()+\-\s]{7,20}$/;
 const PIN_PATTERN = /^\d{4,6}$/;
 
-function AuthForms() {
+function AuthForms({ onAuthenticated }: { onAuthenticated: () => void }) {
   const { register, login, forgotPin } = useMemberSession();
   const toast = useToast();
   const notification = useNotification();
@@ -324,7 +350,7 @@ function AuthForms() {
     setLoading(true);
     try {
       await login(loginForm);
-      router.back();
+      onAuthenticated();
     } catch (err) {
       toast.error(apiErrorMessage(err, "Login failed. Please try again."));
     } finally {
@@ -348,7 +374,7 @@ function AuthForms() {
       toast.success("Account created successfully.");
       // register() already logs the new member straight in — this just
       // continues whichever flow was already implemented for that (Home).
-      router.back();
+      onAuthenticated();
     } catch (err) {
       const code = apiErrorCode(err);
       if (code === "EMAIL_EXISTS" || code === "MOBILE_EXISTS") {
@@ -385,7 +411,7 @@ function AuthForms() {
     try {
       await forgotPin(forgotForm);
       toast.success("PIN updated. You're logged in.");
-      router.back();
+      onAuthenticated();
     } catch (err) {
       toast.error(apiErrorMessage(err, "Couldn't reset your PIN. Please try again."));
     } finally {

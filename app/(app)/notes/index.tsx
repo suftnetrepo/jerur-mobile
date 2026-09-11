@@ -1,6 +1,6 @@
 import { ThemeHeader } from "@/src/components/ThemeHeader";
 import { useCallback, useState } from "react";
-import { FlatList } from "react-native";
+import { FlatList, Platform } from "react-native";
 import { router, useFocusEffect } from "expo-router";
 import { Feather as Icon } from "@expo/vector-icons";
 import {
@@ -15,7 +15,7 @@ import { FeatureGate } from "../../../src/components/FeatureGate";
 import { NoteCard } from "../../../src/components/NoteCard";
 import { getNotes } from "../../../src/notes/notes-repository";
 import { searchNotes } from "../../../src/notes/notes-search";
-import { COLORS, ICON_TONES } from "../../../src/theme/colors";
+import { COLORS, ICON_TONES , isDarkTheme } from "../../../src/theme/colors";
 import { SHADOW_SOFT } from "../../../src/theme/shadows";
 import type { Note } from "../../../src/notes/types";
 
@@ -50,7 +50,7 @@ function NotesScreenContent() {
   const filtered = searchNotes(notes, query);
 
   return (
-    <StyledPage showStatusBar flex={1} backgroundColor={COLORS.paper}>
+    <StyledPage showStatusBar flex={1} backgroundColor={COLORS.paper} statusBarStyle={isDarkTheme ? "light-content" : "dark-content"} statusBarBackgroundColor={Platform.OS === "android" ? COLORS.paper : undefined}>
       <ThemeHeader
         showBackArrow
         shapeProps={{

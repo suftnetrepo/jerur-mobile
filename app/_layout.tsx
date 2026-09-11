@@ -1,5 +1,5 @@
 import { Fragment, useEffect, type ReactNode } from "react";
-import { Image, StatusBar } from "react-native";
+import { Image, Platform, StatusBar } from "react-native";
 import { Stack as RouterStack, useRouter, useSegments } from "expo-router";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { GlobalPortalProvider, PortalManager, StyledPage, Stack } from "fluent-styles";
@@ -69,7 +69,12 @@ function RouteGuard({ children }: { children: ReactNode }) {
 
   if (isLoading || themeLoading || !fontsLoaded) {
     return (
-      <StyledPage flex={1} backgroundColor="#FFFFFF">
+      <StyledPage
+        flex={1}
+        backgroundColor="#FFFFFF"
+        statusBarStyle="dark-content"
+        statusBarBackgroundColor={Platform.OS === "android" ? "#FFFFFF" : undefined}
+      >
         <Stack flex={1} alignItems="center" justifyContent="center">
           <Image
             source={SPLASH_LOGO}

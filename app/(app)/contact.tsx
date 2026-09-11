@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Animated, Linking } from "react-native";
+import { Animated, Linking, Platform } from "react-native";
 import { Feather as Icon } from "@expo/vector-icons";
 import {
   StyledPage,
@@ -15,7 +15,7 @@ import { ContactInfoRow } from "../../src/components/ContactInfoRow";
 import { useFadeUp } from "../../src/hooks/useFadeUp";
 import { useSettings } from "../../src/hooks/useChurchData";
 import { openChurchEmailDraft } from "../../src/lib/church-email";
-import { COLORS } from "../../src/theme/colors";
+import { COLORS , isDarkTheme } from "../../src/theme/colors";
 import { SHADOW_SOFT } from "../../src/theme/shadows";
 
 export default function ContactScreen() {
@@ -116,7 +116,7 @@ function ContactScreenContent() {
   }
 
   return (
-    <StyledPage flex={1} backgroundColor={COLORS.paper}>
+    <StyledPage flex={1} backgroundColor={COLORS.paper} statusBarStyle={isDarkTheme ? "light-content" : "dark-content"} statusBarBackgroundColor={Platform.OS === "android" ? COLORS.paper : undefined}>
       <AppBackHeader  />
       <StyledScrollView
         contentContainerStyle={{ padding: 24, paddingBottom: 60 }}

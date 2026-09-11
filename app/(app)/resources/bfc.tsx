@@ -1,4 +1,4 @@
-import { Animated, Linking } from "react-native";
+import { Animated, Linking, Platform } from "react-native";
 import { Feather as Icon } from "@expo/vector-icons";
 import {
   StyledPage,
@@ -12,7 +12,7 @@ import { FeatureGate } from "../../../src/components/FeatureGate";
 import { AppBackHeader } from "../../../src/components/AppBackHeader";
 import { useFadeUp } from "../../../src/hooks/useFadeUp";
 import { useSettings } from "../../../src/hooks/useChurchData";
-import { COLORS } from "../../../src/theme/colors";
+import { COLORS , isDarkTheme } from "../../../src/theme/colors";
 import { SHADOW_CARD, SHADOW_SOFT } from "../../../src/theme/shadows";
 
 export default function BfcScreen() {
@@ -50,7 +50,7 @@ function BfcScreenContent() {
   }
 
   return (
-    <StyledPage flex={1} backgroundColor={COLORS.paper}>
+    <StyledPage flex={1} backgroundColor={COLORS.paper} statusBarStyle={isDarkTheme ? "light-content" : "dark-content"} statusBarBackgroundColor={Platform.OS === "android" ? COLORS.paper : undefined}>
       <AppBackHeader title="Believers Foundation Class" />
 
       <StyledScrollView

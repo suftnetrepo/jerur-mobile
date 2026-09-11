@@ -1,4 +1,4 @@
-import { Animated } from "react-native";
+import { Animated, Platform } from "react-native";
 import { router } from "expo-router";
 import { Feather as Icon } from "@expo/vector-icons";
 import { StyledPage, StyledScrollView, StyledPressable, StyledShape, Stack } from "fluent-styles";
@@ -7,7 +7,7 @@ import { BottomTabBar } from "../../src/components/BottomTabBar";
 import { useFadeUp } from "../../src/hooks/useFadeUp";
 import { useFeatureFlags } from "../../src/hooks/useFeatureFlags";
 import { SHADOW_SOFT } from "../../src/theme/shadows";
-import { COLORS, ICON_TONES } from "../../src/theme/colors";
+import { COLORS, ICON_TONES , isDarkTheme } from "../../src/theme/colors";
 
 type SettingsItem = { label: string; description: string; icon: string; route: string };
 
@@ -65,7 +65,7 @@ export default function MoreScreen() {
   ];
 
   return (
-    <StyledPage showStatusBar flex={1} backgroundColor={COLORS.paper}>
+    <StyledPage showStatusBar flex={1} backgroundColor={COLORS.paper} statusBarStyle={isDarkTheme ? "light-content" : "dark-content"} statusBarBackgroundColor={Platform.OS === "android" ? COLORS.paper : undefined}>
       <StyledScrollView contentContainerStyle={{ paddingBottom: 32 }}>
         <Stack backgroundColor={COLORS.paper} paddingHorizontal={22}  paddingBottom={34}>
           <Stack horizontal alignItems="center" gap={9} marginBottom={14}>

@@ -1,6 +1,6 @@
 import { ThemeHeader } from "@/src/components/ThemeHeader";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { InteractionManager } from "react-native";
+import { InteractionManager, Platform } from "react-native";
 import { router } from "expo-router";
 import { Feather as Icon } from "@expo/vector-icons";
 import {
@@ -19,7 +19,7 @@ import { SpringChip } from "../../../src/components/SpringChip";
 import { getBooks } from "../../../src/bible/bible-books";
 import type { BibleBook } from "../../../src/bible/types";
 import { useBookListFontSize } from "../../../src/bible/use-book-list-font-size";
-import { COLORS, ICON_TONES } from "../../../src/theme/colors";
+import { COLORS, ICON_TONES , isDarkTheme } from "../../../src/theme/colors";
 
 export default function BibleScreen() {
   return (
@@ -80,7 +80,7 @@ function BibleScreenContent() {
   }
 
   return (
-    <StyledPage showStatusBar flex={1} backgroundColor={COLORS.paper}>
+    <StyledPage showStatusBar flex={1} backgroundColor={COLORS.paper} statusBarStyle={isDarkTheme ? "light-content" : "dark-content"} statusBarBackgroundColor={Platform.OS === "android" ? COLORS.paper : undefined}>
       <ThemeHeader
         showBackArrow
         shapeProps={{

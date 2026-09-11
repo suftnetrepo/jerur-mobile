@@ -1,4 +1,4 @@
-import { Image, Linking, Share, useWindowDimensions } from "react-native";
+import { Image, Linking, Platform, Share, useWindowDimensions } from "react-native";
 import { router, useLocalSearchParams } from "expo-router";
 import { Feather as Icon } from "@expo/vector-icons";
 import { StyledPage, StyledScrollView, StyledButton, Stack } from "fluent-styles";
@@ -10,7 +10,7 @@ import { ArticleDetailSkeleton } from "../../../src/components/skeleton";
 import { useArticleDetail } from "../../../src/hooks/useChurchData";
 import { getFeatureById } from "../../../src/config/mobileFeatures";
 import { SHADOW_SOFT } from "../../../src/theme/shadows";
-import { COLORS } from "../../../src/theme/colors";
+import { COLORS , isDarkTheme } from "../../../src/theme/colors";
 import { AppBackHeader } from "../../../src/components/AppBackHeader";
 
 const H_PAD = 24;
@@ -74,7 +74,7 @@ function ArticleDetailScreenContent() {
   }
 
   return (
-    <StyledPage showStatusBar backgroundColor={COLORS.paper}>
+    <StyledPage showStatusBar backgroundColor={COLORS.paper} statusBarStyle={isDarkTheme ? "light-content" : "dark-content"} statusBarBackgroundColor={Platform.OS === "android" ? COLORS.paper : undefined}>
         <AppBackHeader title="Article" />
      
       {isLoading ? (

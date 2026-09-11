@@ -7,7 +7,8 @@ import { Text } from "../../../../../src/components/text";
 import { FeatureGate } from "../../../../../src/components/FeatureGate";
 import { BibleChapterGrid, useBibleGridWidth } from "../../../../../src/components/BibleChapterGrid";
 import { getBook, getVerseCount } from "../../../../../src/bible/bible-lookup";
-import { COLORS, ICON_TONES } from "../../../../../src/theme/colors";
+import { Platform } from "react-native";
+import { COLORS, ICON_TONES , isDarkTheme } from "../../../../../src/theme/colors";
 import { SHADOW_CARD } from "../../../../../src/theme/shadows";
 
 const H_PAD = 24;
@@ -38,7 +39,7 @@ function BibleVerseSelectionScreenContent() {
 
   if (!book) {
     return (
-      <StyledPage showStatusBar flex={1} backgroundColor={COLORS.paper}>
+      <StyledPage showStatusBar flex={1} backgroundColor={COLORS.paper} statusBarStyle={isDarkTheme ? "light-content" : "dark-content"} statusBarBackgroundColor={Platform.OS === "android" ? COLORS.paper : undefined}>
         <ThemeHeader showBackArrow onBackPress={() => router.back()} title="Bible" titleAlignment="center" />
         <Stack flex={1} alignItems="center" justifyContent="center" paddingHorizontal={32}>
           <Text fontSize={14} color={COLORS.inkSoft} style={{ textAlign: "center" }}>
@@ -52,7 +53,7 @@ function BibleVerseSelectionScreenContent() {
   const tone = ICON_TONES[(book.number - 1) % ICON_TONES.length];
 
   return (
-    <StyledPage showStatusBar flex={1} backgroundColor={COLORS.paper}>
+    <StyledPage showStatusBar flex={1} backgroundColor={COLORS.paper} statusBarStyle={isDarkTheme ? "light-content" : "dark-content"} statusBarBackgroundColor={Platform.OS === "android" ? COLORS.paper : undefined}>
       <ThemeHeader
         showBackArrow
          shapeProps ={{ cycle: true, size : 48, borderRadius: 24, borderWidth: 1, borderColor: COLORS.chromeBorder }}

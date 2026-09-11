@@ -1,4 +1,4 @@
-import { Image, Linking } from "react-native";
+import { Image, Linking, Platform } from "react-native";
 import { router } from "expo-router";
 import { Feather as Icon } from "@expo/vector-icons";
 import {
@@ -12,7 +12,7 @@ import { ContactInfoRow } from "../../src/components/ContactInfoRow";
 import { AboutSkeleton } from "../../src/components/skeleton";
 import { useSettings } from "../../src/hooks/useChurchData";
 import { useDenominations } from "../../src/hooks/useDenominations";
-import { COLORS } from "../../src/theme/colors";
+import { COLORS , isDarkTheme } from "../../src/theme/colors";
 import { SHADOW_CARD } from "../../src/theme/shadows";
 import { AppBackHeader } from "../../src/components/AppBackHeader";
 
@@ -126,7 +126,7 @@ export default function AboutScreen() {
   ].filter(Boolean) as ContactRowData[];
 
   return (
-    <StyledPage flex={1} backgroundColor={COLORS.paper}>
+    <StyledPage flex={1} backgroundColor={COLORS.paper} statusBarStyle={isDarkTheme ? "light-content" : "dark-content"} statusBarBackgroundColor={Platform.OS === "android" ? COLORS.paper : undefined}>
       <AppBackHeader title="About Us" />
       <StyledScrollView
       showsVerticalScrollIndicator={false}

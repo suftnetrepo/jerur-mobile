@@ -1,4 +1,4 @@
-import { Animated, Linking } from "react-native";
+import { Animated, Linking, Platform } from "react-native";
 import { Feather as Icon } from "@expo/vector-icons";
 import {
   StyledPage,
@@ -15,7 +15,7 @@ import {
   FooterChurchIllustration,
 } from "../../src/components/illustrations/TransportIllustrations";
 import { useFadeUp } from "../../src/hooks/useFadeUp";
-import { COLORS } from "../../src/theme/colors";
+import { COLORS , isDarkTheme } from "../../src/theme/colors";
 import { SHADOW_SOFT, SHADOW_CARD } from "../../src/theme/shadows";
 
 export default function FreeTransportScreen() {
@@ -36,7 +36,7 @@ function FreeTransportScreenContent() {
   const footerAnim = useFadeUp(490);
 
   return (
-    <StyledPage flex={1} backgroundColor={COLORS.paper}>
+    <StyledPage flex={1} backgroundColor={COLORS.paper} statusBarStyle={isDarkTheme ? "light-content" : "dark-content"} statusBarBackgroundColor={Platform.OS === "android" ? COLORS.paper : undefined}>
       <AppBackHeader title="Free Transport" />
       <StyledScrollView
         contentContainerStyle={{ paddingHorizontal: 24, paddingTop: 10, paddingBottom: 60 }}

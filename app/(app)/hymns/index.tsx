@@ -1,6 +1,6 @@
 import { ThemeHeader } from "@/src/components/ThemeHeader";
 import { useCallback, useMemo, useState } from "react";
-import { FlatList, TextInput } from "react-native";
+import { FlatList, Platform, TextInput } from "react-native";
 import { router } from "expo-router";
 import { Feather as Icon } from "@expo/vector-icons";
 import {
@@ -16,7 +16,7 @@ import { AppBackHeader } from "../../../src/components/AppBackHeader";
 import { BottomTabBar } from "../../../src/components/BottomTabBar";
 import { HymnRow } from "../../../src/components/HymnRow";
 import { getHymns, searchHymns } from "../../../src/hymns/hymns-lookup";
-import { COLORS, ICON_TONES } from "../../../src/theme/colors";
+import { COLORS, ICON_TONES , isDarkTheme } from "../../../src/theme/colors";
 import type { HymnSummary } from "../../../src/hymns/types";
 
 export default function HymnsScreen() {
@@ -51,7 +51,7 @@ function HymnsScreenContent() {
   );
 
   return (
-    <StyledPage showStatusBar backgroundColor={COLORS.paper}>
+    <StyledPage showStatusBar backgroundColor={COLORS.paper} statusBarStyle={isDarkTheme ? "light-content" : "dark-content"} statusBarBackgroundColor={Platform.OS === "android" ? COLORS.paper : undefined}>
       <ThemeHeader
         showBackArrow
         shapeProps={{

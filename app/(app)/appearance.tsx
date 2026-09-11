@@ -1,3 +1,4 @@
+import { Platform } from "react-native";
 import { Feather as Icon } from "@expo/vector-icons";
 import { StyledPage, StyledPressable, StyledScrollView, Stack } from "fluent-styles";
 import { AppBackHeader } from "../../src/components/AppBackHeader";
@@ -88,7 +89,7 @@ export default function AppearanceScreen() {
     <StyledPage
       showStatusBar
       statusBarStyle={activeThemeId === "dark" ? "light-content" : "dark-content"}
-      statusBarBackgroundColor={Colors.paperSoft}
+      statusBarBackgroundColor={Platform.OS === "android" ? Colors.paperSoft : undefined}
       flex={1}
       backgroundColor={Colors.paperSoft}
     >

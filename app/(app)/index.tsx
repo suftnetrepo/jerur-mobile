@@ -1,5 +1,5 @@
 import { useCallback, useMemo, useState } from "react";
-import { Animated, RefreshControl, ScrollView } from "react-native";
+import { Animated, Platform, RefreshControl, ScrollView } from "react-native";
 import { router, useFocusEffect } from "expo-router";
 import { useQueryClient } from "@tanstack/react-query";
 import { Feather as Icon } from "@expo/vector-icons";
@@ -37,9 +37,12 @@ import {
   useLatestArticles,
 } from "../../src/hooks/useChurchData";
 import { useFeatureFlags } from "../../src/hooks/useFeatureFlags";
-import { COLORS } from "../../src/theme/colors";
+import { COLORS , isDarkTheme } from "../../src/theme/colors";
 import { getNotificationPriority } from "../../src/config/notificationTypes";
 import { findLiveSessions } from "../../src/utils/liveSessions";
+import { AttendanceCheckInCard } from "../../src/components/AttendanceCheckInCard";
+import { useAttendanceReminder } from "../../src/hooks/useAttendanceReminder";
+import type { AttendanceReminder } from "../../src/api/attendance";
 
 const H_PAD = 20;
 
@@ -53,6 +56,10 @@ export default function HomeScreen() {
   const { data: latestArticles, isLoading: articlesLoading } =
     useLatestArticles();
   const { features, hasFeature } = useFeatureFlags();
+  const { data: attendanceReminder } = useAttendanceReminder(
+    hasFeature("attendance"),
+    member?._id,
+  );
 
   const headerAnim = useFadeUp(0);
 
@@ -72,6 +79,7 @@ export default function HomeScreen() {
       void Promise.all([
         queryClient.invalidateQueries({ queryKey: ["regular-services"] }),
         queryClient.invalidateQueries({ queryKey: ["prayer-times"] }),
+        queryClient.invalidateQueries({ queryKey: ["attendance-reminder"] }),
       ]);
     }, [queryClient]),
   );
@@ -92,6 +100,31 @@ export default function HomeScreen() {
     () => findLiveSessions(services, prayerTimes, scheduleNow),
     [services, prayerTimes, scheduleNow],
   );
+  const localAttendanceReminder = useMemo<AttendanceReminder | undefined>(() => {
+    const item = liveSessions.find((session) => session.kind === "service");
+    if (!item) return undefined;
+
+    return {
+      showReminder: true,
+      serviceId: item.session._id,
+      title: item.session.title,
+      description: item.session.description,
+      startTime: item.session.start_time,
+      endTime: item.session.end_time,
+      days: item.session.days,
+      state: item.isLive ? "LIVE" : "UPCOMING",
+      eyebrow: item.isLive ? "Service happening now" : "Coming up today",
+      message: item.isLive
+        ? "Let your church know you are here."
+        : "Your service starts soon. Check-in is open.",
+      actionLabel: "Check in",
+    };
+  }, [liveSessions]);
+  const visibleAttendanceReminder = member
+    ? attendanceReminder
+    : attendanceReminder?.showReminder
+      ? attendanceReminder
+      : localAttendanceReminder;
 
   // "Latest Message"/"More Article" header rows are just a label above
   // each section — nothing to separate while that section itself has
@@ -121,6 +154,7 @@ export default function HomeScreen() {
         queryClient.invalidateQueries({ queryKey: ["prayer-times"] }),
         queryClient.invalidateQueries({ queryKey: ["latest-sermon"] }),
         queryClient.invalidateQueries({ queryKey: ["latest-articles"] }),
+        queryClient.invalidateQueries({ queryKey: ["attendance-reminder"] }),
       ]);
       setScheduleNow(new Date());
     } finally {
@@ -147,7 +181,7 @@ export default function HomeScreen() {
   }
 
   return (
-    <StyledPage showStatusBar flex={1} backgroundColor={COLORS.paperSoft}>
+    <StyledPage showStatusBar flex={1} backgroundColor={COLORS.paperSoft} statusBarStyle={isDarkTheme ? "light-content" : "dark-content"} statusBarBackgroundColor={Platform.OS === "android" ? COLORS.paperSoft : undefined}>
       {/* Top chrome — current-church selector / notifications / avatar.
           Same row/spacing as before; the only change from the hamburger
           version is this one swap (menu icon -> CurrentChurchHeader). */}
@@ -218,6 +252,11 @@ export default function HomeScreen() {
             <HomeSkeletonPills />
           ) : null}
 
+          <AttendanceCheckInCard
+            reminder={visibleAttendanceReminder}
+            isMemberSignedIn={Boolean(member)}
+          />
+
           {/* Important administrator notices win. Otherwise a service or
               prayer in its configured lead-time window takes this slot,
               followed by a normal administrator notice and the banner. */}
@@ -225,12 +264,6 @@ export default function HomeScreen() {
             <HomeSkeletonHero />
           ) : hasPriorityNotification ? (
             <NotificationCard notification={settings?.notification} />
-          ) : liveSessions.length > 0 ? (
-            <Stack paddingHorizontal={H_PAD} gap={12}>
-              {liveSessions.map((item) => (
-                <LiveSessionCard key={item.key} item={item} />
-              ))}
-            </Stack>
           ) : hasActiveNotification ? (
             <NotificationCard notification={settings?.notification} />
           ) : (

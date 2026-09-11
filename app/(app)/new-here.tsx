@@ -8,7 +8,8 @@ import {
 } from "fluent-styles";
 import { Text } from "../../src/components/text";
 import { FeatureGate } from "../../src/components/FeatureGate";
-import { COLORS } from "../../src/theme/colors";
+import { Platform } from "react-native";
+import { COLORS , isDarkTheme } from "../../src/theme/colors";
 
 const FAQ = [
   {
@@ -79,7 +80,7 @@ export default function NewHereScreen() {
 
 function NewHereScreenContent() {
   return (
-    <StyledPage flex={1} backgroundColor={COLORS.paper}>
+    <StyledPage flex={1} backgroundColor={COLORS.paper} statusBarStyle={isDarkTheme ? "light-content" : "dark-content"} statusBarBackgroundColor={Platform.OS === "android" ? COLORS.paper : undefined}>
       <ThemeHeader
         shapeProps={{
           cycle: true,

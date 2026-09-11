@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Image } from "react-native";
+import { Image, Platform } from "react-native";
 import { Feather as Icon } from "@expo/vector-icons";
 import {
   StyledPage,
@@ -18,7 +18,7 @@ import { EventsSkeleton } from "../../../src/components/skeleton";
 import { useEvents } from "../../../src/hooks/useChurchData";
 import { useEventRegistration } from "../../../src/hooks/useSubmissions";
 import { apiErrorMessage } from "../../../src/api/client";
-import { COLORS } from "../../../src/theme/colors";
+import { COLORS , isDarkTheme } from "../../../src/theme/colors";
 import { SHADOW_CARD } from "../../../src/theme/shadows";
 import type { ChurchEvent } from "../../../src/api/types";
 
@@ -46,7 +46,7 @@ function EventsScreenContent() {
   const published = (events ?? []).filter((e) => e.status !== false);
 
   return (
-    <StyledPage flex={1} backgroundColor={COLORS.paper}>
+    <StyledPage flex={1} backgroundColor={COLORS.paper} statusBarStyle={isDarkTheme ? "light-content" : "dark-content"} statusBarBackgroundColor={Platform.OS === "android" ? COLORS.paper : undefined}>
       <AppBackHeader title="Upcoming Events" />
       <Stack paddingHorizontal={24} paddingTop={8} paddingBottom={12}>
        <Stack

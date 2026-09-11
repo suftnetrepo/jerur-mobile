@@ -1,6 +1,6 @@
 import { ThemeHeader } from "@/src/components/ThemeHeader";
 import { useRef, useState } from "react";
-import { Dimensions } from "react-native";
+import { Dimensions, Platform } from "react-native";
 import { router, useLocalSearchParams } from "expo-router";
 import { Feather as Icon } from "@expo/vector-icons";
 import {
@@ -24,9 +24,10 @@ import {
   isServiceDay,
 } from "../../src/lib/service-days";
 import { SHADOW_SOFT } from "../../src/theme/shadows";
-import { COLORS } from "../../src/theme/colors";
+import { COLORS , isDarkTheme } from "../../src/theme/colors";
 import type { AttendanceStatus } from "../../src/api/types";
 import { AppBackHeader } from "@/src/components/AppBackHeader";
+import type { HouseholdAttendance } from "../../src/api/attendance";
 
 // Primary selection accent — matches the mock's bright indigo/violet.
 const ACCENT = "#5B6CF9";
@@ -101,6 +102,17 @@ const SCREEN_PAD = 20;
 const CHIP_GAP = 10;
 const { width: SCREEN_WIDTH } = Dimensions.get("window");
 const CHIP_WIDTH = (SCREEN_WIDTH - SCREEN_PAD * 2 - CHIP_GAP) / 2;
+const HOUSEHOLD_GROUPS: { key: keyof HouseholdAttendance; label: string; guidance: string }[] = [
+  { key: "adults", label: "Adults", guidance: "18 years and over" },
+  { key: "youth", label: "Youth", guidance: "13–17 years" },
+  { key: "children", label: "Children", guidance: "0–12 years" },
+];
+
+const EMPTY_HOUSEHOLD: HouseholdAttendance = {
+  adults: { male: 0, female: 0 },
+  youth: { male: 0, female: 0 },
+  children: { male: 0, female: 0 },
+};
 
 export default function CheckInScreen() {
   return (
@@ -123,15 +135,32 @@ function CheckInScreenContent() {
 
   const [status, setStatus] = useState<AttendanceStatus | null>(null);
   const [message, setMessage] = useState("");
+  const [household, setHousehold] = useState<HouseholdAttendance>(EMPTY_HOUSEHOLD);
   const [submitting, setSubmitting] = useState(false);
   // Belt-and-braces against a double-tap landing before `disabled` visually
   // takes effect — checked synchronously at the top of handleSubmit, not
   // just relied on via the button's own state.
   const submittingRef = useRef(false);
 
+  const capturesHousehold = status === "PRESENT_IN_CHURCH" || status === "JOINED_ONLINE";
+  const householdTotal = Object.values(household).reduce(
+    (total, group) => total + group.male + group.female,
+    0,
+  );
+
+  function updateHousehold(group: keyof HouseholdAttendance, gender: "male" | "female", change: number) {
+    setHousehold((current) => ({
+      ...current,
+      [group]: {
+        ...current[group],
+        [gender]: Math.max(0, current[group][gender] + change),
+      },
+    }));
+  }
+
   if (!member) {
     return (
-      <StyledPage flex={1} backgroundColor={COLORS.paper}>
+      <StyledPage flex={1} backgroundColor={COLORS.paper} statusBarStyle={isDarkTheme ? "light-content" : "dark-content"} statusBarBackgroundColor={Platform.OS === "android" ? COLORS.paper : undefined}>
         <ThemeHeader
           shapeProps={{
             cycle: true,
@@ -177,7 +206,7 @@ function CheckInScreenContent() {
   // rather than rendering a form with nothing to submit against.
   if (!params.serviceId) {
     return (
-      <StyledPage flex={1} backgroundColor={COLORS.paper}>
+      <StyledPage flex={1} backgroundColor={COLORS.paper} statusBarStyle={isDarkTheme ? "light-content" : "dark-content"} statusBarBackgroundColor={Platform.OS === "android" ? COLORS.paper : undefined}>
         <ThemeHeader
           title="Submit attendance"
           titleAlignment="center"
@@ -233,7 +262,7 @@ function CheckInScreenContent() {
   // reached.
   if (!isServiceDay(serviceDays)) {
     return (
-      <StyledPage flex={1} backgroundColor={COLORS.paper}>
+      <StyledPage flex={1} backgroundColor={COLORS.paper} statusBarStyle={isDarkTheme ? "light-content" : "dark-content"} statusBarBackgroundColor={Platform.OS === "android" ? COLORS.paper : undefined}>
         <AppBackHeader title="" />
       
      
@@ -289,6 +318,10 @@ function CheckInScreenContent() {
       toast.error("Choose how you're joining.");
       return;
     }
+    if (capturesHousehold && householdTotal < 1) {
+      toast.error("Add everyone attending, including yourself.");
+      return;
+    }
     submittingRef.current = true;
     setSubmitting(true);
     try {
@@ -303,6 +336,7 @@ function CheckInScreenContent() {
         status,
         message: message.trim() || undefined,
         checkedInVia: "ONLINE",
+        household: capturesHousehold ? household : undefined,
       });
       toast.success("You're checked in", "Thanks for letting us know.");
       router.back();
@@ -317,7 +351,7 @@ function CheckInScreenContent() {
   }
 
   return (
-    <StyledPage flex={1} backgroundColor={COLORS.paper}>
+    <StyledPage flex={1} backgroundColor={COLORS.paper} statusBarStyle={isDarkTheme ? "light-content" : "dark-content"} statusBarBackgroundColor={Platform.OS === "android" ? COLORS.paper : undefined}>
       <AppBackHeader title="Attendance" />
       <StyledScrollView
         contentContainerStyle={{
@@ -477,6 +511,63 @@ function CheckInScreenContent() {
           })}
         </Stack>
 
+        {capturesHousehold ? (
+          <Stack marginTop={24} gap={12}>
+            <Stack horizontal alignItems="flex-end" justifyContent="space-between" gap={12}>
+              <Stack style={{ flex: 1 }}>
+                <Text variant="title" fontSize={17} fontWeight="800" color={COLORS.ink}>
+                  Who is attending?
+                </Text>
+                <Text fontSize={12.5} color={COLORS.inkSoft} style={{ marginTop: 3 }}>
+                  Include yourself and the family members joining you.
+                </Text>
+              </Stack>
+              <Stack
+                minWidth={64}
+                paddingHorizontal={12}
+                paddingVertical={8}
+                borderRadius={999}
+                backgroundColor="rgba(13, 148, 136, 0.10)"
+                alignItems="center"
+              >
+                <Text fontSize={16} fontWeight="800" color="#0d9488">{householdTotal}</Text>
+                <Text fontSize={10.5} fontWeight="700" color="#0d9488">TOTAL</Text>
+              </Stack>
+            </Stack>
+
+            {HOUSEHOLD_GROUPS.map((group) => (
+              <Stack
+                key={group.key}
+                backgroundColor={COLORS.white}
+                borderWidth={1}
+                borderColor={COLORS.chromeBorder}
+                borderRadius={16}
+                padding={16}
+                gap={14}
+              >
+                <Stack>
+                  <Text fontSize={15} fontWeight="800" color={COLORS.ink}>{group.label}</Text>
+                  <Text fontSize={11.5} color={COLORS.inkSoft}>{group.guidance}</Text>
+                </Stack>
+                <Stack horizontal gap={12}>
+                  <AttendanceCounter
+                    label="Male"
+                    value={household[group.key].male}
+                    onDecrease={() => updateHousehold(group.key, "male", -1)}
+                    onIncrease={() => updateHousehold(group.key, "male", 1)}
+                  />
+                  <AttendanceCounter
+                    label="Female"
+                    value={household[group.key].female}
+                    onDecrease={() => updateHousehold(group.key, "female", -1)}
+                    onIncrease={() => updateHousehold(group.key, "female", 1)}
+                  />
+                </Stack>
+              </Stack>
+            ))}
+          </Stack>
+        ) : null}
+
         {status === "NEEDS_PRAYER" && (
           <Stack
             horizontal
@@ -540,5 +631,61 @@ function CheckInScreenContent() {
         </Stack>
       </StyledScrollView>
     </StyledPage>
+  );
+}
+
+function AttendanceCounter({
+  label,
+  value,
+  onDecrease,
+  onIncrease,
+}: {
+  label: string;
+  value: number;
+  onDecrease: () => void;
+  onIncrease: () => void;
+}) {
+  return (
+    <Stack style={{ flex: 1 }} gap={7}>
+      <Text fontSize={12} fontWeight="700" color={COLORS.inkSoft}>{label}</Text>
+      <Stack
+        horizontal
+        alignItems="center"
+        justifyContent="space-between"
+        borderWidth={1}
+        borderColor={COLORS.chromeBorder}
+        borderRadius={999}
+        padding={4}
+      >
+        <StyledPressable
+          width={34}
+          height={34}
+          borderRadius={17}
+          backgroundColor={COLORS.chrome}
+          alignItems="center"
+          justifyContent="center"
+          disabled={value === 0}
+          onPress={onDecrease}
+          accessibilityRole="button"
+          accessibilityLabel={`Remove one ${label.toLowerCase()}`}
+        >
+          <Icon name="minus" size={16} color={value === 0 ? COLORS.chromeBorder : COLORS.ink} />
+        </StyledPressable>
+        <Text fontSize={18} fontWeight="800" color={COLORS.ink}>{value}</Text>
+        <StyledPressable
+          width={34}
+          height={34}
+          borderRadius={17}
+          backgroundColor={ACCENT}
+          alignItems="center"
+          justifyContent="center"
+          onPress={onIncrease}
+          accessibilityRole="button"
+          accessibilityLabel={`Add one ${label.toLowerCase()}`}
+        >
+          <Icon name="plus" size={16} color={COLORS.onPrimary} />
+        </StyledPressable>
+      </Stack>
+    </Stack>
   );
 }

@@ -1,4 +1,4 @@
-import { Linking } from "react-native";
+import { Linking, Platform } from "react-native";
 import { router } from "expo-router";
 import { Feather as Icon } from "@expo/vector-icons";
 import {
@@ -23,7 +23,7 @@ import {
   formatServiceDayNames,
   isServiceDay,
 } from "../../src/lib/service-days";
-import { COLORS, ICON_TONES } from "../../src/theme/colors";
+import { COLORS, ICON_TONES , isDarkTheme } from "../../src/theme/colors";
 import { SHADOW_CARD } from "../../src/theme/shadows";
 import type { RegularService } from "../../src/api/types";
 
@@ -73,7 +73,7 @@ function ServiceTimesScreenContent() {
   }
 
   return (
-    <StyledPage showStatusBar backgroundColor={COLORS.paper}>
+    <StyledPage showStatusBar backgroundColor={COLORS.paper} statusBarStyle={isDarkTheme ? "light-content" : "dark-content"} statusBarBackgroundColor={Platform.OS === "android" ? COLORS.paper : undefined}>
       <AppBackHeader title="Service Times" />
       <StyledScrollView
       showsVerticalScrollIndicator={false}

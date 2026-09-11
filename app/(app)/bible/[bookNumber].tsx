@@ -15,7 +15,8 @@ import {
   useBibleGridWidth,
 } from "../../../src/components/BibleChapterGrid";
 import { getBook } from "../../../src/bible/bible-books";
-import { COLORS, ICON_TONES } from "../../../src/theme/colors";
+import { Platform } from "react-native";
+import { COLORS, ICON_TONES , isDarkTheme } from "../../../src/theme/colors";
 import { SHADOW_CARD } from "../../../src/theme/shadows";
 
 const H_PAD = 24;
@@ -38,7 +39,7 @@ function BibleBookScreenContent() {
 
   if (!book) {
     return (
-      <StyledPage showStatusBar flex={1} backgroundColor={COLORS.paper}>
+      <StyledPage showStatusBar flex={1} backgroundColor={COLORS.paper} statusBarStyle={isDarkTheme ? "light-content" : "dark-content"} statusBarBackgroundColor={Platform.OS === "android" ? COLORS.paper : undefined}>
         <ThemeHeader
           showBackArrow
           onBackPress={() => router.back()}
@@ -66,7 +67,7 @@ function BibleBookScreenContent() {
   const tone = ICON_TONES[(book.number - 1) % ICON_TONES.length];
 
   return (
-    <StyledPage showStatusBar flex={1} backgroundColor={COLORS.paper}>
+    <StyledPage showStatusBar flex={1} backgroundColor={COLORS.paper} statusBarStyle={isDarkTheme ? "light-content" : "dark-content"} statusBarBackgroundColor={Platform.OS === "android" ? COLORS.paper : undefined}>
       <ThemeHeader
         marginHorizontal={16}
         showBackArrow

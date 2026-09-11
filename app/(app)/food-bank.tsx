@@ -1,4 +1,4 @@
-import { Animated, Linking } from "react-native";
+import { Animated, Linking, Platform } from "react-native";
 import { Feather as Icon } from "@expo/vector-icons";
 import { StyledPage, StyledScrollView, Stack } from "fluent-styles";
 import { Text } from "../../src/components/text";
@@ -12,7 +12,7 @@ import {
   DonationHandsIllustration,
 } from "../../src/components/illustrations/FoodBankIllustrations";
 import { useFadeUp } from "../../src/hooks/useFadeUp";
-import { COLORS } from "../../src/theme/colors";
+import { COLORS , isDarkTheme } from "../../src/theme/colors";
 import { SHADOW_SOFT, SHADOW_CARD } from "../../src/theme/shadows";
 
 // ── Screen ─────────────────────────────────────────────────────────────────
@@ -34,7 +34,7 @@ function FoodBankScreenContent() {
   const footerAnim = useFadeUp(460);
 
   return (
-    <StyledPage flex={1} backgroundColor={COLORS.paper}>
+    <StyledPage flex={1} backgroundColor={COLORS.paper} statusBarStyle={isDarkTheme ? "light-content" : "dark-content"} statusBarBackgroundColor={Platform.OS === "android" ? COLORS.paper : undefined}>
       <AppBackHeader title="Food Bank" />
       <StyledScrollView contentContainerStyle={{  paddingHorizontal: 24,
           paddingTop: 10,

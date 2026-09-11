@@ -13,7 +13,8 @@ import { AppBackHeader } from "../../src/components/AppBackHeader";
 import { FormSubmitButton } from "../../src/components/FormSubmitButton";
 import { useSettings } from "../../src/hooks/useChurchData";
 import { openChurchEmailDraft } from "../../src/lib/church-email";
-import { COLORS } from "../../src/theme/colors";
+import { Platform } from "react-native";
+import { COLORS , isDarkTheme } from "../../src/theme/colors";
 import { SHADOW_CARD } from "../../src/theme/shadows";
 
 const FEATURED = {
@@ -77,7 +78,7 @@ function TestimoniesScreenContent() {
   }
 
   return (
-    <StyledPage flex={1} backgroundColor={COLORS.paper}>
+    <StyledPage flex={1} backgroundColor={COLORS.paper} statusBarStyle={isDarkTheme ? "light-content" : "dark-content"} statusBarBackgroundColor={Platform.OS === "android" ? COLORS.paper : undefined}>
       <AppBackHeader title="Testimonies" />
 
       <StyledScrollView

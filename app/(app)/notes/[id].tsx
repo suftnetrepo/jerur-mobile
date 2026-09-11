@@ -19,7 +19,7 @@ import { getNoteById, updateNote, deleteNote } from "../../../src/notes/notes-re
 import { markNote, unmarkNote } from "../../../src/notes/marked-note";
 import { formatNoteDateTime, getDisplayTitle } from "../../../src/notes/display";
 import { formatNoteShareText } from "../../../src/notes/share-text";
-import { COLORS } from "../../../src/theme/colors";
+import { COLORS , isDarkTheme } from "../../../src/theme/colors";
 import type { Note } from "../../../src/notes/types";
 
 export default function NoteDetailScreen() {
@@ -98,7 +98,7 @@ function NoteDetailScreenContent() {
 
   if (note === undefined) {
     return (
-      <StyledPage showStatusBar flex={1} backgroundColor={COLORS.paper}>
+      <StyledPage showStatusBar flex={1} backgroundColor={COLORS.paper} statusBarStyle={isDarkTheme ? "light-content" : "dark-content"} statusBarBackgroundColor={Platform.OS === "android" ? COLORS.paper : undefined}>
         <ThemeHeader showBackArrow onBackPress={() => router.back()} backgroundColor={COLORS.paper} paddingHorizontal={16} />
         <Stack flex={1} alignItems="center" justifyContent="center">
           <Loader color={COLORS.indigo} />
@@ -109,7 +109,7 @@ function NoteDetailScreenContent() {
 
   if (note === null) {
     return (
-      <StyledPage showStatusBar flex={1} backgroundColor={COLORS.paper}>
+      <StyledPage showStatusBar flex={1} backgroundColor={COLORS.paper} statusBarStyle={isDarkTheme ? "light-content" : "dark-content"} statusBarBackgroundColor={Platform.OS === "android" ? COLORS.paper : undefined}>
         <ThemeHeader showBackArrow onBackPress={() => router.back()} title="Notes" titleAlignment="center" paddingHorizontal={16} />
         <Stack flex={1} alignItems="center" justifyContent="center" paddingHorizontal={32}>
           <Text fontSize={14} color={COLORS.inkSoft} style={{ textAlign: "center" }}>
@@ -121,7 +121,7 @@ function NoteDetailScreenContent() {
   }
 
   return (
-    <StyledPage showStatusBar flex={1} backgroundColor={COLORS.paper}>
+    <StyledPage showStatusBar flex={1} backgroundColor={COLORS.paper} statusBarStyle={isDarkTheme ? "light-content" : "dark-content"} statusBarBackgroundColor={Platform.OS === "android" ? COLORS.paper : undefined}>
       <ThemeHeader
         showBackArrow
         shapeProps={{

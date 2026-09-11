@@ -1,6 +1,6 @@
 import { ThemeHeader } from "@/src/components/ThemeHeader";
 import { useState } from "react";
-import { Image, Linking } from "react-native";
+import { Image, Linking, Platform } from "react-native";
 import { router } from "expo-router";
 import { Feather as Icon } from "@expo/vector-icons";
 import {
@@ -13,7 +13,7 @@ import { Text } from "../../src/components/text";
 import { WelcomeMessageCard } from "../../src/components/WelcomeMessageCard";
 import { PastorSkeleton } from "../../src/components/skeleton";
 import { useSettings } from "../../src/hooks/useChurchData";
-import { COLORS } from "../../src/theme/colors";
+import { COLORS , isDarkTheme } from "../../src/theme/colors";
 import { SHADOW_SOFT } from "../../src/theme/shadows";
 
 /**
@@ -54,7 +54,7 @@ export default function PastorScreen() {
   const showPhoto = !!pastor?.secure_url && !photoFailed;
 
   return (
-    <StyledPage flex={1} backgroundColor={COLORS.paper}>
+    <StyledPage flex={1} backgroundColor={COLORS.paper} statusBarStyle={isDarkTheme ? "light-content" : "dark-content"} statusBarBackgroundColor={Platform.OS === "android" ? COLORS.paper : undefined}>
       <ThemeHeader
         shapeProps={{
           cycle: true,

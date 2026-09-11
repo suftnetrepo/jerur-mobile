@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { Animated, ScrollView } from "react-native";
+import { Animated, Platform, ScrollView } from "react-native";
 import { router } from "expo-router";
 import { Feather as Icon } from "@expo/vector-icons";
 import {
@@ -27,7 +27,7 @@ import { ChurchResultsSkeleton } from "../../src/components/skeleton";
 import { useFadeUp } from "../../src/hooks/useFadeUp";
 import { useDenominations } from "../../src/hooks/useDenominations";
 import { SHADOW_SOFT, SHADOW_CARD, shadowCta } from "../../src/theme/shadows";
-import { COLORS } from "../../src/theme/colors";
+import { COLORS , isDarkTheme } from "../../src/theme/colors";
 import type { ChurchSearchResult } from "../../src/api/types";
 
 const DEFAULT_RADIUS_KM = 50;
@@ -116,7 +116,7 @@ export default function SelectChurchScreen() {
   }
 
   return (
-    <StyledPage showStatusBar flex={1} backgroundColor={COLORS.chrome}>
+    <StyledPage showStatusBar flex={1} backgroundColor={COLORS.chrome} statusBarStyle={isDarkTheme ? "light-content" : "dark-content"} statusBarBackgroundColor={Platform.OS === "android" ? COLORS.chrome : undefined}>
       {/* NOTE: everything below — intro, search bar, and results — was
           previously plain Views with no scroll container at all, which is
           why a longer results list just overflowed off-screen with no way

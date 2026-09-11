@@ -2,7 +2,7 @@
   "expo": {
     "name": "Jerur",
     "slug": "jerur",
-    "version": "1.0.16",
+    "version": "1.0.18",
     "scheme": "jerur",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -19,7 +19,12 @@
         }
       ],
       "expo-sqlite",
-      "expo-secure-store",
+      [
+        "expo-secure-store",
+        {
+          "faceIDPermission": "Jerur does not use Face ID or any other biometric authentication. This permission string is required by a bundled library dependency (secure on-device storage for your session) but is never actually requested by the app."
+        }
+      ],
       "expo-font",
       "expo-notifications",
       [
@@ -35,7 +40,7 @@
     "ios": {
       "supportsTablet": false,
       "bundleIdentifier": "com.suftnet.jerur",
-      "buildNumber": "3",
+      "buildNumber": "1",
       "appleTeamId": "ZQADUF26X5",
       "infoPlist": {
         "ITSAppUsesNonExemptEncryption": false
@@ -48,7 +53,7 @@
       },
       "predictiveBackGestureEnabled": false,
       "package": "com.suftnet.jerur",
-      "versionCode": 313
+      "versionCode": 314
     },
     "web": {
       "favicon": "./assets/favicon.png"

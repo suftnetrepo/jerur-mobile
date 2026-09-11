@@ -21,7 +21,7 @@
     "expo-splash-screen": "~57.0.6",
     "expo-sqlite": "~57.0.1",
     "expo-status-bar": "~57.0.1",
-    "fluent-styles": "^1.62.13",
+    "fluent-styles": "^1.62.15",
     "react": "19.2.3",
     "react-native": "0.86.2",
     "react-native-render-html": "^6.3.4",
