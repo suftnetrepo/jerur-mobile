@@ -15,7 +15,7 @@ import { FeatureGate } from "../../../src/components/FeatureGate";
 import { NoteCard } from "../../../src/components/NoteCard";
 import { getNotes } from "../../../src/notes/notes-repository";
 import { searchNotes } from "../../../src/notes/notes-search";
-import { COLORS, ICON_TONES , isDarkTheme } from "../../../src/theme/colors";
+import { COLORS, FORM_FIELD_COLORS, ICON_TONES, isDarkTheme } from "../../../src/theme/colors";
 import { SHADOW_SOFT } from "../../../src/theme/shadows";
 import type { Note } from "../../../src/notes/types";
 
@@ -104,6 +104,7 @@ function NotesScreenContent() {
           style={SHADOW_SOFT}
         >
           <StyledTextInput
+            colors={FORM_FIELD_COLORS}
             variant="filled"
             placeholder="Search your notes..."
             leftIcon={<Icon name="search" size={15} color={COLORS.inkSoft} />}

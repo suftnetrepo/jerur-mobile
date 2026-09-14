@@ -18,7 +18,7 @@ import { EventsSkeleton } from "../../../src/components/skeleton";
 import { useEvents } from "../../../src/hooks/useChurchData";
 import { useEventRegistration } from "../../../src/hooks/useSubmissions";
 import { apiErrorMessage } from "../../../src/api/client";
-import { COLORS , isDarkTheme } from "../../../src/theme/colors";
+import { COLORS, FORM_FIELD_COLORS, isDarkTheme } from "../../../src/theme/colors";
 import { SHADOW_CARD } from "../../../src/theme/shadows";
 import type { ChurchEvent } from "../../../src/api/types";
 
@@ -321,11 +321,13 @@ function EventRegisterPopup({
               </Stack>
             )}
             <StyledForm.Input
+              colors={FORM_FIELD_COLORS}
               label="Full name"
               value={form.name}
               onChangeText={(v) => setForm((f) => ({ ...f, name: v }))}
             />
             <StyledForm.Input
+              colors={FORM_FIELD_COLORS}
               label="Email"
               keyboardType="email-address"
               autoCapitalize="none"
@@ -333,6 +335,7 @@ function EventRegisterPopup({
               onChangeText={(v) => setForm((f) => ({ ...f, email: v }))}
             />
             <StyledForm.Input
+              colors={FORM_FIELD_COLORS}
               label="Phone (optional)"
               keyboardType="phone-pad"
               value={form.phone}

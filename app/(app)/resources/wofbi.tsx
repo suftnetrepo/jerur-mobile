@@ -14,7 +14,7 @@ import { ScalePressable } from "../../../src/components/ScalePressable";
 import { FormSubmitButton } from "../../../src/components/FormSubmitButton";
 import { useSettings } from "../../../src/hooks/useChurchData";
 import { openChurchEmailDraft } from "../../../src/lib/church-email";
-import { COLORS , isDarkTheme } from "../../../src/theme/colors";
+import { COLORS, FORM_FIELD_COLORS, isDarkTheme } from "../../../src/theme/colors";
 import { SHADOW_SOFT, SHADOW_CARD } from "../../../src/theme/shadows";
 import { AppBackHeader } from "../../../src/components/AppBackHeader";
 import { useFadeUp } from "../../../src/hooks/useFadeUp";
@@ -495,6 +495,7 @@ function WofbiScreenContent() {
 
               <StyledForm gap={14} avoidKeyboard={false}>
                 <StyledForm.Input
+                  colors={FORM_FIELD_COLORS}
                   label="Email"
                   keyboardType="email-address"
                   autoCapitalize="none"
@@ -503,18 +504,21 @@ function WofbiScreenContent() {
                 />
 
                 <StyledForm.Input
+                  colors={FORM_FIELD_COLORS}
                   label="First name"
                   value={form.firstName}
                   onChangeText={(v) => setForm((f) => ({ ...f, firstName: v }))}
                   style={{ flex: 1 }}
                 />
                 <StyledForm.Input
+                  colors={FORM_FIELD_COLORS}
                   label="Last name"
                   value={form.lastName}
                   onChangeText={(v) => setForm((f) => ({ ...f, lastName: v }))}
                   style={{ flex: 1 }}
                 />
                 <StyledForm.Input
+                  colors={FORM_FIELD_COLORS}
                   label="Phone number"
                   keyboardType="phone-pad"
                   value={form.phone}

@@ -15,7 +15,7 @@ import { ContactInfoRow } from "../../src/components/ContactInfoRow";
 import { useFadeUp } from "../../src/hooks/useFadeUp";
 import { useSettings } from "../../src/hooks/useChurchData";
 import { openChurchEmailDraft } from "../../src/lib/church-email";
-import { COLORS , isDarkTheme } from "../../src/theme/colors";
+import { COLORS, FORM_FIELD_COLORS, isDarkTheme } from "../../src/theme/colors";
 import { SHADOW_SOFT } from "../../src/theme/shadows";
 
 export default function ContactScreen() {
@@ -117,7 +117,7 @@ function ContactScreenContent() {
 
   return (
     <StyledPage flex={1} backgroundColor={COLORS.paper} statusBarStyle={isDarkTheme ? "light-content" : "dark-content"} statusBarBackgroundColor={Platform.OS === "android" ? COLORS.paper : undefined}>
-      <AppBackHeader  />
+      <AppBackHeader title="Contact Us" />
       <StyledScrollView
         contentContainerStyle={{ padding: 24, paddingBottom: 60 }}
       >
@@ -130,31 +130,6 @@ function ContactScreenContent() {
             gap={12}
           >
             <Stack flex={1}>
-              <Stack
-                horizontal
-                alignItems="center"
-                gap={8}
-                style={{ marginBottom: 12 }}
-              >
-                <Stack
-                  width={34}
-                  height={34}
-                  borderRadius={17}
-                  backgroundColor={COLORS.goldPale}
-                  alignItems="center"
-                  justifyContent="center"
-                >
-                  <Icon name="mail" size={16} color={COLORS.gold} />
-                </Stack>
-                <Text
-                  variant="overline"
-                  fontSize={11}
-                  letterSpacing={1}
-                  color={COLORS.gold}
-                >
-                  CONTACT
-                </Text>
-              </Stack>
               <Text
                 variant="header"
                 fontSize={26}
@@ -290,20 +265,21 @@ function ContactScreenContent() {
 
             <StyledForm gap={16} avoidKeyboard={false}>
               <StyledForm.Input
+                  colors={FORM_FIELD_COLORS}
                   label="First name"
                   value={form.first_name}
                   onChangeText={(v) =>
                     setForm((f) => ({ ...f, first_name: v }))
                   }
-                  style={{ flex: 1 }}
                 />
                 <StyledForm.Input
+                  colors={FORM_FIELD_COLORS}
                   label="Last name"
                   value={form.last_name}
                   onChangeText={(v) => setForm((f) => ({ ...f, last_name: v }))}
-                  style={{ flex: 1 }}
                 />
               <StyledForm.Input
+                colors={FORM_FIELD_COLORS}
                 label="Email"
                 keyboardType="email-address"
                 autoCapitalize="none"
@@ -311,6 +287,7 @@ function ContactScreenContent() {
                 onChangeText={(v) => setForm((f) => ({ ...f, email: v }))}
               />
               <StyledForm.Input
+                colors={FORM_FIELD_COLORS}
                 label="Message"
                 placeholder="Your message"
                 multiline

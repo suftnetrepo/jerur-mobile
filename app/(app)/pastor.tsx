@@ -14,7 +14,7 @@ import { WelcomeMessageCard } from "../../src/components/WelcomeMessageCard";
 import { PastorSkeleton } from "../../src/components/skeleton";
 import { useSettings } from "../../src/hooks/useChurchData";
 import { COLORS , isDarkTheme } from "../../src/theme/colors";
-import { SHADOW_SOFT } from "../../src/theme/shadows";
+import { SHADOW_CARD, SHADOW_SOFT } from "../../src/theme/shadows";
 
 /**
  * "Meet the Pastor" - a standalone read of settings.pastor_section, the
@@ -64,8 +64,11 @@ export default function PastorScreen() {
           borderColor: COLORS.chromeBorder,
         }}
         marginHorizontal={16}
+        title="Meet the Pastor"
+        titleAlignment="center"
         showBackArrow
         onBackPress={() => router.back()}
+        backgroundColor={COLORS.paper}
       />
       <StyledScrollView
         contentContainerStyle={{ paddingHorizontal: 24, paddingTop: 18, paddingBottom: 60 }}
@@ -73,80 +76,75 @@ export default function PastorScreen() {
         {isLoading && !settings ? (
           <PastorSkeleton />
         ) : (
-          <>
-        <Stack alignItems="center" marginBottom={22}>
-          {showPhoto ? (
-            <Image
-              source={{ uri: pastor!.secure_url }}
-              style={{ width: 92, height: 92, borderRadius: 46 }}
-              onError={() => setPhotoFailed(true)}
-            />
-          ) : (
+          <Stack gap={22}>
             <Stack
-              width={92}
-              height={92}
-              borderRadius={46}
-              backgroundColor={COLORS.goldPale}
-              alignItems="center"
-              justifyContent="center"
+              backgroundColor={COLORS.indigoDeep}
+              borderRadius={28}
+              padding={22}
+              overflow="hidden"
+              style={SHADOW_CARD}
             >
-              <Text
-                fontSize={29}
-                fontWeight="800"
-                color={COLORS.goldDeep}
-              >
-                {initials}
-              </Text>
+              <Stack width={150} height={150} borderRadius={75} backgroundColor="rgba(255,255,255,0.055)" style={{ position: "absolute", right: -42, top: -54 }} />
+              <Stack width={90} height={90} borderRadius={45} backgroundColor="rgba(255,255,255,0.045)" style={{ position: "absolute", left: -36, bottom: -40 }} />
+              <Stack alignItems="center">
+                <Stack
+                  width={116}
+                  height={116}
+                  borderRadius={58}
+                  padding={4}
+                  backgroundColor="rgba(255,255,255,0.16)"
+                  marginBottom={16}
+                  style={SHADOW_SOFT}
+                >
+                  {showPhoto ? (
+                    <Image
+                      source={{ uri: pastor!.secure_url }}
+                      resizeMode="cover"
+                      style={{ width: 108, height: 108, borderRadius: 54 }}
+                      onError={() => setPhotoFailed(true)}
+                    />
+                  ) : (
+                    <Stack width={108} height={108} borderRadius={54} backgroundColor={COLORS.goldPale} alignItems="center" justifyContent="center">
+                      <Text fontSize={31} fontWeight="800" color={COLORS.goldDeep}>{initials}</Text>
+                    </Stack>
+                  )}
+                </Stack>
+                <Text fontSize={10.5} fontWeight="800" letterSpacing={1.2} color="rgba(255,255,255,0.66)" style={{ marginBottom: 6 }}>
+                  PASTORAL LEADERSHIP
+                </Text>
+                <Text variant="title" fontSize={22} fontWeight="800" color={COLORS.onPrimary} style={{ textAlign: "center" }}>
+                  {name}
+                </Text>
+                <Stack marginTop={10} paddingHorizontal={12} paddingVertical={6} borderRadius={999} backgroundColor="rgba(255,255,255,0.11)">
+                  <Text fontSize={11.5} fontWeight="700" color={COLORS.onPrimary}>{title}</Text>
+                </Stack>
+                <Text fontSize={12} color="rgba(255,255,255,0.7)" style={{ marginTop: 10, textAlign: "center" }}>
+                  {churchName}
+                </Text>
+              </Stack>
             </Stack>
-          )}
-          <Text
-            variant="title"
-            fontWeight="800"
-            color={COLORS.ink}
-            style={{ marginTop: 12 }}
-          >
-            {name}
-          </Text>
-          <Text
-            fontSize={13}
-            color={COLORS.inkSoft}
-            style={{ marginTop: 2 }}
-          >
-            {title}, {churchName}
-          </Text>
-        </Stack>
 
-        <Stack marginBottom={22}>
-          <WelcomeMessageCard pastor={pastor} showAttribution={false} plain />
-        </Stack>
+            <Stack>
+              <Stack horizontal alignItems="center" gap={8} marginBottom={11} paddingHorizontal={3}>
+                <Stack width={28} height={28} borderRadius={14} backgroundColor={COLORS.goldPale} alignItems="center" justifyContent="center">
+                  <Icon name="message-circle" size={13} color={COLORS.goldDeep} />
+                </Stack>
+                <Text variant="overline" fontSize={10} fontWeight="800" letterSpacing={1} color={COLORS.inkSoft}>A WORD FROM OUR PASTOR</Text>
+              </Stack>
+              <WelcomeMessageCard pastor={pastor} showAttribution={false} plain />
+            </Stack>
 
-        <Stack
-          backgroundColor={COLORS.paper}
-          borderRadius={18}
-          overflow="hidden"
-          style={SHADOW_SOFT}
-        >
-          <ContactRow
-            icon="mail"
-            label="Email"
-            value={email}
-            onPress={() => Linking.openURL(`mailto:${email}`)}
-          />
-          <Stack
-            height={1}
-            backgroundColor={COLORS.chromeBorder}
-            style={{ marginLeft: 66 }}
-          />
-          <ContactRow
-            icon="phone"
-            label="Call"
-            value={primaryPhone}
-            onPress={() =>
-              Linking.openURL(`tel:${primaryPhone.replace(/[^\d+]/g, "")}`)
-            }
-          />
-        </Stack>
-          </>
+            <Stack>
+              <Text variant="overline" fontSize={10} fontWeight="800" letterSpacing={1} color={COLORS.inkSoft} style={{ marginBottom: 11, marginLeft: 3 }}>
+                CONNECT
+              </Text>
+              <Stack backgroundColor={COLORS.white} borderRadius={22} overflow="hidden" style={[SHADOW_SOFT, { borderWidth: 1, borderColor: COLORS.chromeBorder }]}>
+                <ContactRow icon="mail" label="Email the church" value={email} onPress={() => Linking.openURL(`mailto:${email}`)} />
+                <Stack height={1} backgroundColor={COLORS.chromeBorder} style={{ marginLeft: 70 }} />
+                <ContactRow icon="phone" label="Call the church" value={primaryPhone} onPress={() => Linking.openURL(`tel:${primaryPhone.replace(/[^\d+]/g, "")}`)} />
+              </Stack>
+            </Stack>
+          </Stack>
         )}
       </StyledScrollView>
     </StyledPage>
@@ -178,7 +176,7 @@ function ContactRow({
       <Stack
         width={38}
         height={38}
-        borderRadius={19}
+        borderRadius={12}
         backgroundColor={COLORS.goldPale}
         alignItems="center"
         justifyContent="center"
@@ -199,7 +197,9 @@ function ContactRow({
           {value}
         </Text>
       </Stack>
-      <Icon name="chevron-right" size={17} color={COLORS.inkSoft} />
+      <Stack width={28} height={28} borderRadius={14} backgroundColor={COLORS.paperAlt} alignItems="center" justifyContent="center">
+        <Icon name="chevron-right" size={15} color={COLORS.inkSoft} />
+      </Stack>
     </StyledPressable>
   );
 }

@@ -24,7 +24,7 @@ import {
   isServiceDay,
 } from "../../src/lib/service-days";
 import { SHADOW_SOFT } from "../../src/theme/shadows";
-import { COLORS , isDarkTheme } from "../../src/theme/colors";
+import { COLORS, FORM_FIELD_COLORS, isDarkTheme } from "../../src/theme/colors";
 import type { AttendanceStatus } from "../../src/api/types";
 import { AppBackHeader } from "@/src/components/AppBackHeader";
 import type { HouseholdAttendance } from "../../src/api/attendance";
@@ -590,6 +590,7 @@ function CheckInScreenContent() {
         <Stack marginTop={26}>
           <StyledForm gap={16} avoidKeyboard={false}>
             <StyledForm.Input
+              colors={FORM_FIELD_COLORS}
               label="Anything you'd like to share? (optional)"
               helperText="Add a prayer request or note for the pastoral team."
               placeholder="A prayer need, a note for the pastoral team…"

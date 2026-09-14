@@ -6,7 +6,7 @@ import { Feather as Icon } from "@expo/vector-icons";
 import { StyledPage, StyledButton, Stack, useToast } from "fluent-styles";
 import { FeatureGate } from "../../../src/components/FeatureGate";
 import { NoteFormFields } from "../../../src/components/NoteFormFields";
-import { createNote } from "../../../src/notes/notes-repository";
+import { createNote, updateNote } from "../../../src/notes/notes-repository";
 import { COLORS , isDarkTheme } from "../../../src/theme/colors";
 
 export default function NewNoteScreen() {
@@ -24,7 +24,22 @@ function NewNoteScreenContent() {
   // Explicit-Save (no autosave), guarded against a double-tap firing two
   // creates - the ref is checked synchronously before React state catches up.
   const savingRef = useRef(false);
+  const autoSavedNoteIdRef = useRef<string | null>(null);
   const toast = useToast();
+
+  async function handleContentCommit(nextContent: string) {
+    try {
+      if (autoSavedNoteIdRef.current) {
+        await updateNote(autoSavedNoteIdRef.current, { title: title.trim(), content: nextContent });
+      } else {
+        const created = await createNote({ title: title.trim(), content: nextContent });
+        autoSavedNoteIdRef.current = created.id;
+      }
+    } catch (error) {
+      toast.error("Couldn't save note", "Your text is still in the composer. Please try again.");
+      throw error;
+    }
+  }
 
   async function handleSave() {
     if (savingRef.current) return;
@@ -35,7 +50,11 @@ function NewNoteScreenContent() {
     savingRef.current = true;
     setSaving(true);
     try {
-      await createNote({ title: title.trim(), content: content.trim() });
+      if (autoSavedNoteIdRef.current) {
+        await updateNote(autoSavedNoteIdRef.current, { title: title.trim(), content: content.trim() });
+      } else {
+        await createNote({ title: title.trim(), content: content.trim() });
+      }
       router.back();
     } finally {
       savingRef.current = false;
@@ -65,9 +84,15 @@ function NewNoteScreenContent() {
             </StyledButton>
         }
       />
-      <KeyboardAvoidingView style={{ flex: 1 }} behavior={Platform.OS === "ios" ? "padding" : undefined} keyboardVerticalOffset={12}>
+      <KeyboardAvoidingView style={{ flex: 1 }} behavior={Platform.OS === "ios" ? "padding" : "height"} keyboardVerticalOffset={12}>
         <Stack flex={1} paddingHorizontal={16} paddingVertical={16} paddingBottom={20}>
-          <NoteFormFields title={title} onTitleChange={setTitle} content={content} onContentChange={setContent} />
+          <NoteFormFields
+            title={title}
+            onTitleChange={setTitle}
+            content={content}
+            onContentChange={setContent}
+            onContentCommit={handleContentCommit}
+          />
         </Stack>
       </KeyboardAvoidingView>
     </StyledPage>

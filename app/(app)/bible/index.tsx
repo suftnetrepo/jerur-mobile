@@ -19,7 +19,7 @@ import { SpringChip } from "../../../src/components/SpringChip";
 import { getBooks } from "../../../src/bible/bible-books";
 import type { BibleBook } from "../../../src/bible/types";
 import { useBookListFontSize } from "../../../src/bible/use-book-list-font-size";
-import { COLORS, ICON_TONES , isDarkTheme } from "../../../src/theme/colors";
+import { COLORS, FORM_FIELD_COLORS, ICON_TONES, isDarkTheme } from "../../../src/theme/colors";
 
 export default function BibleScreen() {
   return (
@@ -110,6 +110,7 @@ function BibleScreenContent() {
 
       <Stack paddingHorizontal={24} marginTop={16} paddingBottom={16}>
         <StyledTextInput
+          colors={FORM_FIELD_COLORS}
           variant="outline"
           placeholder="Search books..."
           leftIcon={<Icon name="search" size={15} color={COLORS.inkSoft} />}

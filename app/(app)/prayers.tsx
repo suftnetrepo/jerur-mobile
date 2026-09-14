@@ -1,6 +1,5 @@
 import { ThemeHeader } from "@/src/components/ThemeHeader";
 import { useState } from "react";
-import { MaterialCommunityIcons as MCIcon } from "@expo/vector-icons";
 import { StyledPage, StyledScrollView, StyledForm, Stack } from "fluent-styles";
 import { Text } from "../../src/components/text";
 import { BottomTabBar } from "../../src/components/BottomTabBar";
@@ -14,7 +13,7 @@ import { useSettings } from "../../src/hooks/useChurchData";
 import { usePrayerReminders } from "../../src/notifications/use-prayer-reminders";
 import { openChurchEmailDraft } from "../../src/lib/church-email";
 import { Platform } from "react-native";
-import { COLORS, ICON_TONES , isDarkTheme } from "../../src/theme/colors";
+import { COLORS, FORM_FIELD_COLORS, ICON_TONES, isDarkTheme } from "../../src/theme/colors";
 import { router } from "expo-router";
 
 export default function PrayersScreen() {
@@ -83,9 +82,11 @@ function PrayersScreenContent() {
           borderColor: COLORS.chromeBorder,
         }}
         marginHorizontal={16}
+        title="Ask for Prayer"
         titleAlignment="center"
         showBackArrow
         onBackPress={() => router.back()}
+        backgroundColor={COLORS.paper}
       />
 
       <StyledScrollView
@@ -99,31 +100,6 @@ function PrayersScreenContent() {
           marginBottom={24}
         >
           <Stack flex={1}>
-            <Stack
-              horizontal
-              alignItems="center"
-              gap={8}
-              style={{ marginBottom: 14 }}
-            >
-              <Stack
-                width={34}
-                height={34}
-                borderRadius={17}
-                backgroundColor={COLORS.goldPale}
-                alignItems="center"
-                justifyContent="center"
-              >
-                <MCIcon name="hands-pray" size={17} color={COLORS.gold} />
-              </Stack>
-              <Text
-                variant="overline"
-                fontSize={11}
-                letterSpacing={1}
-                color={COLORS.gold}
-              >
-                PRAYER
-              </Text>
-            </Stack>
             <Text
               variant="header"
               fontSize={28}
@@ -229,6 +205,7 @@ function PrayersScreenContent() {
 
         <StyledForm gap={16} avoidKeyboard={false}>
          <StyledForm.Input
+              colors={FORM_FIELD_COLORS}
               label="First name"
               placeholder="Jane"
               value={form.first_name}
@@ -236,6 +213,7 @@ function PrayersScreenContent() {
               style={{ flex: 1 }}
             />
             <StyledForm.Input
+              colors={FORM_FIELD_COLORS}
               label="Last name"
               placeholder="Doe"
               value={form.last_name}
@@ -243,6 +221,7 @@ function PrayersScreenContent() {
               style={{ flex: 1 }}
             />
           <StyledForm.Input
+            colors={FORM_FIELD_COLORS}
             label="Email"
             placeholder="jane.doe@example.com"
             keyboardType="email-address"
@@ -251,6 +230,7 @@ function PrayersScreenContent() {
             onChangeText={(v) => setForm((f) => ({ ...f, email: v }))}
           />
           <StyledForm.Input
+            colors={FORM_FIELD_COLORS}
             label="Your prayer request"
             placeholder="Describe your prayer request — whether for healing, guidance, provision, or thanksgiving…"
             multiline

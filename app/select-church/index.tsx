@@ -27,7 +27,7 @@ import { ChurchResultsSkeleton } from "../../src/components/skeleton";
 import { useFadeUp } from "../../src/hooks/useFadeUp";
 import { useDenominations } from "../../src/hooks/useDenominations";
 import { SHADOW_SOFT, SHADOW_CARD, shadowCta } from "../../src/theme/shadows";
-import { COLORS , isDarkTheme } from "../../src/theme/colors";
+import { COLORS, FORM_FIELD_COLORS, isDarkTheme } from "../../src/theme/colors";
 import type { ChurchSearchResult } from "../../src/api/types";
 
 const DEFAULT_RADIUS_KM = 50;
@@ -152,6 +152,7 @@ export default function SelectChurchScreen() {
             <Stack marginHorizontal={8} horizontal alignItems="center" gap={10}>
               <StyledForm flex={1} gap={8} avoidKeyboard={false}>
                 <StyledForm.Input
+                  colors={FORM_FIELD_COLORS}
                   leftIcon={<Icon e="🔍" />}
                   placeholder="Church, city or postcode"
                   value={query}

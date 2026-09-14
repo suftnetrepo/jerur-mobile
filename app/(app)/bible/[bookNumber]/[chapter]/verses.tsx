@@ -80,7 +80,7 @@ function BibleVerseSelectionScreenContent() {
         justifyContent="center"
         style={{
           position: "absolute",
-          bottom: 28,
+          bottom: 56,
           right: 24,
           width: 58,
           height: 58,

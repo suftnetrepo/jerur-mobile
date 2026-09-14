@@ -1,34 +1,30 @@
 import { router } from "expo-router";
-import { StyledPage, Stack } from "fluent-styles";
-import { Text } from "./text";
 import { COLORS } from "../theme/colors";
+import { ThemeHeader } from "./ThemeHeader";
 
-/** Shared detail-screen chrome. Keeps navigation geometry identical while
- * allowing content-led screens to omit a duplicate centered title. */
-export function AppBackHeader({ title }: { title?: string }) {
+/** Shared detail-screen chrome, aligned with the Bible and Notes headers. */
+export function AppBackHeader({
+  title,
+  backgroundColor = COLORS.paper,
+}: {
+  title?: string;
+  backgroundColor?: string;
+}) {
   return (
-    <>
-      <StyledPage.Header
-        backArrowProps={{ color: COLORS.ink }}
-        shapeProps={{
-          cycle: true,
-          size: 48,
-          borderRadius: 24,
-          borderWidth: 1,
-          borderColor: COLORS.chromeBorder,
-        }}
-        marginHorizontal={16}
-        showBackArrow
-        onBackPress={() => router.back()}
-        backgroundColor={COLORS.paper}
-      />
-      {title ? (
-        <Stack paddingHorizontal={24} paddingTop={18} paddingBottom={2}>
-          <Text variant="overline" fontSize={11} letterSpacing={1} color={COLORS.gold}>
-            {title}
-          </Text>
-        </Stack>
-      ) : null}
-    </>
+    <ThemeHeader
+      showBackArrow
+      shapeProps={{
+        cycle: true,
+        size: 48,
+        borderRadius: 24,
+        borderWidth: 1,
+        borderColor: COLORS.chromeBorder,
+      }}
+      title={title}
+      titleAlignment="center"
+      onBackPress={() => router.back()}
+      backgroundColor={backgroundColor}
+      marginHorizontal={16}
+    />
   );
 }

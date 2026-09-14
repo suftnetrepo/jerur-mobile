@@ -53,8 +53,8 @@ export function SpringChip({
         paddingHorizontal={8}
         paddingVertical={8}
         borderRadius={50}
-        backgroundColor={disabled ? COLORS.chrome : active ? COLORS.indigo : COLORS.white}
-        style={{ borderWidth: 1, borderColor: active ? COLORS.indigo : COLORS.chromeBorder }}
+        backgroundColor={disabled ? COLORS.chrome : active ? COLORS.indigoDeep : COLORS.white}
+        style={{ borderWidth: 1, borderColor: active ? COLORS.indigoDeep : COLORS.chromeBorder }}
         accessibilityRole="button"
         accessibilityLabel={label}
         accessibilityState={{ disabled, selected: active }}

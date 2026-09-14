@@ -93,7 +93,7 @@ export default function AppearanceScreen() {
       flex={1}
       backgroundColor={Colors.paperSoft}
     >
-      <AppBackHeader title="Appearance" />
+      <AppBackHeader title="Appearance" backgroundColor={Colors.paperSoft} />
       <StyledScrollView contentContainerStyle={{ paddingHorizontal: 20, paddingTop: 8, paddingBottom: 48 }}>
         <Stack marginBottom={16}>
           <Text fontSize={13.5} color={Colors.inkSoft} style={{ lineHeight: 21 }}>

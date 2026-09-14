@@ -63,6 +63,17 @@ function NoteDetailScreenContent() {
     }
   }
 
+  async function handleContentCommit(nextContent: string) {
+    try {
+      const updated = await updateNote(id, { title: title.trim(), content: nextContent });
+      if (!updated) throw new Error("Note not found");
+      setNote(updated);
+    } catch (error) {
+      toast.error("Couldn't save note", "Your text is still in the composer. Please try again.");
+      throw error;
+    }
+  }
+
   async function handleDelete() {
     const confirmed = await dialogue.confirm({
       title: "Delete this note?",
@@ -196,7 +207,7 @@ function NoteDetailScreenContent() {
 
       <KeyboardAvoidingView
         style={{ flex: 1 }}
-        behavior={Platform.OS === "ios" ? "padding" : undefined}
+        behavior={Platform.OS === "ios" ? "padding" : "height"}
         keyboardVerticalOffset={12}
       >
         <Stack flex={1} paddingHorizontal={24} paddingBottom={20}>
@@ -205,6 +216,7 @@ function NoteDetailScreenContent() {
             onTitleChange={setTitle}
             content={content}
             onContentChange={setContent}
+            onContentCommit={handleContentCommit}
           />
         </Stack>
       </KeyboardAvoidingView>

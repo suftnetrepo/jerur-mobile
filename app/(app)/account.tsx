@@ -18,11 +18,10 @@ import { useMemberSession } from "../../src/member/MemberSessionContext";
 import { AppBackHeader } from "../../src/components/AppBackHeader";
 import { FormSubmitButton } from "../../src/components/FormSubmitButton";
 import { AccountSkeleton } from "../../src/components/skeleton";
-import { useFeatureFlags } from "../../src/hooks/useFeatureFlags";
 import { apiErrorMessage, apiErrorCode } from "../../src/api/client";
 import { Platform } from "react-native";
-import { COLORS , isDarkTheme } from "../../src/theme/colors";
-import { SHADOW_SOFT } from "../../src/theme/shadows";
+import { COLORS, FORM_FIELD_COLORS, isDarkTheme } from "../../src/theme/colors";
+import { SHADOW_CARD, SHADOW_SOFT } from "../../src/theme/shadows";
 
 export default function AccountScreen() {
   const { member, isLoading, logout, deleteAccount } = useMemberSession();
@@ -55,38 +54,28 @@ export default function AccountScreen() {
   return (
     <StyledPage flex={1} backgroundColor={COLORS.paper} statusBarStyle={isDarkTheme ? "light-content" : "dark-content"} statusBarBackgroundColor={Platform.OS === "android" ? COLORS.paper : undefined}>
       <AppBackHeader title="Account" />
-      <StyledScrollView contentContainerStyle={{  paddingTop: 10, paddingBottom: 60  }}>
+      <StyledScrollView contentContainerStyle={{ paddingHorizontal: 20, paddingTop: 14, paddingBottom: 60 }}>
         {isLoading ? (
           <AccountSkeleton />
+        ) : member ? (
+          <LoggedInView member={member} onLogout={logout} onDeleteAccount={deleteAccount} />
         ) : (
-          <>
-         <Stack
-          width={42}
-          height={4}
-          borderRadius={999}
-          backgroundColor={COLORS.gold}
-          paddingHorizontal={24}
-          marginHorizontal={24}
-        />
-        <Stack backgroundColor={COLORS.paper} paddingHorizontal={24} paddingTop={16} paddingBottom={member ? 44 : 68}>
-          <Stack width={46} height={46} borderRadius={23} backgroundColor={COLORS.paperAlt} alignItems="center" justifyContent="center" marginBottom={18}>
-            <Icon name={member ? "user-check" : "lock"} size={21} color={COLORS.ink} />
-          </Stack>
-          <Text variant="header" fontSize={27} fontWeight="800" color={COLORS.ink} style={{ marginBottom: 7 }}>
-            {member ? "Your membership" : "Welcome "}
-          </Text>
-          <Text variant="body" fontSize={13.5} color={COLORS.inkSoft} style={{ lineHeight: 21 }}>
-            {member ? "Your church profile, all in one place." : "Sign in to take part, stay connected and keep your details secure."}
-          </Text>
-        </Stack>
-        <Stack marginHorizontal={20} marginTop={-28} backgroundColor={COLORS.paper} borderRadius={24} padding={22} style={[SHADOW_SOFT, { borderWidth: 1, borderColor: COLORS.paperAlt }]}>
-          {member ? (
-            <LoggedInView member={member} onLogout={logout} onDeleteAccount={deleteAccount} />
-          ) : (
+          <Stack gap={18}>
+            <Stack alignItems="center" paddingHorizontal={18} paddingVertical={12}>
+              <Stack width={58} height={58} borderRadius={29} backgroundColor={COLORS.goldPale} alignItems="center" justifyContent="center" marginBottom={14}>
+                <Icon name="lock" size={23} color={COLORS.goldDeep} />
+              </Stack>
+              <Text variant="header" fontSize={25} fontWeight="800" color={COLORS.ink} style={{ marginBottom: 7, textAlign: "center" }}>
+                Welcome
+              </Text>
+              <Text variant="body" fontSize={13.5} color={COLORS.inkSoft} style={{ lineHeight: 21, textAlign: "center" }}>
+                Sign in to take part, stay connected and keep your details secure.
+              </Text>
+            </Stack>
+            <Stack backgroundColor={COLORS.white} borderRadius={24} padding={22} style={[SHADOW_SOFT, { borderWidth: 1, borderColor: COLORS.chromeBorder }]}>
             <AuthForms onAuthenticated={continueAfterAuthentication} />
-          )}
-        </Stack>
-          </>
+            </Stack>
+          </Stack>
         )}
       </StyledScrollView>
     </StyledPage>
@@ -102,7 +91,6 @@ function LoggedInView({
   onLogout: () => Promise<void>;
   onDeleteAccount: () => Promise<void>;
 }) {
-  const { hasFeature } = useFeatureFlags();
   const dialogue = useDialogue();
   const toast = useToast();
   const isProvisional = member.status === "provisional";
@@ -146,106 +134,110 @@ function LoggedInView({
     }
   }
 
+  const initials = `${member.first_name?.charAt(0) || ""}${member.last_name?.charAt(0) || ""}`.toUpperCase();
+  const statusLabel = member.status === "provisional"
+    ? "Pending confirmation"
+    : member.status.charAt(0).toUpperCase() + member.status.slice(1);
+  const roleLabel = member.role.charAt(0).toUpperCase() + member.role.slice(1);
+
   return (
-    <Stack alignItems="center">
+    <Stack gap={16}>
       <Stack
-        width={84}
-        height={84}
-        borderRadius={42}
-        backgroundColor={COLORS.paperAlt}
-        alignItems="center"
-        justifyContent="center"
-        marginBottom={12}
-        style={{ borderWidth: 3, borderColor: COLORS.paperWarm }}
+        backgroundColor={COLORS.indigoDeep}
+        borderRadius={28}
+        padding={22}
+        overflow="hidden"
+        style={SHADOW_CARD}
       >
-        <Text fontSize={26} fontWeight="800" color={COLORS.ink}>
-          {member.first_name[0]}
-          {member.last_name[0]}
-        </Text>
-      </Stack>
-      <Text
-        variant="title"
-        fontWeight="800"
-        color={COLORS.ink}
-        style={{ textAlign: "center", marginBottom: isProvisional ? 8 : 24 }}
-      >
-        {member.first_name} {member.last_name}
-      </Text>
-      {isProvisional && (
-        <Stack backgroundColor={COLORS.goldPale} borderRadius={999} paddingHorizontal={13} paddingVertical={6} marginBottom={24}>
-          <Text variant="button" fontSize={12} color={COLORS.goldDeep}>
-            Pending confirmation by church staff
-          </Text>
-        </Stack>
-      )}
-      {hasFeature("attendance") && (
-        <StyledPressable
-          onPress={() => router.push("/service-times")}
-          accessibilityRole="button"
-          accessibilityLabel="Submit attendance"
-          style={{ width: "100%", marginBottom: 12 }}
-        >
+        <Stack width={120} height={120} borderRadius={60} backgroundColor="rgba(255,255,255,0.06)" style={{ position: "absolute", right: -34, top: -40 }} />
+        <Stack width={78} height={78} borderRadius={39} backgroundColor="rgba(255,255,255,0.05)" style={{ position: "absolute", right: 36, bottom: -42 }} />
+        <Stack horizontal alignItems="center" gap={15}>
           <Stack
-            horizontal
+            width={72}
+            height={72}
+            borderRadius={36}
+            backgroundColor={COLORS.goldPale}
             alignItems="center"
-            justifyContent="space-between"
-            backgroundColor="rgba(94,112,82,0.07)"
-            borderRadius={14}
-            paddingHorizontal={14}
-            minHeight={56}
+            justifyContent="center"
+            style={{ borderWidth: 3, borderColor: "rgba(255,255,255,0.18)" }}
           >
-            <Stack horizontal alignItems="center" gap={12}>
-              <Stack width={35} height={35} borderRadius={17.5} backgroundColor={COLORS.sageSoft} alignItems="center" justifyContent="center">
-                <Icon name="check-circle" size={16} color={COLORS.sage} />
-              </Stack>
-              <Text variant="button" fontSize={14.5} color={COLORS.ink}>
-                Submit attendance
-              </Text>
+            <Text fontSize={22} fontWeight="800" color={COLORS.goldDeep}>{initials}</Text>
+          </Stack>
+          <Stack flex={1}>
+            <Text fontSize={11} fontWeight="700" color="rgba(255,255,255,0.68)" style={{ marginBottom: 4, letterSpacing: 0.8 }}>
+              MEMBER PROFILE
+            </Text>
+            <Text variant="title" fontSize={20} fontWeight="800" color={COLORS.onPrimary} numberOfLines={2}>
+              {member.first_name} {member.last_name}
+            </Text>
+            <Stack alignSelf="flex-start" marginTop={9} paddingHorizontal={10} paddingVertical={5} borderRadius={999} backgroundColor="rgba(255,255,255,0.12)">
+              <Text fontSize={11} fontWeight="700" color={COLORS.onPrimary}>{roleLabel}</Text>
             </Stack>
-            <Icon name="chevron-right" size={16} color={COLORS.inkSoft} />
+          </Stack>
+        </Stack>
+      </Stack>
+
+      <Stack backgroundColor={COLORS.white} borderRadius={22} padding={18} style={{ borderWidth: 1, borderColor: COLORS.chromeBorder }}>
+        <Text variant="overline" fontSize={10} fontWeight="800" letterSpacing={1} color={COLORS.inkSoft} style={{ marginBottom: 14 }}>
+          MEMBERSHIP DETAILS
+        </Text>
+        <AccountDetailRow icon="shield" label="Membership status" value={statusLabel} accent={isProvisional} />
+        <Stack height={1} backgroundColor={COLORS.chromeBorder} marginVertical={14} />
+        <AccountDetailRow icon="user" label="Account role" value={roleLabel} />
+      </Stack>
+
+      <Stack backgroundColor={COLORS.white} borderRadius={22} padding={16} style={{ borderWidth: 1, borderColor: COLORS.chromeBorder }}>
+        <Text variant="overline" fontSize={10} fontWeight="800" letterSpacing={1} color={COLORS.inkSoft} style={{ marginBottom: 12, marginLeft: 2 }}>
+          ACCOUNT
+        </Text>
+        <StyledPressable onPress={onLogout} accessibilityRole="button" accessibilityLabel="Log out">
+          <Stack horizontal alignItems="center" justifyContent="space-between" minHeight={54} paddingHorizontal={4}>
+            <Stack horizontal alignItems="center" gap={12}>
+              <Stack width={38} height={38} borderRadius={12} backgroundColor={COLORS.paperAlt} alignItems="center" justifyContent="center">
+                <Icon name="log-out" size={17} color={COLORS.ink} />
+              </Stack>
+              <Text variant="button" fontSize={14} color={COLORS.ink}>Log out</Text>
+            </Stack>
+            <Icon name="chevron-right" size={17} color={COLORS.inkSoftest} />
           </Stack>
         </StyledPressable>
-      )}
-      <StyledPressable
-        onPress={onLogout}
-        accessibilityRole="button"
-        accessibilityLabel="Log out"
-        style={{ width: "100%" }}
-      >
-        <Stack
-          horizontal
-          alignItems="center"
-          justifyContent="center"
-          gap={8}
-          height={48}
-          borderRadius={14}
-          backgroundColor={COLORS.errorLight}
+        <Stack height={1} backgroundColor={COLORS.chromeBorder} marginVertical={10} />
+        <StyledPressable
+          onPress={handleDeleteProfile}
+          disabled={deleting}
+          accessibilityRole="button"
+          accessibilityLabel="Delete profile"
+          accessibilityState={{ disabled: deleting, busy: deleting }}
+          style={{ opacity: deleting ? 0.5 : 1 }}
         >
-          <Icon name="log-out" size={16} color={COLORS.error} />
-          <Text variant="button" color={COLORS.error}>
-            Log out
-          </Text>
-        </Stack>
-      </StyledPressable>
+          <Stack horizontal alignItems="center" justifyContent="space-between" minHeight={54} paddingHorizontal={4}>
+            <Stack horizontal alignItems="center" gap={12}>
+              <Stack width={38} height={38} borderRadius={12} backgroundColor={COLORS.errorLight} alignItems="center" justifyContent="center">
+                <Icon name="trash-2" size={16} color={COLORS.error} />
+              </Stack>
+              <Stack>
+                <Text variant="button" fontSize={14} color={COLORS.error}>{deleting ? "Deleting…" : "Delete profile"}</Text>
+                <Text fontSize={10.5} color={COLORS.inkSoft}>Permanently remove your account</Text>
+              </Stack>
+            </Stack>
+            <Icon name="chevron-right" size={17} color={COLORS.inkSoftest} />
+          </Stack>
+        </StyledPressable>
+      </Stack>
+    </Stack>
+  );
+}
 
-      {/* Deliberately quieter than Log out — plain text/icon, no
-          background — so it reads as a rare, careful action rather than
-          competing with Submit attendance or Log out above it. */}
-      <StyledPressable
-        onPress={handleDeleteProfile}
-        disabled={deleting}
-        accessibilityRole="button"
-        accessibilityLabel="Delete profile"
-        accessibilityState={{ disabled: deleting, busy: deleting }}
-        style={{ marginTop: 18, opacity: deleting ? 0.5 : 1 }}
-      >
-        <Stack horizontal alignItems="center" justifyContent="center" gap={6} paddingVertical={6}>
-          <Icon name="trash-2" size={13} color={COLORS.error} />
-          <Text variant="button" fontSize={12.5} fontWeight="600" color={COLORS.error}>
-            {deleting ? "Deleting…" : "Delete profile"}
-          </Text>
-        </Stack>
-      </StyledPressable>
+function AccountDetailRow({ icon, label, value, accent = false }: { icon: string; label: string; value: string; accent?: boolean }) {
+  return (
+    <Stack horizontal alignItems="center" gap={12}>
+      <Stack width={38} height={38} borderRadius={12} backgroundColor={accent ? COLORS.goldPale : COLORS.paperAlt} alignItems="center" justifyContent="center">
+        <Icon name={icon as any} size={16} color={accent ? COLORS.goldDeep : COLORS.ink} />
+      </Stack>
+      <Stack flex={1} gap={2}>
+        <Text fontSize={11} color={COLORS.inkSoft}>{label}</Text>
+        <Text variant="label" fontSize={13.5} fontWeight="800" color={accent ? COLORS.goldDeep : COLORS.ink}>{value}</Text>
+      </Stack>
     </Stack>
   );
 }
@@ -448,6 +440,7 @@ function AuthForms({ onAuthenticated }: { onAuthenticated: () => void }) {
 
         <StyledForm gap={16} avoidKeyboard={false}>
           <StyledTextInput
+            colors={FORM_FIELD_COLORS}
             ref={forgotIdentifierRef}
             label="Phone or email"
             autoCapitalize="none"
@@ -460,6 +453,7 @@ function AuthForms({ onAuthenticated }: { onAuthenticated: () => void }) {
             errorMessage={forgotErrors.identifier}
           />
           <StyledTextInput
+            colors={FORM_FIELD_COLORS}
             ref={forgotPinRef}
             label="New PIN (4–6 digits)"
             secureTextEntry
@@ -526,6 +520,7 @@ function AuthForms({ onAuthenticated }: { onAuthenticated: () => void }) {
       {mode === "login" ? (
         <StyledForm gap={16} avoidKeyboard={false}>
           <StyledTextInput
+            colors={FORM_FIELD_COLORS}
             ref={identifierRef}
             label="Phone or email"
             autoCapitalize="none"
@@ -538,6 +533,7 @@ function AuthForms({ onAuthenticated }: { onAuthenticated: () => void }) {
             errorMessage={loginErrors.identifier}
           />
           <StyledTextInput
+            colors={FORM_FIELD_COLORS}
             ref={loginPinRef}
             label="PIN"
             secureTextEntry
@@ -571,6 +567,7 @@ function AuthForms({ onAuthenticated }: { onAuthenticated: () => void }) {
       ) : (
         <StyledForm gap={16} avoidKeyboard={false}>
            <StyledTextInput
+              colors={FORM_FIELD_COLORS}
               ref={firstNameRef}
               label="First name"
               value={registerForm.first_name}
@@ -580,10 +577,10 @@ function AuthForms({ onAuthenticated }: { onAuthenticated: () => void }) {
               }}
               error={!!registerErrors.first_name}
               errorMessage={registerErrors.first_name}
-              style={{ flex: 1 }}
               returnKeyType="next"
             />
             <StyledTextInput
+              colors={FORM_FIELD_COLORS}
               ref={lastNameRef}
               label="Last name"
               value={registerForm.last_name}
@@ -593,10 +590,10 @@ function AuthForms({ onAuthenticated }: { onAuthenticated: () => void }) {
               }}
               error={!!registerErrors.last_name}
               errorMessage={registerErrors.last_name}
-              style={{ flex: 1 }}
-                returnKeyType="next"
+              returnKeyType="next"
             />
           <StyledTextInput
+            colors={FORM_FIELD_COLORS}
             ref={mobileRef}
             label="Phone"
             keyboardType="phone-pad"
@@ -610,6 +607,7 @@ function AuthForms({ onAuthenticated }: { onAuthenticated: () => void }) {
               returnKeyType="next"
           />
           <StyledTextInput
+            colors={FORM_FIELD_COLORS}
             ref={emailRef}
             label="Email (optional if phone provided)"
             keyboardType="email-address"
@@ -624,6 +622,7 @@ function AuthForms({ onAuthenticated }: { onAuthenticated: () => void }) {
               returnKeyType="next"
           />
           <StyledTextInput
+            colors={FORM_FIELD_COLORS}
             ref={pinRef}
             label="Choose a PIN (4–6 digits)"
             secureTextEntry

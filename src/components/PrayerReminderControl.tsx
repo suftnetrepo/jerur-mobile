@@ -5,7 +5,7 @@ import { Text } from "./text";
 import { ScalePressable } from "./ScalePressable";
 import { REMINDER_OFFSETS, offsetLabel, reminderClockLabel, type PrayerReminder } from "../notifications/prayer-reminders";
 import type { SetReminderResult } from "../notifications/use-prayer-reminders";
-import { COLORS } from "../theme/colors";
+import { COLORS, isDarkTheme } from "../theme/colors";
 
 /**
  * Per-session "Remind me" control for the Prayer Hours screen. Shows a
@@ -77,7 +77,23 @@ export function PrayerReminderControl({
         </Stack>
       </ScalePressable>
 
-      <Popup visible={visible} onClose={() => setVisible(false)} title={`${sessionTitle} reminder`} showClose safeAreaBottom>
+      <Popup
+        visible={visible}
+        onClose={() => setVisible(false)}
+        title={`${sessionTitle} reminder`}
+        showClose
+        safeAreaBottom
+        colors={{
+          background: COLORS.paper,
+          overlay: isDarkTheme ? "rgba(0, 0, 0, 0.72)" : "rgba(15, 23, 42, 0.45)",
+          handle: COLORS.chromeBorder,
+          headerTitle: COLORS.ink,
+          headerSubtitle: COLORS.inkSoft,
+          headerBorder: COLORS.chromeBorder,
+          closeIcon: COLORS.ink,
+          closeIconBg: COLORS.paperAlt,
+        }}
+      >
         <Stack padding={20} gap={10}>
           <Text variant="body" fontSize={13} color={COLORS.inkSoft} style={{ marginBottom: 4 }}>
             {reminder ? "Change when we remind you, or turn it off." : "We'll send a daily reminder on this device."}

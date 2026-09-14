@@ -135,19 +135,24 @@ export function WelcomeMessageCard({
 
       {plain ? (
         <Stack
-          backgroundColor={COLORS.chrome}
+          backgroundColor={COLORS.white}
           borderWidth={1}
-          borderColor={COLORS.chrome}
+          borderColor={COLORS.chromeBorder}
           borderRadius={22}
           padding={24}
-       
+          paddingTop={30}
+          overflow="hidden"
+          style={SHADOW_SOFT}
         >
+          <Text fontSize={64} fontWeight="800" color={COLORS.gold} style={{ position: "absolute", top: -10, right: 18, opacity: 0.13 }}>
+            “
+          </Text>
           <HighlightableText
             text={text}
             phrase={highlightPhrase}
-            fontSize={24}
+            fontSize={16}
             color={COLORS.ink}
-            style={{ lineHeight: 23 }}
+            style={{ lineHeight: 26 }}
           />
           {attribution}
         </Stack>

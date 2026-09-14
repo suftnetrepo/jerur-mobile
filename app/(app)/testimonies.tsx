@@ -14,7 +14,7 @@ import { FormSubmitButton } from "../../src/components/FormSubmitButton";
 import { useSettings } from "../../src/hooks/useChurchData";
 import { openChurchEmailDraft } from "../../src/lib/church-email";
 import { Platform } from "react-native";
-import { COLORS , isDarkTheme } from "../../src/theme/colors";
+import { COLORS, FORM_FIELD_COLORS, isDarkTheme } from "../../src/theme/colors";
 import { SHADOW_CARD } from "../../src/theme/shadows";
 
 const FEATURED = {
@@ -244,6 +244,7 @@ function TestimoniesScreenContent() {
 
         <StyledForm gap={18} avoidKeyboard={false}>
           <StyledForm.Input
+              colors={FORM_FIELD_COLORS}
               label="First name"
               placeholder="First name"
               value={form.first_name}
@@ -251,6 +252,7 @@ function TestimoniesScreenContent() {
               
             />
             <StyledForm.Input
+              colors={FORM_FIELD_COLORS}
               label="Last name"
               placeholder="Last name"
               value={form.last_name}
@@ -259,6 +261,7 @@ function TestimoniesScreenContent() {
             />
 
           <StyledForm.Input
+            colors={FORM_FIELD_COLORS}
             label="Email"
             placeholder="Enter your email address"
             keyboardType="email-address"
@@ -269,6 +272,7 @@ function TestimoniesScreenContent() {
 
           <Stack>
             <StyledForm.Input
+              colors={FORM_FIELD_COLORS}
               label="Your testimony"
               placeholder="Tell us what God has done…"
               multiline

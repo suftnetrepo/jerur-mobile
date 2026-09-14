@@ -17,7 +17,7 @@ import { BottomTabBar } from "../../src/components/BottomTabBar";
 import { FeatureGate } from "../../src/components/FeatureGate";
 import { useFellowship } from "../../src/hooks/useChurchData";
 import { FellowshipSkeleton } from "../../src/components/skeleton";
-import { COLORS , isDarkTheme } from "../../src/theme/colors";
+import { COLORS, FORM_FIELD_COLORS, isDarkTheme } from "../../src/theme/colors";
 import { SHADOW_CARD, SHADOW_CHIP } from "../../src/theme/shadows";
 import { ScalePressable } from "../../src/components/ScalePressable";
 
@@ -96,27 +96,13 @@ function FellowshipScreenContent() {
           borderColor: COLORS.chromeBorder,
         }}
         marginHorizontal={16}
+        title="Fellowship"
         titleAlignment="center"
         showBackArrow
         onBackPress={() => router.back()}
+        backgroundColor={COLORS.paper}
       />
       <Stack paddingHorizontal={24} paddingTop={20} paddingBottom={16}>
-        <Text
-          variant="overline"
-          fontSize={11}
-          letterSpacing={1}
-          color={COLORS.gold}
-          style={{ marginBottom: 8 }}
-        >
-          FELLOWSHIP
-        </Text>
-        <Stack
-          width={42}
-          height={4}
-          borderRadius={999}
-          backgroundColor={COLORS.gold}
-          marginBottom={12}
-        />
         <Text
           variant="header"
           fontSize={26}
@@ -139,6 +125,7 @@ function FellowshipScreenContent() {
         <Stack horizontal alignItems="center" gap={10}>
           <Stack flex={1}>
             <StyledTextInput
+              colors={FORM_FIELD_COLORS}
               variant="outline"
               placeholder="Search fellowships (e.g. Manchester)"
               leftIcon={<Icon name="search" size={15} color={COLORS.inkSoft} />}
@@ -320,6 +307,16 @@ function FellowshipScreenContent() {
         title="Filter by City"
         showClose
         safeAreaBottom
+        colors={{
+          background: COLORS.paper,
+          overlay: isDarkTheme ? "rgba(0, 0, 0, 0.72)" : "rgba(15, 23, 42, 0.45)",
+          handle: COLORS.chromeBorder,
+          headerTitle: COLORS.ink,
+          headerSubtitle: COLORS.inkSoft,
+          headerBorder: COLORS.chromeBorder,
+          closeIcon: COLORS.ink,
+          closeIconBg: COLORS.paperAlt,
+        }}
       >
         <Stack padding={20} gap={10}>
           <TouchableOpacity

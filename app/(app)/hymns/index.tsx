@@ -81,11 +81,11 @@ function HymnsScreenContent() {
         <Stack
           horizontal
           alignItems="center"
-          backgroundColor="#FFFFFF"
+          backgroundColor={COLORS.paperAlt}
           borderRadius={8}
           style={{
             borderWidth: searchFocused ? 1.5 : 1,
-            borderColor: searchFocused ? "#6366f1" : COLORS.chromeBorder,
+            borderColor: searchFocused ? COLORS.indigo : COLORS.chromeBorder,
           }}
         >
           <Stack paddingHorizontal={4} marginLeft={4}>
@@ -97,7 +97,7 @@ function HymnsScreenContent() {
             onFocus={() => setSearchFocused(true)}
             onBlur={() => setSearchFocused(false)}
             placeholder="Search hymns..."
-            placeholderTextColor="#d4d4d8"
+            placeholderTextColor={COLORS.inkSoftest}
             maxLength={40}
             style={{
               flex: 1,

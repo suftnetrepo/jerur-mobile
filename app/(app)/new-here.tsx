@@ -90,28 +90,15 @@ function NewHereScreenContent() {
           borderColor: COLORS.chromeBorder,
         }}
         marginHorizontal={16}
+        title="New Here"
+        titleAlignment="center"
         showBackArrow
         onBackPress={() => router.back()}
+        backgroundColor={COLORS.paper}
       />
       <StyledScrollView
         contentContainerStyle={{ paddingHorizontal: 24, paddingTop: 10, paddingBottom: 60  }}
       >
-        <Text
-          variant="overline"
-          fontSize={11}
-          letterSpacing={1}
-          color={COLORS.gold}
-          style={{ marginBottom: 8 }}
-        >
-          NEW HERE?
-        </Text>
-        <Stack
-          width={42}
-          height={4}
-          borderRadius={999}
-          backgroundColor={COLORS.gold}
-          marginBottom={12}
-        />
         <Text
           variant="header"
           fontSize={22}
@@ -131,7 +118,22 @@ function NewHereScreenContent() {
         </Text>
         <Stack gap={10}>
           {FAQ.map((item) => (
-            <Collapse key={item.q} title={item.q} variant="cell">
+            <Collapse
+              key={item.q}
+              title={item.q}
+              variant="cell"
+              colors={{
+                background: COLORS.paperAlt,
+                border: COLORS.chromeBorder,
+                shadow: COLORS.border,
+                titleColor: COLORS.ink,
+                subtitleColor: COLORS.inkSoft,
+                iconColor: COLORS.inkSoft,
+                activeHeaderBg: COLORS.goldPale,
+                divider: COLORS.chromeBorder,
+                bodyText: COLORS.inkSoft,
+              }}
+            >
               <Text
                 fontSize={13.5}
                 color={COLORS.inkSoft}
