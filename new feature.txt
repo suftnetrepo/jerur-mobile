@@ -1,0 +1,301 @@
+Implement the new **Bible Inspiration** feature in the Jerur React Native/Expo application.
+
+First inspect the existing project structure, navigation, theme, reusable components, storage conventions and feature-flag implementation. Follow the current architecture and styling patterns. Do not introduce a second design system or unnecessarily rewrite existing code.
+
+## Source data
+
+Use the supplied `bible-inspiration.json` as the single source of truth.
+
+If it is not already inside the project, place it in an appropriate location such as:
+
+```text
+src/data/bible-inspiration.json
+```
+
+The file contains:
+
+* `metadata`
+* `categories`
+* Centralised `verses`
+* `verseIds` connecting categories to verses
+* Ionicons names
+* `iconColor`
+* `iconBackground`
+* Keywords and related categories
+
+Do not duplicate verse objects inside categories.
+
+
+
+### 2. All Inspiration screen
+
+Open this screen when the user taps `View all`.
+
+Header:
+
+```text
+All Inspiration
+```/Users/appdev/dev/winners-chapel-mobile/assets/mockshot/ChatGPT Image Sep 17, 2026, 09_22_17 AM.png
+
+Include:
+
+* Back button
+* Search field
+* `30 topics` count
+* Scrollable filter chips
+* Single-column category list
+* Bottom navigation only if it is already part of Jerur’s navigation architecture
+
+Filter chips:
+
+```text
+All
+Emotions
+Life
+Faith
+Relationships
+```
+
+Create a typed category-group mapping keyed by category ID. Keep this mapping in a separate configuration file rather than modifying or duplicating the category objects.
+
+Suggested grouping:
+
+```ts
+type InspirationGroup =
+  | "emotions"
+  | "life"
+  | "faith"
+  | "relationships";
+```
+
+Each list row must show:
+
+* Tinted circular icon
+* Category title
+* Short description
+* Verse count
+* Chevron
+* Press feedback
+
+Use `FlatList`, stable keys and memoised row components.
+
+### 3. Category verses screen
+
+Open this screen when a category is selected.
+
+Display:
+
+* Back button
+* Category icon and title
+* Category description
+* Number of verses
+* Search within the category
+* Scrollable list of verses
+
+Resolve each category’s `verseIds` through the central `verses` object.
+
+Each verse card must include:
+
+* Verse text
+* Reference
+* Translation
+* Bookmark button
+* Share button
+
+Do not render a blank card when a verse ID cannot be resolved. Safely ignore the invalid reference and report it in development mode.
+
+## Search behaviour
+
+Search must be case-insensitive and should match:
+
+* Category title
+* Category description
+* Verse reference
+* Verse text
+* Verse keywords
+* Category ID
+
+Trim the query before searching.
+
+Do not run expensive filtering directly during every render. Use memoised selectors or an appropriate existing project pattern.
+
+## Bookmarks
+
+Allow users to bookmark verses.
+
+Use the project’s existing persistence system. If none exists for local preferences, use `AsyncStorage`.
+
+Store only verse IDs:
+
+```ts
+type SavedVerseIds = string[];
+```
+
+Create a small reusable hook or service such as:
+
+```ts
+useSavedVerses()
+```
+
+It should provide:
+
+```ts
+savedVerseIds
+isSaved(verseId)
+toggleSaved(verseId)
+isLoading
+```
+
+Do not store duplicate verse objects.
+
+## Sharing
+
+Use React Native’s native `Share` API.
+
+Format shared text as:
+
+```text
+“{verse text}”
+
+{reference} • KJV
+
+Shared from Jerur
+```
+
+Handle cancelled and failed share operations safely.
+
+## Types
+
+Create explicit TypeScript types for:
+
+```ts
+BibleInspirationData
+BibleInspirationMetadata
+InspirationCategory
+InspirationVerse
+InspirationGroup
+```
+
+Avoid `any`.
+
+Validate the imported data defensively before rendering it. Do not add a large schema-validation dependency unless the project already uses one.
+
+## Reusable components
+
+Create focused reusable components where appropriate:
+
+```text
+CategoryIcon
+InspirationCategoryCard
+InspirationCategoryRow
+FeaturedVerseCard
+VerseCard
+InspirationSearchInput
+InspirationFilterChips
+EmptySearchState
+```
+
+Do not put the entire feature into one large screen component.
+
+## Navigation
+
+Use the project’s existing Expo Router or React Navigation conventions.
+
+Add routes for:
+
+```text
+Bible Inspiration home
+All Inspiration
+Category verses
+```
+
+Pass category IDs through navigation rather than serialising complete category objects.
+
+If Jerur uses feature flags, register this feature using the existing single source of truth and wrap the entry point with the existing `FeatureGate`. Do not invent another feature-flag system.
+
+Suggested feature ID:
+
+```text
+bible-inspiration
+```
+
+## Design requirements
+
+Use Jerur’s existing theme where possible.
+
+Visual direction:
+
+```text
+Primary teal: #0B7C78
+Secondary cyan: #27B8B0
+Dark text: #172A35
+Warm background: #F8FAF9
+Card radius: approximately 16–20
+```
+
+However, use existing theme tokens instead of hardcoded values when matching tokens already exist.
+
+The result must feel like a real production application, not a demo.
+
+Requirements:
+
+* Light theme
+* Premium but restrained cards
+* Clear typography hierarchy
+* Consistent spacing
+* Safe-area support
+* Keyboard-safe search
+* Accessible colour contrast
+* Minimum 44px interactive targets
+* Accessibility labels for bookmark, share, search and category buttons
+* Support smaller and larger phone widths
+* No real photographs
+* No heavy gradient usage
+* No unnecessary animation
+
+## Empty and error states
+
+Add polished states for:
+
+* No matching categories
+* No matching verses
+* Missing or malformed dataset
+* Bookmark storage failure
+
+Do not crash the screen because of one invalid verse reference.
+
+## Testing
+
+Add tests for the pure logic:
+
+* Resolving category `verseIds`
+* Daily featured-verse selection
+* Search by category title
+* Search by reference
+* Search by verse keyword
+* Filter-chip grouping
+* Bookmark ID toggling without duplicates
+
+Run the project’s existing validation commands, including TypeScript, lint and relevant tests.
+
+## Scope control
+
+For this stage, implement only **Bible Inspiration**.
+
+Do not implement the 365-day Daily Devotional feature yet. Keep the components sufficiently reusable so the devotional feature can later reuse `VerseCard`, sharing and bookmark functionality.
+
+Do not change unrelated screens, navigation or styling.
+
+## Final report
+
+When complete, provide:
+
+1. Files created
+2. Files modified
+3. Routes added
+4. Data location
+5. Bookmark persistence approach
+6. Feature-flag changes
+7. Tests added
+8. TypeScript, lint and test results
+9. Any assumptions or unresolved issues

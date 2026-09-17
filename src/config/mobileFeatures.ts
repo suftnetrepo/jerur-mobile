@@ -219,6 +219,15 @@ export const MOBILE_FEATURES: MobileFeature[] = [
     route: "/bible",
   },
   {
+    id: "bible-inspiration",
+    label: "Inspiration",
+    description: "Help members find Bible verses for every season, emotion and area of life.",
+    category: "Media",
+    icon: "feather",
+    color: "#0B7C78",
+    route: "/inspiration",
+  },
+  {
     id: "sermons",
     label: "Sermons",
     description: "Let members watch or listen to past and recent sermons.",

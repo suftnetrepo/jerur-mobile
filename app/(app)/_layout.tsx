@@ -25,6 +25,9 @@ export default function AppLayout() {
       <Stack.Screen name="bible/index" />
       <Stack.Screen name="bible/[bookNumber]" />
       <Stack.Screen name="bible/[bookNumber]/[chapter]" />
+      <Stack.Screen name="inspiration/index" />
+      <Stack.Screen name="inspiration/all" />
+      <Stack.Screen name="inspiration/[categoryId]" />
       <Stack.Screen name="hymns/index" />
       <Stack.Screen name="hymns/[id]" />
       <Stack.Screen name="notes/index" />
