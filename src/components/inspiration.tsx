@@ -53,7 +53,7 @@ export const InspirationCategoryRow = memo(function InspirationCategoryRow({ cat
 export const InspirationCategoryCard = memo(function InspirationCategoryCard({ category, onPress, width = 148 }: { category: InspirationCategory; onPress: () => void; width?: number }) {
   return (
     <StyledPressable accessibilityRole="button" accessibilityLabel={`Open ${category.title}`} onPress={onPress} style={{ width }}>
-      <Stack minHeight={158} padding={16} gap={13} borderRadius={20} backgroundColor={COLORS.white} borderWidth={1} borderColor={COLORS.chromeBorder} style={SHADOW_SOFT}>
+      <Stack minHeight={158} padding={16} gap={13} borderRadius={20} backgroundColor={COLORS.white} borderWidth={0.1} borderColor={COLORS.chromeBorder} style={SHADOW_SOFT}>
         <Stack horizontal alignItems="flex-start" justifyContent="space-between">
           <CategoryIcon category={category} size={48} />
           <Feather name="arrow-up-right" size={17} color={COLORS.inkSoftest} />
@@ -91,7 +91,7 @@ export function InspirationFilterChips({ selected, onSelect }: { selected: Inspi
 
 export function FeaturedVerseCard({ verse, isSaved, onToggleSaved }: { verse: InspirationVerse; isSaved: boolean; onToggleSaved: () => void }) {
   return (
-    <Stack padding={22} borderRadius={24} gap={17} backgroundColor={COLORS.white} borderWidth={1} borderColor={COLORS.chromeBorder} style={SHADOW_SOFT}>
+    <Stack padding={22} borderRadius={24} gap={17} backgroundColor={COLORS.white} borderWidth={0.1} borderColor={COLORS.chromeBorder} style={SHADOW_SOFT}>
       <Stack horizontal justifyContent="space-between" alignItems="center">
         <Stack horizontal alignItems="center" gap={9}>
           <Stack width={36} height={36} borderRadius={18} alignItems="center" justifyContent="center" backgroundColor={COLORS.sageSoft}>

@@ -1,301 +1,352 @@
-Implement the new **Bible Inspiration** feature in the Jerur React Native/Expo application.
+Implement the **Daily Devotional** feature in the existing React Native/Expo application located at:
 
-First inspect the existing project structure, navigation, theme, reusable components, storage conventions and feature-flag implementation. Follow the current architecture and styling patterns. Do not introduce a second design system or unnecessarily rewrite existing code.
+`/Users/appdev/dev/winners-chapel-mobile`
 
-## Source data
+The devotional JSON files are already available at:
 
-Use the supplied `bible-inspiration.json` as the single source of truth.
+`/Users/appdev/dev/winners-chapel-mobile/assets/data/devotional`
 
-If it is not already inside the project, place it in an appropriate location such as:
+Start by inspecting the project’s existing Expo Router structure, theme tokens, components, icon library, storage utilities, feature flags and the completed Bible Inspiration implementation. Reuse the existing architecture and visual language. Do not introduce a competing design system or unnecessary dependency.
 
-```text
-src/data/bible-inspiration.json
-```
+## Product direction
 
-The file contains:
+Build a premium, theme-based Daily Devotional experience.
 
-* `metadata`
-* `categories`
-* Centralised `verses`
-* `verseIds` connecting categories to verses
-* Ionicons names
-* `iconColor`
-* `iconBackground`
-* Keywords and related categories
+Important constraints:
 
-Do not duplicate verse objects inside categories.
+* No audio
+* No Listen button
+* No Read button
+* No playback controls
+* No bottom tab bar specific to this feature
+* Do not copy another devotional app’s screen
+* Use a card-based layout
+* The horizontal calendar strip must remain flat and unboxed
+* Devotional content must come from the supplied JSON files
+* Do not rewrite or duplicate the devotional content
 
+## Screen structure
 
+### 1. Header
 
-### 2. All Inspiration screen
-
-Open this screen when the user taps `View all`.
-
-Header:
-
-```text
-All Inspiration
-```/Users/appdev/dev/winners-chapel-mobile/assets/mockshot/ChatGPT Image Sep 17, 2026, 09_22_17 AM.png
-
-Include:
+Create a clean header containing:
 
 * Back button
-* Search field
-* `30 topics` count
-* Scrollable filter chips
-* Single-column category list
-* Bottom navigation only if it is already part of Jerur’s navigation architecture
+* Centred title: `Daily Devotional`
+* Favourite icon
+* Calendar/archive icon
 
-Filter chips:
+Follow the app’s existing safe-area and header conventions.
 
-```text
-All
-Emotions
-Life
-Faith
-Relationships
-```
+### 2. Weekly calendar strip
 
-Create a typed category-group mapping keyed by category ID. Keep this mapping in a separate configuration file rather than modifying or duplicating the category objects.
+Place an unboxed horizontal calendar strip directly below the header.
 
-Suggested grouping:
+It should contain:
 
-```ts
-type InspirationGroup =
-  | "emotions"
-  | "life"
-  | "faith"
-  | "relationships";
-```
+* Current month and year
+* Seven visible days
+* Previous and next week navigation
+* Horizontal swipe support
+* Completed-day indicators
+* A clear selected-date state
+* A small indicator for today
 
-Each list row must show:
 
-* Tinted circular icon
-* Category title
-* Short description
-* Verse count
+Behaviour:
+
+* Tapping a date must load that day’s devotional on the same screen.
+* The selected date must scroll into view.
+* Completed dates should show a small teal check.
+* Today and the selected date must remain visually distinguishable.
+* Changing the selected date must update every devotional card below.
+* Use the device’s local date, not UTC.
+
+### 3. Monthly theme card
+
+Display a premium theme card underneath the calendar.
+
+Example for October:
+
+* Eyebrow: `OCTOBER THEME`
+* Title: `Prayer & Spiritual Growth`
+* Description: `Growing closer to God, one day at a time.`
+* Progress: `15 of 31 days`
+* Thin progress bar
+* Abstract theme artwork
+
+The layout remains consistent across all months, but each month can have its own:
+
+* Accent colours
+* Gradient
+* Abstract SVG or decorative pattern
+* Theme title
+* Supporting description
+
+Create one central monthly theme configuration. Do not scatter month-specific styles across components.
+
+Themes must be derived from the devotional metadata where possible, with presentation tokens mapped centrally.
+
+### 4. Today’s Devotional card
+
+Create a large premium card containing:
+
+* `TODAY · 3 MIN`, or the selected date when it is not today
+* Devotional title
+* Favourite/bookmark button
+* Scripture reference
+* KJV badge
+* Verse text resolved from `bible-inspiration.json`
+* Appropriate theme accents
+
+Do not duplicate Bible text inside components. Resolve each devotional’s `verseId` against the central Bible Inspiration verse dictionary.
+
+### 5. Reflection card
+
+Create a separate Reflection card containing:
+
+* Reflection icon
+* `Reflection` heading
+* Full reflection text
+* Reflection question inside a subtle themed inset area
+
+The text must expand naturally without clipping.
+
+### 6. Prayer and Daily Action cards
+
+Create two compact cards:
+
+* `Prayer`
+* `Daily Action`
+
+On smaller screens, stack them vertically. On wider screens, they may appear side by side.
+
+Each card should show:
+
+* Relevant line icon
+* Heading
+* Short preview
 * Chevron
-* Press feedback
 
-Use `FlatList`, stable keys and memoised row components.
+Tapping a card should expand it inline or open a bottom sheet using the project’s existing interaction pattern. Do not add a new modal library unnecessarily.
 
-### 3. Category verses screen
+### 7. Completion control
 
-Open this screen when a category is selected.
+Add a prominent button:
 
-Display:
+`Mark Today Complete`
 
-* Back button
-* Category icon and title
-* Category description
-* Number of verses
-* Search within the category
-* Scrollable list of verses
+When completed:
 
-Resolve each category’s `verseIds` through the central `verses` object.
+* Change the label to `Completed`
+* Update the selected calendar day
+* Update monthly progress
+* Persist the completed devotional ID
+* Allow the user to undo completion if appropriate
 
-Each verse card must include:
+Include previous-day and next-day controls without making them visually dominant.
 
-* Verse text
-* Reference
-* Translation
-* Bookmark button
-* Share button
+## Full calendar/archive
 
-Do not render a blank card when a verse ID cannot be resolved. Safely ignore the invalid reference and report it in development mode.
+When the user taps `View full calendar` or the calendar icon, open a devotional archive screen.
 
-## Search behaviour
+The archive should provide:
 
-Search must be case-insensitive and should match:
+* Month selection
+* Full calendar or organised day grid
+* Today indicator
+* Selected-day state
+* Completed-day state
+* Favourite indicator
+* Seasonal badge where applicable
+* Navigation to any available devotional
 
-* Category title
-* Category description
-* Verse reference
-* Verse text
-* Verse keywords
-* Category ID
+Do not lock future devotionals unless the project already has an agreed product rule for future-day access.
 
-Trim the query before searching.
+## Data layer
 
-Do not run expensive filtering directly during every render. Use memoised selectors or an appropriate existing project pattern.
+Create typed models for:
 
-## Bookmarks
+* Devotional metadata
+* Devotional entry
+* Monthly collection
+* Monthly theme
+* Bible verse
+* Completion state
+* Favourite state
 
-Allow users to bookmark verses.
+Create a devotional repository/service that:
 
-Use the project’s existing persistence system. If none exists for local preferences, use `AsyncStorage`.
-
-Store only verse IDs:
-
-```ts
-type SavedVerseIds = string[];
-```
-
-Create a small reusable hook or service such as:
-
-```ts
-useSavedVerses()
-```
-
-It should provide:
+* Explicitly imports all 12 monthly JSON files
+* Combines them in calendar order
+* Does not rely on object iteration order
+* Resolves verses from the existing Bible Inspiration data
+* Safely handles malformed or missing records
+* Exposes functions similar to:
 
 ```ts
-savedVerseIds
-isSaved(verseId)
-toggleSaved(verseId)
-isLoading
+getTodayDevotional(date)
+getDevotionalByDay(day)
+getDevotionalById(id)
+getDevotionalsByMonth(month)
+getDevotionalForDate(date)
+getMonthTheme(month)
+getSeasonalCollection(id)
+getVerseById(verseId)
 ```
 
-Do not store duplicate verse objects.
+Use explicit static JSON imports unless the existing Metro configuration already supports reliable lazy JSON loading.
 
-## Sharing
+## Date handling
 
-Use React Native’s native `Share` API.
+Implement a tested local-date mapping from calendar date to devotional day.
 
-Format shared text as:
+Handle leap years explicitly:
+
+* February 29 should reuse February 28’s devotional or follow one clearly documented rule.
+* It must not shift every devotional after February by one day.
+* December 31 must always resolve correctly.
+
+## Persistence
+
+Use the storage solution already present in the project.
+
+Persist only stable IDs and small settings:
+
+* Completed devotional IDs
+* Favourite devotional IDs
+* Last selected devotional
+* Optional preferred text size
+
+Suggested keys should follow the project’s current naming convention.
+
+Do not persist complete duplicated devotional objects.
+
+## Theme configuration
+
+Create one central theme map, for example:
+
+```ts
+type DevotionalMonthTheme = {
+  month: number;
+  title: string;
+  description: string;
+  primaryColor: string;
+  secondaryColor: string;
+  surfaceColor: string;
+  accentColor: string;
+  artwork: React.ComponentType;
+};
+```
+
+Maintain Jerur’s core teal/cyan identity while allowing restrained monthly accents for themes such as:
+
+* New beginnings
+* Love
+* Faith
+* Easter and renewal
+* Family
+* Wisdom
+* Freedom
+* Strength
+* Purpose
+* Prayer and spiritual growth
+* Gratitude and contentment
+* Advent and Christmas
+
+Use lightweight SVG artwork or React Native shapes. Do not use stock photography.
+
+## Components
+
+Prefer small reusable components such as:
 
 ```text
-“{verse text}”
-
-{reference} • KJV
-
-Shared from Jerur
+DevotionalHeader
+DevotionalWeekStrip
+DevotionalDayItem
+MonthlyThemeCard
+DevotionalContentCard
+ReflectionCard
+PrayerCard
+DailyActionCard
+DevotionalCompleteButton
+DevotionalArchiveCalendar
+DevotionalEmptyState
 ```
 
-Handle cancelled and failed share operations safely.
+Adapt names and locations to the repository’s existing conventions.
 
-## Types
+## Feature flag and navigation
 
-Create explicit TypeScript types for:
-
-```ts
-BibleInspirationData
-BibleInspirationMetadata
-InspirationCategory
-InspirationVerse
-InspirationGroup
-```
-
-Avoid `any`.
-
-Validate the imported data defensively before rendering it. Do not add a large schema-validation dependency unless the project already uses one.
-
-## Reusable components
-
-Create focused reusable components where appropriate:
-
-```text
-CategoryIcon
-InspirationCategoryCard
-InspirationCategoryRow
-FeaturedVerseCard
-VerseCard
-InspirationSearchInput
-InspirationFilterChips
-EmptySearchState
-```
-
-Do not put the entire feature into one large screen component.
-
-## Navigation
-
-Use the project’s existing Expo Router or React Navigation conventions.
-
-Add routes for:
-
-```text
-Bible Inspiration home
-All Inspiration
-Category verses
-```
-
-Pass category IDs through navigation rather than serialising complete category objects.
-
-If Jerur uses feature flags, register this feature using the existing single source of truth and wrap the entry point with the existing `FeatureGate`. Do not invent another feature-flag system.
+Use Jerur’s existing feature-flag system.
 
 Suggested feature ID:
 
-```text
-bible-inspiration
-```
+`daily-devotional`
+
+Add the route and home-screen entry through the existing feature-gated configuration. Do not create a second feature-flag implementation.
+
+Keep the existing Bible Inspiration feature unchanged except where a shared verse resolver or shared component genuinely reduces duplication.
 
 ## Design requirements
 
-Use Jerur’s existing theme where possible.
-
-Visual direction:
-
-```text
-Primary teal: #0B7C78
-Secondary cyan: #27B8B0
-Dark text: #172A35
-Warm background: #F8FAF9
-Card radius: approximately 16–20
-```
-
-However, use existing theme tokens instead of hardcoded values when matching tokens already exist.
-
-The result must feel like a real production application, not a demo.
-
-Requirements:
-
-* Light theme
-* Premium but restrained cards
-* Clear typography hierarchy
-* Consistent spacing
-* Safe-area support
-* Keyboard-safe search
-* Accessible colour contrast
-* Minimum 44px interactive targets
-* Accessibility labels for bookmark, share, search and category buttons
-* Support smaller and larger phone widths
-* No real photographs
-* No heavy gradient usage
-* No unnecessary animation
-
-## Empty and error states
-
-Add polished states for:
-
-* No matching categories
-* No matching verses
-* Missing or malformed dataset
-* Bookmark storage failure
-
-Do not crash the screen because of one invalid verse reference.
+* Premium React Native UI
+* Warm ivory screen background
+* Jerur teal/cyan primary palette
+* Restrained champagne-gold accents
+* Elegant serif typography for devotional and theme titles if an appropriate font is already installed
+* Existing app font as the fallback
+* Soft shadows
+* Thin borders
+* Card radii between approximately 18–24px
+* Comfortable spacing
+* Accessible contrast
+* Minimum touch targets
+* Dynamic font scaling
+* No clipped devotional text
+* Proper loading, empty and error states
+* Light and dark themes only if the application already supports both
 
 ## Testing
 
-Add tests for the pure logic:
+Add focused tests for:
 
-* Resolving category `verseIds`
-* Daily featured-verse selection
-* Search by category title
-* Search by reference
-* Search by verse keyword
-* Filter-chip grouping
-* Bookmark ID toggling without duplicates
+* All 365 devotionals load
+* Day IDs are unique
+* Every `verseId` resolves
+* Month ordering is correct
+* Day 1 and Day 365 boundaries
+* February transition
+* Leap-year behaviour
+* Selected date loads the correct devotional
+* Completion state persists
+* Favourite state persists
+* Monthly progress updates correctly
+* Unknown devotional IDs fail safely
+* Unknown verse IDs do not crash the screen
 
-Run the project’s existing validation commands, including TypeScript, lint and relevant tests.
+Run:
 
-## Scope control
+* TypeScript type-check
+* Existing lint command
+* Relevant unit tests
+* Existing project validation commands
 
-For this stage, implement only **Bible Inspiration**.
+Fix issues introduced by this implementation. Report unrelated existing warnings separately.
 
-Do not implement the 365-day Daily Devotional feature yet. Keep the components sufficiently reusable so the devotional feature can later reuse `VerseCard`, sharing and bookmark functionality.
+## Delivery
 
-Do not change unrelated screens, navigation or styling.
+Implement the feature completely rather than only producing a plan.
 
-## Final report
+At completion, report:
 
-When complete, provide:
+1. Screens and routes added
+2. Components added
+3. Data service and types added
+4. Monthly theme configuration
+5. Feature-flag changes
+6. Storage keys used
+7. Tests and validation results
+8. Remaining limitations or product decisions
 
-1. Files created
-2. Files modified
-3. Routes added
-4. Data location
-5. Bookmark persistence approach
-6. Feature-flag changes
-7. Tests added
-8. TypeScript, lint and test results
-9. Any assumptions or unresolved issues
+Begin by inspecting the repository, provide a short implementation plan, and then proceed with the implementation.

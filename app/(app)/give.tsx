@@ -26,6 +26,12 @@ const ONLINE_TONE = { pale: "#FFF3E0", accent: "#F97316" } as const; // orange
 const BANK_TONE = { pale: "#ECFDF5", accent: "#10B981" } as const; // green
 const ENV_TONE = { pale: "#F5F3FF", accent: "#8B5CF6" } as const; // purple
 
+// Fixed dark-navy card background for the bank details popup, deliberately
+// not COLORS.indigo — that token is theme-variable and turns into a bright
+// teal accent in the app's own "Dark" theme, which broke this popup's
+// always-dark "premium bank card" look (pale text on a bright card).
+const BANK_POPUP_BACKGROUND = "#1B2340";
+
 // ── Utility: bank field row ──────────────────────────────────────────────────
 function formatSortCode(value?: string) {
   if (!value) return "—";
@@ -343,7 +349,7 @@ function GiveScreenContent() {
         round
         showClose
         colors={{
-          background: COLORS.indigo,
+          background: BANK_POPUP_BACKGROUND,
           closeIcon: "#C7CBDA",
           closeIconBg: "rgba(255,255,255,0.08)",
         }}
