@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import { router } from "expo-router";
 import { COLORS } from "../theme/colors";
 import { ThemeHeader } from "./ThemeHeader";
@@ -6,9 +7,12 @@ import { ThemeHeader } from "./ThemeHeader";
 export function AppBackHeader({
   title,
   backgroundColor = COLORS.paper,
+  rightIcon,
 }: {
   title?: string;
   backgroundColor?: string;
+  /** Optional trailing header content, e.g. a font-size control button. */
+  rightIcon?: ReactNode;
 }) {
   return (
     <ThemeHeader
@@ -25,6 +29,7 @@ export function AppBackHeader({
       onBackPress={() => router.back()}
       backgroundColor={backgroundColor}
       marginHorizontal={16}
+      rightIcon={rightIcon}
     />
   );
 }

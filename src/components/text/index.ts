@@ -173,8 +173,21 @@ const Text = styled<AppTextProps>(StyledText, {
       const explicitWeight = options.fontWeight
       const resolvedWeight = String(explicitWeight || variantStyle.fontWeight || '400')
 
+      // This handler runs on every render, even when no `variant` prop is
+      // passed (it then falls back to 'body' above), and the `base` style
+      // below also hardcodes fontSize/lineHeight — so without explicitly
+      // re-asserting the caller's own values here, a bare `fontSize`/
+      // `lineHeight` override (the documented "explicit overrides for
+      // special cases" usage, e.g. dynamic reader-font-size controls)
+      // gets silently clobbered back to 'body's 14/22, even though
+      // StyledText's own fontSize variant correctly resolved the override
+      // one layer down.
+      const { fontSize: variantFontSize, lineHeight: variantLineHeight, ...restVariantStyle } = variantStyle
+
       return {
-        ...variantStyle,
+        ...restVariantStyle,
+        fontSize: options.fontSize !== undefined ? options.fontSize : variantFontSize,
+        lineHeight: options.lineHeight !== undefined ? options.lineHeight : variantLineHeight,
         fontFamily: resolveFontFamily(resolvedWeight),
       }
     },

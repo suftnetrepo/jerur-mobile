@@ -2,6 +2,7 @@ import { useMemo, useState } from "react";
 import { Platform, ScrollView } from "react-native";
 import { POPUP_COLORS_DARK, POPUP_COLORS_LIGHT, Popup, Stack, StyledPage } from "fluent-styles";
 import { FeatureGate } from "../../../src/components/FeatureGate";
+import { ReaderFontSizePopup } from "../../../src/components/ReaderFontSizePopup";
 import { Text } from "../../../src/components/text";
 import {
   DailyActionCard,
@@ -26,7 +27,7 @@ import {
   monthProgress,
   toLocalDateKey,
 } from "../../../src/devotional/logic";
-import { useDevotionalCompletion, useDevotionalFavorites } from "../../../src/devotional/storage";
+import { useDevotionalCompletion, useDevotionalFavorites, useDevotionalFontSize } from "../../../src/devotional/storage";
 import { COLORS, isDarkTheme } from "../../../src/theme/colors";
 
 export default function DevotionalScreen() {
@@ -42,9 +43,11 @@ function DevotionalContent() {
   const [selectedDate, setSelectedDate] = useState(today);
   const [weekStart, setWeekStart] = useState(() => getWeekStart(today));
   const [expandedSheet, setExpandedSheet] = useState<"prayer" | "action" | null>(null);
+  const [fontSizePopupVisible, setFontSizePopupVisible] = useState(false);
 
   const { completedIds, isCompleted, toggleCompleted, error: completionError } = useDevotionalCompletion();
   const { favoriteIds, isFavorite, toggleFavorite, error: favoriteError } = useDevotionalFavorites();
+  const { fontSize, increase, decrease, reset, canIncrease, canDecrease } = useDevotionalFontSize();
 
   const weekDates = useMemo(() => getWeekDates(weekStart), [weekStart]);
   const devotional = useMemo(() => getDevotionalForSelectedDate(selectedDate), [selectedDate]);
@@ -72,6 +75,7 @@ function DevotionalContent() {
       <DevotionalHeader
         isFavorite={!!devotional && isFavorite(devotional.id)}
         onToggleFavorite={() => devotional && void toggleFavorite(devotional.id)}
+        onOpenFontSize={() => setFontSizePopupVisible(true)}
       />
       <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: 36 }}>
         <DevotionalWeekStrip
@@ -95,9 +99,10 @@ function DevotionalContent() {
               selectedDateLabel={selectedDateLabel}
               isFavorite={isFavorite(devotional.id)}
               onToggleFavorite={() => void toggleFavorite(devotional.id)}
+              fontSize={fontSize}
             />
             {favoriteError ? <Text marginHorizontal={20} marginBottom={12} fontSize={12} color={COLORS.error}>{favoriteError}</Text> : null}
-            <ReflectionCard reflection={devotional.reflection} reflectionQuestion={devotional.reflectionQuestion} />
+            <ReflectionCard reflection={devotional.reflection} reflectionQuestion={devotional.reflectionQuestion} fontSize={fontSize} />
             <Stack horizontal gap={12} marginHorizontal={20} marginBottom={16}>
               <PrayerCard prayer={devotional.prayer} onPress={() => setExpandedSheet("prayer")} />
               <DailyActionCard dailyAction={devotional.dailyAction} onPress={() => setExpandedSheet("action")} />
@@ -126,7 +131,7 @@ function DevotionalContent() {
         headerStyle={{ paddingBottom: 8 }}
       >
         <Stack paddingHorizontal={22} paddingTop={6} paddingBottom={22}>
-          <Text fontSize={16} color={COLORS.ink} style={{ lineHeight: 26 }}>{devotional?.prayer}</Text>
+          <Text fontSize={fontSize} color={COLORS.ink} style={{ lineHeight: Math.round(fontSize * 1.6) }}>{devotional?.prayer}</Text>
         </Stack>
       </Popup>
       <Popup
@@ -140,9 +145,20 @@ function DevotionalContent() {
         headerStyle={{ paddingBottom: 8 }}
       >
         <Stack paddingHorizontal={22} paddingTop={6} paddingBottom={22}>
-          <Text fontSize={16} color={COLORS.ink} style={{ lineHeight: 26 }}>{devotional?.dailyAction}</Text>
+          <Text fontSize={fontSize} color={COLORS.ink} style={{ lineHeight: Math.round(fontSize * 1.6) }}>{devotional?.dailyAction}</Text>
         </Stack>
       </Popup>
+
+      <ReaderFontSizePopup
+        visible={fontSizePopupVisible}
+        onClose={() => setFontSizePopupVisible(false)}
+        fontSize={fontSize}
+        canDecrease={canDecrease}
+        canIncrease={canIncrease}
+        onDecrease={decrease}
+        onIncrease={increase}
+        onReset={reset}
+      />
     </StyledPage>
   );
 }

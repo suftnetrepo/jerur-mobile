@@ -89,7 +89,7 @@ export function InspirationFilterChips({ selected, onSelect }: { selected: Inspi
   );
 }
 
-export function FeaturedVerseCard({ verse, isSaved, onToggleSaved }: { verse: InspirationVerse; isSaved: boolean; onToggleSaved: () => void }) {
+export function FeaturedVerseCard({ verse, isSaved, onToggleSaved, fontSize }: { verse: InspirationVerse; isSaved: boolean; onToggleSaved: () => void; fontSize: number }) {
   return (
     <Stack padding={22} borderRadius={24} gap={17} backgroundColor={COLORS.white} borderWidth={0.1} borderColor={COLORS.chromeBorder} style={SHADOW_SOFT}>
       <Stack horizontal justifyContent="space-between" alignItems="center">
@@ -109,7 +109,7 @@ export function FeaturedVerseCard({ verse, isSaved, onToggleSaved }: { verse: In
         </StyledPressable>
       </Stack>
       <Stack height={1} backgroundColor={COLORS.chromeBorder} />
-      <Text fontSize={19} fontWeight="600" color={COLORS.ink} style={{ lineHeight: 30 }}>“{verse.text}”</Text>
+      <Text fontSize={fontSize} fontWeight="600" color={COLORS.ink} style={{ lineHeight: Math.round(fontSize * 1.58) }}>“{verse.text}”</Text>
       <Stack horizontal alignItems="center" gap={8}>
         <Stack width={3} height={30} borderRadius={2} backgroundColor={COLORS.indigo} />
         <Stack gap={1}>
@@ -129,10 +129,10 @@ async function shareVerse(verse: InspirationVerse) {
   }
 }
 
-export const VerseCard = memo(function VerseCard({ verse, isSaved, onToggleSaved }: { verse: InspirationVerse; isSaved: boolean; onToggleSaved: () => void }) {
+export const VerseCard = memo(function VerseCard({ verse, isSaved, onToggleSaved, fontSize }: { verse: InspirationVerse; isSaved: boolean; onToggleSaved: () => void; fontSize: number }) {
   return (
     <Stack padding={19} borderRadius={18} gap={13} backgroundColor={COLORS.white} borderWidth={1} borderColor={COLORS.chromeBorder} style={SHADOW_SOFT}>
-      <Text fontSize={16} color={COLORS.ink} style={{ lineHeight: 26 }}>“{verse.text}”</Text>
+      <Text fontSize={fontSize} color={COLORS.ink} style={{ lineHeight: Math.round(fontSize * 1.625) }}>“{verse.text}”</Text>
       <Stack horizontal alignItems="center" justifyContent="space-between" gap={12}>
         <Stack flex={1}>
           <Text fontSize={13} fontWeight="800" color={COLORS.indigo}>{verse.reference}</Text>

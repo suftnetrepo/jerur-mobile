@@ -39,9 +39,11 @@ function HeaderIconButton({ icon, color, accessibilityLabel, onPress }: { icon: 
 export function DevotionalHeader({
   isFavorite,
   onToggleFavorite,
+  onOpenFontSize,
 }: {
   isFavorite: boolean;
   onToggleFavorite: () => void;
+  onOpenFontSize: () => void;
 }) {
   return (
     <ThemeHeader
@@ -53,7 +55,10 @@ export function DevotionalHeader({
       backgroundColor={COLORS.paperSoft}
       marginHorizontal={16}
       rightIcon={
-        <HeaderIconButton icon="heart" color={isFavorite ? COLORS.error : COLORS.ink} accessibilityLabel={isFavorite ? "Remove from favourites" : "Add to favourites"} onPress={onToggleFavorite} />
+        <Stack horizontal alignItems="center" gap={8}>
+          <HeaderIconButton icon="type" color={COLORS.ink} accessibilityLabel="Change text size" onPress={onOpenFontSize} />
+          <HeaderIconButton icon="heart" color={isFavorite ? COLORS.error : COLORS.ink} accessibilityLabel={isFavorite ? "Remove from favourites" : "Add to favourites"} onPress={onToggleFavorite} />
+        </Stack>
       }
     />
   );
@@ -160,7 +165,7 @@ export function MonthlyThemeCard({ theme, completed, total }: { theme: Devotiona
       marginBottom={18}
       borderRadius={22}
       padding={22}
-      gap={14}
+      gap={1}
       overflow="hidden"
       backgroundColor={theme.secondaryColor}
       style={SHADOW_SOFT}
@@ -168,12 +173,12 @@ export function MonthlyThemeCard({ theme, completed, total }: { theme: Devotiona
       <Stack position="absolute" top={0} left={0} right={0} bottom={0}>
         <DevotionalArtwork variant={theme.artworkVariant} primaryColor={theme.primaryColor} secondaryColor={theme.secondaryColor} accentColor={theme.accentColor} />
       </Stack>
-      <Text variant="overline" fontSize={11} letterSpacing={1.4} color={theme.accentColor}>{MONTH_NAMES[theme.month - 1].toUpperCase()} THEME</Text>
-      <Stack gap={4}>
+      <Text variant="overline" fontSize={11} letterSpacing={1.4} color={theme.accentColor}>{MONTH_NAMES[theme.month - 1].toUpperCase()} </Text>
+      <Stack gap={1}>
         <Text fontSize={25} fontWeight="800" color={COLORS.onPrimary} style={{ lineHeight: 31 }}>{theme.title}</Text>
         <Text fontSize={13.5} color="rgba(255,255,255,0.82)">{theme.description}</Text>
       </Stack>
-      <Stack gap={6}>
+      <Stack marginTop={8} gap={6}>
         <Stack height={5} borderRadius={2.5} backgroundColor={withAlpha(theme.accentColor, 0.24)}>
           <Stack height={5} borderRadius={2.5} backgroundColor={theme.accentColor} style={{ width: `${Math.round(progress * 100)}%` }} />
         </Stack>
@@ -190,6 +195,7 @@ export function DevotionalContentCard({
   selectedDateLabel,
   isFavorite,
   onToggleFavorite,
+  fontSize,
 }: {
   devotional: DevotionalEntry;
   verse: InspirationVerse | undefined;
@@ -197,6 +203,7 @@ export function DevotionalContentCard({
   selectedDateLabel: string;
   isFavorite: boolean;
   onToggleFavorite: () => void;
+  fontSize: number;
 }) {
   return (
     <Stack marginHorizontal={20} marginBottom={16} padding={22} borderRadius={24} gap={16} backgroundColor={COLORS.white} borderWidth={0.1} borderColor={COLORS.chromeBorder} style={SHADOW_SOFT}>
@@ -209,7 +216,7 @@ export function DevotionalContentCard({
       <Text fontSize={23} fontWeight="800" color={COLORS.ink} style={{ lineHeight: 29 }}>{devotional.title}</Text>
       {verse ? (
         <>
-          <Text fontSize={16.5} color={COLORS.ink} style={{ lineHeight: 27 }}>&ldquo;{verse.text}&rdquo;</Text>
+          <Text fontSize={fontSize} color={COLORS.ink} style={{ lineHeight: Math.round(fontSize * 1.6) }}>&ldquo;{verse.text}&rdquo;</Text>
           <Stack horizontal alignItems="center" gap={8}>
             <Text fontSize={15} fontWeight="700" color={COLORS.indigo}>{verse.reference}</Text>
             <Stack paddingHorizontal={9} paddingVertical={3} borderRadius={999} backgroundColor={COLORS.sageSoft}>
@@ -224,7 +231,7 @@ export function DevotionalContentCard({
   );
 }
 
-export function ReflectionCard({ reflection, reflectionQuestion }: { reflection: string; reflectionQuestion: string }) {
+export function ReflectionCard({ reflection, reflectionQuestion, fontSize }: { reflection: string; reflectionQuestion: string; fontSize: number }) {
   return (
     <Stack marginHorizontal={20} marginBottom={16} padding={20} borderRadius={22} gap={13} backgroundColor={COLORS.white} borderWidth={0.1} borderColor={COLORS.chromeBorder} style={SHADOW_SOFT}>
       <Stack horizontal alignItems="center" gap={10}>
@@ -233,10 +240,10 @@ export function ReflectionCard({ reflection, reflectionQuestion }: { reflection:
         </Stack>
         <Text fontSize={17} fontWeight="800" color={COLORS.ink}>Reflection</Text>
       </Stack>
-      <Text fontSize={14.5} color={COLORS.inkSoft} style={{ lineHeight: 23 }}>{reflection}</Text>
+      <Text fontSize={fontSize - 2} color={COLORS.inkSoft} style={{ lineHeight: Math.round((fontSize - 2) * 1.55) }}>{reflection}</Text>
       <Stack horizontal alignItems="flex-start" gap={10} padding={14} borderRadius={16} backgroundColor={COLORS.paperAlt}>
         <Feather name="message-circle" size={17} color={COLORS.indigo} />
-        <Text flex={1} fontSize={13.5} fontWeight="600" color={COLORS.ink} style={{ lineHeight: 20 }}>{reflectionQuestion}</Text>
+        <Text flex={1} fontSize={fontSize - 3} fontWeight="600" color={COLORS.ink} style={{ lineHeight: Math.round((fontSize - 3) * 1.45) }}>{reflectionQuestion}</Text>
       </Stack>
     </Stack>
   );
