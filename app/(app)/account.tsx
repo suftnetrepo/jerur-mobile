@@ -19,7 +19,7 @@ import { AppBackHeader } from "../../src/components/AppBackHeader";
 import { FormSubmitButton } from "../../src/components/FormSubmitButton";
 import { AccountSkeleton } from "../../src/components/skeleton";
 import { apiErrorMessage, apiErrorCode } from "../../src/api/client";
-import { Platform } from "react-native";
+import { KeyboardAvoidingView, Platform } from "react-native";
 import { COLORS, FORM_FIELD_COLORS, isDarkTheme } from "../../src/theme/colors";
 import { SHADOW_CARD, SHADOW_SOFT } from "../../src/theme/shadows";
 
@@ -54,7 +54,21 @@ export default function AccountScreen() {
   return (
     <StyledPage flex={1} backgroundColor={COLORS.paper} statusBarStyle={isDarkTheme ? "light-content" : "dark-content"} statusBarBackgroundColor={Platform.OS === "android" ? COLORS.paper : undefined}>
       <AppBackHeader title="Account" />
-      <StyledScrollView contentContainerStyle={{ paddingHorizontal: 20, paddingTop: 14, paddingBottom: 60 }}>
+      <KeyboardAvoidingView
+        style={{ flex: 1 }}
+        behavior={Platform.OS === "ios" ? "padding" : "height"}
+        keyboardVerticalOffset={0}
+      >
+        <StyledScrollView
+          keyboardShouldPersistTaps="handled"
+          keyboardDismissMode={Platform.OS === "ios" ? "interactive" : "on-drag"}
+          contentContainerStyle={{
+            flexGrow: 1,
+            paddingHorizontal: 20,
+            paddingTop: 14,
+            paddingBottom: Platform.OS === "android" ? 140 : 80,
+          }}
+        >
         {isLoading ? (
           <AccountSkeleton />
         ) : member ? (
@@ -77,7 +91,8 @@ export default function AccountScreen() {
             </Stack>
           </Stack>
         )}
-      </StyledScrollView>
+        </StyledScrollView>
+      </KeyboardAvoidingView>
     </StyledPage>
   );
 }
