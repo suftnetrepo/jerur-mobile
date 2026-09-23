@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Dimensions, Image } from "react-native";
 import Svg, { Defs, LinearGradient, Stop, Rect } from "react-native-svg";
 import { Stack } from "fluent-styles";
@@ -12,10 +13,9 @@ const BANNER_HEIGHT = 210; // same height as the old slider card
 const BANNER_RADIUS = 22; // same radius as the old slider card
 
 // Stands in for a church's own secure_url when they haven't uploaded one —
-// rendered with just a light dark-fade wash (see churchBannerFade below),
-// no caption text/icon on top of it (there's no short_message/verse to
-// show for a church that hasn't set one up). Same `require`-a-local-asset
-// pattern as _layout.tsx's SPLASH_LOGO.
+// rendered with a light wash when no copy exists, or a stronger readable
+// overlay when the church has configured a message or verse without an
+// image. Same `require`-a-local-asset pattern as _layout.tsx's SPLASH_LOGO.
 const DEFAULT_BANNER = require("../../assets/default-banner.png");
 
 /**
@@ -28,15 +28,18 @@ const DEFAULT_BANNER = require("../../assets/default-banner.png");
  *
  * Owns its own outer spacing (paddingHorizontal/marginBottom, matching
  * the old slider card's) — always renders something here (the church's own
- * image with its caption text, or DEFAULT_BANNER above on its own), so
+ * image with its caption text, or DEFAULT_BANNER with any available copy), so
  * unlike NotificationCard this never collapses to nothing; Home always has
  * a hero slot to show.
  */
 export function ChurchBanner({ settings }: { settings: ChurchSettings | null | undefined }) {
-  const imageUri = settings?.secure_url;
+  const imageUri = settings?.secure_url?.trim() || null;
+  const [failedImageUri, setFailedImageUri] = useState<string | null>(null);
   const shortMessage = settings?.short_message?.trim();
   const verse = settings?.verse?.trim();
-  const bannerSource = imageUri ? { uri: imageUri } : DEFAULT_BANNER;
+  const hasCaption = Boolean(shortMessage || verse);
+  const useRemoteImage = Boolean(imageUri && failedImageUri !== imageUri);
+  const bannerSource = useRemoteImage ? { uri: imageUri! } : DEFAULT_BANNER;
 
   return (
     <Stack paddingHorizontal={H_PAD}>
@@ -45,8 +48,17 @@ export function ChurchBanner({ settings }: { settings: ChurchSettings | null | u
         height={BANNER_HEIGHT}
         borderRadius={BANNER_RADIUS}
         overflow="hidden"
+        backgroundColor={COLORS.paperAlt}
       >
-        <Image source={bannerSource} style={{ width: "100%", height: "100%" }} resizeMode="cover" />
+        <Image
+          key={useRemoteImage ? imageUri : "default-banner"}
+          source={bannerSource}
+          style={{ width: "100%", height: "100%" }}
+          resizeMode="cover"
+          onError={() => {
+            if (useRemoteImage) setFailedImageUri(imageUri);
+          }}
+        />
 
         {/* Subtle dark gradient, darker at the top/bottom edges than the
             center — content below (when present) is vertically centered,
@@ -58,16 +70,16 @@ export function ChurchBanner({ settings }: { settings: ChurchSettings | null | u
         <Svg style={{ position: "absolute", inset: 0 }} width="100%" height="100%">
           <Defs>
             <LinearGradient id="churchBannerFade" x1="0" y1="0" x2="0" y2="1">
-              <Stop offset="0" stopColor="#0C0A09" stopOpacity={imageUri ? 0.95 : 0.35} />
-              <Stop offset="0.5" stopColor="#0C0A09" stopOpacity={imageUri ? 0.6 : 0.15} />
-              <Stop offset="1" stopColor="#0C0A09" stopOpacity={imageUri ? 0.95 : 0.35} />
+              <Stop offset="0" stopColor="#0C0A09" stopOpacity={useRemoteImage ? 0.88 : hasCaption ? 0.62 : 0.25} />
+              <Stop offset="0.5" stopColor="#0C0A09" stopOpacity={useRemoteImage ? 0.5 : hasCaption ? 0.3 : 0.08} />
+              <Stop offset="1" stopColor="#0C0A09" stopOpacity={useRemoteImage ? 0.88 : hasCaption ? 0.62 : 0.25} />
             </LinearGradient>
           </Defs>
           <Rect width="100%" height="100%" fill="url(#churchBannerFade)" />
         </Svg>
 
-        {/* Caption text overlay — only for a real church photo, which is
-            the only case with short_message/verse to show. Deliberately
+        {/* Caption text overlay — uses the church photo when available and
+            the bundled default banner when only text has been configured. Deliberately
             positioned via a `style` object rather than fluent-styles' flat
             props (position/top/bottom/left/right/alignItems/
             justifyContent all at once). That flat-prop combination
@@ -76,7 +88,7 @@ export function ChurchBanner({ settings }: { settings: ChurchSettings | null | u
             forms on a real device: `style={{...}}` renders correctly, the
             flat-prop form doesn't render at all. Filed as a library bug;
             this is the workaround. */}
-        {imageUri && (
+        {hasCaption && (
           <Stack
             style={{
               position: "absolute",

@@ -32,6 +32,7 @@ export function ChurchResultCard({
   onSelect: () => void;
 }) {
   const [detailsOpen, setDetailsOpen] = useState(false);
+  const [failedBannerUri, setFailedBannerUri] = useState<string | null>(null);
   const [gradientFrom, gradientTo] = FALLBACK_GRADIENTS[index % FALLBACK_GRADIENTS.length];
   const addressLine = [church.address?.addressLine1, church.address?.town].filter(Boolean).join(" · ");
 
@@ -41,7 +42,8 @@ export function ChurchResultCard({
   // the platform, this card included. Treat the schema's `''` default the
   // same as "absent" rather than rendering a broken image, and fall
   // through to the gradient placeholder below when there isn't one.
-  const bannerUri = church.secure_url || null;
+  const bannerUri = church.secure_url?.trim() || null;
+  const showBannerImage = Boolean(bannerUri && failedBannerUri !== bannerUri);
   // The church's LOGO — Church.logo_url, an entirely separate asset from
   // the banner above. Small brand identifier beside the name only; never
   // substitutes for bannerUri.
@@ -53,8 +55,13 @@ export function ChurchResultCard({
         {/* Banner — the church's official image (secure_url) if it has one,
             otherwise a brand gradient. ~16:9 against typical phone widths. */}
         <Stack height={180}>
-          {bannerUri ? (
-            <Image source={{ uri: bannerUri }} style={{ width: "100%", height: "100%" }} resizeMode="cover" />
+          {showBannerImage ? (
+            <Image
+              source={{ uri: bannerUri! }}
+              style={{ width: "100%", height: "100%" }}
+              resizeMode="cover"
+              onError={() => setFailedBannerUri(bannerUri)}
+            />
           ) : (
             <Svg width="100%" height="100%">
               <Defs>

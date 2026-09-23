@@ -34,12 +34,9 @@ export type ChurchSearchResult = {
   // ChurchResultCard — never used as the card's hero image.
   logo_url?: string;
   logo_id?: string;
-  // GET /church/search returns the full, unfiltered Church document
-  // (searchChurches/searchChurchesWithinRadius in
-  // jerur-next/app/services/churchService.js do a plain `Church.find()`,
-  // no `.select()`), so fields like these ride along on every search
-  // result already, not just on the already-selected church's own
-  // ChurchSettings.
+  // GET /church/search returns an explicit public church-identity DTO.
+  // Notification and pastor media are intentionally excluded so their
+  // nested secure_url fields can never be mistaken for this banner.
   facebook_url?: string;
   instagram_url?: string;
   youtube_url?: string;
