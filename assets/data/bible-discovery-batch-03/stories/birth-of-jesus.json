@@ -1,0 +1,238 @@
+{
+  "schemaVersion": "1.0.0",
+  "contentVersion": "1.0.0",
+  "language": "en-GB",
+  "contentNotice": "Original retelling based on the cited Bible passages; not a replacement for reading Scripture.",
+  "story": {
+    "id": "birth-of-jesus",
+    "title": "The Birth of Jesus",
+    "subtitle": "Hope enters the world",
+    "collectionIds": [
+      "life-of-jesus"
+    ],
+    "scriptureReferences": [
+      "Matthew 1:18–25",
+      "Matthew 2:1–23",
+      "Luke 1:26–56",
+      "Luke 2:1–40"
+    ],
+    "illustration": "stories/birth-of-jesus.svg",
+    "estimatedMinutes": 10,
+    "difficulty": "beginner",
+    "ageSuitability": "all-ages",
+    "featured": true,
+    "seasonalTags": [
+      "advent",
+      "christmas"
+    ],
+    "keywords": [
+      "Jesus",
+      "Mary",
+      "Joseph",
+      "Bethlehem",
+      "angels",
+      "shepherds",
+      "magi",
+      "Christmas",
+      "hope"
+    ],
+    "introduction": {
+      "summary": "Jesus is born in humble circumstances as angels announce good news, shepherds come to worship and visitors from the east recognise a king whose arrival brings hope to the world.",
+      "context": "The Gospel accounts locate Jesus’ birth within real families, rulers and places. The promised Messiah arrives without royal luxury, entrusted to Mary and Joseph."
+    },
+    "storySections": [
+      {
+        "id": "marys-yes",
+        "title": "Mary’s Yes",
+        "content": "The angel Gabriel tells Mary that she will give birth to Jesus, whose kingdom will not end. Though surprised and aware of the cost, Mary responds with humble willingness and later praises God for lifting the lowly and keeping his promises.",
+        "scriptureReference": "Luke 1:26–56"
+      },
+      {
+        "id": "josephs-obedience",
+        "title": "Joseph’s Obedience",
+        "content": "Joseph learns that Mary is expecting a child and initially plans a quiet separation. In a dream, an angel tells him not to be afraid, explaining that the child is from the Holy Spirit and will save his people. Joseph obeys and takes Mary as his wife.",
+        "scriptureReference": "Matthew 1:18–25"
+      },
+      {
+        "id": "born-in-bethlehem",
+        "title": "Born in Bethlehem",
+        "content": "A registration brings Joseph and Mary from Nazareth to Bethlehem. With ordinary guest space unavailable, Jesus is born in humble surroundings, wrapped securely and placed in a manger.",
+        "scriptureReference": "Luke 2:1–7"
+      },
+      {
+        "id": "good-news-for-shepherds",
+        "title": "Good News for Shepherds",
+        "content": "An angel appears to shepherds nearby and announces good news of great joy: a Saviour has been born. A multitude praises God. The shepherds hurry to Bethlehem, find the child and then spread the message they have received.",
+        "scriptureReference": "Luke 2:8–20"
+      },
+      {
+        "id": "recognised-and-protected",
+        "title": "Recognised and Protected",
+        "content": "Jesus is presented at the temple, where Simeon and Anna recognise God’s salvation. Later, wise men from the east follow a star and bring gifts. Herod reacts with violence, but Joseph is warned in a dream and takes the family to safety before eventually settling in Nazareth.",
+        "scriptureReference": "Luke 2:21–40; Matthew 2:1–23"
+      }
+    ],
+    "keyPeople": [
+      {
+        "name": "Jesus",
+        "role": "Promised Saviour and Messiah"
+      },
+      {
+        "name": "Mary",
+        "role": "Mother of Jesus who responds in faith"
+      },
+      {
+        "name": "Joseph",
+        "role": "Guardian who obeys God and protects the family"
+      },
+      {
+        "name": "The shepherds",
+        "role": "First local witnesses to the angelic announcement"
+      },
+      {
+        "name": "The magi",
+        "role": "Visitors from the east who honour Jesus as king"
+      }
+    ],
+    "keyLocations": [
+      {
+        "name": "Nazareth",
+        "description": "Home of Mary and Joseph and later Jesus’ childhood town"
+      },
+      {
+        "name": "Bethlehem",
+        "description": "Town where Jesus is born"
+      },
+      {
+        "name": "Jerusalem",
+        "description": "Location of the temple presentation"
+      },
+      {
+        "name": "Egypt",
+        "description": "Place of refuge from Herod’s violence"
+      }
+    ],
+    "flashcards": [
+      {
+        "id": "birth-card-1",
+        "front": "Who announced Jesus’ coming to Mary?",
+        "back": "The angel Gabriel brought the message to Mary.",
+        "scriptureReference": "Luke 1:26–33"
+      },
+      {
+        "id": "birth-card-2",
+        "front": "Why did Joseph continue with the marriage?",
+        "back": "An angel explained the child’s divine origin and mission, and Joseph obeyed.",
+        "scriptureReference": "Matthew 1:18–24"
+      },
+      {
+        "id": "birth-card-3",
+        "front": "In which town was Jesus born?",
+        "back": "Jesus was born in Bethlehem.",
+        "scriptureReference": "Luke 2:1–7"
+      },
+      {
+        "id": "birth-card-4",
+        "front": "Where was the newborn Jesus laid?",
+        "back": "He was wrapped and placed in a manger.",
+        "scriptureReference": "Luke 2:7"
+      },
+      {
+        "id": "birth-card-5",
+        "front": "Who heard the angelic announcement outside Bethlehem?",
+        "back": "Shepherds caring for their flocks heard the good news.",
+        "scriptureReference": "Luke 2:8–14"
+      },
+      {
+        "id": "birth-card-6",
+        "front": "What gifts did the magi bring?",
+        "back": "They presented gold, frankincense and myrrh.",
+        "scriptureReference": "Matthew 2:9–11"
+      }
+    ],
+    "keyLessons": [
+      "God’s great work can enter the world through humble people and places.",
+      "Faith responds to God with willing obedience even when the future is unclear.",
+      "The announcement of Jesus is good news intended for all kinds of people.",
+      "True worship offers honour rather than seeking control.",
+      "God’s saving purpose unfolds even amid political fear and human danger."
+    ],
+    "reflection": {
+      "question": "Which person’s response—Mary, Joseph, the shepherds or the magi—most challenges your own faith?",
+      "prompt": "Choose one way to respond: willing obedience, immediate witness, patient worship or generous giving."
+    },
+    "prayerPrompt": "God of hope, help me receive Jesus with wonder and respond with the willing faith shown in this story.",
+    "quiz": [
+      {
+        "id": "birth-question-1",
+        "question": "Which angel announced Jesus’ birth to Mary?",
+        "options": [
+          "Michael",
+          "Gabriel",
+          "Raphael",
+          "No angel is named"
+        ],
+        "correctOptionIndex": 1,
+        "explanation": "Luke identifies the messenger as Gabriel.",
+        "scriptureReference": "Luke 1:26–33"
+      },
+      {
+        "id": "birth-question-2",
+        "question": "Why did Mary and Joseph travel to Bethlehem?",
+        "options": [
+          "To attend a wedding",
+          "For a registration ordered by the ruler",
+          "To visit shepherds",
+          "To meet the magi"
+        ],
+        "correctOptionIndex": 1,
+        "explanation": "Joseph travelled to his ancestral town for the registration.",
+        "scriptureReference": "Luke 2:1–5"
+      },
+      {
+        "id": "birth-question-3",
+        "question": "Who received the nighttime announcement near Bethlehem?",
+        "options": [
+          "Roman soldiers",
+          "Shepherds",
+          "Temple priests",
+          "Merchants"
+        ],
+        "correctOptionIndex": 1,
+        "explanation": "Shepherds in nearby fields heard the angelic message.",
+        "scriptureReference": "Luke 2:8–14"
+      },
+      {
+        "id": "birth-question-4",
+        "question": "Who recognised Jesus during his temple presentation?",
+        "options": [
+          "Simeon and Anna",
+          "Herod and Pilate",
+          "Peter and John",
+          "Zechariah and Elizabeth"
+        ],
+        "correctOptionIndex": 0,
+        "explanation": "Simeon praised God, and Anna spoke about the child to those awaiting redemption.",
+        "scriptureReference": "Luke 2:25–38"
+      },
+      {
+        "id": "birth-question-5",
+        "question": "Where did Joseph take the family to escape Herod?",
+        "options": [
+          "Rome",
+          "Egypt",
+          "Bethany",
+          "Samaria"
+        ],
+        "correctOptionIndex": 1,
+        "explanation": "Joseph followed the warning received in a dream and left for Egypt.",
+        "scriptureReference": "Matthew 2:13–15"
+      }
+    ],
+    "completion": {
+      "points": 150,
+      "achievementId": "bible-explorer",
+      "nextStoryId": "jesus-calms-storm"
+    }
+  }
+}

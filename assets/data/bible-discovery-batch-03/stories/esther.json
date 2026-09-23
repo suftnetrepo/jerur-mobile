@@ -1,0 +1,225 @@
+{
+  "schemaVersion": "1.0.0",
+  "contentVersion": "1.0.0",
+  "language": "en-GB",
+  "contentNotice": "Original retelling based on the cited Bible passages; not a replacement for reading Scripture.",
+  "story": {
+    "id": "esther",
+    "title": "Esther",
+    "subtitle": "Courage for such a time as this",
+    "collectionIds": [
+      "women-of-the-bible",
+      "heroes-of-faith"
+    ],
+    "scriptureReferences": [
+      "Esther 2:1–23",
+      "Esther 3:1–15",
+      "Esther 4:1–17",
+      "Esther 5:1–8",
+      "Esther 7:1–10",
+      "Esther 8:1–17",
+      "Esther 9:20–32"
+    ],
+    "illustration": "stories/esther.svg",
+    "estimatedMinutes": 11,
+    "difficulty": "intermediate",
+    "ageSuitability": "all-ages",
+    "featured": true,
+    "keywords": [
+      "Esther",
+      "Mordecai",
+      "Haman",
+      "courage",
+      "justice",
+      "Purim",
+      "advocacy",
+      "queen"
+    ],
+    "introduction": {
+      "summary": "Esther moves from hidden identity to courageous advocacy, risking her position and life to expose a deadly plot against her people.",
+      "context": "The Jewish people live scattered throughout the Persian Empire. Esther, an orphan raised by her cousin Mordecai, becomes queen without initially revealing her Jewish identity."
+    },
+    "storySections": [
+      {
+        "id": "an-unexpected-queen",
+        "title": "An Unexpected Queen",
+        "content": "Esther is brought into the royal selection process and wins the king’s favour. Following Mordecai’s advice, she does not initially reveal her background. Later, Mordecai uncovers a plot against the king, and Esther reports it in his name.",
+        "scriptureReference": "Esther 2:1–23"
+      },
+      {
+        "id": "hamans-plot",
+        "title": "Haman’s Plot",
+        "content": "Haman is enraged when Mordecai will not bow to him. Instead of targeting Mordecai alone, he manipulates the king into authorising destruction against all Jewish people in the empire. The decree brings grief and confusion.",
+        "scriptureReference": "Esther 3:1–15"
+      },
+      {
+        "id": "for-such-a-time",
+        "title": "For Such a Time",
+        "content": "Mordecai asks Esther to appeal to the king, but entering uninvited could mean death. He challenges her not to assume that palace life guarantees safety and suggests that she may have reached her position for this very moment. Esther asks the community to fast and resolves to go.",
+        "scriptureReference": "Esther 4:1–17"
+      },
+      {
+        "id": "courage-with-wisdom",
+        "title": "Courage with Wisdom",
+        "content": "The king welcomes Esther and offers to hear her request. Rather than rushing, she invites the king and Haman to carefully prepared banquets. Her patient strategy creates the setting in which the truth can be heard.",
+        "scriptureReference": "Esther 5:1–8; 6:1–14"
+      },
+      {
+        "id": "truth-and-deliverance",
+        "title": "Truth and Deliverance",
+        "content": "At the second banquet, Esther identifies herself with the threatened people and exposes Haman’s plan. Haman falls, Mordecai is elevated, and a new decree allows the Jewish communities to defend themselves. Their deliverance is remembered through the festival of Purim.",
+        "scriptureReference": "Esther 7:1–10; 8:1–17; 9:20–32"
+      }
+    ],
+    "keyPeople": [
+      {
+        "name": "Esther",
+        "role": "Jewish orphan who becomes queen and advocates for her people"
+      },
+      {
+        "name": "Mordecai",
+        "role": "Esther’s guardian and trusted adviser"
+      },
+      {
+        "name": "Haman",
+        "role": "Royal official whose pride produces a deadly plot"
+      },
+      {
+        "name": "King Ahasuerus",
+        "role": "Persian king also known as Xerxes"
+      }
+    ],
+    "keyLocations": [
+      {
+        "name": "Susa",
+        "description": "Persian capital where Esther lives in the royal palace"
+      },
+      {
+        "name": "The royal court",
+        "description": "Dangerous setting of Esther’s appeal to the king"
+      }
+    ],
+    "flashcards": [
+      {
+        "id": "esther-card-1",
+        "front": "Who raised Esther?",
+        "back": "Her cousin Mordecai raised her after she lost her parents.",
+        "scriptureReference": "Esther 2:5–7"
+      },
+      {
+        "id": "esther-card-2",
+        "front": "What position did Esther receive?",
+        "back": "Esther became queen of the Persian Empire.",
+        "scriptureReference": "Esther 2:16–18"
+      },
+      {
+        "id": "esther-card-3",
+        "front": "Why did Haman target the Jewish people?",
+        "back": "His pride turned Mordecai’s refusal to bow into hatred against an entire people.",
+        "scriptureReference": "Esther 3:1–6"
+      },
+      {
+        "id": "esther-card-4",
+        "front": "What made approaching the king dangerous?",
+        "back": "Anyone entering uninvited could be killed unless the king extended his golden sceptre.",
+        "scriptureReference": "Esther 4:10–11"
+      },
+      {
+        "id": "esther-card-5",
+        "front": "What did Esther ask her community to do?",
+        "back": "She asked them to fast for three days before she approached the king.",
+        "scriptureReference": "Esther 4:15–16"
+      },
+      {
+        "id": "esther-card-6",
+        "front": "What festival remembers the deliverance?",
+        "back": "The Jewish festival of Purim remembers these events.",
+        "scriptureReference": "Esther 9:20–28"
+      }
+    ],
+    "keyLessons": [
+      "Position and influence create responsibility toward others.",
+      "Courage recognises risk but chooses faithfulness over self-protection.",
+      "Wise timing and preparation strengthen courageous action.",
+      "Pride can turn personal offence into destructive injustice.",
+      "Communities should remember and celebrate deliverance together."
+    ],
+    "reflection": {
+      "question": "Where might your voice, access or influence help someone facing injustice?",
+      "prompt": "Identify one wise, concrete action and one trusted person who can support you."
+    },
+    "prayerPrompt": "God of justice, give me Esther’s courage, humility and wisdom to use my influence for the good of others.",
+    "quiz": [
+      {
+        "id": "esther-question-1",
+        "question": "Who raised Esther?",
+        "options": [
+          "Haman",
+          "Mordecai",
+          "The king",
+          "Ezra"
+        ],
+        "correctOptionIndex": 1,
+        "explanation": "Mordecai took Esther as his own daughter after her parents died.",
+        "scriptureReference": "Esther 2:5–7"
+      },
+      {
+        "id": "esther-question-2",
+        "question": "What did Esther initially keep private?",
+        "options": [
+          "Her royal title",
+          "Her Jewish identity",
+          "Her age",
+          "Her knowledge of Susa"
+        ],
+        "correctOptionIndex": 1,
+        "explanation": "Mordecai had advised Esther not to reveal her people and family background.",
+        "scriptureReference": "Esther 2:10"
+      },
+      {
+        "id": "esther-question-3",
+        "question": "Who designed the plot against the Jewish people?",
+        "options": [
+          "Mordecai",
+          "Haman",
+          "Esther",
+          "The palace guards"
+        ],
+        "correctOptionIndex": 1,
+        "explanation": "Haman manipulated the king into authorising the decree.",
+        "scriptureReference": "Esther 3:5–11"
+      },
+      {
+        "id": "esther-question-4",
+        "question": "What did the king extend to welcome Esther?",
+        "options": [
+          "A crown",
+          "A golden sceptre",
+          "A written decree",
+          "A sword"
+        ],
+        "correctOptionIndex": 1,
+        "explanation": "The extended sceptre showed that Esther could safely approach.",
+        "scriptureReference": "Esther 5:1–2"
+      },
+      {
+        "id": "esther-question-5",
+        "question": "What annual celebration came from the deliverance?",
+        "options": [
+          "Passover",
+          "Pentecost",
+          "Purim",
+          "Tabernacles"
+        ],
+        "correctOptionIndex": 2,
+        "explanation": "Mordecai and Esther established Purim as a time of remembrance and generosity.",
+        "scriptureReference": "Esther 9:20–32"
+      }
+    ],
+    "completion": {
+      "points": 160,
+      "achievementId": "story-scholar",
+      "nextStoryId": "birth-of-jesus"
+    }
+  }
+}

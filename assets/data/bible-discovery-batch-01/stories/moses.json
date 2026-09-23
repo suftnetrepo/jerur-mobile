@@ -1,0 +1,237 @@
+{
+  "schemaVersion": "1.0.0",
+  "contentVersion": "1.0.0",
+  "language": "en-GB",
+  "contentNotice": "Original retelling based on the cited Bible passages; not a replacement for reading Scripture.",
+  "story": {
+    "id": "moses",
+    "title": "Moses and the Exodus",
+    "subtitle": "Freedom through the sea",
+    "collectionIds": [
+      "heroes-of-faith",
+      "foundations-of-faith"
+    ],
+    "scriptureReferences": [
+      "Exodus 1:1–22",
+      "Exodus 2:1–25",
+      "Exodus 3:1–22",
+      "Exodus 5:1–23",
+      "Exodus 7:1–13:16",
+      "Exodus 14:1–31",
+      "Exodus 15:1–21"
+    ],
+    "illustration": "stories/moses.svg",
+    "estimatedMinutes": 12,
+    "difficulty": "intermediate",
+    "ageSuitability": "all-ages",
+    "featured": true,
+    "keywords": [
+      "Moses",
+      "Exodus",
+      "Egypt",
+      "freedom",
+      "Passover",
+      "Red Sea",
+      "deliverance",
+      "calling"
+    ],
+    "introduction": {
+      "summary": "God calls a reluctant Moses to confront Pharaoh, lead an enslaved people out of Egypt and guide them through the sea into freedom.",
+      "context": "Generations after Joseph, the Israelites are oppressed in Egypt. Exodus presents God as the one who hears their cries, remembers his covenant and acts to deliver them."
+    },
+    "storySections": [
+      {
+        "id": "a-child-preserved",
+        "title": "A Child Preserved",
+        "content": "Pharaoh orders Hebrew baby boys to be killed, but Moses’ mother hides him and then places him in a carefully prepared basket among the reeds. Pharaoh’s daughter discovers and adopts him, while his own mother is able to nurse him.",
+        "scriptureReference": "Exodus 1:8–22; 2:1–10"
+      },
+      {
+        "id": "burning-bush",
+        "title": "The Burning Bush",
+        "content": "After fleeing Egypt, Moses becomes a shepherd in Midian. At Horeb, God speaks from a bush that burns without being consumed. God declares that he has seen his people’s suffering and sends Moses to bring them out of Egypt.",
+        "scriptureReference": "Exodus 2:11–25; 3:1–22"
+      },
+      {
+        "id": "let-my-people-go",
+        "title": "Let My People Go",
+        "content": "Moses and Aaron confront Pharaoh, but Pharaoh repeatedly refuses to release Israel. A series of signs and plagues exposes Egypt’s powerlessness and Pharaoh’s stubborn resistance to God.",
+        "scriptureReference": "Exodus 5:1–23; 7:1–11:10"
+      },
+      {
+        "id": "passover-and-departure",
+        "title": "Passover and Departure",
+        "content": "Israelite households prepare a lamb and mark their doors as God instructs. That night judgment falls on Egypt, while the marked households are spared. Pharaoh finally tells the Israelites to leave, and the people begin their exodus.",
+        "scriptureReference": "Exodus 12:1–42"
+      },
+      {
+        "id": "through-the-sea",
+        "title": "Through the Sea",
+        "content": "Pharaoh changes his mind and pursues Israel. Trapped between the army and the sea, the people panic. God makes a path through the waters, Israel crosses safely, and the pursuing army is overwhelmed. Moses and Miriam lead the people in worship.",
+        "scriptureReference": "Exodus 14:1–31; 15:1–21"
+      }
+    ],
+    "keyPeople": [
+      {
+        "name": "Moses",
+        "role": "Leader called by God to bring Israel out of Egypt"
+      },
+      {
+        "name": "Aaron",
+        "role": "Moses’ brother and spokesman"
+      },
+      {
+        "name": "Miriam",
+        "role": "Moses’ sister and a leader in Israel’s worship"
+      },
+      {
+        "name": "Pharaoh",
+        "role": "Egyptian ruler who resists God’s command"
+      },
+      {
+        "name": "Pharaoh’s daughter",
+        "role": "The royal woman who rescues and adopts Moses"
+      }
+    ],
+    "keyLocations": [
+      {
+        "name": "Egypt",
+        "description": "The land where Israel was enslaved"
+      },
+      {
+        "name": "Midian",
+        "description": "The region where Moses lived as a shepherd"
+      },
+      {
+        "name": "Mount Horeb",
+        "description": "The place where God called Moses from the burning bush"
+      },
+      {
+        "name": "The Sea",
+        "description": "The barrier through which God made a path of escape"
+      }
+    ],
+    "flashcards": [
+      {
+        "id": "moses-card-1",
+        "front": "How was the infant Moses preserved?",
+        "back": "His mother placed him in a basket among the reeds, where Pharaoh’s daughter found and adopted him.",
+        "scriptureReference": "Exodus 2:1–10"
+      },
+      {
+        "id": "moses-card-2",
+        "front": "Where did God call Moses?",
+        "back": "God spoke to Moses from a burning bush at Horeb.",
+        "scriptureReference": "Exodus 3:1–6"
+      },
+      {
+        "id": "moses-card-3",
+        "front": "What mission did God give Moses?",
+        "back": "Moses was to bring the Israelites out of slavery in Egypt.",
+        "scriptureReference": "Exodus 3:7–10"
+      },
+      {
+        "id": "moses-card-4",
+        "front": "Who helped Moses speak to Pharaoh?",
+        "back": "God appointed Moses’ brother Aaron to speak with him.",
+        "scriptureReference": "Exodus 4:14–16"
+      },
+      {
+        "id": "moses-card-5",
+        "front": "What protected Israelite households at Passover?",
+        "back": "They followed God’s instructions and marked their doorframes with the lamb’s blood.",
+        "scriptureReference": "Exodus 12:1–13"
+      },
+      {
+        "id": "moses-card-6",
+        "front": "How did Israel escape Pharaoh’s army?",
+        "back": "God opened a path through the sea, and the Israelites crossed on dry ground.",
+        "scriptureReference": "Exodus 14:21–31"
+      }
+    ],
+    "keyLessons": [
+      "God hears the cries of oppressed people.",
+      "A sense of inadequacy does not prevent God from calling and equipping someone.",
+      "Pride can keep a person resisting truth even after repeated warnings.",
+      "Deliverance is God’s gift, not merely human achievement.",
+      "Remembering God’s rescue leads to worship and hope."
+    ],
+    "reflection": {
+      "question": "Where might fear or inadequacy be keeping you from responding to a responsibility?",
+      "prompt": "Write one small act of courage you can take while trusting God to provide what you lack."
+    },
+    "prayerPrompt": "God of deliverance, help me hear your call, resist injustice and walk forward in faith.",
+    "quiz": [
+      {
+        "id": "moses-question-1",
+        "question": "Who found the infant Moses among the reeds?",
+        "options": [
+          "Miriam",
+          "Pharaoh’s daughter",
+          "Aaron",
+          "An Egyptian soldier"
+        ],
+        "correctOptionIndex": 1,
+        "explanation": "Pharaoh’s daughter discovered Moses and chose to care for him.",
+        "scriptureReference": "Exodus 2:5–10"
+      },
+      {
+        "id": "moses-question-2",
+        "question": "What unusual sight drew Moses toward God’s call?",
+        "options": [
+          "A rainbow",
+          "A pillar of stone",
+          "A bush burning without being consumed",
+          "A river turning clear"
+        ],
+        "correctOptionIndex": 2,
+        "explanation": "Moses approached the burning bush and heard God call his name.",
+        "scriptureReference": "Exodus 3:1–6"
+      },
+      {
+        "id": "moses-question-3",
+        "question": "What message did Moses bring to Pharaoh?",
+        "options": [
+          "Appoint Aaron as governor",
+          "Let the Israelites go",
+          "Build a larger city",
+          "Prepare for a famine"
+        ],
+        "correctOptionIndex": 1,
+        "explanation": "Moses repeatedly commanded Pharaoh to release God’s people.",
+        "scriptureReference": "Exodus 5:1"
+      },
+      {
+        "id": "moses-question-4",
+        "question": "Which event immediately preceded Israel’s departure from Egypt?",
+        "options": [
+          "The building of the tabernacle",
+          "The Passover",
+          "The giving of the commandments",
+          "The fall of Jericho"
+        ],
+        "correctOptionIndex": 1,
+        "explanation": "The first Passover occurred on the night before Israel left Egypt.",
+        "scriptureReference": "Exodus 12:1–42"
+      },
+      {
+        "id": "moses-question-5",
+        "question": "What happened when Moses stretched out his hand over the sea?",
+        "options": [
+          "A bridge appeared",
+          "The water turned to wine",
+          "The waters divided and a dry path opened",
+          "The Egyptian army retreated immediately"
+        ],
+        "correctOptionIndex": 2,
+        "explanation": "God drove back the sea and made dry ground for Israel to cross.",
+        "scriptureReference": "Exodus 14:21–22"
+      }
+    ],
+    "completion": {
+      "points": 180,
+      "achievementId": "quiz-master",
+      "nextStoryId": "joshua-jericho"
+    }
+  }
+}

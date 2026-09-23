@@ -4,8 +4,16 @@ import { router } from "expo-router";
 import { Stack, StyledPressable } from "fluent-styles";
 import { Text } from "./text";
 import { COLORS } from "../theme/colors";
+import type { MobileFeature } from "../config/mobileFeatures";
 
 export type PillAction = { key: string; label: string; icon: string; route: string };
+
+export function buildHomeFeatureActions(features: MobileFeature[], flagsLoaded: boolean): PillAction[] {
+  if (!flagsLoaded) return [];
+  return features
+    .filter((feature) => feature.id !== "contact-us" && feature.route)
+    .map((feature) => ({ key: feature.id, label: feature.label, icon: feature.icon, route: feature.route! }));
+}
 
 export function PillActionRow({ actions }: { actions: PillAction[] }) {
   return (

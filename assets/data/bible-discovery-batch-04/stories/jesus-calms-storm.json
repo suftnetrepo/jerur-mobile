@@ -1,0 +1,212 @@
+{
+  "schemaVersion": "1.0.0",
+  "contentVersion": "1.0.0",
+  "language": "en-GB",
+  "contentNotice": "Original retelling based on the cited Bible passages; not a replacement for reading Scripture.",
+  "story": {
+    "id": "jesus-calms-storm",
+    "title": "Jesus Calms the Storm",
+    "subtitle": "Peace in the middle of fear",
+    "collectionIds": [
+      "life-of-jesus"
+    ],
+    "scriptureReferences": [
+      "Matthew 8:18–27",
+      "Mark 4:35–41",
+      "Luke 8:22–25"
+    ],
+    "illustration": "stories/jesus-calms-storm.svg",
+    "estimatedMinutes": 7,
+    "difficulty": "beginner",
+    "ageSuitability": "all-ages",
+    "featured": true,
+    "keywords": [
+      "Jesus",
+      "storm",
+      "boat",
+      "disciples",
+      "fear",
+      "faith",
+      "peace",
+      "miracle"
+    ],
+    "introduction": {
+      "summary": "When a violent storm overwhelms experienced fishermen, Jesus speaks peace to the wind and waves and asks his disciples to consider where their faith is placed.",
+      "context": "Jesus has been teaching beside the Sea of Galilee. As evening comes, he asks the disciples to cross to the other side, and they leave while other boats accompany them."
+    },
+    "storySections": [
+      {
+        "id": "cross-to-the-other-side",
+        "title": "Cross to the Other Side",
+        "content": "After a demanding day of teaching, Jesus tells the disciples to cross the lake. They take him in the boat just as he is. The journey begins in obedience to his direction, not because the disciples have chosen an unsafe route on their own.",
+        "scriptureReference": "Mark 4:35–36"
+      },
+      {
+        "id": "the-storm-rises",
+        "title": "The Storm Rises",
+        "content": "A sudden, powerful storm sweeps across the lake. Waves break over the boat until it begins filling with water. Several disciples understand boats and weather, yet the situation exceeds their ability to control it.",
+        "scriptureReference": "Mark 4:37; Luke 8:23"
+      },
+      {
+        "id": "jesus-is-awakened",
+        "title": "Jesus Is Awakened",
+        "content": "Jesus is sleeping on a cushion in the stern. The frightened disciples wake him with an urgent accusation that he does not care whether they die. Their prayer is honest, but fear has distorted how they interpret his presence.",
+        "scriptureReference": "Mark 4:38"
+      },
+      {
+        "id": "quiet-be-still",
+        "title": "Quiet, Be Still",
+        "content": "Jesus rises, rebukes the wind and commands the sea to become still. The wind stops and the water becomes calm. The same authority visible in his teaching is now displayed over the forces of nature.",
+        "scriptureReference": "Mark 4:39"
+      },
+      {
+        "id": "who-is-this",
+        "title": "Who Is This?",
+        "content": "Jesus asks why the disciples are afraid and why they still lack faith. Their fear of the storm becomes reverent wonder as they ask who he is, since even wind and waves obey him.",
+        "scriptureReference": "Mark 4:40–41"
+      }
+    ],
+    "keyPeople": [
+      {
+        "name": "Jesus",
+        "role": "Teacher whose authority extends over the wind and sea"
+      },
+      {
+        "name": "The disciples",
+        "role": "Followers who move from panic toward deeper recognition of Jesus"
+      }
+    ],
+    "keyLocations": [
+      {
+        "name": "Sea of Galilee",
+        "description": "Freshwater lake known for sudden storms"
+      },
+      {
+        "name": "The boat",
+        "description": "Setting where danger, honest fear and divine authority meet"
+      }
+    ],
+    "flashcards": [
+      {
+        "id": "storm-card-1",
+        "front": "Who suggested crossing the lake?",
+        "back": "Jesus told the disciples to go to the other side.",
+        "scriptureReference": "Mark 4:35"
+      },
+      {
+        "id": "storm-card-2",
+        "front": "What endangered the boat?",
+        "back": "A violent windstorm drove waves into the boat until it began filling.",
+        "scriptureReference": "Mark 4:37"
+      },
+      {
+        "id": "storm-card-3",
+        "front": "Where was Jesus during the storm?",
+        "back": "He was asleep on a cushion in the stern.",
+        "scriptureReference": "Mark 4:38"
+      },
+      {
+        "id": "storm-card-4",
+        "front": "How did the disciples wake Jesus?",
+        "back": "They urgently questioned whether he cared that they were in danger.",
+        "scriptureReference": "Mark 4:38"
+      },
+      {
+        "id": "storm-card-5",
+        "front": "What happened when Jesus spoke?",
+        "back": "The wind stopped and the sea became completely calm.",
+        "scriptureReference": "Mark 4:39"
+      },
+      {
+        "id": "storm-card-6",
+        "front": "What question did the disciples ask afterwards?",
+        "back": "They wondered who Jesus was, because even the wind and sea obeyed him.",
+        "scriptureReference": "Mark 4:41"
+      }
+    ],
+    "keyLessons": [
+      "Obedience does not guarantee a life without storms.",
+      "Fear can make us question God’s care even when he is present.",
+      "Honest prayer can bring fear directly to Jesus.",
+      "Jesus’ authority is greater than the forces that overwhelm us.",
+      "Faith grows by learning who Jesus is, not by denying danger."
+    ],
+    "reflection": {
+      "question": "What current situation feels beyond your ability to control?",
+      "prompt": "Describe the fear honestly, then write one truth about Jesus’ presence or character that can guide your response."
+    },
+    "prayerPrompt": "Jesus, meet me in what I cannot control and teach me to trust your presence in the storm.",
+    "quiz": [
+      {
+        "id": "storm-question-1",
+        "question": "Where were Jesus and the disciples travelling?",
+        "options": [
+          "Across the Sea of Galilee",
+          "Along the Jordan road",
+          "Into Jerusalem",
+          "Across the desert"
+        ],
+        "correctOptionIndex": 0,
+        "explanation": "Jesus asked them to cross the lake to the other side.",
+        "scriptureReference": "Mark 4:35"
+      },
+      {
+        "id": "storm-question-2",
+        "question": "What was Jesus doing when the storm intensified?",
+        "options": [
+          "Teaching from the bow",
+          "Praying on shore",
+          "Sleeping in the stern",
+          "Steering the boat"
+        ],
+        "correctOptionIndex": 2,
+        "explanation": "Jesus was asleep on a cushion at the back of the boat.",
+        "scriptureReference": "Mark 4:38"
+      },
+      {
+        "id": "storm-question-3",
+        "question": "What did Jesus address first after waking?",
+        "options": [
+          "The other boats",
+          "The wind and sea",
+          "The fishermen on shore",
+          "The damaged sail"
+        ],
+        "correctOptionIndex": 1,
+        "explanation": "Jesus rebuked the wind and commanded the sea to be still.",
+        "scriptureReference": "Mark 4:39"
+      },
+      {
+        "id": "storm-question-4",
+        "question": "What happened immediately after Jesus spoke?",
+        "options": [
+          "The disciples swam away",
+          "The boat reached shore",
+          "A complete calm followed",
+          "The storm grew stronger"
+        ],
+        "correctOptionIndex": 2,
+        "explanation": "The wind ceased and the lake became calm.",
+        "scriptureReference": "Mark 4:39"
+      },
+      {
+        "id": "storm-question-5",
+        "question": "What did the disciples’ final question focus on?",
+        "options": [
+          "The cost of the boat",
+          "Jesus’ identity",
+          "The route home",
+          "Tomorrow’s weather"
+        ],
+        "correctOptionIndex": 1,
+        "explanation": "The miracle caused them to ask who Jesus truly was.",
+        "scriptureReference": "Mark 4:41"
+      }
+    ],
+    "completion": {
+      "points": 120,
+      "achievementId": "first-story",
+      "nextStoryId": "good-samaritan"
+    }
+  }
+}

@@ -228,6 +228,15 @@ export const MOBILE_FEATURES: MobileFeature[] = [
     route: "/inspiration",
   },
   {
+    id: "bible-discovery",
+    label: "Bible Discovery",
+    description: "Explore Bible stories through illustrated readings, flashcards and quizzes.",
+    category: "Media",
+    icon: "compass",
+    color: "#315C55",
+    route: "/bible-discovery",
+  },
+  {
     id: "daily-devotional",
     label: "Daily Devotional",
     description: "Give members a daily devotional with Scripture, reflection and prayer to grow closer to God.",

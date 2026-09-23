@@ -1,0 +1,216 @@
+{
+  "schemaVersion": "1.0.0",
+  "contentVersion": "1.0.0",
+  "language": "en-GB",
+  "contentNotice": "Original retelling based on the cited Bible passages; not a replacement for reading Scripture.",
+  "story": {
+    "id": "solomon",
+    "title": "Solomon’s Wisdom",
+    "subtitle": "A heart that sought understanding",
+    "collectionIds": [
+      "kings-and-prophets"
+    ],
+    "scriptureReferences": [
+      "1 Kings 3:1–28",
+      "1 Kings 4:20–34",
+      "1 Kings 8:22–61",
+      "1 Kings 10:1–13",
+      "1 Kings 11:1–13"
+    ],
+    "illustration": "stories/solomon.svg",
+    "estimatedMinutes": 10,
+    "difficulty": "intermediate",
+    "ageSuitability": "all-ages",
+    "featured": true,
+    "keywords": [
+      "Solomon",
+      "wisdom",
+      "king",
+      "temple",
+      "judgment",
+      "choices",
+      "Queen of Sheba"
+    ],
+    "introduction": {
+      "summary": "Solomon asks God for wisdom to govern well, becomes renowned for discernment and builds the temple, yet his later compromises warn that knowledge must remain joined to faithful obedience.",
+      "context": "Solomon succeeds his father David as king. He inherits a united kingdom and the responsibility to lead a large people with justice and faithfulness."
+    },
+    "storySections": [
+      {
+        "id": "a-request-for-wisdom",
+        "title": "A Request for Wisdom",
+        "content": "In a dream, God invites Solomon to ask for what he desires. Solomon recognises his inexperience and asks for a discerning heart to govern the people and distinguish right from wrong. God is pleased that he chooses wisdom over wealth, revenge or long life.",
+        "scriptureReference": "1 Kings 3:1–15"
+      },
+      {
+        "id": "a-difficult-case",
+        "title": "A Difficult Case",
+        "content": "Two women bring a painful dispute involving one living baby. With no witnesses, Solomon proposes dividing the child. The true mother immediately offers to surrender the baby rather than see him harmed, revealing her identity through compassionate love.",
+        "scriptureReference": "1 Kings 3:16–28"
+      },
+      {
+        "id": "wisdom-and-prosperity",
+        "title": "Wisdom and Prosperity",
+        "content": "Solomon organises the kingdom and becomes known for insight, learning and proverbs. People from surrounding nations come to hear his wisdom. Israel experiences a period of unusual peace and prosperity.",
+        "scriptureReference": "1 Kings 4:20–34"
+      },
+      {
+        "id": "the-temple-and-prayer",
+        "title": "The Temple and Prayer",
+        "content": "Solomon builds the temple in Jerusalem and dedicates it with prayer. He acknowledges that no building can contain God and asks that the temple become a place associated with prayer, forgiveness, justice and welcome for foreigners.",
+        "scriptureReference": "1 Kings 8:22–61"
+      },
+      {
+        "id": "wisdom-without-watchfulness",
+        "title": "Wisdom Without Watchfulness",
+        "content": "The Queen of Sheba sees Solomon’s wisdom and splendour, but the story later takes a sober turn. Solomon’s many political marriages draw his heart toward other gods. His life warns that receiving wisdom does not remove the need for lifelong obedience.",
+        "scriptureReference": "1 Kings 10:1–13; 11:1–13"
+      }
+    ],
+    "keyPeople": [
+      {
+        "name": "Solomon",
+        "role": "Son of David, king of Israel and builder of the temple"
+      },
+      {
+        "name": "The two mothers",
+        "role": "Women whose dispute reveals Solomon’s discernment"
+      },
+      {
+        "name": "Queen of Sheba",
+        "role": "Foreign ruler who travels to test Solomon’s wisdom"
+      }
+    ],
+    "keyLocations": [
+      {
+        "name": "Gibeon",
+        "description": "Place where Solomon asked God for wisdom"
+      },
+      {
+        "name": "Jerusalem",
+        "description": "Capital city and location of the temple"
+      }
+    ],
+    "flashcards": [
+      {
+        "id": "solomon-card-1",
+        "front": "What did Solomon request from God?",
+        "back": "A discerning heart to govern well and distinguish right from wrong.",
+        "scriptureReference": "1 Kings 3:7–9"
+      },
+      {
+        "id": "solomon-card-2",
+        "front": "Why was God pleased with Solomon’s request?",
+        "back": "He asked for wise justice rather than wealth, long life or victory over enemies.",
+        "scriptureReference": "1 Kings 3:10–13"
+      },
+      {
+        "id": "solomon-card-3",
+        "front": "How did Solomon identify the baby’s true mother?",
+        "back": "Her willingness to give up the child to save his life revealed her love.",
+        "scriptureReference": "1 Kings 3:24–27"
+      },
+      {
+        "id": "solomon-card-4",
+        "front": "What major building did Solomon construct?",
+        "back": "He constructed the temple in Jerusalem.",
+        "scriptureReference": "1 Kings 6:1–38"
+      },
+      {
+        "id": "solomon-card-5",
+        "front": "Who travelled to test Solomon with difficult questions?",
+        "back": "The Queen of Sheba came after hearing of Solomon’s reputation.",
+        "scriptureReference": "1 Kings 10:1–3"
+      },
+      {
+        "id": "solomon-card-6",
+        "front": "What weakened Solomon’s faithfulness later in life?",
+        "back": "His marriages and alliances turned his heart toward other gods.",
+        "scriptureReference": "1 Kings 11:1–8"
+      }
+    ],
+    "keyLessons": [
+      "Good leadership begins by recognising the need for wisdom.",
+      "True discernment protects life and seeks justice.",
+      "Achievements should deepen humility rather than replace dependence on God.",
+      "Wisdom must be practised consistently; knowledge alone cannot guard the heart."
+    ],
+    "reflection": {
+      "question": "Where do you most need wisdom rather than a quick or impressive answer?",
+      "prompt": "Describe the decision, the people affected and the principle of love or justice that should guide you."
+    },
+    "prayerPrompt": "God who gives wisdom, grant me a discerning heart and keep my choices faithful over the long term.",
+    "quiz": [
+      {
+        "id": "solomon-question-1",
+        "question": "What did Solomon ask God to give him?",
+        "options": [
+          "A larger army",
+          "A discerning heart",
+          "A longer palace",
+          "Victory over every nation"
+        ],
+        "correctOptionIndex": 1,
+        "explanation": "Solomon asked for the ability to govern with wise discernment.",
+        "scriptureReference": "1 Kings 3:7–9"
+      },
+      {
+        "id": "solomon-question-2",
+        "question": "What dispute demonstrated Solomon’s wisdom?",
+        "options": [
+          "Ownership of a field",
+          "The identity of a living baby’s mother",
+          "Payment of a debt",
+          "The boundary of a city"
+        ],
+        "correctOptionIndex": 1,
+        "explanation": "Solomon’s proposal revealed which woman truly wanted the child protected.",
+        "scriptureReference": "1 Kings 3:16–28"
+      },
+      {
+        "id": "solomon-question-3",
+        "question": "What did Solomon build in Jerusalem?",
+        "options": [
+          "An ark",
+          "The temple",
+          "A pyramid",
+          "A new sea port"
+        ],
+        "correctOptionIndex": 1,
+        "explanation": "Solomon built and dedicated the temple in Jerusalem.",
+        "scriptureReference": "1 Kings 6:1; 8:1–66"
+      },
+      {
+        "id": "solomon-question-4",
+        "question": "Which ruler visited Solomon to test his wisdom?",
+        "options": [
+          "Queen Esther",
+          "Queen of Sheba",
+          "Pharaoh’s daughter",
+          "Queen Jezebel"
+        ],
+        "correctOptionIndex": 1,
+        "explanation": "The Queen of Sheba came with difficult questions and observed Solomon’s kingdom.",
+        "scriptureReference": "1 Kings 10:1–9"
+      },
+      {
+        "id": "solomon-question-5",
+        "question": "What is the major warning from Solomon’s later life?",
+        "options": [
+          "Wisdom makes work unnecessary",
+          "Success always prevents failure",
+          "Knowledge must remain joined to faithful obedience",
+          "Leaders should avoid all visitors"
+        ],
+        "correctOptionIndex": 2,
+        "explanation": "Despite extraordinary wisdom, Solomon’s compromised worship divided his heart.",
+        "scriptureReference": "1 Kings 11:1–13"
+      }
+    ],
+    "completion": {
+      "points": 160,
+      "achievementId": "quiz-master",
+      "nextStoryId": "elijah"
+    }
+  }
+}

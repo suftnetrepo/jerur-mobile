@@ -1,0 +1,19 @@
+{
+  "id": "bible-discovery-batch-01",
+  "title": "Bible Discovery — Batch 1",
+  "version": "1.0.0",
+  "storyIds": [
+    "creation",
+    "noah-and-the-ark",
+    "abraham",
+    "joseph",
+    "moses"
+  ],
+  "files": [
+    "stories/creation.json",
+    "stories/noah-and-the-ark.json",
+    "stories/abraham.json",
+    "stories/joseph.json",
+    "stories/moses.json"
+  ]
+}

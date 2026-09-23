@@ -1,0 +1,231 @@
+{
+  "version": "1.0",
+  "aspectRatio": "16:9",
+  "dimensions": [
+    1600,
+    900
+  ],
+  "format": "webp",
+  "stories": [
+    {
+      "id": "creation",
+      "title": "Creation",
+      "asset": "stories/creation.webp",
+      "sourcePage": "https://www.freebibleimages.org/illustrations/creation/",
+      "sourceImage": "https://media.freebibleimages.org/stories/FB_Creation/source-jpeg/13_FB_Creation_1024.jpg",
+      "sourceSlide": 13,
+      "sourceCaption": "God named him Adam and put him in a garden he had planted in Eden. Adam worked and looked after the garden. – Slide 13",
+      "license": "CC BY-SA; see source page for version",
+      "attribution": "Sweet Publishing / FreeBibleimages.org"
+    },
+    {
+      "id": "noah-and-the-ark",
+      "title": "Noah and the Ark",
+      "asset": "stories/noah-and-the-ark.webp",
+      "sourcePage": "https://www.freebibleimages.org/illustrations/noah-ark/",
+      "sourceImage": "https://media.freebibleimages.org/stories/FB_Noah_Ark/source-jpeg/24_FB_Noah_Ark_1024.jpg",
+      "sourceSlide": 24,
+      "sourceCaption": "God put a rainbow in the sky. God then told Noah, ‘This rainbow is the sign of my promise never to flood the whole earth again.’ – Slide 24",
+      "license": "CC BY-SA; see source page for version",
+      "attribution": "Sweet Publishing / FreeBibleimages.org"
+    },
+    {
+      "id": "abraham",
+      "title": "Abraham",
+      "asset": "stories/abraham.webp",
+      "sourcePage": "https://www.freebibleimages.org/illustrations/abraham-promise/",
+      "sourceImage": "https://media.freebibleimages.org/stories/FB_Abraham_Promise/source-jpeg/10_FB_Abraham_Promise_1024.jpg",
+      "sourceSlide": 10,
+      "sourceCaption": "When the sun had set a smoking firepot with a blazing torch appeared and passed between the carcasses Abram had laid on the ground. God promised Abram to give his descendants the land from the Wadi of Egypt to the river Euphrates. – Slide 10",
+      "license": "CC BY-SA; see source page for version",
+      "attribution": "Sweet Publishing / FreeBibleimages.org"
+    },
+    {
+      "id": "joseph",
+      "title": "Joseph",
+      "asset": "stories/joseph.webp",
+      "sourcePage": "https://www.freebibleimages.org/illustrations/spi-joseph-ruler/",
+      "sourceImage": "https://media.freebibleimages.org/stories/FB_SPI_Joseph_Ruler/source-jpeg/08_FB_SPI_Joseph_Ruler_1024.jpg",
+      "sourceSlide": 8,
+      "sourceCaption": "So with severe famine everywhere, Joseph opened up the storehouses and distributed grain to the Egyptians. – Slide 8",
+      "license": "CC BY-SA; see source page for version",
+      "attribution": "Sweet Publishing / FreeBibleimages.org"
+    },
+    {
+      "id": "moses",
+      "title": "Moses",
+      "asset": "stories/moses.webp",
+      "sourcePage": "https://www.freebibleimages.org/illustrations/spi-moses-burning-bush/",
+      "sourceImage": "https://media.freebibleimages.org/stories/FB_SPI_Moses_Burning_Bush/source-jpeg/03_FB_SPI_Moses_Burning_Bush_1024.jpg",
+      "sourceSlide": 3,
+      "sourceCaption": "So Moses decided to take a closer look. Suddenly God called to him from inside the burning bush, ‘Moses.’ ‘Here I am Lord,’ Moses replied. – Slide 3",
+      "license": "CC BY-SA; see source page for version",
+      "attribution": "Sweet Publishing / FreeBibleimages.org"
+    },
+    {
+      "id": "joshua-jericho",
+      "title": "Joshua and Jericho",
+      "asset": "stories/joshua-jericho.webp",
+      "sourcePage": "https://www.freebibleimages.org/illustrations/spi-joshua-jericho/",
+      "sourceImage": "https://media.freebibleimages.org/stories/FB_SPI_Joshua_Jericho/source-jpeg/11_FB_SPI_Joshua_Jericho_1024.jpg",
+      "sourceSlide": 11,
+      "sourceCaption": "When the trumpets blasted and the army shouted, the walls of the city collapsed. – Slide 11",
+      "license": "CC BY-SA; see source page for version",
+      "attribution": "Sweet Publishing / FreeBibleimages.org"
+    },
+    {
+      "id": "ruth",
+      "title": "Ruth",
+      "asset": "stories/ruth.webp",
+      "sourcePage": "https://www.freebibleimages.org/illustrations/ruth-3/",
+      "sourceImage": "https://media.freebibleimages.org/stories/FB_Ruth_Part3/source-jpeg/11_FB_Ruth_Part3_1024.jpg",
+      "sourceSlide": 11,
+      "sourceCaption": "So Boaz married Ruth and the Lord blessed them with a son. Women told Naomi, ‘Praise the Lord. He has looked after you in your old age. Ruth loves you and is better to you than seven sons.’ Ruth and Boaz’s son was called Obed. Obed was the father of Jesse whose youngest son David became King of Israel. A descendant of David was Mary the mother of Jesus. – Slide 11",
+      "license": "CC BY-SA; see source page for version",
+      "attribution": "Sweet Publishing / FreeBibleimages.org"
+    },
+    {
+      "id": "samuel",
+      "title": "Samuel",
+      "asset": "stories/samuel.webp",
+      "sourcePage": "https://www.freebibleimages.org/illustrations/samuel-listens/",
+      "sourceImage": "https://media.freebibleimages.org/stories/FB_Samuel_Listens/source-jpeg/12_FB_Samuel_Listens_1024.jpg",
+      "sourceSlide": 12,
+      "sourceCaption": "‘Here I am. Did you call me?’ Eli realised it was the Lord who was calling Samuel. So he said, ‘Go and lie down again, and if someone calls again, say, “Speak, Lord, your servant is listening.”’ – Slide 12",
+      "license": "CC BY-SA; see source page for version",
+      "attribution": "Sweet Publishing / FreeBibleimages.org"
+    },
+    {
+      "id": "david-and-goliath",
+      "title": "David and Goliath",
+      "asset": "stories/david-and-goliath.webp",
+      "sourcePage": "https://www.freebibleimages.org/illustrations/david-goliath/",
+      "sourceImage": "https://media.freebibleimages.org/stories/FB_David_Goliath/source-jpeg/16_FB_David_Goliath_1024.jpg",
+      "sourceSlide": 16,
+      "sourceCaption": "As Goliath started walking toward David again, David ran quickly toward the Philistine. He reached into his bag and took out a stone, which he slung at Goliath. It hit him on the forehead, breaking his skull, and Goliath fell face downward on the ground. – Slide 16",
+      "license": "CC BY-SA; see source page for version",
+      "attribution": "Sweet Publishing / FreeBibleimages.org"
+    },
+    {
+      "id": "solomon",
+      "title": "Solomon",
+      "asset": "stories/solomon.webp",
+      "sourcePage": "https://www.freebibleimages.org/illustrations/solomon-wisdom/",
+      "sourceImage": "https://media.freebibleimages.org/stories/FB_Solomon_Wisdom/source-jpeg/13_FB_Solomon_Wisdom_1024.jpg",
+      "sourceSlide": 13,
+      "sourceCaption": "‘Give the living baby to the first woman. Do not kill him; she is his mother.’ When the people of Israel heard the verdict they held the king in awe, because they saw that he had wisdom from God to administer justice. – Slide 13",
+      "license": "CC BY-SA; see source page for version",
+      "attribution": "Sweet Publishing / FreeBibleimages.org"
+    },
+    {
+      "id": "elijah",
+      "title": "Elijah",
+      "asset": "stories/elijah.webp",
+      "sourcePage": "https://www.freebibleimages.org/illustrations/elijah-carmel/",
+      "sourceImage": "https://media.freebibleimages.org/stories/FB_Elijah_Carmel/source-jpeg/12_FB_Elijah_Carmel_1024.jpg",
+      "sourceSlide": 12,
+      "sourceCaption": "Elijah continued, ‘I am the only one of the Lord’s prophets left, but Baal has 450 prophets. Get two bulls for us. Let Baal’s prophets choose one, cut it into pieces and put it on an altar of wood. But they must not set fire to it. I will prepare the other bull and put it on an altar with wood. But I will not set fire to it. Then, you call on the name of your god, and I will call on the name of the Lord. The god who answers by fire—he is God.’ The people agreed to the contest. – Slide 12",
+      "license": "CC BY-SA; see source page for version",
+      "attribution": "Sweet Publishing / FreeBibleimages.org"
+    },
+    {
+      "id": "jonah",
+      "title": "Jonah",
+      "asset": "stories/jonah.webp",
+      "sourcePage": "https://www.freebibleimages.org/illustrations/jonah-disobeys/",
+      "sourceImage": "https://media.freebibleimages.org/stories/FB_Jonah_Disobeys/source-jpeg/09_FB_Jonah_Disobeys_1024.jpg",
+      "sourceSlide": 9,
+      "sourceCaption": "Immediately the wind dropped and the sea became calm. Jonah sunk under the water. But God has not finished with His disobedient prophet. He has prepared a great fish to swallow Jonah and keep him alive. – Slide 9",
+      "license": "CC BY-SA; see source page for version",
+      "attribution": "Sweet Publishing / FreeBibleimages.org"
+    },
+    {
+      "id": "daniel-and-the-lions",
+      "title": "Daniel and the Lions",
+      "asset": "stories/daniel-and-the-lions.webp",
+      "sourcePage": "https://www.freebibleimages.org/illustrations/daniel-lions/",
+      "sourceImage": "https://media.freebibleimages.org/stories/FB_Daniel_Lions/source-jpeg/12_FB_Daniel_Lions_1024.jpg",
+      "sourceSlide": 12,
+      "sourceCaption": "Daniel answered, ‘May your Majesty live forever! God sent His angel to shut the mouths of the lions so that they would not hurt me. He did this because I was innocent.’ The king was overjoyed and gave orders for Daniel to be pulled out of the pit. – Slide 12",
+      "license": "CC BY-SA; see source page for version",
+      "attribution": "Sweet Publishing / FreeBibleimages.org"
+    },
+    {
+      "id": "esther",
+      "title": "Esther",
+      "asset": "stories/esther.webp",
+      "sourcePage": "https://www.freebibleimages.org/illustrations/esther-2/",
+      "sourceImage": "https://media.freebibleimages.org/stories/FB_Esther_Part_2/source-jpeg/13_FB_Esther_Part_2_1024.jpg",
+      "sourceSlide": 13,
+      "sourceCaption": "Haman went to his friends and Zeresh his wife and boasted to them about his great wealth, his many sons and the ways the King had honoured him. ‘I have been invited to a banquet by the King and queen tomorrow. But I cannot be happy while Mordecai the Jew is sitting at the King’s gate.’ – Slide 13",
+      "license": "CC BY-SA; see source page for version",
+      "attribution": "Sweet Publishing / FreeBibleimages.org"
+    },
+    {
+      "id": "birth-of-jesus",
+      "title": "The Birth of Jesus",
+      "asset": "stories/birth-of-jesus.webp",
+      "sourcePage": "https://www.freebibleimages.org/illustrations/christmas-jesus-birth/",
+      "sourceImage": "https://media.freebibleimages.org/stories/FB_Christmas_Jesus_Birth/source-jpeg/15_FB_Christmas_Jesus_Birth_1024.jpg",
+      "sourceSlide": 15,
+      "sourceCaption": "That night Mary gave birth to her first born son. She wrapped him in cloths and placed him in a manger. – Slide 15",
+      "license": "CC BY-SA; see source page for version",
+      "attribution": "Sweet Publishing / FreeBibleimages.org"
+    },
+    {
+      "id": "jesus-calms-storm",
+      "title": "Jesus Calms the Storm",
+      "asset": "stories/jesus-calms-storm.webp",
+      "sourcePage": "https://www.freebibleimages.org/illustrations/spi-jesus-storm/",
+      "sourceImage": "https://media.freebibleimages.org/stories/FB_SPI_Jesus_Storm/source-jpeg/04_FB_SPI_Jesus_Storm_1024.jpg",
+      "sourceSlide": 4,
+      "sourceCaption": "The weather was calm when they set off and Jesus was very tired. He lay down to sleep on a cushion in the back of the boat. – Slide 4",
+      "license": "CC BY-SA; see source page for version",
+      "attribution": "Sweet Publishing / FreeBibleimages.org"
+    },
+    {
+      "id": "good-samaritan",
+      "title": "The Good Samaritan",
+      "asset": "stories/good-samaritan.webp",
+      "sourcePage": "https://www.freebibleimages.org/illustrations/good-samaritan/",
+      "sourceImage": "https://media.freebibleimages.org/stories/FB_Good_Samaritan/source-jpeg/09_FB_Good_Samaritan_1024.jpg",
+      "sourceSlide": 9,
+      "sourceCaption": "‘Then a Samaritan who was traveling that way arrived on the scene. When he saw him, his heart was filled with pity. He went over to him, poured oil and wine on his wounds and bandaged them – Slide 9",
+      "license": "CC BY-SA; see source page for version",
+      "attribution": "Sweet Publishing / FreeBibleimages.org"
+    },
+    {
+      "id": "prodigal-son",
+      "title": "The Prodigal Son",
+      "asset": "stories/prodigal-son.webp",
+      "sourcePage": "https://www.freebibleimages.org/illustrations/parable-two-sons/",
+      "sourceImage": "https://media.freebibleimages.org/stories/FB_Parable_TwoSons/source-jpeg/12_FB_Parable_TwoSons_1024.jpg",
+      "sourceSlide": 12,
+      "sourceCaption": "‘So he returned home to his father. While he was still a long way off, his father saw him coming. Filled with love and compassion, he ran to his son, embraced him, and kissed him. – Slide 12",
+      "license": "CC BY-SA; see source page for version",
+      "attribution": "Sweet Publishing / FreeBibleimages.org"
+    },
+    {
+      "id": "crucifixion",
+      "title": "The Crucifixion",
+      "asset": "stories/crucifixion.webp",
+      "sourcePage": "https://www.freebibleimages.org/illustrations/jesus-crucified-dies/",
+      "sourceImage": "https://media.freebibleimages.org/stories/FB_Jesus_Crucified_Dies/source-jpeg/05_FB_Jesus_Crucified_Dies_1024.jpg",
+      "sourceSlide": 5,
+      "sourceCaption": "­ Those who passed by hurled insults at Jesus, shaking their heads and saying, ‘You said you would destroy the temple and rebuild it in three days. Come down from the cross and save yourself.’ – Slide 5",
+      "license": "CC BY-SA; see source page for version",
+      "attribution": "Sweet Publishing / FreeBibleimages.org"
+    },
+    {
+      "id": "resurrection",
+      "title": "The Resurrection",
+      "asset": "stories/resurrection.webp",
+      "sourcePage": "https://www.freebibleimages.org/illustrations/jesus-resurrection/",
+      "sourceImage": "https://media.freebibleimages.org/stories/FB_Jesus_Resurrection/source-jpeg/10_FB_Jesus_Resurrection_1024.jpg",
+      "sourceSlide": 10,
+      "sourceCaption": "John arrived first and stared into the empty tomb. He saw strips of linen lying there but did not go in. Simon Peter caught up and went straight into the tomb. – Slide 10",
+      "license": "CC BY-SA; see source page for version",
+      "attribution": "Sweet Publishing / FreeBibleimages.org"
+    }
+  ]
+}

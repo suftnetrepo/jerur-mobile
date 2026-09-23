@@ -1,0 +1,215 @@
+{
+  "schemaVersion": "1.0.0",
+  "contentVersion": "1.0.0",
+  "language": "en-GB",
+  "contentNotice": "Original retelling based on the cited Bible passages; not a replacement for reading Scripture.",
+  "story": {
+    "id": "daniel-and-the-lions",
+    "title": "Daniel and the Lions",
+    "subtitle": "Faith in the darkest night",
+    "collectionIds": [
+      "kings-and-prophets",
+      "heroes-of-faith"
+    ],
+    "scriptureReferences": [
+      "Daniel 1:1–21",
+      "Daniel 6:1–28"
+    ],
+    "illustration": "stories/daniel-and-the-lions.svg",
+    "estimatedMinutes": 8,
+    "difficulty": "beginner",
+    "ageSuitability": "all-ages",
+    "featured": true,
+    "keywords": [
+      "Daniel",
+      "lions",
+      "prayer",
+      "integrity",
+      "Darius",
+      "faithfulness",
+      "courage"
+    ],
+    "introduction": {
+      "summary": "Daniel’s consistent integrity makes him trusted by a king and targeted by jealous officials. When prayer becomes illegal, Daniel remains faithful and God preserves him among the lions.",
+      "context": "Daniel was taken from Judah into exile as a young man and served under several foreign rulers. By the time of this event, his long record of trustworthy public service was well established."
+    },
+    "storySections": [
+      {
+        "id": "faithful-in-exile",
+        "title": "Faithful in Exile",
+        "content": "Taken to Babylon, Daniel and his friends receive new training, language and names. They learn to serve with excellence without surrendering their deepest allegiance to God. God gives them knowledge, wisdom and understanding.",
+        "scriptureReference": "Daniel 1:1–21"
+      },
+      {
+        "id": "an-excellent-spirit",
+        "title": "An Excellent Spirit",
+        "content": "Under King Darius, Daniel distinguishes himself through exceptional character and ability. The king plans to place him over the whole kingdom. Jealous officials search for corruption in his work but can find no negligence or dishonesty.",
+        "scriptureReference": "Daniel 6:1–5"
+      },
+      {
+        "id": "a-manipulated-law",
+        "title": "A Manipulated Law",
+        "content": "The officials persuade Darius to issue a decree forbidding prayer to anyone except the king for thirty days. Knowing that Daniel’s loyalty to God is predictable, they use his faithfulness as the basis of their trap.",
+        "scriptureReference": "Daniel 6:6–9"
+      },
+      {
+        "id": "windows-open",
+        "title": "Windows Open",
+        "content": "Daniel learns that the decree has been signed, yet continues his established practice of praying three times a day. He neither creates a performance nor hides his devotion. The officials observe him and report him to the distressed king.",
+        "scriptureReference": "Daniel 6:10–18"
+      },
+      {
+        "id": "preserved-among-lions",
+        "title": "Preserved Among Lions",
+        "content": "Daniel is lowered into the lions’ den and the entrance is sealed. At dawn, Darius hurries to the den and calls out. Daniel replies that God sent an angel to shut the lions’ mouths because he was found innocent. The king brings him out unharmed and honours Daniel’s God.",
+        "scriptureReference": "Daniel 6:19–28"
+      }
+    ],
+    "keyPeople": [
+      {
+        "name": "Daniel",
+        "role": "Exiled servant of God known for wisdom and integrity"
+      },
+      {
+        "name": "Darius",
+        "role": "King manipulated into issuing the prayer decree"
+      },
+      {
+        "name": "Jealous officials",
+        "role": "Administrators who target Daniel’s faithfulness"
+      }
+    ],
+    "keyLocations": [
+      {
+        "name": "Babylon",
+        "description": "Empire where Daniel first served in exile"
+      },
+      {
+        "name": "The lions’ den",
+        "description": "Place of intended death and God’s deliverance"
+      }
+    ],
+    "flashcards": [
+      {
+        "id": "daniel-card-1",
+        "front": "Why did Darius plan to promote Daniel?",
+        "back": "Daniel distinguished himself through exceptional qualities and trustworthy service.",
+        "scriptureReference": "Daniel 6:3"
+      },
+      {
+        "id": "daniel-card-2",
+        "front": "What fault did the officials discover in Daniel’s work?",
+        "back": "They found no corruption, negligence or dishonesty.",
+        "scriptureReference": "Daniel 6:4"
+      },
+      {
+        "id": "daniel-card-3",
+        "front": "What did the temporary decree forbid?",
+        "back": "It forbade petitions to any god or person except the king for thirty days.",
+        "scriptureReference": "Daniel 6:6–9"
+      },
+      {
+        "id": "daniel-card-4",
+        "front": "How often did Daniel pray?",
+        "back": "Daniel prayed three times each day, as he had done previously.",
+        "scriptureReference": "Daniel 6:10"
+      },
+      {
+        "id": "daniel-card-5",
+        "front": "Who shut the lions’ mouths?",
+        "back": "Daniel said that God sent an angel to shut them.",
+        "scriptureReference": "Daniel 6:22"
+      },
+      {
+        "id": "daniel-card-6",
+        "front": "What condition was Daniel in when removed?",
+        "back": "No wound was found on him because he had trusted God.",
+        "scriptureReference": "Daniel 6:23"
+      }
+    ],
+    "keyLessons": [
+      "Integrity is formed through consistent choices before a crisis arrives.",
+      "Excellence and faithfulness can belong together in public service.",
+      "Prayer is a relationship worth protecting under pressure.",
+      "Courage may look like quietly continuing a faithful practice.",
+      "God’s presence does not always prevent the den, but it can sustain us within it."
+    ],
+    "reflection": {
+      "question": "Which regular practice is shaping your character for moments of pressure?",
+      "prompt": "Choose a realistic daily time for prayer and protect it for the next seven days."
+    },
+    "prayerPrompt": "Faithful God, make my private devotion and public conduct consistent, courageous and trustworthy.",
+    "quiz": [
+      {
+        "id": "daniel-question-1",
+        "question": "Why could the officials not accuse Daniel through his work?",
+        "options": [
+          "He had no responsibilities",
+          "He was trustworthy and not corrupt",
+          "The king protected every decision",
+          "He left the kingdom"
+        ],
+        "correctOptionIndex": 1,
+        "explanation": "Daniel’s opponents could find no negligence or corruption.",
+        "scriptureReference": "Daniel 6:4"
+      },
+      {
+        "id": "daniel-question-2",
+        "question": "How long did the prayer decree last?",
+        "options": [
+          "Seven days",
+          "Thirty days",
+          "One year",
+          "Three years"
+        ],
+        "correctOptionIndex": 1,
+        "explanation": "The officials proposed a thirty-day prohibition.",
+        "scriptureReference": "Daniel 6:7"
+      },
+      {
+        "id": "daniel-question-3",
+        "question": "How did Daniel respond to the decree?",
+        "options": [
+          "He stopped praying",
+          "He prayed only in the palace",
+          "He continued his regular prayers",
+          "He left the city"
+        ],
+        "correctOptionIndex": 2,
+        "explanation": "Daniel maintained his established pattern of prayer.",
+        "scriptureReference": "Daniel 6:10"
+      },
+      {
+        "id": "daniel-question-4",
+        "question": "When did Darius return to the den?",
+        "options": [
+          "At dawn",
+          "After thirty days",
+          "At midnight",
+          "A week later"
+        ],
+        "correctOptionIndex": 0,
+        "explanation": "After a sleepless night, the king hurried there at first light.",
+        "scriptureReference": "Daniel 6:18–20"
+      },
+      {
+        "id": "daniel-question-5",
+        "question": "Why was Daniel unharmed?",
+        "options": [
+          "The lions were absent",
+          "He wore armour",
+          "God sent an angel and Daniel trusted him",
+          "The officials rescued him"
+        ],
+        "correctOptionIndex": 2,
+        "explanation": "Daniel credited God’s angel with shutting the lions’ mouths.",
+        "scriptureReference": "Daniel 6:22–23"
+      }
+    ],
+    "completion": {
+      "points": 140,
+      "achievementId": "five-day-streak",
+      "nextStoryId": "esther"
+    }
+  }
+}

@@ -276,6 +276,28 @@ export default function AboutScreen() {
               </Stack>
             </Stack>
           ) : null}
+
+          {/* Bible Discovery artwork attribution required by the CC BY-SA source pack. */}
+          <Stack
+            marginTop={16}
+            padding={16}
+            borderRadius={18}
+            backgroundColor={COLORS.paperAlt}
+            borderWidth={1}
+            borderColor={COLORS.chromeBorder}
+            gap={8}
+          >
+            <Stack horizontal alignItems="center" gap={8}>
+              <Icon name="image" size={15} color={COLORS.indigo} />
+              <Text fontSize={12} fontWeight="800" color={COLORS.ink}>
+                Bible Discovery image credits
+              </Text>
+            </Stack>
+            <Text fontSize={11.5} color={COLORS.inkSoft} style={{ lineHeight: 18 }}>
+              Bible Discovery illustrations adapted from artwork by Sweet Publishing,
+              provided by FreeBibleimages.org under CC BY-SA.
+            </Text>
+          </Stack>
         </Stack>
           </>
         )}

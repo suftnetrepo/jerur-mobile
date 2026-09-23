@@ -1,0 +1,220 @@
+{
+  "schemaVersion": "1.0.0",
+  "contentVersion": "1.0.0",
+  "language": "en-GB",
+  "contentNotice": "Original retelling based on the cited Bible passages; not a replacement for reading Scripture.",
+  "story": {
+    "id": "prodigal-son",
+    "title": "The Prodigal Son",
+    "subtitle": "The Father who welcomes us home",
+    "collectionIds": [
+      "parables",
+      "life-of-jesus"
+    ],
+    "scriptureReferences": [
+      "Luke 15:1–3",
+      "Luke 15:11–32"
+    ],
+    "illustration": "stories/prodigal-son.svg",
+    "estimatedMinutes": 8,
+    "difficulty": "beginner",
+    "ageSuitability": "all-ages",
+    "featured": true,
+    "keywords": [
+      "Jesus",
+      "parable",
+      "prodigal son",
+      "father",
+      "forgiveness",
+      "repentance",
+      "grace",
+      "homecoming"
+    ],
+    "introduction": {
+      "summary": "Jesus tells of a younger son who wastes his inheritance, a father who welcomes him home and an older son who struggles to share the father’s joy.",
+      "context": "Religious leaders criticise Jesus for welcoming people they regard as sinners. The parable is the third in a sequence about something lost being found."
+    },
+    "storySections": [
+      {
+        "id": "a-costly-demand",
+        "title": "A Costly Demand",
+        "content": "The younger of two sons asks his father for his share of the estate before the father’s death. The father divides the property. Soon afterwards, the son converts his portion into resources and travels to a distant country.",
+        "scriptureReference": "Luke 15:11–13"
+      },
+      {
+        "id": "everything-lost",
+        "title": "Everything Lost",
+        "content": "The younger son wastes his wealth in reckless living. When a severe famine comes, he has no reserves and becomes desperate. He takes work feeding pigs and longs to eat their food, but no one gives him anything.",
+        "scriptureReference": "Luke 15:13–16"
+      },
+      {
+        "id": "coming-to-his-senses",
+        "title": "Coming to His Senses",
+        "content": "Remembering that his father’s hired workers have enough food, the son recognises his sin against heaven and his father. He prepares no excuse. He plans to return, confess and ask to be treated as a worker rather than a son.",
+        "scriptureReference": "Luke 15:17–20"
+      },
+      {
+        "id": "the-father-runs",
+        "title": "The Father Runs",
+        "content": "While the son is still far away, the father sees him, is filled with compassion and runs to embrace him. Before the son can finish his prepared request, the father orders a robe, ring and sandals and begins a celebration because the lost son has returned.",
+        "scriptureReference": "Luke 15:20–24"
+      },
+      {
+        "id": "the-older-brother",
+        "title": "The Older Brother",
+        "content": "The older son hears the celebration and refuses to enter. He sees his obedience as unpaid labour and resents his brother’s welcome. The father goes out to him too, affirming his place while explaining that the restoration of the lost brother deserves joy.",
+        "scriptureReference": "Luke 15:25–32"
+      }
+    ],
+    "keyPeople": [
+      {
+        "name": "Jesus",
+        "role": "Teacher who tells the parable in response to criticism"
+      },
+      {
+        "name": "The father",
+        "role": "Figure of generous compassion who goes out to both sons"
+      },
+      {
+        "name": "The younger son",
+        "role": "Lost son who returns in repentance"
+      },
+      {
+        "name": "The older son",
+        "role": "Faithful-looking son whose resentment keeps him outside the celebration"
+      }
+    ],
+    "keyLocations": [
+      {
+        "name": "The distant country",
+        "description": "Place of the younger son’s self-directed life and loss"
+      },
+      {
+        "name": "The father’s home",
+        "description": "Place of abundance, restored relationship and celebration"
+      }
+    ],
+    "flashcards": [
+      {
+        "id": "prodigal-card-1",
+        "front": "What did the younger son request?",
+        "back": "He asked for his share of the family estate.",
+        "scriptureReference": "Luke 15:11–12"
+      },
+      {
+        "id": "prodigal-card-2",
+        "front": "What happened after he spent everything?",
+        "back": "A severe famine came, and he became desperately poor.",
+        "scriptureReference": "Luke 15:13–16"
+      },
+      {
+        "id": "prodigal-card-3",
+        "front": "What marked the son’s turning point?",
+        "back": "He came to his senses, admitted his sin and decided to return home.",
+        "scriptureReference": "Luke 15:17–20"
+      },
+      {
+        "id": "prodigal-card-4",
+        "front": "How did the father respond when he saw him?",
+        "back": "The father ran to him with compassion, embraced him and welcomed him.",
+        "scriptureReference": "Luke 15:20"
+      },
+      {
+        "id": "prodigal-card-5",
+        "front": "What gifts signalled restored sonship?",
+        "back": "The father provided the best robe, a ring and sandals.",
+        "scriptureReference": "Luke 15:22"
+      },
+      {
+        "id": "prodigal-card-6",
+        "front": "Why did the older brother refuse to celebrate?",
+        "back": "He resented the welcome given to his brother and viewed his own service as unrewarded labour.",
+        "scriptureReference": "Luke 15:25–30"
+      }
+    ],
+    "keyLessons": [
+      "Sin promises independence but can lead to isolation and loss.",
+      "Repentance faces the truth and turns toward home without excuses.",
+      "God’s grace restores relationship beyond what we can earn.",
+      "Religious obedience can still hide resentment and self-righteousness.",
+      "The Father goes out in compassion to both the openly lost and the resentfully distant."
+    ],
+    "reflection": {
+      "question": "Do you identify more with the younger son’s wandering or the older son’s resentment?",
+      "prompt": "Name what returning to the Father would look like in your present situation."
+    },
+    "prayerPrompt": "Gracious Father, bring me home from both rebellion and resentment, and teach me to rejoice when others receive mercy.",
+    "quiz": [
+      {
+        "id": "prodigal-question-1",
+        "question": "What did the younger son do after receiving his inheritance?",
+        "options": [
+          "Bought the family home",
+          "Travelled to a distant country",
+          "Gave it to his brother",
+          "Built a synagogue"
+        ],
+        "correctOptionIndex": 1,
+        "explanation": "He left home and wasted his resources far away.",
+        "scriptureReference": "Luke 15:12–13"
+      },
+      {
+        "id": "prodigal-question-2",
+        "question": "What work did the son eventually take?",
+        "options": [
+          "Fishing",
+          "Feeding pigs",
+          "Building houses",
+          "Managing an inn"
+        ],
+        "correctOptionIndex": 1,
+        "explanation": "His desperate condition is shown by his work among pigs and his hunger.",
+        "scriptureReference": "Luke 15:14–16"
+      },
+      {
+        "id": "prodigal-question-3",
+        "question": "What did the son decide to do?",
+        "options": [
+          "Demand more money",
+          "Return and confess",
+          "Move farther away",
+          "Blame his employer"
+        ],
+        "correctOptionIndex": 1,
+        "explanation": "He recognised his wrongdoing and set out for his father.",
+        "scriptureReference": "Luke 15:17–20"
+      },
+      {
+        "id": "prodigal-question-4",
+        "question": "Who first saw the returning son?",
+        "options": [
+          "The older brother",
+          "A household servant",
+          "The father",
+          "A neighbour"
+        ],
+        "correctOptionIndex": 2,
+        "explanation": "The father saw him while he was still far away.",
+        "scriptureReference": "Luke 15:20"
+      },
+      {
+        "id": "prodigal-question-5",
+        "question": "Who remained outside the celebration?",
+        "options": [
+          "The father",
+          "The older brother",
+          "The servants",
+          "The younger son"
+        ],
+        "correctOptionIndex": 1,
+        "explanation": "The older brother refused to enter because he was angry.",
+        "scriptureReference": "Luke 15:25–30"
+      }
+    ],
+    "completion": {
+      "points": 130,
+      "achievementId": "story-scholar",
+      "nextStoryId": "crucifixion"
+    }
+  }
+}

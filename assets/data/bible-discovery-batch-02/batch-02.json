@@ -1,0 +1,1075 @@
+{
+  "schemaVersion": "1.0.0",
+  "contentVersion": "1.0.0",
+  "language": "en-GB",
+  "storyCount": 5,
+  "stories": [
+    {
+      "id": "joshua-jericho",
+      "title": "Joshua and Jericho",
+      "subtitle": "Faith that brought walls down",
+      "description": "Learn how Joshua and Israel obeyed God’s unusual plan and watched Jericho’s walls fall.",
+      "collectionIds": [
+        "heroes-of-faith"
+      ],
+      "scriptureReferences": [
+        "Joshua 1:1–18",
+        "Joshua 2:1–24",
+        "Joshua 3:1–17",
+        "Joshua 5:13–15",
+        "Joshua 6:1–27"
+      ],
+      "illustration": "stories/joshua-jericho.svg",
+      "estimatedMinutes": 9,
+      "difficulty": "beginner",
+      "ageSuitability": "all-ages",
+      "featured": true,
+      "keywords": [
+        "Joshua",
+        "Jericho",
+        "Rahab",
+        "courage",
+        "obedience",
+        "promised land",
+        "faith"
+      ],
+      "introduction": {
+        "summary": "Joshua leads Israel across the Jordan and follows God’s unusual instructions at Jericho, while Rahab’s courageous faith brings rescue to her household.",
+        "context": "After Moses dies, Joshua must lead a new generation into the promised land. Jericho is the first fortified city they encounter west of the Jordan."
+      },
+      "storySections": [
+        {
+          "id": "be-strong-and-courageous",
+          "title": "Be Strong and Courageous",
+          "content": "God appoints Joshua to lead Israel after Moses. The task is enormous, but Joshua is told to be strong, courageous and careful to follow God’s instruction. His confidence must rest on God’s presence rather than his own experience.",
+          "scriptureReference": "Joshua 1:1–9"
+        },
+        {
+          "id": "rahab-and-the-spies",
+          "title": "Rahab and the Spies",
+          "content": "Joshua sends two spies into Jericho. Rahab hides them from the king’s men because she believes Israel’s God rules heaven and earth. She asks that her family be protected, and the spies give her a scarlet cord as the sign of their agreement.",
+          "scriptureReference": "Joshua 2:1–24"
+        },
+        {
+          "id": "crossing-the-jordan",
+          "title": "Crossing the Jordan",
+          "content": "The Jordan is overflowing, yet the priests step into the water carrying the covenant ark. The river stops, and the entire nation crosses on dry ground. The crossing confirms Joshua’s leadership and reminds Israel that God goes before them.",
+          "scriptureReference": "Joshua 3:1–17"
+        },
+        {
+          "id": "the-lords-commander",
+          "title": "The Lord’s Commander",
+          "content": "Near Jericho, Joshua encounters the commander of the Lord’s army. Joshua learns that the central question is not whether God supports Joshua’s plans, but whether Joshua stands reverently under God’s authority.",
+          "scriptureReference": "Joshua 5:13–15"
+        },
+        {
+          "id": "walls-fall",
+          "title": "The Walls Fall",
+          "content": "Israel marches around Jericho in silence for six days. On the seventh day they circle it seven times; priests sound their trumpets and the people shout. The walls collapse, the city is taken, and Rahab’s household is brought to safety.",
+          "scriptureReference": "Joshua 6:1–27"
+        }
+      ],
+      "keyPeople": [
+        {
+          "name": "Joshua",
+          "role": "Successor to Moses and leader of Israel"
+        },
+        {
+          "name": "Rahab",
+          "role": "Woman of Jericho whose faith protects the spies and her family"
+        },
+        {
+          "name": "The priests",
+          "role": "Carriers of the covenant ark and trumpets"
+        }
+      ],
+      "keyLocations": [
+        {
+          "name": "Jordan River",
+          "description": "The river Israel crossed on dry ground"
+        },
+        {
+          "name": "Jericho",
+          "description": "A fortified city at the entrance to the promised land"
+        }
+      ],
+      "flashcards": [
+        {
+          "id": "joshua-card-1",
+          "front": "Who succeeded Moses as Israel’s leader?",
+          "back": "Joshua, son of Nun, was commissioned to lead Israel.",
+          "scriptureReference": "Joshua 1:1–2"
+        },
+        {
+          "id": "joshua-card-2",
+          "front": "What repeated command did Joshua receive?",
+          "back": "He was told to be strong and courageous.",
+          "scriptureReference": "Joshua 1:6–9"
+        },
+        {
+          "id": "joshua-card-3",
+          "front": "Who protected the spies in Jericho?",
+          "back": "Rahab hid the spies and helped them escape.",
+          "scriptureReference": "Joshua 2:1–16"
+        },
+        {
+          "id": "joshua-card-4",
+          "front": "What marked Rahab’s house?",
+          "back": "A scarlet cord placed in her window.",
+          "scriptureReference": "Joshua 2:17–21"
+        },
+        {
+          "id": "joshua-card-5",
+          "front": "How many days did Israel march around Jericho?",
+          "back": "They marched for seven days, circling the city seven times on the final day.",
+          "scriptureReference": "Joshua 6:3–4"
+        },
+        {
+          "id": "joshua-card-6",
+          "front": "What happened after the trumpets and shout?",
+          "back": "Jericho’s wall collapsed and Israel entered the city.",
+          "scriptureReference": "Joshua 6:20"
+        }
+      ],
+      "keyLessons": [
+        "Courage grows from confidence in God’s presence.",
+        "Faith can emerge in unexpected people and places.",
+        "Obedience sometimes requires action before the outcome is visible.",
+        "God’s victories must never become grounds for personal pride."
+      ],
+      "reflection": {
+        "question": "Where do you need courage to follow a clear instruction even when the method feels unfamiliar?",
+        "prompt": "Write one faithful step you can take instead of waiting for all uncertainty to disappear."
+      },
+      "prayerPrompt": "God who goes before your people, give me courage, humility and a willing heart to obey.",
+      "quiz": [
+        {
+          "id": "joshua-question-1",
+          "question": "Who became Israel’s leader after Moses?",
+          "options": [
+            "Caleb",
+            "Aaron",
+            "Joshua",
+            "Samuel"
+          ],
+          "correctOptionIndex": 2,
+          "explanation": "God commissioned Joshua to lead Israel across the Jordan.",
+          "scriptureReference": "Joshua 1:1–2"
+        },
+        {
+          "id": "joshua-question-2",
+          "question": "Where did Rahab hide the spies?",
+          "options": [
+            "In a cave",
+            "Under stalks of flax on her roof",
+            "Inside the city gate",
+            "In a well"
+          ],
+          "correctOptionIndex": 1,
+          "explanation": "Rahab concealed the spies beneath flax spread on her roof.",
+          "scriptureReference": "Joshua 2:6"
+        },
+        {
+          "id": "joshua-question-3",
+          "question": "What happened when the priests stepped into the Jordan?",
+          "options": [
+            "A bridge appeared",
+            "The water stopped so Israel could cross",
+            "The priests returned to camp",
+            "A storm began"
+          ],
+          "correctOptionIndex": 1,
+          "explanation": "The river was cut off upstream and the people crossed on dry ground.",
+          "scriptureReference": "Joshua 3:14–17"
+        },
+        {
+          "id": "joshua-question-4",
+          "question": "How many times did Israel circle Jericho on the seventh day?",
+          "options": [
+            "One",
+            "Three",
+            "Seven",
+            "Twelve"
+          ],
+          "correctOptionIndex": 2,
+          "explanation": "They circled seven times before the priests sounded the trumpets.",
+          "scriptureReference": "Joshua 6:15–16"
+        },
+        {
+          "id": "joshua-question-5",
+          "question": "Whose household was rescued from Jericho?",
+          "options": [
+            "Achan’s",
+            "Rahab’s",
+            "The king’s",
+            "Joshua’s"
+          ],
+          "correctOptionIndex": 1,
+          "explanation": "Joshua honoured the spies’ promise and brought Rahab’s family to safety.",
+          "scriptureReference": "Joshua 6:22–25"
+        }
+      ],
+      "completion": {
+        "points": 130,
+        "achievementId": "bible-explorer",
+        "nextStoryId": "ruth"
+      }
+    },
+    {
+      "id": "ruth",
+      "title": "Ruth",
+      "subtitle": "Faithfulness in every season",
+      "description": "Walk with Ruth through loss, loyalty and new beginnings as God quietly restores her future.",
+      "collectionIds": [
+        "women-of-the-bible",
+        "heroes-of-faith"
+      ],
+      "scriptureReferences": [
+        "Ruth 1:1–22",
+        "Ruth 2:1–23",
+        "Ruth 3:1–18",
+        "Ruth 4:1–22"
+      ],
+      "illustration": "stories/ruth.svg",
+      "estimatedMinutes": 9,
+      "difficulty": "beginner",
+      "ageSuitability": "all-ages",
+      "featured": true,
+      "keywords": [
+        "Ruth",
+        "Naomi",
+        "Boaz",
+        "loyalty",
+        "kindness",
+        "redeemer",
+        "harvest",
+        "family"
+      ],
+      "introduction": {
+        "summary": "Ruth’s loyal love carries her from loss and uncertainty into a new community, where the kindness of Boaz becomes part of God’s wider work of redemption.",
+        "context": "The story takes place during the turbulent period of the judges. A famine drives Naomi’s family from Bethlehem to Moab, where a series of deaths leaves Naomi and Ruth as widows."
+      },
+      "storySections": [
+        {
+          "id": "loss-and-return",
+          "title": "Loss and Return",
+          "content": "Naomi loses her husband and both sons in Moab. When she hears that food has returned to Judah, she decides to go home. She urges her daughters-in-law to remain in Moab, and Orpah eventually says goodbye.",
+          "scriptureReference": "Ruth 1:1–14"
+        },
+        {
+          "id": "ruths-choice",
+          "title": "Ruth’s Loyal Choice",
+          "content": "Ruth refuses to abandon Naomi. She commits herself to Naomi’s people and to Naomi’s God, accepting an uncertain future in a foreign land. The two women arrive in Bethlehem at the beginning of the barley harvest.",
+          "scriptureReference": "Ruth 1:15–22"
+        },
+        {
+          "id": "gleaning-in-boazs-field",
+          "title": "Gleaning in Boaz’s Field",
+          "content": "Ruth gathers leftover grain behind the harvesters so that she and Naomi can eat. She comes to a field belonging to Boaz, a relative of Naomi’s late husband. Boaz has heard about Ruth’s loyalty and ensures that she is protected and generously provided for.",
+          "scriptureReference": "Ruth 2:1–23"
+        },
+        {
+          "id": "an-appeal-for-redemption",
+          "title": "An Appeal for Redemption",
+          "content": "Naomi recognises that Boaz could act as a family redeemer. Following Naomi’s guidance, Ruth respectfully asks Boaz to extend his protection. Boaz commends her character but explains that another relative has the first legal right to redeem.",
+          "scriptureReference": "Ruth 3:1–18"
+        },
+        {
+          "id": "a-family-restored",
+          "title": "A Family Restored",
+          "content": "At the town gate, the nearer relative declines the responsibility. Boaz publicly commits to redeem the family property and marry Ruth. Their son Obed becomes the grandfather of David, placing this quiet story of loyalty within God’s larger story.",
+          "scriptureReference": "Ruth 4:1–22"
+        }
+      ],
+      "keyPeople": [
+        {
+          "name": "Ruth",
+          "role": "Moabite widow marked by loyal love and courageous faith"
+        },
+        {
+          "name": "Naomi",
+          "role": "Ruth’s mother-in-law, returning to Bethlehem after deep loss"
+        },
+        {
+          "name": "Boaz",
+          "role": "Honourable landowner and family redeemer"
+        },
+        {
+          "name": "Obed",
+          "role": "Son of Ruth and Boaz and grandfather of David"
+        }
+      ],
+      "keyLocations": [
+        {
+          "name": "Moab",
+          "description": "The land where Ruth met Naomi’s family"
+        },
+        {
+          "name": "Bethlehem",
+          "description": "Naomi’s home and the setting of Ruth’s new beginning"
+        },
+        {
+          "name": "Boaz’s field",
+          "description": "The place where provision and relationship begin"
+        }
+      ],
+      "flashcards": [
+        {
+          "id": "ruth-card-1",
+          "front": "Why did Naomi’s family originally leave Bethlehem?",
+          "back": "A famine led them to live in Moab.",
+          "scriptureReference": "Ruth 1:1–2"
+        },
+        {
+          "id": "ruth-card-2",
+          "front": "What did Ruth choose when Naomi urged her to stay in Moab?",
+          "back": "Ruth chose to remain with Naomi, her people and her God.",
+          "scriptureReference": "Ruth 1:15–18"
+        },
+        {
+          "id": "ruth-card-3",
+          "front": "How did Ruth obtain food in Bethlehem?",
+          "back": "She gleaned grain left behind by the harvesters.",
+          "scriptureReference": "Ruth 2:2–3"
+        },
+        {
+          "id": "ruth-card-4",
+          "front": "Why did Boaz treat Ruth generously?",
+          "back": "He had heard about her loyal care for Naomi and her courageous move to a new people.",
+          "scriptureReference": "Ruth 2:10–12"
+        },
+        {
+          "id": "ruth-card-5",
+          "front": "What role did Boaz accept?",
+          "back": "He acted as a family redeemer, preserving the family line and property.",
+          "scriptureReference": "Ruth 4:9–10"
+        },
+        {
+          "id": "ruth-card-6",
+          "front": "How was Ruth connected to King David?",
+          "back": "Ruth and Boaz’s son Obed became David’s grandfather.",
+          "scriptureReference": "Ruth 4:17–22"
+        }
+      ],
+      "keyLessons": [
+        "Loyal love remains present when circumstances are painful.",
+        "God often provides through the ordinary kindness of people.",
+        "Faith welcomes outsiders into God’s unfolding purpose.",
+        "Honourable action respects both compassion and responsibility."
+      ],
+      "reflection": {
+        "question": "Who might need your steady presence rather than a quick solution?",
+        "prompt": "Choose one practical act of loyal kindness you can offer this week."
+      },
+      "prayerPrompt": "God of Ruth and Naomi, make me faithful in relationships and attentive to people who need welcome and provision.",
+      "quiz": [
+        {
+          "id": "ruth-question-1",
+          "question": "From which nation did Ruth come?",
+          "options": [
+            "Egypt",
+            "Moab",
+            "Edom",
+            "Assyria"
+          ],
+          "correctOptionIndex": 1,
+          "explanation": "Ruth was a Moabite woman who travelled with Naomi to Judah.",
+          "scriptureReference": "Ruth 1:4,22"
+        },
+        {
+          "id": "ruth-question-2",
+          "question": "When did Ruth and Naomi arrive in Bethlehem?",
+          "options": [
+            "At the beginning of the barley harvest",
+            "During a military siege",
+            "At the new year festival",
+            "In the middle of winter"
+          ],
+          "correctOptionIndex": 0,
+          "explanation": "Their arrival at harvest time opened the way for Ruth to glean.",
+          "scriptureReference": "Ruth 1:22"
+        },
+        {
+          "id": "ruth-question-3",
+          "question": "In whose field did Ruth glean?",
+          "options": [
+            "Samuel’s",
+            "Jesse’s",
+            "Boaz’s",
+            "The king’s"
+          ],
+          "correctOptionIndex": 2,
+          "explanation": "Ruth happened to work in a field belonging to Boaz.",
+          "scriptureReference": "Ruth 2:3"
+        },
+        {
+          "id": "ruth-question-4",
+          "question": "Why could Boaz serve as a redeemer?",
+          "options": [
+            "He was a priest",
+            "He was a relative of Naomi’s late husband",
+            "He was governor of Bethlehem",
+            "He owned every field"
+          ],
+          "correctOptionIndex": 1,
+          "explanation": "Boaz belonged to the family circle with responsibility to help preserve the household.",
+          "scriptureReference": "Ruth 2:20; 3:9"
+        },
+        {
+          "id": "ruth-question-5",
+          "question": "What was the name of Ruth and Boaz’s son?",
+          "options": [
+            "Obed",
+            "Jesse",
+            "David",
+            "Elimelek"
+          ],
+          "correctOptionIndex": 0,
+          "explanation": "Their son Obed later became the father of Jesse and grandfather of David.",
+          "scriptureReference": "Ruth 4:13–17"
+        }
+      ],
+      "completion": {
+        "points": 140,
+        "achievementId": "story-scholar",
+        "nextStoryId": "samuel"
+      }
+    },
+    {
+      "id": "samuel",
+      "title": "Samuel Listens",
+      "subtitle": "Speak, Lord, your servant is listening",
+      "description": "Meet young Samuel as he learns to recognise God’s voice and answer with a willing heart.",
+      "collectionIds": [
+        "kings-and-prophets",
+        "heroes-of-faith"
+      ],
+      "scriptureReferences": [
+        "1 Samuel 1:1–28",
+        "1 Samuel 2:18–26",
+        "1 Samuel 3:1–21",
+        "1 Samuel 7:2–17"
+      ],
+      "illustration": "stories/samuel.svg",
+      "estimatedMinutes": 8,
+      "difficulty": "beginner",
+      "ageSuitability": "all-ages",
+      "featured": true,
+      "keywords": [
+        "Samuel",
+        "Hannah",
+        "Eli",
+        "calling",
+        "listening",
+        "prayer",
+        "prophet",
+        "obedience"
+      ],
+      "introduction": {
+        "summary": "Born in answer to Hannah’s prayer, young Samuel learns to recognise God’s voice and grows into a trusted prophet and leader of Israel.",
+        "context": "Israel’s spiritual leadership is failing under Eli’s sons. In this difficult period, God raises Samuel through the faith and prayer of his mother Hannah."
+      },
+      "storySections": [
+        {
+          "id": "hannahs-prayer",
+          "title": "Hannah’s Prayer",
+          "content": "Hannah carries deep sorrow because she has no child. At the sanctuary she pours out her heart silently before God and promises that if she receives a son, she will dedicate him to God’s service. Eli initially misunderstands her distress but then blesses her.",
+          "scriptureReference": "1 Samuel 1:1–18"
+        },
+        {
+          "id": "a-child-dedicated",
+          "title": "A Child Dedicated",
+          "content": "Hannah gives birth to Samuel and cares for him until he is old enough to be brought to the sanctuary. She keeps her promise, entrusting him to serve under Eli while continuing to visit and provide for him.",
+          "scriptureReference": "1 Samuel 1:19–28; 2:18–21"
+        },
+        {
+          "id": "the-night-call",
+          "title": "The Call in the Night",
+          "content": "One night Samuel hears his name and assumes Eli is calling. This happens three times. Eli realises that God is speaking and teaches Samuel to respond as a listening servant.",
+          "scriptureReference": "1 Samuel 3:1–10"
+        },
+        {
+          "id": "a-difficult-message",
+          "title": "A Difficult Message",
+          "content": "God gives Samuel a serious message about Eli’s household. Samuel is afraid to repeat it, but Eli asks him to speak honestly. Samuel does so, beginning a lifelong pattern of faithfully communicating God’s word.",
+          "scriptureReference": "1 Samuel 3:11–18"
+        },
+        {
+          "id": "prophet-and-leader",
+          "title": "Prophet and Leader",
+          "content": "Samuel grows, and Israel recognises that God has established him as a prophet. Later he calls the people away from idols, prays for them and leads them during conflict, marking the place of God’s help with a memorial stone.",
+          "scriptureReference": "1 Samuel 3:19–21; 7:2–17"
+        }
+      ],
+      "keyPeople": [
+        {
+          "name": "Samuel",
+          "role": "Child dedicated to God who becomes a prophet and judge"
+        },
+        {
+          "name": "Hannah",
+          "role": "Samuel’s mother, known for honest prayer and faithfulness"
+        },
+        {
+          "name": "Eli",
+          "role": "Priest who helps Samuel recognise God’s call"
+        }
+      ],
+      "keyLocations": [
+        {
+          "name": "Shiloh",
+          "description": "Location of the sanctuary where Samuel served"
+        },
+        {
+          "name": "Mizpah",
+          "description": "Place where Samuel gathered Israel for repentance and prayer"
+        }
+      ],
+      "flashcards": [
+        {
+          "id": "samuel-card-1",
+          "front": "Who prayed for Samuel before he was born?",
+          "back": "His mother Hannah prayed earnestly for a son.",
+          "scriptureReference": "1 Samuel 1:9–20"
+        },
+        {
+          "id": "samuel-card-2",
+          "front": "Where did Samuel serve as a child?",
+          "back": "He served at the sanctuary under Eli the priest.",
+          "scriptureReference": "1 Samuel 2:18"
+        },
+        {
+          "id": "samuel-card-3",
+          "front": "Whom did Samuel think was calling him?",
+          "back": "He initially thought Eli was calling from nearby.",
+          "scriptureReference": "1 Samuel 3:4–8"
+        },
+        {
+          "id": "samuel-card-4",
+          "front": "Who helped Samuel understand the call?",
+          "back": "Eli recognised that God was speaking and instructed Samuel how to respond.",
+          "scriptureReference": "1 Samuel 3:8–10"
+        },
+        {
+          "id": "samuel-card-5",
+          "front": "Was Samuel’s first message easy to deliver?",
+          "back": "No. It concerned judgment on Eli’s household, and Samuel was afraid to share it.",
+          "scriptureReference": "1 Samuel 3:11–18"
+        },
+        {
+          "id": "samuel-card-6",
+          "front": "What did Samuel call the memorial stone?",
+          "back": "He called it Ebenezer, remembering that God had helped Israel.",
+          "scriptureReference": "1 Samuel 7:12"
+        }
+      ],
+      "keyLessons": [
+        "Honest prayer can hold both pain and trust.",
+        "Listening requires attention, humility and willingness to respond.",
+        "Faithfulness sometimes means communicating difficult truth with respect.",
+        "Remembering God’s past help strengthens present faith."
+      ],
+      "reflection": {
+        "question": "What makes it difficult for you to become quiet and listen carefully?",
+        "prompt": "Set aside five undistracted minutes today for prayer, Scripture and attentive silence."
+      },
+      "prayerPrompt": "Speak, Lord. Give me a listening heart and the courage to respond faithfully.",
+      "quiz": [
+        {
+          "id": "samuel-question-1",
+          "question": "What was the name of Samuel’s mother?",
+          "options": [
+            "Ruth",
+            "Hannah",
+            "Naomi",
+            "Abigail"
+          ],
+          "correctOptionIndex": 1,
+          "explanation": "Hannah prayed for Samuel and dedicated him to God.",
+          "scriptureReference": "1 Samuel 1:20"
+        },
+        {
+          "id": "samuel-question-2",
+          "question": "Under which priest did Samuel serve?",
+          "options": [
+            "Aaron",
+            "Eli",
+            "Zadok",
+            "Abiathar"
+          ],
+          "correctOptionIndex": 1,
+          "explanation": "Samuel ministered before God under Eli’s supervision.",
+          "scriptureReference": "1 Samuel 2:11"
+        },
+        {
+          "id": "samuel-question-3",
+          "question": "How many times did Samuel go to Eli before Eli understood?",
+          "options": [
+            "One",
+            "Two",
+            "Three",
+            "Seven"
+          ],
+          "correctOptionIndex": 2,
+          "explanation": "After the third visit, Eli realised God was calling the boy.",
+          "scriptureReference": "1 Samuel 3:8"
+        },
+        {
+          "id": "samuel-question-4",
+          "question": "How did Eli tell Samuel to respond?",
+          "options": [
+            "Ask for a sign",
+            "Return home",
+            "Say that God’s servant is listening",
+            "Wake the other priests"
+          ],
+          "correctOptionIndex": 2,
+          "explanation": "Eli taught Samuel to present himself as a servant ready to listen.",
+          "scriptureReference": "1 Samuel 3:9–10"
+        },
+        {
+          "id": "samuel-question-5",
+          "question": "What leadership roles did Samuel later fulfil?",
+          "options": [
+            "Merchant and builder",
+            "Prophet and judge",
+            "Soldier and king",
+            "Farmer and musician"
+          ],
+          "correctOptionIndex": 1,
+          "explanation": "Samuel became recognised as a prophet and led Israel as a judge.",
+          "scriptureReference": "1 Samuel 3:19–21; 7:15–17"
+        }
+      ],
+      "completion": {
+        "points": 130,
+        "achievementId": "first-story",
+        "nextStoryId": "david-and-goliath"
+      }
+    },
+    {
+      "id": "david-and-goliath",
+      "title": "David and Goliath",
+      "subtitle": "Courage greater than fear",
+      "description": "Watch David face Goliath with a sling, deep courage and confidence in the living God.",
+      "collectionIds": [
+        "heroes-of-faith"
+      ],
+      "scriptureReferences": [
+        "1 Samuel 16:1–13",
+        "1 Samuel 17:1–58"
+      ],
+      "illustration": "stories/david-and-goliath.svg",
+      "estimatedMinutes": 8,
+      "difficulty": "beginner",
+      "ageSuitability": "all-ages",
+      "featured": true,
+      "keywords": [
+        "David",
+        "Goliath",
+        "courage",
+        "faith",
+        "sling",
+        "giant",
+        "fear",
+        "victory"
+      ],
+      "introduction": {
+        "summary": "A young shepherd refuses to let fear define the battle. Trusting God rather than conventional armour, David faces the Philistine champion Goliath.",
+        "context": "Israel and the Philistines are positioned on opposite hills in the Valley of Elah. For forty days, Goliath’s challenge leaves Israel’s army paralysed with fear."
+      },
+      "storySections": [
+        {
+          "id": "the-unlikely-anointed",
+          "title": "The Unlikely Anointed",
+          "content": "When Samuel visits Jesse’s family to anoint a future king, David is initially left tending sheep. God directs Samuel away from impressive outward appearance and toward the youngest son, whose heart God sees.",
+          "scriptureReference": "1 Samuel 16:1–13"
+        },
+        {
+          "id": "goliaths-challenge",
+          "title": "Goliath’s Challenge",
+          "content": "Goliath, a heavily armed Philistine warrior, challenges Israel to send one man for single combat. Saul and the army are terrified. The challenge continues morning and evening for forty days.",
+          "scriptureReference": "1 Samuel 17:1–16"
+        },
+        {
+          "id": "a-shepherd-arrives",
+          "title": "A Shepherd Arrives",
+          "content": "David comes to the camp to bring food to his brothers. Hearing Goliath, he is disturbed that the living God is being defied. His questions are misunderstood as pride, but news of his confidence reaches Saul.",
+          "scriptureReference": "1 Samuel 17:17–31"
+        },
+        {
+          "id": "confidence-from-the-past",
+          "title": "Confidence from the Past",
+          "content": "David explains how he defended his sheep from a lion and a bear. Those experiences taught him to recognise God’s help. He refuses Saul’s armour because he is not accustomed to it and chooses his staff, sling and five smooth stones.",
+          "scriptureReference": "1 Samuel 17:32–40"
+        },
+        {
+          "id": "the-battle-belongs-to-god",
+          "title": "The Battle Belongs to God",
+          "content": "Goliath mocks David, but David answers that the battle belongs to God. He runs toward the battle line, launches a stone and strikes Goliath in the forehead. The Philistine army flees when its champion falls.",
+          "scriptureReference": "1 Samuel 17:41–58"
+        }
+      ],
+      "keyPeople": [
+        {
+          "name": "David",
+          "role": "Young shepherd who trusts God and later becomes king"
+        },
+        {
+          "name": "Goliath",
+          "role": "Philistine champion who defies Israel"
+        },
+        {
+          "name": "Saul",
+          "role": "King of Israel whose armour David declines"
+        },
+        {
+          "name": "Samuel",
+          "role": "Prophet who anoints David"
+        }
+      ],
+      "keyLocations": [
+        {
+          "name": "Valley of Elah",
+          "description": "The battlefield between Israel and the Philistines"
+        },
+        {
+          "name": "Bethlehem",
+          "description": "David’s home town"
+        }
+      ],
+      "flashcards": [
+        {
+          "id": "david-card-1",
+          "front": "What was David doing when Samuel came to Jesse’s family?",
+          "back": "David was caring for the family’s sheep.",
+          "scriptureReference": "1 Samuel 16:11"
+        },
+        {
+          "id": "david-card-2",
+          "front": "How long did Goliath present his challenge?",
+          "back": "He challenged Israel for forty days.",
+          "scriptureReference": "1 Samuel 17:16"
+        },
+        {
+          "id": "david-card-3",
+          "front": "What past experiences strengthened David’s confidence?",
+          "back": "God had helped him rescue sheep from a lion and a bear.",
+          "scriptureReference": "1 Samuel 17:34–37"
+        },
+        {
+          "id": "david-card-4",
+          "front": "Why did David remove Saul’s armour?",
+          "back": "He was not accustomed to it and chose the tools he knew how to use.",
+          "scriptureReference": "1 Samuel 17:38–40"
+        },
+        {
+          "id": "david-card-5",
+          "front": "What weapons did David carry?",
+          "back": "A staff, a shepherd’s bag, five smooth stones and a sling.",
+          "scriptureReference": "1 Samuel 17:40"
+        },
+        {
+          "id": "david-card-6",
+          "front": "Where did David’s stone strike Goliath?",
+          "back": "It struck Goliath in the forehead.",
+          "scriptureReference": "1 Samuel 17:49"
+        }
+      ],
+      "keyLessons": [
+        "God sees character beyond outward appearance.",
+        "Past experiences of God’s help can prepare us for present challenges.",
+        "Courage is not pretending danger is small; it is trusting that God is greater.",
+        "We do not need to imitate someone else’s methods to act faithfully."
+      ],
+      "reflection": {
+        "question": "What intimidating challenge has been occupying more of your attention than God’s faithfulness?",
+        "prompt": "List one past experience that reminds you of the strength, wisdom or help God has already provided."
+      },
+      "prayerPrompt": "God of David, turn my attention from fear toward your faithfulness and help me use what you have placed in my hands.",
+      "quiz": [
+        {
+          "id": "david-question-1",
+          "question": "What work did David do before confronting Goliath?",
+          "options": [
+            "He was a blacksmith",
+            "He was a shepherd",
+            "He was a priest",
+            "He was a city guard"
+          ],
+          "correctOptionIndex": 1,
+          "explanation": "David cared for his father’s sheep near Bethlehem.",
+          "scriptureReference": "1 Samuel 16:11; 17:15"
+        },
+        {
+          "id": "david-question-2",
+          "question": "Why was Israel’s army afraid?",
+          "options": [
+            "They had no food",
+            "Goliath challenged and intimidated them",
+            "Their king was absent",
+            "They were lost"
+          ],
+          "correctOptionIndex": 1,
+          "explanation": "The Philistine champion’s size, weapons and words filled Saul and the army with fear.",
+          "scriptureReference": "1 Samuel 17:4–11"
+        },
+        {
+          "id": "david-question-3",
+          "question": "Whose armour did David try on?",
+          "options": [
+            "Jonathan’s",
+            "Samuel’s",
+            "Saul’s",
+            "Goliath’s"
+          ],
+          "correctOptionIndex": 2,
+          "explanation": "Saul dressed David in his own military equipment.",
+          "scriptureReference": "1 Samuel 17:38–39"
+        },
+        {
+          "id": "david-question-4",
+          "question": "How many smooth stones did David select?",
+          "options": [
+            "Three",
+            "Five",
+            "Seven",
+            "Twelve"
+          ],
+          "correctOptionIndex": 1,
+          "explanation": "David selected five smooth stones from the stream.",
+          "scriptureReference": "1 Samuel 17:40"
+        },
+        {
+          "id": "david-question-5",
+          "question": "What did David declare about the battle?",
+          "options": [
+            "It belonged to the strongest soldier",
+            "It belonged to the king",
+            "It belonged to God",
+            "It should be postponed"
+          ],
+          "correctOptionIndex": 2,
+          "explanation": "David wanted everyone to know that deliverance did not depend on sword or spear.",
+          "scriptureReference": "1 Samuel 17:45–47"
+        }
+      ],
+      "completion": {
+        "points": 130,
+        "achievementId": "five-day-streak",
+        "nextStoryId": "solomon"
+      }
+    },
+    {
+      "id": "solomon",
+      "title": "Solomon’s Wisdom",
+      "subtitle": "A heart that sought understanding",
+      "description": "Discover why Solomon asked for wisdom and how discernment shaped his leadership of Israel.",
+      "collectionIds": [
+        "kings-and-prophets"
+      ],
+      "scriptureReferences": [
+        "1 Kings 3:1–28",
+        "1 Kings 4:20–34",
+        "1 Kings 8:22–61",
+        "1 Kings 10:1–13",
+        "1 Kings 11:1–13"
+      ],
+      "illustration": "stories/solomon.svg",
+      "estimatedMinutes": 10,
+      "difficulty": "intermediate",
+      "ageSuitability": "all-ages",
+      "featured": true,
+      "keywords": [
+        "Solomon",
+        "wisdom",
+        "king",
+        "temple",
+        "judgment",
+        "choices",
+        "Queen of Sheba"
+      ],
+      "introduction": {
+        "summary": "Solomon asks God for wisdom to govern well, becomes renowned for discernment and builds the temple, yet his later compromises warn that knowledge must remain joined to faithful obedience.",
+        "context": "Solomon succeeds his father David as king. He inherits a united kingdom and the responsibility to lead a large people with justice and faithfulness."
+      },
+      "storySections": [
+        {
+          "id": "a-request-for-wisdom",
+          "title": "A Request for Wisdom",
+          "content": "In a dream, God invites Solomon to ask for what he desires. Solomon recognises his inexperience and asks for a discerning heart to govern the people and distinguish right from wrong. God is pleased that he chooses wisdom over wealth, revenge or long life.",
+          "scriptureReference": "1 Kings 3:1–15"
+        },
+        {
+          "id": "a-difficult-case",
+          "title": "A Difficult Case",
+          "content": "Two women bring a painful dispute involving one living baby. With no witnesses, Solomon proposes dividing the child. The true mother immediately offers to surrender the baby rather than see him harmed, revealing her identity through compassionate love.",
+          "scriptureReference": "1 Kings 3:16–28"
+        },
+        {
+          "id": "wisdom-and-prosperity",
+          "title": "Wisdom and Prosperity",
+          "content": "Solomon organises the kingdom and becomes known for insight, learning and proverbs. People from surrounding nations come to hear his wisdom. Israel experiences a period of unusual peace and prosperity.",
+          "scriptureReference": "1 Kings 4:20–34"
+        },
+        {
+          "id": "the-temple-and-prayer",
+          "title": "The Temple and Prayer",
+          "content": "Solomon builds the temple in Jerusalem and dedicates it with prayer. He acknowledges that no building can contain God and asks that the temple become a place associated with prayer, forgiveness, justice and welcome for foreigners.",
+          "scriptureReference": "1 Kings 8:22–61"
+        },
+        {
+          "id": "wisdom-without-watchfulness",
+          "title": "Wisdom Without Watchfulness",
+          "content": "The Queen of Sheba sees Solomon’s wisdom and splendour, but the story later takes a sober turn. Solomon’s many political marriages draw his heart toward other gods. His life warns that receiving wisdom does not remove the need for lifelong obedience.",
+          "scriptureReference": "1 Kings 10:1–13; 11:1–13"
+        }
+      ],
+      "keyPeople": [
+        {
+          "name": "Solomon",
+          "role": "Son of David, king of Israel and builder of the temple"
+        },
+        {
+          "name": "The two mothers",
+          "role": "Women whose dispute reveals Solomon’s discernment"
+        },
+        {
+          "name": "Queen of Sheba",
+          "role": "Foreign ruler who travels to test Solomon’s wisdom"
+        }
+      ],
+      "keyLocations": [
+        {
+          "name": "Gibeon",
+          "description": "Place where Solomon asked God for wisdom"
+        },
+        {
+          "name": "Jerusalem",
+          "description": "Capital city and location of the temple"
+        }
+      ],
+      "flashcards": [
+        {
+          "id": "solomon-card-1",
+          "front": "What did Solomon request from God?",
+          "back": "A discerning heart to govern well and distinguish right from wrong.",
+          "scriptureReference": "1 Kings 3:7–9"
+        },
+        {
+          "id": "solomon-card-2",
+          "front": "Why was God pleased with Solomon’s request?",
+          "back": "He asked for wise justice rather than wealth, long life or victory over enemies.",
+          "scriptureReference": "1 Kings 3:10–13"
+        },
+        {
+          "id": "solomon-card-3",
+          "front": "How did Solomon identify the baby’s true mother?",
+          "back": "Her willingness to give up the child to save his life revealed her love.",
+          "scriptureReference": "1 Kings 3:24–27"
+        },
+        {
+          "id": "solomon-card-4",
+          "front": "What major building did Solomon construct?",
+          "back": "He constructed the temple in Jerusalem.",
+          "scriptureReference": "1 Kings 6:1–38"
+        },
+        {
+          "id": "solomon-card-5",
+          "front": "Who travelled to test Solomon with difficult questions?",
+          "back": "The Queen of Sheba came after hearing of Solomon’s reputation.",
+          "scriptureReference": "1 Kings 10:1–3"
+        },
+        {
+          "id": "solomon-card-6",
+          "front": "What weakened Solomon’s faithfulness later in life?",
+          "back": "His marriages and alliances turned his heart toward other gods.",
+          "scriptureReference": "1 Kings 11:1–8"
+        }
+      ],
+      "keyLessons": [
+        "Good leadership begins by recognising the need for wisdom.",
+        "True discernment protects life and seeks justice.",
+        "Achievements should deepen humility rather than replace dependence on God.",
+        "Wisdom must be practised consistently; knowledge alone cannot guard the heart."
+      ],
+      "reflection": {
+        "question": "Where do you most need wisdom rather than a quick or impressive answer?",
+        "prompt": "Describe the decision, the people affected and the principle of love or justice that should guide you."
+      },
+      "prayerPrompt": "God who gives wisdom, grant me a discerning heart and keep my choices faithful over the long term.",
+      "quiz": [
+        {
+          "id": "solomon-question-1",
+          "question": "What did Solomon ask God to give him?",
+          "options": [
+            "A larger army",
+            "A discerning heart",
+            "A longer palace",
+            "Victory over every nation"
+          ],
+          "correctOptionIndex": 1,
+          "explanation": "Solomon asked for the ability to govern with wise discernment.",
+          "scriptureReference": "1 Kings 3:7–9"
+        },
+        {
+          "id": "solomon-question-2",
+          "question": "What dispute demonstrated Solomon’s wisdom?",
+          "options": [
+            "Ownership of a field",
+            "The identity of a living baby’s mother",
+            "Payment of a debt",
+            "The boundary of a city"
+          ],
+          "correctOptionIndex": 1,
+          "explanation": "Solomon’s proposal revealed which woman truly wanted the child protected.",
+          "scriptureReference": "1 Kings 3:16–28"
+        },
+        {
+          "id": "solomon-question-3",
+          "question": "What did Solomon build in Jerusalem?",
+          "options": [
+            "An ark",
+            "The temple",
+            "A pyramid",
+            "A new sea port"
+          ],
+          "correctOptionIndex": 1,
+          "explanation": "Solomon built and dedicated the temple in Jerusalem.",
+          "scriptureReference": "1 Kings 6:1; 8:1–66"
+        },
+        {
+          "id": "solomon-question-4",
+          "question": "Which ruler visited Solomon to test his wisdom?",
+          "options": [
+            "Queen Esther",
+            "Queen of Sheba",
+            "Pharaoh’s daughter",
+            "Queen Jezebel"
+          ],
+          "correctOptionIndex": 1,
+          "explanation": "The Queen of Sheba came with difficult questions and observed Solomon’s kingdom.",
+          "scriptureReference": "1 Kings 10:1–9"
+        },
+        {
+          "id": "solomon-question-5",
+          "question": "What is the major warning from Solomon’s later life?",
+          "options": [
+            "Wisdom makes work unnecessary",
+            "Success always prevents failure",
+            "Knowledge must remain joined to faithful obedience",
+            "Leaders should avoid all visitors"
+          ],
+          "correctOptionIndex": 2,
+          "explanation": "Despite extraordinary wisdom, Solomon’s compromised worship divided his heart.",
+          "scriptureReference": "1 Kings 11:1–13"
+        }
+      ],
+      "completion": {
+        "points": 160,
+        "achievementId": "quiz-master",
+        "nextStoryId": "elijah"
+      }
+    }
+  ]
+}

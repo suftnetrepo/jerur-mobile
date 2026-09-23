@@ -9,8 +9,9 @@ import type { ChurchSettings, RegularService, FellowshipGroup, ChurchEvent, Late
 // church is currently selected (see src/church/SelectedChurchContext.tsx).
 
 export async function getSettings(): Promise<ChurchSettings | null> {
-  const { data } = await apiClient.get<{ data: ChurchSettings }>("/church/get");
-  return data?.data ?? null;
+  const { data } = await apiClient.get<{ data: ChurchSettings; enabledFeatureIds?: string[] }>("/church/get");
+  if (!data?.data) return null;
+  return { ...data.data, features: data.data.features ?? data.enabledFeatureIds ?? [] };
 }
 
 export async function getRegularServices(): Promise<RegularService[]> {

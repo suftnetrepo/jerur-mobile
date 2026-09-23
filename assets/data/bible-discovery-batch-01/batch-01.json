@@ -1,0 +1,1083 @@
+{
+  "schemaVersion": "1.0.0",
+  "contentVersion": "1.0.0",
+  "language": "en-GB",
+  "storyCount": 5,
+  "stories": [
+    {
+      "id": "creation",
+      "title": "Creation",
+      "subtitle": "In the beginning",
+      "description": "Explore how God formed the heavens, the earth and humanity, filling creation with purpose and goodness.",
+      "collectionIds": [
+        "foundations-of-faith"
+      ],
+      "scriptureReferences": [
+        "Genesis 1:1–31",
+        "Genesis 2:1–25"
+      ],
+      "illustration": "stories/creation.svg",
+      "estimatedMinutes": 8,
+      "difficulty": "beginner",
+      "ageSuitability": "all-ages",
+      "featured": true,
+      "keywords": [
+        "creation",
+        "beginning",
+        "God",
+        "world",
+        "humanity",
+        "rest",
+        "purpose"
+      ],
+      "introduction": {
+        "summary": "God brings order, beauty and life into existence, then creates humanity to reflect his character and care for the world.",
+        "context": "Genesis opens the Bible by identifying God as the source of creation. The story explains the goodness, purpose and responsibility woven into the world."
+      },
+      "storySections": [
+        {
+          "id": "light-and-order",
+          "title": "Light and Order",
+          "content": "The story begins with darkness and an unformed world. God speaks, and light appears. He separates light from darkness and establishes day and night. Creation is not presented as an accident: God gives it order, rhythm and purpose.",
+          "scriptureReference": "Genesis 1:1–5"
+        },
+        {
+          "id": "sky-land-and-seas",
+          "title": "Sky, Land and Seas",
+          "content": "God forms the sky, gathers the waters and reveals dry land. Plants and trees begin to grow, each able to produce according to its kind. The earth becomes a place prepared to sustain life.",
+          "scriptureReference": "Genesis 1:6–13"
+        },
+        {
+          "id": "lights-and-living-creatures",
+          "title": "Lights and Living Creatures",
+          "content": "The sun, moon and stars mark days and seasons. The waters fill with living creatures, birds fill the sky, and animals move across the land. God blesses life and enables it to flourish.",
+          "scriptureReference": "Genesis 1:14–25"
+        },
+        {
+          "id": "humanity-in-gods-image",
+          "title": "Humanity in God’s Image",
+          "content": "God creates human beings in his image, male and female. They receive dignity, relationship and responsibility. They are called to care for the earth and exercise stewardship under God rather than exploit what he has made.",
+          "scriptureReference": "Genesis 1:26–31"
+        },
+        {
+          "id": "rest-and-relationship",
+          "title": "Rest and Relationship",
+          "content": "After completing creation, God rests and sets apart the seventh day. Genesis then focuses on the garden, where the first humans receive meaningful work, companionship and freedom within God’s wise boundaries.",
+          "scriptureReference": "Genesis 2:1–25"
+        }
+      ],
+      "keyPeople": [
+        {
+          "name": "God",
+          "role": "Creator and giver of life"
+        },
+        {
+          "name": "Adam",
+          "role": "The first man, entrusted with caring for the garden"
+        },
+        {
+          "name": "Eve",
+          "role": "The first woman and Adam’s companion"
+        }
+      ],
+      "keyLocations": [
+        {
+          "name": "The Garden of Eden",
+          "description": "The garden prepared as humanity’s first home"
+        }
+      ],
+      "flashcards": [
+        {
+          "id": "creation-card-1",
+          "front": "What existed before creation took shape?",
+          "back": "The earth was unformed and dark, while God’s Spirit was present over the waters.",
+          "scriptureReference": "Genesis 1:1–2"
+        },
+        {
+          "id": "creation-card-2",
+          "front": "What did God create first in the Genesis sequence?",
+          "back": "God called light into existence and separated it from darkness.",
+          "scriptureReference": "Genesis 1:3–5"
+        },
+        {
+          "id": "creation-card-3",
+          "front": "What does it mean that humanity is made in God’s image?",
+          "back": "Human beings possess God-given dignity and are called to reflect his character and represent his care in creation.",
+          "scriptureReference": "Genesis 1:26–27"
+        },
+        {
+          "id": "creation-card-4",
+          "front": "What responsibility did humanity receive?",
+          "back": "Humanity was entrusted with stewardship of the earth and its living creatures.",
+          "scriptureReference": "Genesis 1:28"
+        },
+        {
+          "id": "creation-card-5",
+          "front": "How did God describe the completed creation?",
+          "back": "God saw the whole creation as very good.",
+          "scriptureReference": "Genesis 1:31"
+        },
+        {
+          "id": "creation-card-6",
+          "front": "Why is the seventh day important?",
+          "back": "God rested, blessed the seventh day and made it holy, establishing a rhythm of work and rest.",
+          "scriptureReference": "Genesis 2:2–3"
+        }
+      ],
+      "keyLessons": [
+        "Creation has meaning because it comes from God.",
+        "Every person possesses God-given dignity.",
+        "People are caretakers of creation, not its absolute owners.",
+        "Work and rest both belong within God’s good design."
+      ],
+      "reflection": {
+        "question": "Where can you recognise God’s goodness and order in the world around you?",
+        "prompt": "Choose one practical way to care for another person or part of creation this week."
+      },
+      "prayerPrompt": "Creator God, help me receive your world with gratitude and care for it with wisdom.",
+      "quiz": [
+        {
+          "id": "creation-question-1",
+          "question": "What did God separate from darkness?",
+          "options": [
+            "Land",
+            "Light",
+            "The sea",
+            "The stars"
+          ],
+          "correctOptionIndex": 1,
+          "explanation": "God called light into existence and separated it from darkness.",
+          "scriptureReference": "Genesis 1:3–5"
+        },
+        {
+          "id": "creation-question-2",
+          "question": "On which day were human beings created?",
+          "options": [
+            "The third day",
+            "The fourth day",
+            "The fifth day",
+            "The sixth day"
+          ],
+          "correctOptionIndex": 3,
+          "explanation": "Human beings were created after the land animals on the sixth day.",
+          "scriptureReference": "Genesis 1:24–31"
+        },
+        {
+          "id": "creation-question-3",
+          "question": "In whose image was humanity created?",
+          "options": [
+            "The angels’ image",
+            "God’s image",
+            "The animals’ image",
+            "The earth’s image"
+          ],
+          "correctOptionIndex": 1,
+          "explanation": "Genesis gives every human being special dignity by describing humanity as made in God’s image.",
+          "scriptureReference": "Genesis 1:26–27"
+        },
+        {
+          "id": "creation-question-4",
+          "question": "What did God do on the seventh day?",
+          "options": [
+            "Created the oceans",
+            "Created humanity",
+            "Rested from his work",
+            "Named the animals"
+          ],
+          "correctOptionIndex": 2,
+          "explanation": "God completed his work, rested and blessed the seventh day.",
+          "scriptureReference": "Genesis 2:1–3"
+        },
+        {
+          "id": "creation-question-5",
+          "question": "What work was Adam given in the garden?",
+          "options": [
+            "Building a city",
+            "Working and caring for the garden",
+            "Making a boat",
+            "Leading an army"
+          ],
+          "correctOptionIndex": 1,
+          "explanation": "Adam was placed in the garden to work it and take care of it.",
+          "scriptureReference": "Genesis 2:15"
+        }
+      ],
+      "completion": {
+        "points": 100,
+        "achievementId": "first-story",
+        "nextStoryId": "noah-and-the-ark"
+      }
+    },
+    {
+      "id": "noah-and-the-ark",
+      "title": "Noah and the Ark",
+      "subtitle": "A promise after the storm",
+      "description": "Discover how Noah trusted God through the flood and received the enduring promise of the rainbow.",
+      "collectionIds": [
+        "heroes-of-faith"
+      ],
+      "scriptureReferences": [
+        "Genesis 6:5–22",
+        "Genesis 7:1–24",
+        "Genesis 8:1–22",
+        "Genesis 9:1–17"
+      ],
+      "illustration": "stories/noah-and-the-ark.svg",
+      "estimatedMinutes": 9,
+      "difficulty": "beginner",
+      "ageSuitability": "all-ages",
+      "featured": true,
+      "keywords": [
+        "Noah",
+        "ark",
+        "flood",
+        "rainbow",
+        "obedience",
+        "judgment",
+        "covenant",
+        "promise"
+      ],
+      "introduction": {
+        "summary": "In a violent and corrupt generation, Noah trusts God, builds the ark and becomes part of a new beginning marked by God’s covenant promise.",
+        "context": "Human rebellion had spread throughout society. The flood narrative holds together the seriousness of evil, the obedience of Noah, God’s rescue and his commitment to preserve life."
+      },
+      "storySections": [
+        {
+          "id": "a-corrupted-world",
+          "title": "A Corrupted World",
+          "content": "Human violence and corruption fill the earth, bringing grief to God. Noah, however, is described as a righteous man who walks faithfully with God amid his generation.",
+          "scriptureReference": "Genesis 6:5–12"
+        },
+        {
+          "id": "build-the-ark",
+          "title": "Build the Ark",
+          "content": "God warns Noah about the coming flood and gives detailed instructions for a vast ark. Noah is told to bring his household, provisions and representatives of the animal world. He responds by doing what God commands.",
+          "scriptureReference": "Genesis 6:13–22"
+        },
+        {
+          "id": "waters-rise",
+          "title": "The Waters Rise",
+          "content": "Noah’s family and the animals enter the ark. Rain falls and the floodwaters rise over the land. The ark carries its passengers safely through a crisis they could not survive on their own.",
+          "scriptureReference": "Genesis 7:1–24"
+        },
+        {
+          "id": "god-remembers-noah",
+          "title": "God Remembers Noah",
+          "content": "The waters begin to recede. Noah sends out birds to discover whether the ground is dry. A dove eventually returns with a fresh olive leaf, signalling that new life is appearing again.",
+          "scriptureReference": "Genesis 8:1–14"
+        },
+        {
+          "id": "covenant-and-rainbow",
+          "title": "Covenant and Rainbow",
+          "content": "Noah leaves the ark and worships God. God establishes a covenant with Noah, his descendants and every living creature. The rainbow becomes the sign of God’s promise that a flood will never again destroy all life on earth.",
+          "scriptureReference": "Genesis 8:15–22; 9:8–17"
+        }
+      ],
+      "keyPeople": [
+        {
+          "name": "Noah",
+          "role": "A faithful man who obeys God’s instructions"
+        },
+        {
+          "name": "Noah’s family",
+          "role": "Eight members of one household preserved in the ark"
+        }
+      ],
+      "keyLocations": [
+        {
+          "name": "The Ark",
+          "description": "The vessel God instructed Noah to build"
+        },
+        {
+          "name": "Mountains of Ararat",
+          "description": "The region where the ark came to rest"
+        }
+      ],
+      "flashcards": [
+        {
+          "id": "noah-card-1",
+          "front": "Why did God instruct Noah to build an ark?",
+          "back": "A flood was coming in response to widespread corruption, and the ark would preserve Noah’s household and animal life.",
+          "scriptureReference": "Genesis 6:13–20"
+        },
+        {
+          "id": "noah-card-2",
+          "front": "How did Noah respond to God’s instructions?",
+          "back": "Noah did everything God commanded him to do.",
+          "scriptureReference": "Genesis 6:22"
+        },
+        {
+          "id": "noah-card-3",
+          "front": "How long did the rain fall?",
+          "back": "The rain fell for forty days and forty nights.",
+          "scriptureReference": "Genesis 7:12"
+        },
+        {
+          "id": "noah-card-4",
+          "front": "What sign showed Noah that vegetation was returning?",
+          "back": "A dove returned carrying a freshly plucked olive leaf.",
+          "scriptureReference": "Genesis 8:10–11"
+        },
+        {
+          "id": "noah-card-5",
+          "front": "What was Noah’s first recorded act after leaving the ark?",
+          "back": "Noah built an altar and worshipped God.",
+          "scriptureReference": "Genesis 8:18–20"
+        },
+        {
+          "id": "noah-card-6",
+          "front": "What did the rainbow represent?",
+          "back": "It was the sign of God’s covenant with the earth and every living creature.",
+          "scriptureReference": "Genesis 9:12–17"
+        }
+      ],
+      "keyLessons": [
+        "Faithful obedience matters even when God’s instruction is difficult.",
+        "God takes violence and corruption seriously.",
+        "God provides rescue and remembers those who trust him.",
+        "The rainbow points to God’s covenant mercy and commitment to life."
+      ],
+      "reflection": {
+        "question": "What act of obedience might require you to trust God before you can see the outcome?",
+        "prompt": "Write down one clear next step and decide when you will take it."
+      },
+      "prayerPrompt": "Faithful God, give me courage to obey you and remember your promises when the way ahead is uncertain.",
+      "quiz": [
+        {
+          "id": "noah-question-1",
+          "question": "How is Noah described in his generation?",
+          "options": [
+            "A powerful king",
+            "A righteous man who walked with God",
+            "A famous soldier",
+            "A travelling merchant"
+          ],
+          "correctOptionIndex": 1,
+          "explanation": "Noah stood apart from the corruption around him by walking faithfully with God.",
+          "scriptureReference": "Genesis 6:9"
+        },
+        {
+          "id": "noah-question-2",
+          "question": "What material was Noah told to use for the ark?",
+          "options": [
+            "Stone",
+            "Bronze",
+            "Gopher wood",
+            "Cedar leaves"
+          ],
+          "correctOptionIndex": 2,
+          "explanation": "Genesis records God instructing Noah to make the ark from gopher wood.",
+          "scriptureReference": "Genesis 6:14"
+        },
+        {
+          "id": "noah-question-3",
+          "question": "What did the dove bring back?",
+          "options": [
+            "A fig",
+            "An olive leaf",
+            "A grain stalk",
+            "A flower"
+          ],
+          "correctOptionIndex": 1,
+          "explanation": "The fresh olive leaf showed that the floodwater had receded from the earth.",
+          "scriptureReference": "Genesis 8:11"
+        },
+        {
+          "id": "noah-question-4",
+          "question": "Where did the ark come to rest?",
+          "options": [
+            "Mount Sinai",
+            "The hills of Bethlehem",
+            "The mountains of Ararat",
+            "Mount Carmel"
+          ],
+          "correctOptionIndex": 2,
+          "explanation": "The ark rested in the region called the mountains of Ararat.",
+          "scriptureReference": "Genesis 8:4"
+        },
+        {
+          "id": "noah-question-5",
+          "question": "What sign accompanied God’s covenant?",
+          "options": [
+            "A pillar of fire",
+            "A rainbow",
+            "A burning bush",
+            "A star"
+          ],
+          "correctOptionIndex": 1,
+          "explanation": "God appointed the rainbow as the visible sign of his covenant with living creatures.",
+          "scriptureReference": "Genesis 9:12–17"
+        }
+      ],
+      "completion": {
+        "points": 120,
+        "achievementId": "five-day-streak",
+        "nextStoryId": "abraham"
+      }
+    },
+    {
+      "id": "abraham",
+      "title": "Abraham",
+      "subtitle": "A journey of faith",
+      "description": "Follow Abraham as he leaves home, trusts God’s promises and learns to walk by faith.",
+      "collectionIds": [
+        "heroes-of-faith"
+      ],
+      "scriptureReferences": [
+        "Genesis 12:1–9",
+        "Genesis 15:1–21",
+        "Genesis 17:1–22",
+        "Genesis 18:1–15",
+        "Genesis 21:1–7",
+        "Genesis 22:1–19"
+      ],
+      "illustration": "stories/abraham.svg",
+      "estimatedMinutes": 10,
+      "difficulty": "intermediate",
+      "ageSuitability": "all-ages",
+      "featured": true,
+      "keywords": [
+        "Abraham",
+        "Sarah",
+        "Isaac",
+        "covenant",
+        "promise",
+        "faith",
+        "obedience",
+        "blessing"
+      ],
+      "introduction": {
+        "summary": "Abram leaves the familiar, learns to trust God through years of waiting and becomes Abraham, the father of a covenant family intended to bless the nations.",
+        "context": "Abraham’s story begins a major new movement in Genesis. God chooses one family through whom his blessing will extend far beyond that family."
+      },
+      "storySections": [
+        {
+          "id": "the-call",
+          "title": "The Call to Go",
+          "content": "God tells Abram to leave his country, relatives and father’s household for a land God will show him. God promises to make him a great nation and to bless all peoples through him. Abram goes, even though he does not yet know the destination.",
+          "scriptureReference": "Genesis 12:1–9"
+        },
+        {
+          "id": "promise-under-stars",
+          "title": "A Promise Under the Stars",
+          "content": "Abram worries that he has no child to inherit the promise. God takes him outside and points to the stars as a picture of the descendants to come. Abram trusts God, and that faith is counted as righteousness.",
+          "scriptureReference": "Genesis 15:1–6"
+        },
+        {
+          "id": "new-names",
+          "title": "New Names and a Covenant Sign",
+          "content": "God confirms his covenant and changes Abram’s name to Abraham, meaning father of many. Sarai becomes Sarah. Their new names declare a future that still seems humanly impossible.",
+          "scriptureReference": "Genesis 17:1–22"
+        },
+        {
+          "id": "isaac-is-born",
+          "title": "Laughter Becomes Joy",
+          "content": "Visitors announce that Sarah will have a son. At first she laughs because of her age, but God’s promise is fulfilled. Isaac is born at the appointed time, turning disbelief into joyful laughter.",
+          "scriptureReference": "Genesis 18:1–15; 21:1–7"
+        },
+        {
+          "id": "faith-tested",
+          "title": "Faith Tested",
+          "content": "Abraham faces an agonising test involving Isaac, the promised son. As Abraham proceeds in trust, God stops him and provides a ram. The moment reveals both Abraham’s faith and God’s provision.",
+          "scriptureReference": "Genesis 22:1–19"
+        }
+      ],
+      "keyPeople": [
+        {
+          "name": "Abraham",
+          "role": "Recipient of God’s covenant promises"
+        },
+        {
+          "name": "Sarah",
+          "role": "Abraham’s wife and mother of Isaac"
+        },
+        {
+          "name": "Isaac",
+          "role": "The promised son"
+        }
+      ],
+      "keyLocations": [
+        {
+          "name": "Canaan",
+          "description": "The land to which God called Abraham"
+        },
+        {
+          "name": "Mount Moriah",
+          "description": "The region of Abraham’s great test of faith"
+        }
+      ],
+      "flashcards": [
+        {
+          "id": "abraham-card-1",
+          "front": "What did God ask Abram to leave?",
+          "back": "His country, relatives and father’s household.",
+          "scriptureReference": "Genesis 12:1"
+        },
+        {
+          "id": "abraham-card-2",
+          "front": "How would Abraham’s calling affect other nations?",
+          "back": "God promised that all peoples on earth would be blessed through him.",
+          "scriptureReference": "Genesis 12:2–3"
+        },
+        {
+          "id": "abraham-card-3",
+          "front": "What picture did God use for Abraham’s descendants?",
+          "back": "God pointed to the countless stars in the night sky.",
+          "scriptureReference": "Genesis 15:5"
+        },
+        {
+          "id": "abraham-card-4",
+          "front": "What were Abram and Sarai’s new names?",
+          "back": "God renamed them Abraham and Sarah.",
+          "scriptureReference": "Genesis 17:5,15"
+        },
+        {
+          "id": "abraham-card-5",
+          "front": "What did the name Isaac recall?",
+          "back": "It means laughter and recalled the surprised laughter surrounding God’s promise.",
+          "scriptureReference": "Genesis 21:3–6"
+        },
+        {
+          "id": "abraham-card-6",
+          "front": "What did God provide on Mount Moriah?",
+          "back": "God provided a ram in place of Isaac.",
+          "scriptureReference": "Genesis 22:13–14"
+        }
+      ],
+      "keyLessons": [
+        "Faith sometimes begins by leaving what is familiar.",
+        "Waiting does not mean God has forgotten his promise.",
+        "God’s blessing is meant to reach beyond us to others.",
+        "God is able to provide in situations that appear impossible."
+      ],
+      "reflection": {
+        "question": "Where are you being asked to trust God without having every detail?",
+        "prompt": "Name the promise or truth about God you need to remember while you wait."
+      },
+      "prayerPrompt": "God of Abraham and Sarah, teach me to trust your character during seasons of waiting and change.",
+      "quiz": [
+        {
+          "id": "abraham-question-1",
+          "question": "What was Abram told to do at the beginning of his journey?",
+          "options": [
+            "Build an ark",
+            "Return to Egypt",
+            "Leave his country for a land God would show him",
+            "Become king of Canaan"
+          ],
+          "correctOptionIndex": 2,
+          "explanation": "Abram’s journey of faith began when he obeyed God’s call to leave the familiar.",
+          "scriptureReference": "Genesis 12:1–4"
+        },
+        {
+          "id": "abraham-question-2",
+          "question": "What did God compare Abraham’s descendants to?",
+          "options": [
+            "The trees of a forest",
+            "The stars in the sky",
+            "The birds in the air",
+            "The stones of a city"
+          ],
+          "correctOptionIndex": 1,
+          "explanation": "The stars became a visual sign of the descendants God promised.",
+          "scriptureReference": "Genesis 15:5"
+        },
+        {
+          "id": "abraham-question-3",
+          "question": "What new name did Sarai receive?",
+          "options": [
+            "Rebekah",
+            "Rachel",
+            "Sarah",
+            "Miriam"
+          ],
+          "correctOptionIndex": 2,
+          "explanation": "God changed Sarai’s name to Sarah when confirming the covenant.",
+          "scriptureReference": "Genesis 17:15"
+        },
+        {
+          "id": "abraham-question-4",
+          "question": "Who was the promised son of Abraham and Sarah?",
+          "options": [
+            "Ishmael",
+            "Jacob",
+            "Joseph",
+            "Isaac"
+          ],
+          "correctOptionIndex": 3,
+          "explanation": "Isaac was born to Abraham and Sarah in fulfilment of God’s promise.",
+          "scriptureReference": "Genesis 21:1–3"
+        },
+        {
+          "id": "abraham-question-5",
+          "question": "What was provided instead of Isaac?",
+          "options": [
+            "A lamb from Abraham’s flock",
+            "A ram caught in a thicket",
+            "A dove",
+            "A calf"
+          ],
+          "correctOptionIndex": 1,
+          "explanation": "Abraham found a ram caught by its horns and offered it instead.",
+          "scriptureReference": "Genesis 22:13"
+        }
+      ],
+      "completion": {
+        "points": 140,
+        "achievementId": "bible-explorer",
+        "nextStoryId": "joseph"
+      }
+    },
+    {
+      "id": "joseph",
+      "title": "Joseph",
+      "subtitle": "Dreams, betrayal and purpose",
+      "description": "See how God carries Joseph from betrayal and prison to forgiveness, leadership and rescue.",
+      "collectionIds": [
+        "heroes-of-faith"
+      ],
+      "scriptureReferences": [
+        "Genesis 37:1–36",
+        "Genesis 39:1–23",
+        "Genesis 40:1–23",
+        "Genesis 41:1–57",
+        "Genesis 42:1–38",
+        "Genesis 45:1–15",
+        "Genesis 50:15–21"
+      ],
+      "illustration": "stories/joseph.svg",
+      "estimatedMinutes": 11,
+      "difficulty": "intermediate",
+      "ageSuitability": "all-ages",
+      "featured": true,
+      "keywords": [
+        "Joseph",
+        "dreams",
+        "betrayal",
+        "Egypt",
+        "forgiveness",
+        "famine",
+        "providence",
+        "integrity"
+      ],
+      "introduction": {
+        "summary": "Joseph moves from a pit to slavery, prison and leadership. Through years of injustice, God develops his character and places him where he can save many lives.",
+        "context": "Joseph is one of Jacob’s twelve sons. Family favouritism and jealousy lead to his removal from home, but the story shows God working through circumstances that appear hopeless."
+      },
+      "storySections": [
+        {
+          "id": "dreams-and-jealousy",
+          "title": "Dreams and Jealousy",
+          "content": "Joseph receives dreams suggesting that his family will one day bow before him. His father’s favour and his manner of sharing the dreams deepen his brothers’ jealousy. They sell him to traders and deceive their father into believing Joseph is dead.",
+          "scriptureReference": "Genesis 37:1–36"
+        },
+        {
+          "id": "faithful-in-egypt",
+          "title": "Faithful in Egypt",
+          "content": "Joseph serves in Potiphar’s household and is entrusted with responsibility. When he refuses an immoral proposal, he is falsely accused and imprisoned. Even there, God remains with him and Joseph continues to serve faithfully.",
+          "scriptureReference": "Genesis 39:1–23"
+        },
+        {
+          "id": "forgotten-in-prison",
+          "title": "Forgotten in Prison",
+          "content": "Joseph accurately interprets the dreams of two royal officials. He asks the restored cupbearer to remember him, but the cupbearer forgets. Joseph’s release does not come immediately, and the season of waiting continues.",
+          "scriptureReference": "Genesis 40:1–23"
+        },
+        {
+          "id": "wisdom-before-pharaoh",
+          "title": "Wisdom Before Pharaoh",
+          "content": "When Pharaoh has disturbing dreams, Joseph explains that seven years of abundance will be followed by seven years of famine. He recommends a wise storage plan, and Pharaoh appoints him to lead Egypt’s preparation.",
+          "scriptureReference": "Genesis 41:1–57"
+        },
+        {
+          "id": "reconciliation",
+          "title": "Reconciliation and Purpose",
+          "content": "The famine brings Joseph’s brothers to Egypt seeking food. After testing their changed character, Joseph reveals his identity and embraces them. He recognises that although they intended harm, God used the situation to preserve many lives.",
+          "scriptureReference": "Genesis 42:1–38; 45:1–15; 50:15–21"
+        }
+      ],
+      "keyPeople": [
+        {
+          "name": "Joseph",
+          "role": "Son of Jacob who becomes a leader in Egypt"
+        },
+        {
+          "name": "Jacob",
+          "role": "Joseph’s father"
+        },
+        {
+          "name": "Joseph’s brothers",
+          "role": "Family members transformed from jealousy toward responsibility"
+        },
+        {
+          "name": "Pharaoh",
+          "role": "Ruler who appoints Joseph over Egypt’s famine preparations"
+        }
+      ],
+      "keyLocations": [
+        {
+          "name": "Canaan",
+          "description": "Joseph’s homeland"
+        },
+        {
+          "name": "Egypt",
+          "description": "The place of Joseph’s suffering, service and eventual leadership"
+        }
+      ],
+      "flashcards": [
+        {
+          "id": "joseph-card-1",
+          "front": "Why were Joseph’s brothers jealous?",
+          "back": "Their father showed Joseph special favour, and Joseph shared dreams in which his family bowed before him.",
+          "scriptureReference": "Genesis 37:3–11"
+        },
+        {
+          "id": "joseph-card-2",
+          "front": "Where did Joseph’s brothers place him before selling him?",
+          "back": "They threw Joseph into an empty cistern or pit.",
+          "scriptureReference": "Genesis 37:23–24"
+        },
+        {
+          "id": "joseph-card-3",
+          "front": "Why was Joseph imprisoned?",
+          "back": "He was falsely accused after refusing to betray Potiphar’s trust and sin against God.",
+          "scriptureReference": "Genesis 39:7–20"
+        },
+        {
+          "id": "joseph-card-4",
+          "front": "What did Pharaoh’s dreams predict?",
+          "back": "Seven years of abundance followed by seven years of severe famine.",
+          "scriptureReference": "Genesis 41:25–32"
+        },
+        {
+          "id": "joseph-card-5",
+          "front": "What plan did Joseph recommend?",
+          "back": "Store food during the abundant years so Egypt could survive the famine.",
+          "scriptureReference": "Genesis 41:33–36"
+        },
+        {
+          "id": "joseph-card-6",
+          "front": "How did Joseph interpret his brothers’ harmful actions?",
+          "back": "They intended harm, but God used the events to preserve many lives.",
+          "scriptureReference": "Genesis 50:20"
+        }
+      ],
+      "keyLessons": [
+        "Integrity matters even when faithfulness carries a cost.",
+        "Delay does not mean God is absent.",
+        "Wisdom prepares responsibly for future difficulty.",
+        "Forgiveness can break the cycle of revenge.",
+        "God can bring redemptive purpose from human wrongdoing without calling the wrongdoing good."
+      ],
+      "reflection": {
+        "question": "Is there a disappointment or injustice that has tempted you to give up doing what is right?",
+        "prompt": "Identify one faithful action you can take even before your circumstances change."
+      },
+      "prayerPrompt": "God who was with Joseph, keep me faithful in difficulty and give me grace to forgive.",
+      "quiz": [
+        {
+          "id": "joseph-question-1",
+          "question": "What did Joseph’s brothers do to him?",
+          "options": [
+            "Made him their leader",
+            "Sent him to school",
+            "Sold him to travelling merchants",
+            "Asked him to leave temporarily"
+          ],
+          "correctOptionIndex": 2,
+          "explanation": "The brothers sold Joseph, and he was taken to Egypt.",
+          "scriptureReference": "Genesis 37:25–28"
+        },
+        {
+          "id": "joseph-question-2",
+          "question": "In whose household did Joseph first serve in Egypt?",
+          "options": [
+            "Pharaoh’s",
+            "Potiphar’s",
+            "The cupbearer’s",
+            "The baker’s"
+          ],
+          "correctOptionIndex": 1,
+          "explanation": "Potiphar, an Egyptian official, bought Joseph and entrusted his household to him.",
+          "scriptureReference": "Genesis 39:1–6"
+        },
+        {
+          "id": "joseph-question-3",
+          "question": "How many years of abundance did Pharaoh’s dreams predict?",
+          "options": [
+            "Three",
+            "Five",
+            "Seven",
+            "Twelve"
+          ],
+          "correctOptionIndex": 2,
+          "explanation": "Seven abundant years would be followed by seven years of famine.",
+          "scriptureReference": "Genesis 41:26–30"
+        },
+        {
+          "id": "joseph-question-4",
+          "question": "Why did Joseph’s brothers travel to Egypt?",
+          "options": [
+            "To join an army",
+            "To find work",
+            "To buy food during the famine",
+            "To visit Pharaoh"
+          ],
+          "correctOptionIndex": 2,
+          "explanation": "The famine reached Canaan, so Jacob sent his sons to Egypt to buy grain.",
+          "scriptureReference": "Genesis 42:1–5"
+        },
+        {
+          "id": "joseph-question-5",
+          "question": "How did Joseph eventually treat his brothers?",
+          "options": [
+            "He imprisoned them permanently",
+            "He forgave and provided for them",
+            "He refused to speak to them",
+            "He sent them away without food"
+          ],
+          "correctOptionIndex": 1,
+          "explanation": "Joseph reconciled with his brothers and assured them of his care.",
+          "scriptureReference": "Genesis 45:1–15; 50:15–21"
+        }
+      ],
+      "completion": {
+        "points": 160,
+        "achievementId": "story-scholar",
+        "nextStoryId": "moses"
+      }
+    },
+    {
+      "id": "moses",
+      "title": "Moses and the Exodus",
+      "subtitle": "Freedom through the sea",
+      "description": "Journey with Moses as God confronts Pharaoh, frees Israel and opens a path through the sea.",
+      "collectionIds": [
+        "heroes-of-faith",
+        "foundations-of-faith"
+      ],
+      "scriptureReferences": [
+        "Exodus 1:1–22",
+        "Exodus 2:1–25",
+        "Exodus 3:1–22",
+        "Exodus 5:1–23",
+        "Exodus 7:1–13:16",
+        "Exodus 14:1–31",
+        "Exodus 15:1–21"
+      ],
+      "illustration": "stories/moses.svg",
+      "estimatedMinutes": 12,
+      "difficulty": "intermediate",
+      "ageSuitability": "all-ages",
+      "featured": true,
+      "keywords": [
+        "Moses",
+        "Exodus",
+        "Egypt",
+        "freedom",
+        "Passover",
+        "Red Sea",
+        "deliverance",
+        "calling"
+      ],
+      "introduction": {
+        "summary": "God calls a reluctant Moses to confront Pharaoh, lead an enslaved people out of Egypt and guide them through the sea into freedom.",
+        "context": "Generations after Joseph, the Israelites are oppressed in Egypt. Exodus presents God as the one who hears their cries, remembers his covenant and acts to deliver them."
+      },
+      "storySections": [
+        {
+          "id": "a-child-preserved",
+          "title": "A Child Preserved",
+          "content": "Pharaoh orders Hebrew baby boys to be killed, but Moses’ mother hides him and then places him in a carefully prepared basket among the reeds. Pharaoh’s daughter discovers and adopts him, while his own mother is able to nurse him.",
+          "scriptureReference": "Exodus 1:8–22; 2:1–10"
+        },
+        {
+          "id": "burning-bush",
+          "title": "The Burning Bush",
+          "content": "After fleeing Egypt, Moses becomes a shepherd in Midian. At Horeb, God speaks from a bush that burns without being consumed. God declares that he has seen his people’s suffering and sends Moses to bring them out of Egypt.",
+          "scriptureReference": "Exodus 2:11–25; 3:1–22"
+        },
+        {
+          "id": "let-my-people-go",
+          "title": "Let My People Go",
+          "content": "Moses and Aaron confront Pharaoh, but Pharaoh repeatedly refuses to release Israel. A series of signs and plagues exposes Egypt’s powerlessness and Pharaoh’s stubborn resistance to God.",
+          "scriptureReference": "Exodus 5:1–23; 7:1–11:10"
+        },
+        {
+          "id": "passover-and-departure",
+          "title": "Passover and Departure",
+          "content": "Israelite households prepare a lamb and mark their doors as God instructs. That night judgment falls on Egypt, while the marked households are spared. Pharaoh finally tells the Israelites to leave, and the people begin their exodus.",
+          "scriptureReference": "Exodus 12:1–42"
+        },
+        {
+          "id": "through-the-sea",
+          "title": "Through the Sea",
+          "content": "Pharaoh changes his mind and pursues Israel. Trapped between the army and the sea, the people panic. God makes a path through the waters, Israel crosses safely, and the pursuing army is overwhelmed. Moses and Miriam lead the people in worship.",
+          "scriptureReference": "Exodus 14:1–31; 15:1–21"
+        }
+      ],
+      "keyPeople": [
+        {
+          "name": "Moses",
+          "role": "Leader called by God to bring Israel out of Egypt"
+        },
+        {
+          "name": "Aaron",
+          "role": "Moses’ brother and spokesman"
+        },
+        {
+          "name": "Miriam",
+          "role": "Moses’ sister and a leader in Israel’s worship"
+        },
+        {
+          "name": "Pharaoh",
+          "role": "Egyptian ruler who resists God’s command"
+        },
+        {
+          "name": "Pharaoh’s daughter",
+          "role": "The royal woman who rescues and adopts Moses"
+        }
+      ],
+      "keyLocations": [
+        {
+          "name": "Egypt",
+          "description": "The land where Israel was enslaved"
+        },
+        {
+          "name": "Midian",
+          "description": "The region where Moses lived as a shepherd"
+        },
+        {
+          "name": "Mount Horeb",
+          "description": "The place where God called Moses from the burning bush"
+        },
+        {
+          "name": "The Sea",
+          "description": "The barrier through which God made a path of escape"
+        }
+      ],
+      "flashcards": [
+        {
+          "id": "moses-card-1",
+          "front": "How was the infant Moses preserved?",
+          "back": "His mother placed him in a basket among the reeds, where Pharaoh’s daughter found and adopted him.",
+          "scriptureReference": "Exodus 2:1–10"
+        },
+        {
+          "id": "moses-card-2",
+          "front": "Where did God call Moses?",
+          "back": "God spoke to Moses from a burning bush at Horeb.",
+          "scriptureReference": "Exodus 3:1–6"
+        },
+        {
+          "id": "moses-card-3",
+          "front": "What mission did God give Moses?",
+          "back": "Moses was to bring the Israelites out of slavery in Egypt.",
+          "scriptureReference": "Exodus 3:7–10"
+        },
+        {
+          "id": "moses-card-4",
+          "front": "Who helped Moses speak to Pharaoh?",
+          "back": "God appointed Moses’ brother Aaron to speak with him.",
+          "scriptureReference": "Exodus 4:14–16"
+        },
+        {
+          "id": "moses-card-5",
+          "front": "What protected Israelite households at Passover?",
+          "back": "They followed God’s instructions and marked their doorframes with the lamb’s blood.",
+          "scriptureReference": "Exodus 12:1–13"
+        },
+        {
+          "id": "moses-card-6",
+          "front": "How did Israel escape Pharaoh’s army?",
+          "back": "God opened a path through the sea, and the Israelites crossed on dry ground.",
+          "scriptureReference": "Exodus 14:21–31"
+        }
+      ],
+      "keyLessons": [
+        "God hears the cries of oppressed people.",
+        "A sense of inadequacy does not prevent God from calling and equipping someone.",
+        "Pride can keep a person resisting truth even after repeated warnings.",
+        "Deliverance is God’s gift, not merely human achievement.",
+        "Remembering God’s rescue leads to worship and hope."
+      ],
+      "reflection": {
+        "question": "Where might fear or inadequacy be keeping you from responding to a responsibility?",
+        "prompt": "Write one small act of courage you can take while trusting God to provide what you lack."
+      },
+      "prayerPrompt": "God of deliverance, help me hear your call, resist injustice and walk forward in faith.",
+      "quiz": [
+        {
+          "id": "moses-question-1",
+          "question": "Who found the infant Moses among the reeds?",
+          "options": [
+            "Miriam",
+            "Pharaoh’s daughter",
+            "Aaron",
+            "An Egyptian soldier"
+          ],
+          "correctOptionIndex": 1,
+          "explanation": "Pharaoh’s daughter discovered Moses and chose to care for him.",
+          "scriptureReference": "Exodus 2:5–10"
+        },
+        {
+          "id": "moses-question-2",
+          "question": "What unusual sight drew Moses toward God’s call?",
+          "options": [
+            "A rainbow",
+            "A pillar of stone",
+            "A bush burning without being consumed",
+            "A river turning clear"
+          ],
+          "correctOptionIndex": 2,
+          "explanation": "Moses approached the burning bush and heard God call his name.",
+          "scriptureReference": "Exodus 3:1–6"
+        },
+        {
+          "id": "moses-question-3",
+          "question": "What message did Moses bring to Pharaoh?",
+          "options": [
+            "Appoint Aaron as governor",
+            "Let the Israelites go",
+            "Build a larger city",
+            "Prepare for a famine"
+          ],
+          "correctOptionIndex": 1,
+          "explanation": "Moses repeatedly commanded Pharaoh to release God’s people.",
+          "scriptureReference": "Exodus 5:1"
+        },
+        {
+          "id": "moses-question-4",
+          "question": "Which event immediately preceded Israel’s departure from Egypt?",
+          "options": [
+            "The building of the tabernacle",
+            "The Passover",
+            "The giving of the commandments",
+            "The fall of Jericho"
+          ],
+          "correctOptionIndex": 1,
+          "explanation": "The first Passover occurred on the night before Israel left Egypt.",
+          "scriptureReference": "Exodus 12:1–42"
+        },
+        {
+          "id": "moses-question-5",
+          "question": "What happened when Moses stretched out his hand over the sea?",
+          "options": [
+            "A bridge appeared",
+            "The water turned to wine",
+            "The waters divided and a dry path opened",
+            "The Egyptian army retreated immediately"
+          ],
+          "correctOptionIndex": 2,
+          "explanation": "God drove back the sea and made dry ground for Israel to cross.",
+          "scriptureReference": "Exodus 14:21–22"
+        }
+      ],
+      "completion": {
+        "points": 180,
+        "achievementId": "quiz-master",
+        "nextStoryId": "joshua-jericho"
+      }
+    }
+  ]
+}

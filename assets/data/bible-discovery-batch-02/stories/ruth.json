@@ -1,0 +1,225 @@
+{
+  "schemaVersion": "1.0.0",
+  "contentVersion": "1.0.0",
+  "language": "en-GB",
+  "contentNotice": "Original retelling based on the cited Bible passages; not a replacement for reading Scripture.",
+  "story": {
+    "id": "ruth",
+    "title": "Ruth",
+    "subtitle": "Faithfulness in every season",
+    "collectionIds": [
+      "women-of-the-bible",
+      "heroes-of-faith"
+    ],
+    "scriptureReferences": [
+      "Ruth 1:1–22",
+      "Ruth 2:1–23",
+      "Ruth 3:1–18",
+      "Ruth 4:1–22"
+    ],
+    "illustration": "stories/ruth.svg",
+    "estimatedMinutes": 9,
+    "difficulty": "beginner",
+    "ageSuitability": "all-ages",
+    "featured": true,
+    "keywords": [
+      "Ruth",
+      "Naomi",
+      "Boaz",
+      "loyalty",
+      "kindness",
+      "redeemer",
+      "harvest",
+      "family"
+    ],
+    "introduction": {
+      "summary": "Ruth’s loyal love carries her from loss and uncertainty into a new community, where the kindness of Boaz becomes part of God’s wider work of redemption.",
+      "context": "The story takes place during the turbulent period of the judges. A famine drives Naomi’s family from Bethlehem to Moab, where a series of deaths leaves Naomi and Ruth as widows."
+    },
+    "storySections": [
+      {
+        "id": "loss-and-return",
+        "title": "Loss and Return",
+        "content": "Naomi loses her husband and both sons in Moab. When she hears that food has returned to Judah, she decides to go home. She urges her daughters-in-law to remain in Moab, and Orpah eventually says goodbye.",
+        "scriptureReference": "Ruth 1:1–14"
+      },
+      {
+        "id": "ruths-choice",
+        "title": "Ruth’s Loyal Choice",
+        "content": "Ruth refuses to abandon Naomi. She commits herself to Naomi’s people and to Naomi’s God, accepting an uncertain future in a foreign land. The two women arrive in Bethlehem at the beginning of the barley harvest.",
+        "scriptureReference": "Ruth 1:15–22"
+      },
+      {
+        "id": "gleaning-in-boazs-field",
+        "title": "Gleaning in Boaz’s Field",
+        "content": "Ruth gathers leftover grain behind the harvesters so that she and Naomi can eat. She comes to a field belonging to Boaz, a relative of Naomi’s late husband. Boaz has heard about Ruth’s loyalty and ensures that she is protected and generously provided for.",
+        "scriptureReference": "Ruth 2:1–23"
+      },
+      {
+        "id": "an-appeal-for-redemption",
+        "title": "An Appeal for Redemption",
+        "content": "Naomi recognises that Boaz could act as a family redeemer. Following Naomi’s guidance, Ruth respectfully asks Boaz to extend his protection. Boaz commends her character but explains that another relative has the first legal right to redeem.",
+        "scriptureReference": "Ruth 3:1–18"
+      },
+      {
+        "id": "a-family-restored",
+        "title": "A Family Restored",
+        "content": "At the town gate, the nearer relative declines the responsibility. Boaz publicly commits to redeem the family property and marry Ruth. Their son Obed becomes the grandfather of David, placing this quiet story of loyalty within God’s larger story.",
+        "scriptureReference": "Ruth 4:1–22"
+      }
+    ],
+    "keyPeople": [
+      {
+        "name": "Ruth",
+        "role": "Moabite widow marked by loyal love and courageous faith"
+      },
+      {
+        "name": "Naomi",
+        "role": "Ruth’s mother-in-law, returning to Bethlehem after deep loss"
+      },
+      {
+        "name": "Boaz",
+        "role": "Honourable landowner and family redeemer"
+      },
+      {
+        "name": "Obed",
+        "role": "Son of Ruth and Boaz and grandfather of David"
+      }
+    ],
+    "keyLocations": [
+      {
+        "name": "Moab",
+        "description": "The land where Ruth met Naomi’s family"
+      },
+      {
+        "name": "Bethlehem",
+        "description": "Naomi’s home and the setting of Ruth’s new beginning"
+      },
+      {
+        "name": "Boaz’s field",
+        "description": "The place where provision and relationship begin"
+      }
+    ],
+    "flashcards": [
+      {
+        "id": "ruth-card-1",
+        "front": "Why did Naomi’s family originally leave Bethlehem?",
+        "back": "A famine led them to live in Moab.",
+        "scriptureReference": "Ruth 1:1–2"
+      },
+      {
+        "id": "ruth-card-2",
+        "front": "What did Ruth choose when Naomi urged her to stay in Moab?",
+        "back": "Ruth chose to remain with Naomi, her people and her God.",
+        "scriptureReference": "Ruth 1:15–18"
+      },
+      {
+        "id": "ruth-card-3",
+        "front": "How did Ruth obtain food in Bethlehem?",
+        "back": "She gleaned grain left behind by the harvesters.",
+        "scriptureReference": "Ruth 2:2–3"
+      },
+      {
+        "id": "ruth-card-4",
+        "front": "Why did Boaz treat Ruth generously?",
+        "back": "He had heard about her loyal care for Naomi and her courageous move to a new people.",
+        "scriptureReference": "Ruth 2:10–12"
+      },
+      {
+        "id": "ruth-card-5",
+        "front": "What role did Boaz accept?",
+        "back": "He acted as a family redeemer, preserving the family line and property.",
+        "scriptureReference": "Ruth 4:9–10"
+      },
+      {
+        "id": "ruth-card-6",
+        "front": "How was Ruth connected to King David?",
+        "back": "Ruth and Boaz’s son Obed became David’s grandfather.",
+        "scriptureReference": "Ruth 4:17–22"
+      }
+    ],
+    "keyLessons": [
+      "Loyal love remains present when circumstances are painful.",
+      "God often provides through the ordinary kindness of people.",
+      "Faith welcomes outsiders into God’s unfolding purpose.",
+      "Honourable action respects both compassion and responsibility."
+    ],
+    "reflection": {
+      "question": "Who might need your steady presence rather than a quick solution?",
+      "prompt": "Choose one practical act of loyal kindness you can offer this week."
+    },
+    "prayerPrompt": "God of Ruth and Naomi, make me faithful in relationships and attentive to people who need welcome and provision.",
+    "quiz": [
+      {
+        "id": "ruth-question-1",
+        "question": "From which nation did Ruth come?",
+        "options": [
+          "Egypt",
+          "Moab",
+          "Edom",
+          "Assyria"
+        ],
+        "correctOptionIndex": 1,
+        "explanation": "Ruth was a Moabite woman who travelled with Naomi to Judah.",
+        "scriptureReference": "Ruth 1:4,22"
+      },
+      {
+        "id": "ruth-question-2",
+        "question": "When did Ruth and Naomi arrive in Bethlehem?",
+        "options": [
+          "At the beginning of the barley harvest",
+          "During a military siege",
+          "At the new year festival",
+          "In the middle of winter"
+        ],
+        "correctOptionIndex": 0,
+        "explanation": "Their arrival at harvest time opened the way for Ruth to glean.",
+        "scriptureReference": "Ruth 1:22"
+      },
+      {
+        "id": "ruth-question-3",
+        "question": "In whose field did Ruth glean?",
+        "options": [
+          "Samuel’s",
+          "Jesse’s",
+          "Boaz’s",
+          "The king’s"
+        ],
+        "correctOptionIndex": 2,
+        "explanation": "Ruth happened to work in a field belonging to Boaz.",
+        "scriptureReference": "Ruth 2:3"
+      },
+      {
+        "id": "ruth-question-4",
+        "question": "Why could Boaz serve as a redeemer?",
+        "options": [
+          "He was a priest",
+          "He was a relative of Naomi’s late husband",
+          "He was governor of Bethlehem",
+          "He owned every field"
+        ],
+        "correctOptionIndex": 1,
+        "explanation": "Boaz belonged to the family circle with responsibility to help preserve the household.",
+        "scriptureReference": "Ruth 2:20; 3:9"
+      },
+      {
+        "id": "ruth-question-5",
+        "question": "What was the name of Ruth and Boaz’s son?",
+        "options": [
+          "Obed",
+          "Jesse",
+          "David",
+          "Elimelek"
+        ],
+        "correctOptionIndex": 0,
+        "explanation": "Their son Obed later became the father of Jesse and grandfather of David.",
+        "scriptureReference": "Ruth 4:13–17"
+      }
+    ],
+    "completion": {
+      "points": 140,
+      "achievementId": "story-scholar",
+      "nextStoryId": "samuel"
+    }
+  }
+}

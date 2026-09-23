@@ -1,0 +1,209 @@
+{
+  "schemaVersion": "1.0.0",
+  "contentVersion": "1.0.0",
+  "language": "en-GB",
+  "contentNotice": "Original retelling based on the cited Bible passages; not a replacement for reading Scripture.",
+  "story": {
+    "id": "creation",
+    "title": "Creation",
+    "subtitle": "In the beginning",
+    "collectionIds": [
+      "foundations-of-faith"
+    ],
+    "scriptureReferences": [
+      "Genesis 1:1–31",
+      "Genesis 2:1–25"
+    ],
+    "illustration": "stories/creation.svg",
+    "estimatedMinutes": 8,
+    "difficulty": "beginner",
+    "ageSuitability": "all-ages",
+    "featured": true,
+    "keywords": [
+      "creation",
+      "beginning",
+      "God",
+      "world",
+      "humanity",
+      "rest",
+      "purpose"
+    ],
+    "introduction": {
+      "summary": "God brings order, beauty and life into existence, then creates humanity to reflect his character and care for the world.",
+      "context": "Genesis opens the Bible by identifying God as the source of creation. The story explains the goodness, purpose and responsibility woven into the world."
+    },
+    "storySections": [
+      {
+        "id": "light-and-order",
+        "title": "Light and Order",
+        "content": "The story begins with darkness and an unformed world. God speaks, and light appears. He separates light from darkness and establishes day and night. Creation is not presented as an accident: God gives it order, rhythm and purpose.",
+        "scriptureReference": "Genesis 1:1–5"
+      },
+      {
+        "id": "sky-land-and-seas",
+        "title": "Sky, Land and Seas",
+        "content": "God forms the sky, gathers the waters and reveals dry land. Plants and trees begin to grow, each able to produce according to its kind. The earth becomes a place prepared to sustain life.",
+        "scriptureReference": "Genesis 1:6–13"
+      },
+      {
+        "id": "lights-and-living-creatures",
+        "title": "Lights and Living Creatures",
+        "content": "The sun, moon and stars mark days and seasons. The waters fill with living creatures, birds fill the sky, and animals move across the land. God blesses life and enables it to flourish.",
+        "scriptureReference": "Genesis 1:14–25"
+      },
+      {
+        "id": "humanity-in-gods-image",
+        "title": "Humanity in God’s Image",
+        "content": "God creates human beings in his image, male and female. They receive dignity, relationship and responsibility. They are called to care for the earth and exercise stewardship under God rather than exploit what he has made.",
+        "scriptureReference": "Genesis 1:26–31"
+      },
+      {
+        "id": "rest-and-relationship",
+        "title": "Rest and Relationship",
+        "content": "After completing creation, God rests and sets apart the seventh day. Genesis then focuses on the garden, where the first humans receive meaningful work, companionship and freedom within God’s wise boundaries.",
+        "scriptureReference": "Genesis 2:1–25"
+      }
+    ],
+    "keyPeople": [
+      {
+        "name": "God",
+        "role": "Creator and giver of life"
+      },
+      {
+        "name": "Adam",
+        "role": "The first man, entrusted with caring for the garden"
+      },
+      {
+        "name": "Eve",
+        "role": "The first woman and Adam’s companion"
+      }
+    ],
+    "keyLocations": [
+      {
+        "name": "The Garden of Eden",
+        "description": "The garden prepared as humanity’s first home"
+      }
+    ],
+    "flashcards": [
+      {
+        "id": "creation-card-1",
+        "front": "What existed before creation took shape?",
+        "back": "The earth was unformed and dark, while God’s Spirit was present over the waters.",
+        "scriptureReference": "Genesis 1:1–2"
+      },
+      {
+        "id": "creation-card-2",
+        "front": "What did God create first in the Genesis sequence?",
+        "back": "God called light into existence and separated it from darkness.",
+        "scriptureReference": "Genesis 1:3–5"
+      },
+      {
+        "id": "creation-card-3",
+        "front": "What does it mean that humanity is made in God’s image?",
+        "back": "Human beings possess God-given dignity and are called to reflect his character and represent his care in creation.",
+        "scriptureReference": "Genesis 1:26–27"
+      },
+      {
+        "id": "creation-card-4",
+        "front": "What responsibility did humanity receive?",
+        "back": "Humanity was entrusted with stewardship of the earth and its living creatures.",
+        "scriptureReference": "Genesis 1:28"
+      },
+      {
+        "id": "creation-card-5",
+        "front": "How did God describe the completed creation?",
+        "back": "God saw the whole creation as very good.",
+        "scriptureReference": "Genesis 1:31"
+      },
+      {
+        "id": "creation-card-6",
+        "front": "Why is the seventh day important?",
+        "back": "God rested, blessed the seventh day and made it holy, establishing a rhythm of work and rest.",
+        "scriptureReference": "Genesis 2:2–3"
+      }
+    ],
+    "keyLessons": [
+      "Creation has meaning because it comes from God.",
+      "Every person possesses God-given dignity.",
+      "People are caretakers of creation, not its absolute owners.",
+      "Work and rest both belong within God’s good design."
+    ],
+    "reflection": {
+      "question": "Where can you recognise God’s goodness and order in the world around you?",
+      "prompt": "Choose one practical way to care for another person or part of creation this week."
+    },
+    "prayerPrompt": "Creator God, help me receive your world with gratitude and care for it with wisdom.",
+    "quiz": [
+      {
+        "id": "creation-question-1",
+        "question": "What did God separate from darkness?",
+        "options": [
+          "Land",
+          "Light",
+          "The sea",
+          "The stars"
+        ],
+        "correctOptionIndex": 1,
+        "explanation": "God called light into existence and separated it from darkness.",
+        "scriptureReference": "Genesis 1:3–5"
+      },
+      {
+        "id": "creation-question-2",
+        "question": "On which day were human beings created?",
+        "options": [
+          "The third day",
+          "The fourth day",
+          "The fifth day",
+          "The sixth day"
+        ],
+        "correctOptionIndex": 3,
+        "explanation": "Human beings were created after the land animals on the sixth day.",
+        "scriptureReference": "Genesis 1:24–31"
+      },
+      {
+        "id": "creation-question-3",
+        "question": "In whose image was humanity created?",
+        "options": [
+          "The angels’ image",
+          "God’s image",
+          "The animals’ image",
+          "The earth’s image"
+        ],
+        "correctOptionIndex": 1,
+        "explanation": "Genesis gives every human being special dignity by describing humanity as made in God’s image.",
+        "scriptureReference": "Genesis 1:26–27"
+      },
+      {
+        "id": "creation-question-4",
+        "question": "What did God do on the seventh day?",
+        "options": [
+          "Created the oceans",
+          "Created humanity",
+          "Rested from his work",
+          "Named the animals"
+        ],
+        "correctOptionIndex": 2,
+        "explanation": "God completed his work, rested and blessed the seventh day.",
+        "scriptureReference": "Genesis 2:1–3"
+      },
+      {
+        "id": "creation-question-5",
+        "question": "What work was Adam given in the garden?",
+        "options": [
+          "Building a city",
+          "Working and caring for the garden",
+          "Making a boat",
+          "Leading an army"
+        ],
+        "correctOptionIndex": 1,
+        "explanation": "Adam was placed in the garden to work it and take care of it.",
+        "scriptureReference": "Genesis 2:15"
+      }
+    ],
+    "completion": {
+      "points": 100,
+      "achievementId": "first-story",
+      "nextStoryId": "noah-and-the-ark"
+    }
+  }
+}

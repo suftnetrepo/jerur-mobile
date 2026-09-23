@@ -28,6 +28,12 @@ export default function AppLayout() {
       <Stack.Screen name="inspiration/index" />
       <Stack.Screen name="inspiration/all" />
       <Stack.Screen name="inspiration/[categoryId]" />
+      <Stack.Screen name="bible-discovery/index" />
+      <Stack.Screen name="bible-discovery/collections" />
+      <Stack.Screen name="bible-discovery/collection/[collectionId]" />
+      <Stack.Screen name="bible-discovery/story/[storyId]" />
+      <Stack.Screen name="bible-discovery/flashcards/[storyId]" />
+      <Stack.Screen name="bible-discovery/quiz/[storyId]" />
       <Stack.Screen name="devotional/index" />
       <Stack.Screen name="hymns/index" />
       <Stack.Screen name="hymns/[id]" />

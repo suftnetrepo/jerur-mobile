@@ -1,0 +1,19 @@
+{
+  "id": "bible-discovery-batch-02",
+  "title": "Bible Discovery — Batch 2",
+  "version": "1.0.0",
+  "storyIds": [
+    "joshua-jericho",
+    "ruth",
+    "samuel",
+    "david-and-goliath",
+    "solomon"
+  ],
+  "files": [
+    "stories/joshua-jericho.json",
+    "stories/ruth.json",
+    "stories/samuel.json",
+    "stories/david-and-goliath.json",
+    "stories/solomon.json"
+  ]
+}

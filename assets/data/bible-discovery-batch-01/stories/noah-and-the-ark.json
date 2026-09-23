@@ -1,0 +1,212 @@
+{
+  "schemaVersion": "1.0.0",
+  "contentVersion": "1.0.0",
+  "language": "en-GB",
+  "contentNotice": "Original retelling based on the cited Bible passages; not a replacement for reading Scripture.",
+  "story": {
+    "id": "noah-and-the-ark",
+    "title": "Noah and the Ark",
+    "subtitle": "A promise after the storm",
+    "collectionIds": [
+      "heroes-of-faith"
+    ],
+    "scriptureReferences": [
+      "Genesis 6:5–22",
+      "Genesis 7:1–24",
+      "Genesis 8:1–22",
+      "Genesis 9:1–17"
+    ],
+    "illustration": "stories/noah-and-the-ark.svg",
+    "estimatedMinutes": 9,
+    "difficulty": "beginner",
+    "ageSuitability": "all-ages",
+    "featured": true,
+    "keywords": [
+      "Noah",
+      "ark",
+      "flood",
+      "rainbow",
+      "obedience",
+      "judgment",
+      "covenant",
+      "promise"
+    ],
+    "introduction": {
+      "summary": "In a violent and corrupt generation, Noah trusts God, builds the ark and becomes part of a new beginning marked by God’s covenant promise.",
+      "context": "Human rebellion had spread throughout society. The flood narrative holds together the seriousness of evil, the obedience of Noah, God’s rescue and his commitment to preserve life."
+    },
+    "storySections": [
+      {
+        "id": "a-corrupted-world",
+        "title": "A Corrupted World",
+        "content": "Human violence and corruption fill the earth, bringing grief to God. Noah, however, is described as a righteous man who walks faithfully with God amid his generation.",
+        "scriptureReference": "Genesis 6:5–12"
+      },
+      {
+        "id": "build-the-ark",
+        "title": "Build the Ark",
+        "content": "God warns Noah about the coming flood and gives detailed instructions for a vast ark. Noah is told to bring his household, provisions and representatives of the animal world. He responds by doing what God commands.",
+        "scriptureReference": "Genesis 6:13–22"
+      },
+      {
+        "id": "waters-rise",
+        "title": "The Waters Rise",
+        "content": "Noah’s family and the animals enter the ark. Rain falls and the floodwaters rise over the land. The ark carries its passengers safely through a crisis they could not survive on their own.",
+        "scriptureReference": "Genesis 7:1–24"
+      },
+      {
+        "id": "god-remembers-noah",
+        "title": "God Remembers Noah",
+        "content": "The waters begin to recede. Noah sends out birds to discover whether the ground is dry. A dove eventually returns with a fresh olive leaf, signalling that new life is appearing again.",
+        "scriptureReference": "Genesis 8:1–14"
+      },
+      {
+        "id": "covenant-and-rainbow",
+        "title": "Covenant and Rainbow",
+        "content": "Noah leaves the ark and worships God. God establishes a covenant with Noah, his descendants and every living creature. The rainbow becomes the sign of God’s promise that a flood will never again destroy all life on earth.",
+        "scriptureReference": "Genesis 8:15–22; 9:8–17"
+      }
+    ],
+    "keyPeople": [
+      {
+        "name": "Noah",
+        "role": "A faithful man who obeys God’s instructions"
+      },
+      {
+        "name": "Noah’s family",
+        "role": "Eight members of one household preserved in the ark"
+      }
+    ],
+    "keyLocations": [
+      {
+        "name": "The Ark",
+        "description": "The vessel God instructed Noah to build"
+      },
+      {
+        "name": "Mountains of Ararat",
+        "description": "The region where the ark came to rest"
+      }
+    ],
+    "flashcards": [
+      {
+        "id": "noah-card-1",
+        "front": "Why did God instruct Noah to build an ark?",
+        "back": "A flood was coming in response to widespread corruption, and the ark would preserve Noah’s household and animal life.",
+        "scriptureReference": "Genesis 6:13–20"
+      },
+      {
+        "id": "noah-card-2",
+        "front": "How did Noah respond to God’s instructions?",
+        "back": "Noah did everything God commanded him to do.",
+        "scriptureReference": "Genesis 6:22"
+      },
+      {
+        "id": "noah-card-3",
+        "front": "How long did the rain fall?",
+        "back": "The rain fell for forty days and forty nights.",
+        "scriptureReference": "Genesis 7:12"
+      },
+      {
+        "id": "noah-card-4",
+        "front": "What sign showed Noah that vegetation was returning?",
+        "back": "A dove returned carrying a freshly plucked olive leaf.",
+        "scriptureReference": "Genesis 8:10–11"
+      },
+      {
+        "id": "noah-card-5",
+        "front": "What was Noah’s first recorded act after leaving the ark?",
+        "back": "Noah built an altar and worshipped God.",
+        "scriptureReference": "Genesis 8:18–20"
+      },
+      {
+        "id": "noah-card-6",
+        "front": "What did the rainbow represent?",
+        "back": "It was the sign of God’s covenant with the earth and every living creature.",
+        "scriptureReference": "Genesis 9:12–17"
+      }
+    ],
+    "keyLessons": [
+      "Faithful obedience matters even when God’s instruction is difficult.",
+      "God takes violence and corruption seriously.",
+      "God provides rescue and remembers those who trust him.",
+      "The rainbow points to God’s covenant mercy and commitment to life."
+    ],
+    "reflection": {
+      "question": "What act of obedience might require you to trust God before you can see the outcome?",
+      "prompt": "Write down one clear next step and decide when you will take it."
+    },
+    "prayerPrompt": "Faithful God, give me courage to obey you and remember your promises when the way ahead is uncertain.",
+    "quiz": [
+      {
+        "id": "noah-question-1",
+        "question": "How is Noah described in his generation?",
+        "options": [
+          "A powerful king",
+          "A righteous man who walked with God",
+          "A famous soldier",
+          "A travelling merchant"
+        ],
+        "correctOptionIndex": 1,
+        "explanation": "Noah stood apart from the corruption around him by walking faithfully with God.",
+        "scriptureReference": "Genesis 6:9"
+      },
+      {
+        "id": "noah-question-2",
+        "question": "What material was Noah told to use for the ark?",
+        "options": [
+          "Stone",
+          "Bronze",
+          "Gopher wood",
+          "Cedar leaves"
+        ],
+        "correctOptionIndex": 2,
+        "explanation": "Genesis records God instructing Noah to make the ark from gopher wood.",
+        "scriptureReference": "Genesis 6:14"
+      },
+      {
+        "id": "noah-question-3",
+        "question": "What did the dove bring back?",
+        "options": [
+          "A fig",
+          "An olive leaf",
+          "A grain stalk",
+          "A flower"
+        ],
+        "correctOptionIndex": 1,
+        "explanation": "The fresh olive leaf showed that the floodwater had receded from the earth.",
+        "scriptureReference": "Genesis 8:11"
+      },
+      {
+        "id": "noah-question-4",
+        "question": "Where did the ark come to rest?",
+        "options": [
+          "Mount Sinai",
+          "The hills of Bethlehem",
+          "The mountains of Ararat",
+          "Mount Carmel"
+        ],
+        "correctOptionIndex": 2,
+        "explanation": "The ark rested in the region called the mountains of Ararat.",
+        "scriptureReference": "Genesis 8:4"
+      },
+      {
+        "id": "noah-question-5",
+        "question": "What sign accompanied God’s covenant?",
+        "options": [
+          "A pillar of fire",
+          "A rainbow",
+          "A burning bush",
+          "A star"
+        ],
+        "correctOptionIndex": 1,
+        "explanation": "God appointed the rainbow as the visible sign of his covenant with living creatures.",
+        "scriptureReference": "Genesis 9:12–17"
+      }
+    ],
+    "completion": {
+      "points": 120,
+      "achievementId": "five-day-streak",
+      "nextStoryId": "abraham"
+    }
+  }
+}

@@ -1,0 +1,218 @@
+{
+  "schemaVersion": "1.0.0",
+  "contentVersion": "1.0.0",
+  "language": "en-GB",
+  "contentNotice": "Original retelling based on the cited Bible passages; not a replacement for reading Scripture.",
+  "story": {
+    "id": "abraham",
+    "title": "Abraham",
+    "subtitle": "A journey of faith",
+    "collectionIds": [
+      "heroes-of-faith"
+    ],
+    "scriptureReferences": [
+      "Genesis 12:1–9",
+      "Genesis 15:1–21",
+      "Genesis 17:1–22",
+      "Genesis 18:1–15",
+      "Genesis 21:1–7",
+      "Genesis 22:1–19"
+    ],
+    "illustration": "stories/abraham.svg",
+    "estimatedMinutes": 10,
+    "difficulty": "intermediate",
+    "ageSuitability": "all-ages",
+    "featured": true,
+    "keywords": [
+      "Abraham",
+      "Sarah",
+      "Isaac",
+      "covenant",
+      "promise",
+      "faith",
+      "obedience",
+      "blessing"
+    ],
+    "introduction": {
+      "summary": "Abram leaves the familiar, learns to trust God through years of waiting and becomes Abraham, the father of a covenant family intended to bless the nations.",
+      "context": "Abraham’s story begins a major new movement in Genesis. God chooses one family through whom his blessing will extend far beyond that family."
+    },
+    "storySections": [
+      {
+        "id": "the-call",
+        "title": "The Call to Go",
+        "content": "God tells Abram to leave his country, relatives and father’s household for a land God will show him. God promises to make him a great nation and to bless all peoples through him. Abram goes, even though he does not yet know the destination.",
+        "scriptureReference": "Genesis 12:1–9"
+      },
+      {
+        "id": "promise-under-stars",
+        "title": "A Promise Under the Stars",
+        "content": "Abram worries that he has no child to inherit the promise. God takes him outside and points to the stars as a picture of the descendants to come. Abram trusts God, and that faith is counted as righteousness.",
+        "scriptureReference": "Genesis 15:1–6"
+      },
+      {
+        "id": "new-names",
+        "title": "New Names and a Covenant Sign",
+        "content": "God confirms his covenant and changes Abram’s name to Abraham, meaning father of many. Sarai becomes Sarah. Their new names declare a future that still seems humanly impossible.",
+        "scriptureReference": "Genesis 17:1–22"
+      },
+      {
+        "id": "isaac-is-born",
+        "title": "Laughter Becomes Joy",
+        "content": "Visitors announce that Sarah will have a son. At first she laughs because of her age, but God’s promise is fulfilled. Isaac is born at the appointed time, turning disbelief into joyful laughter.",
+        "scriptureReference": "Genesis 18:1–15; 21:1–7"
+      },
+      {
+        "id": "faith-tested",
+        "title": "Faith Tested",
+        "content": "Abraham faces an agonising test involving Isaac, the promised son. As Abraham proceeds in trust, God stops him and provides a ram. The moment reveals both Abraham’s faith and God’s provision.",
+        "scriptureReference": "Genesis 22:1–19"
+      }
+    ],
+    "keyPeople": [
+      {
+        "name": "Abraham",
+        "role": "Recipient of God’s covenant promises"
+      },
+      {
+        "name": "Sarah",
+        "role": "Abraham’s wife and mother of Isaac"
+      },
+      {
+        "name": "Isaac",
+        "role": "The promised son"
+      }
+    ],
+    "keyLocations": [
+      {
+        "name": "Canaan",
+        "description": "The land to which God called Abraham"
+      },
+      {
+        "name": "Mount Moriah",
+        "description": "The region of Abraham’s great test of faith"
+      }
+    ],
+    "flashcards": [
+      {
+        "id": "abraham-card-1",
+        "front": "What did God ask Abram to leave?",
+        "back": "His country, relatives and father’s household.",
+        "scriptureReference": "Genesis 12:1"
+      },
+      {
+        "id": "abraham-card-2",
+        "front": "How would Abraham’s calling affect other nations?",
+        "back": "God promised that all peoples on earth would be blessed through him.",
+        "scriptureReference": "Genesis 12:2–3"
+      },
+      {
+        "id": "abraham-card-3",
+        "front": "What picture did God use for Abraham’s descendants?",
+        "back": "God pointed to the countless stars in the night sky.",
+        "scriptureReference": "Genesis 15:5"
+      },
+      {
+        "id": "abraham-card-4",
+        "front": "What were Abram and Sarai’s new names?",
+        "back": "God renamed them Abraham and Sarah.",
+        "scriptureReference": "Genesis 17:5,15"
+      },
+      {
+        "id": "abraham-card-5",
+        "front": "What did the name Isaac recall?",
+        "back": "It means laughter and recalled the surprised laughter surrounding God’s promise.",
+        "scriptureReference": "Genesis 21:3–6"
+      },
+      {
+        "id": "abraham-card-6",
+        "front": "What did God provide on Mount Moriah?",
+        "back": "God provided a ram in place of Isaac.",
+        "scriptureReference": "Genesis 22:13–14"
+      }
+    ],
+    "keyLessons": [
+      "Faith sometimes begins by leaving what is familiar.",
+      "Waiting does not mean God has forgotten his promise.",
+      "God’s blessing is meant to reach beyond us to others.",
+      "God is able to provide in situations that appear impossible."
+    ],
+    "reflection": {
+      "question": "Where are you being asked to trust God without having every detail?",
+      "prompt": "Name the promise or truth about God you need to remember while you wait."
+    },
+    "prayerPrompt": "God of Abraham and Sarah, teach me to trust your character during seasons of waiting and change.",
+    "quiz": [
+      {
+        "id": "abraham-question-1",
+        "question": "What was Abram told to do at the beginning of his journey?",
+        "options": [
+          "Build an ark",
+          "Return to Egypt",
+          "Leave his country for a land God would show him",
+          "Become king of Canaan"
+        ],
+        "correctOptionIndex": 2,
+        "explanation": "Abram’s journey of faith began when he obeyed God’s call to leave the familiar.",
+        "scriptureReference": "Genesis 12:1–4"
+      },
+      {
+        "id": "abraham-question-2",
+        "question": "What did God compare Abraham’s descendants to?",
+        "options": [
+          "The trees of a forest",
+          "The stars in the sky",
+          "The birds in the air",
+          "The stones of a city"
+        ],
+        "correctOptionIndex": 1,
+        "explanation": "The stars became a visual sign of the descendants God promised.",
+        "scriptureReference": "Genesis 15:5"
+      },
+      {
+        "id": "abraham-question-3",
+        "question": "What new name did Sarai receive?",
+        "options": [
+          "Rebekah",
+          "Rachel",
+          "Sarah",
+          "Miriam"
+        ],
+        "correctOptionIndex": 2,
+        "explanation": "God changed Sarai’s name to Sarah when confirming the covenant.",
+        "scriptureReference": "Genesis 17:15"
+      },
+      {
+        "id": "abraham-question-4",
+        "question": "Who was the promised son of Abraham and Sarah?",
+        "options": [
+          "Ishmael",
+          "Jacob",
+          "Joseph",
+          "Isaac"
+        ],
+        "correctOptionIndex": 3,
+        "explanation": "Isaac was born to Abraham and Sarah in fulfilment of God’s promise.",
+        "scriptureReference": "Genesis 21:1–3"
+      },
+      {
+        "id": "abraham-question-5",
+        "question": "What was provided instead of Isaac?",
+        "options": [
+          "A lamb from Abraham’s flock",
+          "A ram caught in a thicket",
+          "A dove",
+          "A calf"
+        ],
+        "correctOptionIndex": 1,
+        "explanation": "Abraham found a ram caught by its horns and offered it instead.",
+        "scriptureReference": "Genesis 22:13"
+      }
+    ],
+    "completion": {
+      "points": 140,
+      "achievementId": "bible-explorer",
+      "nextStoryId": "joseph"
+    }
+  }
+}

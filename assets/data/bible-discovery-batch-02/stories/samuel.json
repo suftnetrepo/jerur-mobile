@@ -1,0 +1,217 @@
+{
+  "schemaVersion": "1.0.0",
+  "contentVersion": "1.0.0",
+  "language": "en-GB",
+  "contentNotice": "Original retelling based on the cited Bible passages; not a replacement for reading Scripture.",
+  "story": {
+    "id": "samuel",
+    "title": "Samuel Listens",
+    "subtitle": "Speak, Lord, your servant is listening",
+    "collectionIds": [
+      "kings-and-prophets",
+      "heroes-of-faith"
+    ],
+    "scriptureReferences": [
+      "1 Samuel 1:1–28",
+      "1 Samuel 2:18–26",
+      "1 Samuel 3:1–21",
+      "1 Samuel 7:2–17"
+    ],
+    "illustration": "stories/samuel.svg",
+    "estimatedMinutes": 8,
+    "difficulty": "beginner",
+    "ageSuitability": "all-ages",
+    "featured": true,
+    "keywords": [
+      "Samuel",
+      "Hannah",
+      "Eli",
+      "calling",
+      "listening",
+      "prayer",
+      "prophet",
+      "obedience"
+    ],
+    "introduction": {
+      "summary": "Born in answer to Hannah’s prayer, young Samuel learns to recognise God’s voice and grows into a trusted prophet and leader of Israel.",
+      "context": "Israel’s spiritual leadership is failing under Eli’s sons. In this difficult period, God raises Samuel through the faith and prayer of his mother Hannah."
+    },
+    "storySections": [
+      {
+        "id": "hannahs-prayer",
+        "title": "Hannah’s Prayer",
+        "content": "Hannah carries deep sorrow because she has no child. At the sanctuary she pours out her heart silently before God and promises that if she receives a son, she will dedicate him to God’s service. Eli initially misunderstands her distress but then blesses her.",
+        "scriptureReference": "1 Samuel 1:1–18"
+      },
+      {
+        "id": "a-child-dedicated",
+        "title": "A Child Dedicated",
+        "content": "Hannah gives birth to Samuel and cares for him until he is old enough to be brought to the sanctuary. She keeps her promise, entrusting him to serve under Eli while continuing to visit and provide for him.",
+        "scriptureReference": "1 Samuel 1:19–28; 2:18–21"
+      },
+      {
+        "id": "the-night-call",
+        "title": "The Call in the Night",
+        "content": "One night Samuel hears his name and assumes Eli is calling. This happens three times. Eli realises that God is speaking and teaches Samuel to respond as a listening servant.",
+        "scriptureReference": "1 Samuel 3:1–10"
+      },
+      {
+        "id": "a-difficult-message",
+        "title": "A Difficult Message",
+        "content": "God gives Samuel a serious message about Eli’s household. Samuel is afraid to repeat it, but Eli asks him to speak honestly. Samuel does so, beginning a lifelong pattern of faithfully communicating God’s word.",
+        "scriptureReference": "1 Samuel 3:11–18"
+      },
+      {
+        "id": "prophet-and-leader",
+        "title": "Prophet and Leader",
+        "content": "Samuel grows, and Israel recognises that God has established him as a prophet. Later he calls the people away from idols, prays for them and leads them during conflict, marking the place of God’s help with a memorial stone.",
+        "scriptureReference": "1 Samuel 3:19–21; 7:2–17"
+      }
+    ],
+    "keyPeople": [
+      {
+        "name": "Samuel",
+        "role": "Child dedicated to God who becomes a prophet and judge"
+      },
+      {
+        "name": "Hannah",
+        "role": "Samuel’s mother, known for honest prayer and faithfulness"
+      },
+      {
+        "name": "Eli",
+        "role": "Priest who helps Samuel recognise God’s call"
+      }
+    ],
+    "keyLocations": [
+      {
+        "name": "Shiloh",
+        "description": "Location of the sanctuary where Samuel served"
+      },
+      {
+        "name": "Mizpah",
+        "description": "Place where Samuel gathered Israel for repentance and prayer"
+      }
+    ],
+    "flashcards": [
+      {
+        "id": "samuel-card-1",
+        "front": "Who prayed for Samuel before he was born?",
+        "back": "His mother Hannah prayed earnestly for a son.",
+        "scriptureReference": "1 Samuel 1:9–20"
+      },
+      {
+        "id": "samuel-card-2",
+        "front": "Where did Samuel serve as a child?",
+        "back": "He served at the sanctuary under Eli the priest.",
+        "scriptureReference": "1 Samuel 2:18"
+      },
+      {
+        "id": "samuel-card-3",
+        "front": "Whom did Samuel think was calling him?",
+        "back": "He initially thought Eli was calling from nearby.",
+        "scriptureReference": "1 Samuel 3:4–8"
+      },
+      {
+        "id": "samuel-card-4",
+        "front": "Who helped Samuel understand the call?",
+        "back": "Eli recognised that God was speaking and instructed Samuel how to respond.",
+        "scriptureReference": "1 Samuel 3:8–10"
+      },
+      {
+        "id": "samuel-card-5",
+        "front": "Was Samuel’s first message easy to deliver?",
+        "back": "No. It concerned judgment on Eli’s household, and Samuel was afraid to share it.",
+        "scriptureReference": "1 Samuel 3:11–18"
+      },
+      {
+        "id": "samuel-card-6",
+        "front": "What did Samuel call the memorial stone?",
+        "back": "He called it Ebenezer, remembering that God had helped Israel.",
+        "scriptureReference": "1 Samuel 7:12"
+      }
+    ],
+    "keyLessons": [
+      "Honest prayer can hold both pain and trust.",
+      "Listening requires attention, humility and willingness to respond.",
+      "Faithfulness sometimes means communicating difficult truth with respect.",
+      "Remembering God’s past help strengthens present faith."
+    ],
+    "reflection": {
+      "question": "What makes it difficult for you to become quiet and listen carefully?",
+      "prompt": "Set aside five undistracted minutes today for prayer, Scripture and attentive silence."
+    },
+    "prayerPrompt": "Speak, Lord. Give me a listening heart and the courage to respond faithfully.",
+    "quiz": [
+      {
+        "id": "samuel-question-1",
+        "question": "What was the name of Samuel’s mother?",
+        "options": [
+          "Ruth",
+          "Hannah",
+          "Naomi",
+          "Abigail"
+        ],
+        "correctOptionIndex": 1,
+        "explanation": "Hannah prayed for Samuel and dedicated him to God.",
+        "scriptureReference": "1 Samuel 1:20"
+      },
+      {
+        "id": "samuel-question-2",
+        "question": "Under which priest did Samuel serve?",
+        "options": [
+          "Aaron",
+          "Eli",
+          "Zadok",
+          "Abiathar"
+        ],
+        "correctOptionIndex": 1,
+        "explanation": "Samuel ministered before God under Eli’s supervision.",
+        "scriptureReference": "1 Samuel 2:11"
+      },
+      {
+        "id": "samuel-question-3",
+        "question": "How many times did Samuel go to Eli before Eli understood?",
+        "options": [
+          "One",
+          "Two",
+          "Three",
+          "Seven"
+        ],
+        "correctOptionIndex": 2,
+        "explanation": "After the third visit, Eli realised God was calling the boy.",
+        "scriptureReference": "1 Samuel 3:8"
+      },
+      {
+        "id": "samuel-question-4",
+        "question": "How did Eli tell Samuel to respond?",
+        "options": [
+          "Ask for a sign",
+          "Return home",
+          "Say that God’s servant is listening",
+          "Wake the other priests"
+        ],
+        "correctOptionIndex": 2,
+        "explanation": "Eli taught Samuel to present himself as a servant ready to listen.",
+        "scriptureReference": "1 Samuel 3:9–10"
+      },
+      {
+        "id": "samuel-question-5",
+        "question": "What leadership roles did Samuel later fulfil?",
+        "options": [
+          "Merchant and builder",
+          "Prophet and judge",
+          "Soldier and king",
+          "Farmer and musician"
+        ],
+        "correctOptionIndex": 1,
+        "explanation": "Samuel became recognised as a prophet and led Israel as a judge.",
+        "scriptureReference": "1 Samuel 3:19–21; 7:15–17"
+      }
+    ],
+    "completion": {
+      "points": 130,
+      "achievementId": "first-story",
+      "nextStoryId": "david-and-goliath"
+    }
+  }
+}

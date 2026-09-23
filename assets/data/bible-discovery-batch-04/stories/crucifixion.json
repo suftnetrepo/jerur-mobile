@@ -1,0 +1,247 @@
+{
+  "schemaVersion": "1.0.0",
+  "contentVersion": "1.0.0",
+  "language": "en-GB",
+  "contentNotice": "Original retelling based on the cited Bible passages; not a replacement for reading Scripture.",
+  "story": {
+    "id": "crucifixion",
+    "title": "The Cross",
+    "subtitle": "Love’s greatest sacrifice",
+    "collectionIds": [
+      "life-of-jesus"
+    ],
+    "scriptureReferences": [
+      "Matthew 26:17–30",
+      "Matthew 26:36–56",
+      "Matthew 27:11–61",
+      "Luke 22:14–23",
+      "Luke 22:39–53",
+      "Luke 23:32–56",
+      "John 18:28–19:42"
+    ],
+    "illustration": "stories/crucifixion.svg",
+    "estimatedMinutes": 11,
+    "difficulty": "intermediate",
+    "ageSuitability": "family-guidance",
+    "featured": true,
+    "seasonalTags": [
+      "lent",
+      "holy-week",
+      "good-friday",
+      "easter"
+    ],
+    "keywords": [
+      "Jesus",
+      "cross",
+      "crucifixion",
+      "Good Friday",
+      "sacrifice",
+      "forgiveness",
+      "love",
+      "atonement"
+    ],
+    "contentAdvisory": "This story includes betrayal, injustice and a non-graphic account of execution. Younger readers may benefit from reading it with a trusted adult.",
+    "introduction": {
+      "summary": "Jesus willingly enters suffering, is unjustly condemned and dies on the cross. The Gospel accounts present the cross as the costly centre of his saving mission and self-giving love.",
+      "context": "During Passover week in Jerusalem, opposition to Jesus reaches its climax. His closest followers are confused and afraid, yet Jesus continues to act with purpose, prayer and love."
+    },
+    "storySections": [
+      {
+        "id": "the-last-supper",
+        "title": "The Last Supper",
+        "content": "Jesus shares the Passover meal with his disciples. He gives bread and the cup new significance, connecting them with his body and the covenant established through his life given for others. He also warns that betrayal is near.",
+        "scriptureReference": "Matthew 26:17–30; Luke 22:14–23"
+      },
+      {
+        "id": "prayer-in-the-garden",
+        "title": "Prayer in the Garden",
+        "content": "In Gethsemane, Jesus experiences deep anguish and asks his closest disciples to keep watch. He honestly brings his suffering before the Father while yielding himself to the Father’s will. The disciples struggle to remain awake.",
+        "scriptureReference": "Matthew 26:36–46; Luke 22:39–46"
+      },
+      {
+        "id": "betrayal-and-trial",
+        "title": "Betrayal and Trial",
+        "content": "Judas arrives with an armed group and identifies Jesus. Jesus is arrested, questioned and taken to the Roman governor. Though Pilate recognises problems with the accusations, public pressure and political fear lead him to authorise crucifixion.",
+        "scriptureReference": "Matthew 26:47–56; 27:11–26; John 18:28–19:16"
+      },
+      {
+        "id": "the-cross",
+        "title": "The Cross",
+        "content": "Jesus is taken outside the city and crucified between two criminals. The Gospel writers describe mockery, darkness and Jesus’ concern for others even while suffering. At his death, the temple curtain is torn, and a Roman centurion recognises that Jesus is righteous and truly God’s Son.",
+        "scriptureReference": "Matthew 27:27–54; Luke 23:32–49; John 19:17–37"
+      },
+      {
+        "id": "laid-in-a-tomb",
+        "title": "Laid in a Tomb",
+        "content": "Joseph of Arimathea asks for Jesus’ body and places it in a new tomb. Women who followed Jesus observe where he is laid and prepare spices, then rest on the Sabbath. Grief and silence close the day, but this is not the end of the story.",
+        "scriptureReference": "Matthew 27:55–61; Luke 23:50–56; John 19:38–42"
+      }
+    ],
+    "keyPeople": [
+      {
+        "name": "Jesus",
+        "role": "Messiah who willingly gives his life"
+      },
+      {
+        "name": "The disciples",
+        "role": "Followers who share the meal but scatter during the arrest"
+      },
+      {
+        "name": "Judas",
+        "role": "Disciple who betrays Jesus"
+      },
+      {
+        "name": "Pontius Pilate",
+        "role": "Roman governor who authorises crucifixion"
+      },
+      {
+        "name": "Joseph of Arimathea",
+        "role": "Disciple who provides the tomb"
+      },
+      {
+        "name": "Women disciples",
+        "role": "Faithful witnesses who observe the death and burial"
+      }
+    ],
+    "keyLocations": [
+      {
+        "name": "Upper room",
+        "description": "Setting of Jesus’ final meal with the disciples"
+      },
+      {
+        "name": "Gethsemane",
+        "description": "Garden where Jesus prays before his arrest"
+      },
+      {
+        "name": "Golgotha",
+        "description": "Place outside Jerusalem where Jesus is crucified"
+      },
+      {
+        "name": "The tomb",
+        "description": "New rock-cut tomb where Jesus’ body is laid"
+      }
+    ],
+    "flashcards": [
+      {
+        "id": "cross-card-1",
+        "front": "What meal did Jesus share before his arrest?",
+        "back": "He shared a Passover meal with his disciples.",
+        "scriptureReference": "Matthew 26:17–30"
+      },
+      {
+        "id": "cross-card-2",
+        "front": "Where did Jesus pray in anguish?",
+        "back": "He prayed in the garden called Gethsemane.",
+        "scriptureReference": "Matthew 26:36–46"
+      },
+      {
+        "id": "cross-card-3",
+        "front": "Who betrayed Jesus?",
+        "back": "Judas identified Jesus to the arresting group.",
+        "scriptureReference": "Matthew 26:47–50"
+      },
+      {
+        "id": "cross-card-4",
+        "front": "Which Roman governor authorised the execution?",
+        "back": "Pontius Pilate handed Jesus over to be crucified.",
+        "scriptureReference": "Matthew 27:11–26"
+      },
+      {
+        "id": "cross-card-5",
+        "front": "What happened to the temple curtain?",
+        "back": "It was torn from top to bottom when Jesus died.",
+        "scriptureReference": "Matthew 27:50–51"
+      },
+      {
+        "id": "cross-card-6",
+        "front": "Who provided Jesus’ tomb?",
+        "back": "Joseph of Arimathea placed Jesus in his own new tomb.",
+        "scriptureReference": "Matthew 27:57–60"
+      }
+    ],
+    "keyLessons": [
+      "Jesus brings honest anguish into obedient prayer.",
+      "Political convenience and crowd pressure can produce grave injustice.",
+      "At the cross, Jesus continues to embody forgiveness and self-giving love.",
+      "Christian hope takes suffering and death seriously rather than denying them.",
+      "The cross must be understood together with the resurrection that follows."
+    ],
+    "reflection": {
+      "question": "What does Jesus’ self-giving love reveal about the value God places on reconciliation?",
+      "prompt": "Spend time in gratitude, then consider one relationship in which costly forgiveness, truth or reconciliation may be needed."
+    },
+    "prayerPrompt": "Jesus, thank you for your self-giving love. Form in me humility, courage, forgiveness and faithful hope.",
+    "quiz": [
+      {
+        "id": "cross-question-1",
+        "question": "Which festival meal did Jesus share with his disciples?",
+        "options": [
+          "Purim",
+          "Passover",
+          "Feast of Trumpets",
+          "Dedication"
+        ],
+        "correctOptionIndex": 1,
+        "explanation": "The final meal took place in the setting of Passover.",
+        "scriptureReference": "Matthew 26:17–19"
+      },
+      {
+        "id": "cross-question-2",
+        "question": "Where did Jesus pray before his arrest?",
+        "options": [
+          "Bethlehem",
+          "Gethsemane",
+          "Capernaum",
+          "Nazareth"
+        ],
+        "correctOptionIndex": 1,
+        "explanation": "Jesus and the disciples went to Gethsemane after the meal.",
+        "scriptureReference": "Matthew 26:36"
+      },
+      {
+        "id": "cross-question-3",
+        "question": "Who authorised Jesus’ crucifixion?",
+        "options": [
+          "Herod alone",
+          "Pontius Pilate",
+          "Joseph of Arimathea",
+          "The centurion"
+        ],
+        "correctOptionIndex": 1,
+        "explanation": "Pilate yielded to pressure and handed Jesus over for crucifixion.",
+        "scriptureReference": "Matthew 27:24–26"
+      },
+      {
+        "id": "cross-question-4",
+        "question": "What sign occurred in the temple when Jesus died?",
+        "options": [
+          "The altar disappeared",
+          "The curtain was torn",
+          "The lamps became brighter",
+          "A new room opened"
+        ],
+        "correctOptionIndex": 1,
+        "explanation": "The temple curtain was torn from top to bottom.",
+        "scriptureReference": "Matthew 27:50–51"
+      },
+      {
+        "id": "cross-question-5",
+        "question": "Who placed Jesus in a new tomb?",
+        "options": [
+          "Peter",
+          "Joseph of Arimathea",
+          "The Roman governor",
+          "Judas"
+        ],
+        "correctOptionIndex": 1,
+        "explanation": "Joseph received permission to care for Jesus’ body and laid it in the tomb.",
+        "scriptureReference": "Matthew 27:57–60"
+      }
+    ],
+    "completion": {
+      "points": 180,
+      "achievementId": "bible-explorer",
+      "nextStoryId": "resurrection"
+    }
+  }
+}

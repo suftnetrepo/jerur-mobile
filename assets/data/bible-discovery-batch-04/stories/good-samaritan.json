@@ -1,0 +1,223 @@
+{
+  "schemaVersion": "1.0.0",
+  "contentVersion": "1.0.0",
+  "language": "en-GB",
+  "contentNotice": "Original retelling based on the cited Bible passages; not a replacement for reading Scripture.",
+  "story": {
+    "id": "good-samaritan",
+    "title": "The Good Samaritan",
+    "subtitle": "Love that crosses every boundary",
+    "collectionIds": [
+      "parables",
+      "life-of-jesus"
+    ],
+    "scriptureReferences": [
+      "Luke 10:25–37"
+    ],
+    "illustration": "stories/good-samaritan.svg",
+    "estimatedMinutes": 7,
+    "difficulty": "beginner",
+    "ageSuitability": "all-ages",
+    "featured": true,
+    "keywords": [
+      "Jesus",
+      "parable",
+      "Samaritan",
+      "neighbour",
+      "compassion",
+      "mercy",
+      "love",
+      "service"
+    ],
+    "introduction": {
+      "summary": "Jesus answers a question about neighbourly love with a story in which the expected outsider becomes the true neighbour through practical compassion.",
+      "context": "An expert in the law asks Jesus what he must do to inherit eternal life and then seeks to narrow the command to love one’s neighbour by asking who qualifies as a neighbour."
+    },
+    "storySections": [
+      {
+        "id": "the-question",
+        "title": "The Question",
+        "content": "A legal expert tests Jesus with a question about eternal life. Jesus directs him to the law, and the man correctly joins love for God with love for one’s neighbour. Wanting to justify himself, he asks Jesus to define the limits of neighbourly responsibility.",
+        "scriptureReference": "Luke 10:25–29"
+      },
+      {
+        "id": "the-road-to-jericho",
+        "title": "The Road to Jericho",
+        "content": "Jesus describes a traveller attacked by robbers on the dangerous road from Jerusalem to Jericho. They strip him, beat him and leave him barely alive. The injured man is not given a name, profession or ethnicity that might make compassion easier to calculate.",
+        "scriptureReference": "Luke 10:30"
+      },
+      {
+        "id": "passing-by",
+        "title": "Passing By",
+        "content": "A priest sees the wounded man and passes on the other side. A Levite comes, sees and also passes by. Both are associated with religious service, yet neither turns observation into help.",
+        "scriptureReference": "Luke 10:31–32"
+      },
+      {
+        "id": "compassion-in-action",
+        "title": "Compassion in Action",
+        "content": "A Samaritan sees the man and is moved with compassion. Despite hostility between their communities, he approaches, treats the wounds, places the man on his own animal and brings him to an inn.",
+        "scriptureReference": "Luke 10:33–34"
+      },
+      {
+        "id": "go-and-do-likewise",
+        "title": "Go and Do Likewise",
+        "content": "The Samaritan pays for ongoing care and promises to cover additional costs. Jesus changes the original question: instead of deciding who deserves to be called a neighbour, the listener must become a neighbour to the person in need. The expert identifies the merciful man, and Jesus tells him to act likewise.",
+        "scriptureReference": "Luke 10:35–37"
+      }
+    ],
+    "keyPeople": [
+      {
+        "name": "Jesus",
+        "role": "Teacher who tells the parable"
+      },
+      {
+        "name": "The legal expert",
+        "role": "Questioner challenged to practise mercy"
+      },
+      {
+        "name": "The injured traveller",
+        "role": "Vulnerable person whose need exposes the character of others"
+      },
+      {
+        "name": "The Samaritan",
+        "role": "Unexpected neighbour who provides compassionate care"
+      },
+      {
+        "name": "The priest and Levite",
+        "role": "Religious figures who see the need but pass by"
+      }
+    ],
+    "keyLocations": [
+      {
+        "name": "Road from Jerusalem to Jericho",
+        "description": "Steep, isolated route used as the parable’s setting"
+      },
+      {
+        "name": "The inn",
+        "description": "Place where the Samaritan arranges continuing care"
+      }
+    ],
+    "flashcards": [
+      {
+        "id": "samaritan-card-1",
+        "front": "Why did the legal expert ask who his neighbour was?",
+        "back": "He wanted to justify himself and define the limits of his obligation.",
+        "scriptureReference": "Luke 10:29"
+      },
+      {
+        "id": "samaritan-card-2",
+        "front": "What happened to the traveller?",
+        "back": "Robbers stripped, beat and abandoned him in a critical condition.",
+        "scriptureReference": "Luke 10:30"
+      },
+      {
+        "id": "samaritan-card-3",
+        "front": "Which two people passed by?",
+        "back": "A priest and a Levite both saw the man and continued on.",
+        "scriptureReference": "Luke 10:31–32"
+      },
+      {
+        "id": "samaritan-card-4",
+        "front": "Who stopped to help?",
+        "back": "A Samaritan traveller was moved with compassion.",
+        "scriptureReference": "Luke 10:33"
+      },
+      {
+        "id": "samaritan-card-5",
+        "front": "What practical care did the Samaritan provide?",
+        "back": "He treated the wounds, transported the man, found shelter and paid for continuing care.",
+        "scriptureReference": "Luke 10:34–35"
+      },
+      {
+        "id": "samaritan-card-6",
+        "front": "How did Jesus redefine being a neighbour?",
+        "back": "A neighbour is someone who chooses to show mercy to the person in need.",
+        "scriptureReference": "Luke 10:36–37"
+      }
+    ],
+    "keyLessons": [
+      "Love for God and love for people cannot be separated.",
+      "Seeing suffering is not the same as responding compassionately.",
+      "Neighbourly love crosses social, ethnic and religious hostility.",
+      "Mercy is practical, costly and attentive to ongoing needs.",
+      "The better question is not who qualifies for our love, but how we can become loving neighbours."
+    ],
+    "reflection": {
+      "question": "Whose need might be easy for you to see but inconvenient to engage?",
+      "prompt": "Choose one safe, practical act of mercy that respects the person’s dignity and actual needs."
+    },
+    "prayerPrompt": "Compassionate God, free me from indifference and teach me to become a neighbour through practical mercy.",
+    "quiz": [
+      {
+        "id": "samaritan-question-1",
+        "question": "What second question did the legal expert ask Jesus?",
+        "options": [
+          "Where is Jerusalem?",
+          "Who is my neighbour?",
+          "When will the kingdom come?",
+          "Who may enter the temple?"
+        ],
+        "correctOptionIndex": 1,
+        "explanation": "The man sought to define whom he was required to love.",
+        "scriptureReference": "Luke 10:29"
+      },
+      {
+        "id": "samaritan-question-2",
+        "question": "Where was the injured man travelling?",
+        "options": [
+          "Jerusalem to Jericho",
+          "Nazareth to Bethlehem",
+          "Galilee to Samaria",
+          "Egypt to Canaan"
+        ],
+        "correctOptionIndex": 0,
+        "explanation": "The parable is set on the road descending from Jerusalem to Jericho.",
+        "scriptureReference": "Luke 10:30"
+      },
+      {
+        "id": "samaritan-question-3",
+        "question": "Who passed by without helping?",
+        "options": [
+          "A fisherman and farmer",
+          "A priest and Levite",
+          "A soldier and tax collector",
+          "Two merchants"
+        ],
+        "correctOptionIndex": 1,
+        "explanation": "Both religious figures saw the man but crossed away from him.",
+        "scriptureReference": "Luke 10:31–32"
+      },
+      {
+        "id": "samaritan-question-4",
+        "question": "What moved the Samaritan to respond?",
+        "options": [
+          "A promised reward",
+          "Compassion",
+          "Fear of punishment",
+          "An order from the innkeeper"
+        ],
+        "correctOptionIndex": 1,
+        "explanation": "His inward compassion became practical action.",
+        "scriptureReference": "Luke 10:33"
+      },
+      {
+        "id": "samaritan-question-5",
+        "question": "What did Jesus tell the expert to do?",
+        "options": [
+          "Memorise the story",
+          "Avoid the road",
+          "Go and practise the same mercy",
+          "Become an innkeeper"
+        ],
+        "correctOptionIndex": 2,
+        "explanation": "Jesus called him to imitate the Samaritan’s merciful action.",
+        "scriptureReference": "Luke 10:36–37"
+      }
+    ],
+    "completion": {
+      "points": 120,
+      "achievementId": "bible-explorer",
+      "nextStoryId": "prodigal-son"
+    }
+  }
+}

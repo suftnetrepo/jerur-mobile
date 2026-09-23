@@ -1,0 +1,147 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://jerur.com/schemas/bible-story.schema.json",
+  "title": "Jerur Bible Discovery Story",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "contentVersion",
+    "language",
+    "story"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "string"
+    },
+    "contentVersion": {
+      "type": "string"
+    },
+    "language": {
+      "type": "string"
+    },
+    "contentNotice": {
+      "type": "string"
+    },
+    "story": {
+      "$ref": "#/$defs/story"
+    }
+  },
+  "$defs": {
+    "story": {
+      "type": "object",
+      "required": [
+        "id",
+        "title",
+        "subtitle",
+        "collectionIds",
+        "scriptureReferences",
+        "illustration",
+        "estimatedMinutes",
+        "difficulty",
+        "introduction",
+        "storySections",
+        "flashcards",
+        "keyLessons",
+        "reflection",
+        "quiz",
+        "completion"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+        },
+        "title": {
+          "type": "string"
+        },
+        "subtitle": {
+          "type": "string"
+        },
+        "collectionIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "scriptureReferences": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          }
+        },
+        "illustration": {
+          "type": "string"
+        },
+        "estimatedMinutes": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "difficulty": {
+          "enum": [
+            "beginner",
+            "intermediate",
+            "advanced"
+          ]
+        },
+        "ageSuitability": {
+          "type": "string"
+        },
+        "featured": {
+          "type": "boolean"
+        },
+        "keywords": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "seasonalTags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "contentAdvisory": {
+          "type": "string"
+        },
+        "introduction": {
+          "type": "object"
+        },
+        "storySections": {
+          "type": "array",
+          "minItems": 1
+        },
+        "keyPeople": {
+          "type": "array"
+        },
+        "keyLocations": {
+          "type": "array"
+        },
+        "flashcards": {
+          "type": "array",
+          "minItems": 1
+        },
+        "keyLessons": {
+          "type": "array",
+          "minItems": 1
+        },
+        "reflection": {
+          "type": "object"
+        },
+        "prayerPrompt": {
+          "type": "string"
+        },
+        "quiz": {
+          "type": "array",
+          "minItems": 5
+        },
+        "completion": {
+          "type": "object"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

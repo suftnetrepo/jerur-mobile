@@ -1,0 +1,19 @@
+{
+  "id": "bible-discovery-batch-04",
+  "title": "Bible Discovery — Batch 4",
+  "version": "1.0.0",
+  "storyIds": [
+    "jesus-calms-storm",
+    "good-samaritan",
+    "prodigal-son",
+    "crucifixion",
+    "resurrection"
+  ],
+  "files": [
+    "stories/jesus-calms-storm.json",
+    "stories/good-samaritan.json",
+    "stories/prodigal-son.json",
+    "stories/crucifixion.json",
+    "stories/resurrection.json"
+  ]
+}

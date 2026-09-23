@@ -1,0 +1,218 @@
+{
+  "schemaVersion": "1.0.0",
+  "contentVersion": "1.0.0",
+  "language": "en-GB",
+  "contentNotice": "Original retelling based on the cited Bible passages; not a replacement for reading Scripture.",
+  "story": {
+    "id": "david-and-goliath",
+    "title": "David and Goliath",
+    "subtitle": "Courage greater than fear",
+    "collectionIds": [
+      "heroes-of-faith"
+    ],
+    "scriptureReferences": [
+      "1 Samuel 16:1–13",
+      "1 Samuel 17:1–58"
+    ],
+    "illustration": "stories/david-and-goliath.svg",
+    "estimatedMinutes": 8,
+    "difficulty": "beginner",
+    "ageSuitability": "all-ages",
+    "featured": true,
+    "keywords": [
+      "David",
+      "Goliath",
+      "courage",
+      "faith",
+      "sling",
+      "giant",
+      "fear",
+      "victory"
+    ],
+    "introduction": {
+      "summary": "A young shepherd refuses to let fear define the battle. Trusting God rather than conventional armour, David faces the Philistine champion Goliath.",
+      "context": "Israel and the Philistines are positioned on opposite hills in the Valley of Elah. For forty days, Goliath’s challenge leaves Israel’s army paralysed with fear."
+    },
+    "storySections": [
+      {
+        "id": "the-unlikely-anointed",
+        "title": "The Unlikely Anointed",
+        "content": "When Samuel visits Jesse’s family to anoint a future king, David is initially left tending sheep. God directs Samuel away from impressive outward appearance and toward the youngest son, whose heart God sees.",
+        "scriptureReference": "1 Samuel 16:1–13"
+      },
+      {
+        "id": "goliaths-challenge",
+        "title": "Goliath’s Challenge",
+        "content": "Goliath, a heavily armed Philistine warrior, challenges Israel to send one man for single combat. Saul and the army are terrified. The challenge continues morning and evening for forty days.",
+        "scriptureReference": "1 Samuel 17:1–16"
+      },
+      {
+        "id": "a-shepherd-arrives",
+        "title": "A Shepherd Arrives",
+        "content": "David comes to the camp to bring food to his brothers. Hearing Goliath, he is disturbed that the living God is being defied. His questions are misunderstood as pride, but news of his confidence reaches Saul.",
+        "scriptureReference": "1 Samuel 17:17–31"
+      },
+      {
+        "id": "confidence-from-the-past",
+        "title": "Confidence from the Past",
+        "content": "David explains how he defended his sheep from a lion and a bear. Those experiences taught him to recognise God’s help. He refuses Saul’s armour because he is not accustomed to it and chooses his staff, sling and five smooth stones.",
+        "scriptureReference": "1 Samuel 17:32–40"
+      },
+      {
+        "id": "the-battle-belongs-to-god",
+        "title": "The Battle Belongs to God",
+        "content": "Goliath mocks David, but David answers that the battle belongs to God. He runs toward the battle line, launches a stone and strikes Goliath in the forehead. The Philistine army flees when its champion falls.",
+        "scriptureReference": "1 Samuel 17:41–58"
+      }
+    ],
+    "keyPeople": [
+      {
+        "name": "David",
+        "role": "Young shepherd who trusts God and later becomes king"
+      },
+      {
+        "name": "Goliath",
+        "role": "Philistine champion who defies Israel"
+      },
+      {
+        "name": "Saul",
+        "role": "King of Israel whose armour David declines"
+      },
+      {
+        "name": "Samuel",
+        "role": "Prophet who anoints David"
+      }
+    ],
+    "keyLocations": [
+      {
+        "name": "Valley of Elah",
+        "description": "The battlefield between Israel and the Philistines"
+      },
+      {
+        "name": "Bethlehem",
+        "description": "David’s home town"
+      }
+    ],
+    "flashcards": [
+      {
+        "id": "david-card-1",
+        "front": "What was David doing when Samuel came to Jesse’s family?",
+        "back": "David was caring for the family’s sheep.",
+        "scriptureReference": "1 Samuel 16:11"
+      },
+      {
+        "id": "david-card-2",
+        "front": "How long did Goliath present his challenge?",
+        "back": "He challenged Israel for forty days.",
+        "scriptureReference": "1 Samuel 17:16"
+      },
+      {
+        "id": "david-card-3",
+        "front": "What past experiences strengthened David’s confidence?",
+        "back": "God had helped him rescue sheep from a lion and a bear.",
+        "scriptureReference": "1 Samuel 17:34–37"
+      },
+      {
+        "id": "david-card-4",
+        "front": "Why did David remove Saul’s armour?",
+        "back": "He was not accustomed to it and chose the tools he knew how to use.",
+        "scriptureReference": "1 Samuel 17:38–40"
+      },
+      {
+        "id": "david-card-5",
+        "front": "What weapons did David carry?",
+        "back": "A staff, a shepherd’s bag, five smooth stones and a sling.",
+        "scriptureReference": "1 Samuel 17:40"
+      },
+      {
+        "id": "david-card-6",
+        "front": "Where did David’s stone strike Goliath?",
+        "back": "It struck Goliath in the forehead.",
+        "scriptureReference": "1 Samuel 17:49"
+      }
+    ],
+    "keyLessons": [
+      "God sees character beyond outward appearance.",
+      "Past experiences of God’s help can prepare us for present challenges.",
+      "Courage is not pretending danger is small; it is trusting that God is greater.",
+      "We do not need to imitate someone else’s methods to act faithfully."
+    ],
+    "reflection": {
+      "question": "What intimidating challenge has been occupying more of your attention than God’s faithfulness?",
+      "prompt": "List one past experience that reminds you of the strength, wisdom or help God has already provided."
+    },
+    "prayerPrompt": "God of David, turn my attention from fear toward your faithfulness and help me use what you have placed in my hands.",
+    "quiz": [
+      {
+        "id": "david-question-1",
+        "question": "What work did David do before confronting Goliath?",
+        "options": [
+          "He was a blacksmith",
+          "He was a shepherd",
+          "He was a priest",
+          "He was a city guard"
+        ],
+        "correctOptionIndex": 1,
+        "explanation": "David cared for his father’s sheep near Bethlehem.",
+        "scriptureReference": "1 Samuel 16:11; 17:15"
+      },
+      {
+        "id": "david-question-2",
+        "question": "Why was Israel’s army afraid?",
+        "options": [
+          "They had no food",
+          "Goliath challenged and intimidated them",
+          "Their king was absent",
+          "They were lost"
+        ],
+        "correctOptionIndex": 1,
+        "explanation": "The Philistine champion’s size, weapons and words filled Saul and the army with fear.",
+        "scriptureReference": "1 Samuel 17:4–11"
+      },
+      {
+        "id": "david-question-3",
+        "question": "Whose armour did David try on?",
+        "options": [
+          "Jonathan’s",
+          "Samuel’s",
+          "Saul’s",
+          "Goliath’s"
+        ],
+        "correctOptionIndex": 2,
+        "explanation": "Saul dressed David in his own military equipment.",
+        "scriptureReference": "1 Samuel 17:38–39"
+      },
+      {
+        "id": "david-question-4",
+        "question": "How many smooth stones did David select?",
+        "options": [
+          "Three",
+          "Five",
+          "Seven",
+          "Twelve"
+        ],
+        "correctOptionIndex": 1,
+        "explanation": "David selected five smooth stones from the stream.",
+        "scriptureReference": "1 Samuel 17:40"
+      },
+      {
+        "id": "david-question-5",
+        "question": "What did David declare about the battle?",
+        "options": [
+          "It belonged to the strongest soldier",
+          "It belonged to the king",
+          "It belonged to God",
+          "It should be postponed"
+        ],
+        "correctOptionIndex": 2,
+        "explanation": "David wanted everyone to know that deliverance did not depend on sword or spear.",
+        "scriptureReference": "1 Samuel 17:45–47"
+      }
+    ],
+    "completion": {
+      "points": 130,
+      "achievementId": "five-day-streak",
+      "nextStoryId": "solomon"
+    }
+  }
+}

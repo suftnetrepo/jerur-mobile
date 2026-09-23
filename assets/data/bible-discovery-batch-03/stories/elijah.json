@@ -1,0 +1,226 @@
+{
+  "schemaVersion": "1.0.0",
+  "contentVersion": "1.0.0",
+  "language": "en-GB",
+  "contentNotice": "Original retelling based on the cited Bible passages; not a replacement for reading Scripture.",
+  "story": {
+    "id": "elijah",
+    "title": "Elijah on Mount Carmel",
+    "subtitle": "The God who answers",
+    "collectionIds": [
+      "kings-and-prophets",
+      "heroes-of-faith"
+    ],
+    "scriptureReferences": [
+      "1 Kings 16:29–34",
+      "1 Kings 17:1–24",
+      "1 Kings 18:1–46",
+      "1 Kings 19:1–18"
+    ],
+    "illustration": "stories/elijah.svg",
+    "estimatedMinutes": 10,
+    "difficulty": "intermediate",
+    "ageSuitability": "all-ages",
+    "featured": true,
+    "keywords": [
+      "Elijah",
+      "Carmel",
+      "Ahab",
+      "Baal",
+      "fire",
+      "prayer",
+      "courage",
+      "renewal"
+    ],
+    "introduction": {
+      "summary": "During a national crisis, Elijah calls Israel to stop wavering and return to God. The contest on Mount Carmel reveals God’s power, while Elijah’s later exhaustion reveals God’s gentle care.",
+      "context": "King Ahab and Queen Jezebel promote the worship of Baal in Israel. A prolonged drought exposes the emptiness of claims that Baal controls rain and fertility."
+    },
+    "storySections": [
+      {
+        "id": "drought-and-provision",
+        "title": "Drought and Provision",
+        "content": "Elijah announces that rain will cease. God directs him first to a brook and then to a widow in Zarephath. Her small supply of flour and oil continues through the famine, and when her son dies, Elijah prays and the child’s life is restored.",
+        "scriptureReference": "1 Kings 17:1–24"
+      },
+      {
+        "id": "a-nation-wavering",
+        "title": "A Nation Wavering",
+        "content": "In the third year of drought, Elijah meets Ahab and calls the people to Mount Carmel. He confronts their divided loyalty, asking how long they will continue wavering between God and Baal.",
+        "scriptureReference": "1 Kings 18:1–21"
+      },
+      {
+        "id": "the-silent-altar",
+        "title": "The Silent Altar",
+        "content": "The prophets of Baal prepare a sacrifice and call on their god from morning until evening. Despite loud cries and frantic activity, there is no answer. Their altar remains unchanged.",
+        "scriptureReference": "1 Kings 18:22–29"
+      },
+      {
+        "id": "fire-from-heaven",
+        "title": "Fire from Heaven",
+        "content": "Elijah repairs the neglected altar of God, arranges the sacrifice and drenches it with water. He prays that the people will know God and turn back. Fire consumes the offering, wood, stones and water, and the people acknowledge God.",
+        "scriptureReference": "1 Kings 18:30–39"
+      },
+      {
+        "id": "rain-and-gentle-care",
+        "title": "Rain and Gentle Care",
+        "content": "Elijah prays persistently until a small cloud signals the end of the drought. Yet after Jezebel threatens him, he runs into the wilderness exhausted and afraid. God gives him food, rest, renewed perspective and a new assignment, speaking not through spectacle but through a gentle voice.",
+        "scriptureReference": "1 Kings 18:41–46; 19:1–18"
+      }
+    ],
+    "keyPeople": [
+      {
+        "name": "Elijah",
+        "role": "Prophet who calls Israel back to God"
+      },
+      {
+        "name": "Ahab",
+        "role": "King of Israel who promotes unfaithful worship"
+      },
+      {
+        "name": "Jezebel",
+        "role": "Queen who supports Baal’s prophets and threatens Elijah"
+      },
+      {
+        "name": "Widow of Zarephath",
+        "role": "Woman who trusts God during the famine"
+      }
+    ],
+    "keyLocations": [
+      {
+        "name": "Zarephath",
+        "description": "Town where God provides for Elijah and a widow"
+      },
+      {
+        "name": "Mount Carmel",
+        "description": "Site of the confrontation between Elijah and the prophets of Baal"
+      },
+      {
+        "name": "Mount Horeb",
+        "description": "Place where God renews the exhausted prophet"
+      }
+    ],
+    "flashcards": [
+      {
+        "id": "elijah-card-1",
+        "front": "What crisis affected Israel during Elijah’s ministry?",
+        "back": "A severe drought and famine affected the land.",
+        "scriptureReference": "1 Kings 17:1; 18:1–2"
+      },
+      {
+        "id": "elijah-card-2",
+        "front": "Who shared her last food with Elijah?",
+        "back": "A widow living in Zarephath trusted Elijah’s message.",
+        "scriptureReference": "1 Kings 17:8–16"
+      },
+      {
+        "id": "elijah-card-3",
+        "front": "What decision did Elijah place before Israel?",
+        "back": "They needed to stop wavering and decide whether to follow God or Baal.",
+        "scriptureReference": "1 Kings 18:20–21"
+      },
+      {
+        "id": "elijah-card-4",
+        "front": "How did Elijah prepare his sacrifice?",
+        "back": "He repaired the altar and had the offering repeatedly drenched with water.",
+        "scriptureReference": "1 Kings 18:30–35"
+      },
+      {
+        "id": "elijah-card-5",
+        "front": "What small sign appeared before the rain?",
+        "back": "A small cloud rose from the sea, about the size of a hand.",
+        "scriptureReference": "1 Kings 18:43–45"
+      },
+      {
+        "id": "elijah-card-6",
+        "front": "How did God care for Elijah in exhaustion?",
+        "back": "God provided rest, food, presence, perspective and a renewed assignment.",
+        "scriptureReference": "1 Kings 19:4–18"
+      }
+    ],
+    "keyLessons": [
+      "Divided loyalty eventually requires an honest decision.",
+      "Prayer seeks God’s honour and the restoration of people.",
+      "Spiritual courage does not make a person immune to exhaustion.",
+      "Rest and nourishment can be part of God’s care.",
+      "God may work through quiet guidance as well as dramatic events."
+    ],
+    "reflection": {
+      "question": "Are you trying to maintain loyalties that pull your heart in opposite directions?",
+      "prompt": "Name one practice or commitment that would help you give God your undivided attention."
+    },
+    "prayerPrompt": "Living God, turn my heart fully toward you and meet me with gentle care when I am weary.",
+    "quiz": [
+      {
+        "id": "elijah-question-1",
+        "question": "What had affected Israel before the gathering on Mount Carmel?",
+        "options": [
+          "A flood",
+          "A drought",
+          "An invasion",
+          "An earthquake"
+        ],
+        "correctOptionIndex": 1,
+        "explanation": "Israel had experienced an extended drought announced by Elijah.",
+        "scriptureReference": "1 Kings 17:1; 18:1–2"
+      },
+      {
+        "id": "elijah-question-2",
+        "question": "Whom did the opposing prophets call upon?",
+        "options": [
+          "Baal",
+          "Dagon",
+          "Molek",
+          "Pharaoh"
+        ],
+        "correctOptionIndex": 0,
+        "explanation": "The contest exposed the inability of Baal to answer his prophets.",
+        "scriptureReference": "1 Kings 18:25–29"
+      },
+      {
+        "id": "elijah-question-3",
+        "question": "What did Elijah repair before praying?",
+        "options": [
+          "The city gate",
+          "God’s neglected altar",
+          "A royal palace",
+          "A storage barn"
+        ],
+        "correctOptionIndex": 1,
+        "explanation": "Elijah rebuilt the altar using twelve stones.",
+        "scriptureReference": "1 Kings 18:30–32"
+      },
+      {
+        "id": "elijah-question-4",
+        "question": "What consumed Elijah’s offering?",
+        "options": [
+          "A strong wind",
+          "Fire from God",
+          "The crowd",
+          "Wild animals"
+        ],
+        "correctOptionIndex": 1,
+        "explanation": "Fire consumed the sacrifice and everything around it.",
+        "scriptureReference": "1 Kings 18:36–39"
+      },
+      {
+        "id": "elijah-question-5",
+        "question": "How did God later make his presence known to Elijah at Horeb?",
+        "options": [
+          "Only through an earthquake",
+          "Through a gentle voice after wind, earthquake and fire",
+          "Through another contest",
+          "Through King Ahab"
+        ],
+        "correctOptionIndex": 1,
+        "explanation": "The account directs attention beyond dramatic forces to God’s gentle communication.",
+        "scriptureReference": "1 Kings 19:11–13"
+      }
+    ],
+    "completion": {
+      "points": 160,
+      "achievementId": "quiz-master",
+      "nextStoryId": "jonah"
+    }
+  }
+}

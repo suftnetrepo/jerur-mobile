@@ -13,6 +13,7 @@ import { Text } from "../../src/components/text";
 import { BottomTabBar } from "../../src/components/BottomTabBar";
 import {
   PillActionRow,
+  buildHomeFeatureActions,
   type PillAction,
 } from "../../src/components/PillActionRow";
 import {
@@ -166,14 +167,7 @@ export default function HomeScreen() {
   // here when a church enables/disables a feature or a new one ships.
   // "contact-us" is the one deliberate exception: it now lives in
   // Settings (see more.tsx, right before "About us") instead of here.
-  const quickActions: PillAction[] = features
-    .filter((feature) => feature.id !== "contact-us")
-    .map((feature) => ({
-      key: feature.id,
-      label: feature.label,
-      icon: feature.icon,
-      route: feature.route!,
-    }));
+  const quickActions: PillAction[] = buildHomeFeatureActions(features, !settingsLoading);
 
   async function handleChangeChurch() {
     await changeChurch();

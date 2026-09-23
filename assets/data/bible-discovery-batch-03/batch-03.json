@@ -1,0 +1,1107 @@
+{
+  "schemaVersion": "1.0.0",
+  "contentVersion": "1.0.0",
+  "language": "en-GB",
+  "storyCount": 5,
+  "stories": [
+    {
+      "id": "elijah",
+      "title": "Elijah on Mount Carmel",
+      "subtitle": "The God who answers",
+      "description": "Stand with Elijah on Mount Carmel as God calls a divided nation back to wholehearted worship.",
+      "collectionIds": [
+        "kings-and-prophets",
+        "heroes-of-faith"
+      ],
+      "scriptureReferences": [
+        "1 Kings 16:29–34",
+        "1 Kings 17:1–24",
+        "1 Kings 18:1–46",
+        "1 Kings 19:1–18"
+      ],
+      "illustration": "stories/elijah.svg",
+      "estimatedMinutes": 10,
+      "difficulty": "intermediate",
+      "ageSuitability": "all-ages",
+      "featured": true,
+      "keywords": [
+        "Elijah",
+        "Carmel",
+        "Ahab",
+        "Baal",
+        "fire",
+        "prayer",
+        "courage",
+        "renewal"
+      ],
+      "introduction": {
+        "summary": "During a national crisis, Elijah calls Israel to stop wavering and return to God. The contest on Mount Carmel reveals God’s power, while Elijah’s later exhaustion reveals God’s gentle care.",
+        "context": "King Ahab and Queen Jezebel promote the worship of Baal in Israel. A prolonged drought exposes the emptiness of claims that Baal controls rain and fertility."
+      },
+      "storySections": [
+        {
+          "id": "drought-and-provision",
+          "title": "Drought and Provision",
+          "content": "Elijah announces that rain will cease. God directs him first to a brook and then to a widow in Zarephath. Her small supply of flour and oil continues through the famine, and when her son dies, Elijah prays and the child’s life is restored.",
+          "scriptureReference": "1 Kings 17:1–24"
+        },
+        {
+          "id": "a-nation-wavering",
+          "title": "A Nation Wavering",
+          "content": "In the third year of drought, Elijah meets Ahab and calls the people to Mount Carmel. He confronts their divided loyalty, asking how long they will continue wavering between God and Baal.",
+          "scriptureReference": "1 Kings 18:1–21"
+        },
+        {
+          "id": "the-silent-altar",
+          "title": "The Silent Altar",
+          "content": "The prophets of Baal prepare a sacrifice and call on their god from morning until evening. Despite loud cries and frantic activity, there is no answer. Their altar remains unchanged.",
+          "scriptureReference": "1 Kings 18:22–29"
+        },
+        {
+          "id": "fire-from-heaven",
+          "title": "Fire from Heaven",
+          "content": "Elijah repairs the neglected altar of God, arranges the sacrifice and drenches it with water. He prays that the people will know God and turn back. Fire consumes the offering, wood, stones and water, and the people acknowledge God.",
+          "scriptureReference": "1 Kings 18:30–39"
+        },
+        {
+          "id": "rain-and-gentle-care",
+          "title": "Rain and Gentle Care",
+          "content": "Elijah prays persistently until a small cloud signals the end of the drought. Yet after Jezebel threatens him, he runs into the wilderness exhausted and afraid. God gives him food, rest, renewed perspective and a new assignment, speaking not through spectacle but through a gentle voice.",
+          "scriptureReference": "1 Kings 18:41–46; 19:1–18"
+        }
+      ],
+      "keyPeople": [
+        {
+          "name": "Elijah",
+          "role": "Prophet who calls Israel back to God"
+        },
+        {
+          "name": "Ahab",
+          "role": "King of Israel who promotes unfaithful worship"
+        },
+        {
+          "name": "Jezebel",
+          "role": "Queen who supports Baal’s prophets and threatens Elijah"
+        },
+        {
+          "name": "Widow of Zarephath",
+          "role": "Woman who trusts God during the famine"
+        }
+      ],
+      "keyLocations": [
+        {
+          "name": "Zarephath",
+          "description": "Town where God provides for Elijah and a widow"
+        },
+        {
+          "name": "Mount Carmel",
+          "description": "Site of the confrontation between Elijah and the prophets of Baal"
+        },
+        {
+          "name": "Mount Horeb",
+          "description": "Place where God renews the exhausted prophet"
+        }
+      ],
+      "flashcards": [
+        {
+          "id": "elijah-card-1",
+          "front": "What crisis affected Israel during Elijah’s ministry?",
+          "back": "A severe drought and famine affected the land.",
+          "scriptureReference": "1 Kings 17:1; 18:1–2"
+        },
+        {
+          "id": "elijah-card-2",
+          "front": "Who shared her last food with Elijah?",
+          "back": "A widow living in Zarephath trusted Elijah’s message.",
+          "scriptureReference": "1 Kings 17:8–16"
+        },
+        {
+          "id": "elijah-card-3",
+          "front": "What decision did Elijah place before Israel?",
+          "back": "They needed to stop wavering and decide whether to follow God or Baal.",
+          "scriptureReference": "1 Kings 18:20–21"
+        },
+        {
+          "id": "elijah-card-4",
+          "front": "How did Elijah prepare his sacrifice?",
+          "back": "He repaired the altar and had the offering repeatedly drenched with water.",
+          "scriptureReference": "1 Kings 18:30–35"
+        },
+        {
+          "id": "elijah-card-5",
+          "front": "What small sign appeared before the rain?",
+          "back": "A small cloud rose from the sea, about the size of a hand.",
+          "scriptureReference": "1 Kings 18:43–45"
+        },
+        {
+          "id": "elijah-card-6",
+          "front": "How did God care for Elijah in exhaustion?",
+          "back": "God provided rest, food, presence, perspective and a renewed assignment.",
+          "scriptureReference": "1 Kings 19:4–18"
+        }
+      ],
+      "keyLessons": [
+        "Divided loyalty eventually requires an honest decision.",
+        "Prayer seeks God’s honour and the restoration of people.",
+        "Spiritual courage does not make a person immune to exhaustion.",
+        "Rest and nourishment can be part of God’s care.",
+        "God may work through quiet guidance as well as dramatic events."
+      ],
+      "reflection": {
+        "question": "Are you trying to maintain loyalties that pull your heart in opposite directions?",
+        "prompt": "Name one practice or commitment that would help you give God your undivided attention."
+      },
+      "prayerPrompt": "Living God, turn my heart fully toward you and meet me with gentle care when I am weary.",
+      "quiz": [
+        {
+          "id": "elijah-question-1",
+          "question": "What had affected Israel before the gathering on Mount Carmel?",
+          "options": [
+            "A flood",
+            "A drought",
+            "An invasion",
+            "An earthquake"
+          ],
+          "correctOptionIndex": 1,
+          "explanation": "Israel had experienced an extended drought announced by Elijah.",
+          "scriptureReference": "1 Kings 17:1; 18:1–2"
+        },
+        {
+          "id": "elijah-question-2",
+          "question": "Whom did the opposing prophets call upon?",
+          "options": [
+            "Baal",
+            "Dagon",
+            "Molek",
+            "Pharaoh"
+          ],
+          "correctOptionIndex": 0,
+          "explanation": "The contest exposed the inability of Baal to answer his prophets.",
+          "scriptureReference": "1 Kings 18:25–29"
+        },
+        {
+          "id": "elijah-question-3",
+          "question": "What did Elijah repair before praying?",
+          "options": [
+            "The city gate",
+            "God’s neglected altar",
+            "A royal palace",
+            "A storage barn"
+          ],
+          "correctOptionIndex": 1,
+          "explanation": "Elijah rebuilt the altar using twelve stones.",
+          "scriptureReference": "1 Kings 18:30–32"
+        },
+        {
+          "id": "elijah-question-4",
+          "question": "What consumed Elijah’s offering?",
+          "options": [
+            "A strong wind",
+            "Fire from God",
+            "The crowd",
+            "Wild animals"
+          ],
+          "correctOptionIndex": 1,
+          "explanation": "Fire consumed the sacrifice and everything around it.",
+          "scriptureReference": "1 Kings 18:36–39"
+        },
+        {
+          "id": "elijah-question-5",
+          "question": "How did God later make his presence known to Elijah at Horeb?",
+          "options": [
+            "Only through an earthquake",
+            "Through a gentle voice after wind, earthquake and fire",
+            "Through another contest",
+            "Through King Ahab"
+          ],
+          "correctOptionIndex": 1,
+          "explanation": "The account directs attention beyond dramatic forces to God’s gentle communication.",
+          "scriptureReference": "1 Kings 19:11–13"
+        }
+      ],
+      "completion": {
+        "points": 160,
+        "achievementId": "quiz-master",
+        "nextStoryId": "jonah"
+      }
+    },
+    {
+      "id": "jonah",
+      "title": "Jonah and the Great Fish",
+      "subtitle": "Mercy beyond the shore",
+      "description": "Follow Jonah’s flight, rescue and reluctant mission to a city embraced by God’s compassion.",
+      "collectionIds": [
+        "kings-and-prophets"
+      ],
+      "scriptureReferences": [
+        "Jonah 1:1–17",
+        "Jonah 2:1–10",
+        "Jonah 3:1–10",
+        "Jonah 4:1–11"
+      ],
+      "illustration": "stories/jonah.svg",
+      "estimatedMinutes": 8,
+      "difficulty": "beginner",
+      "ageSuitability": "all-ages",
+      "featured": true,
+      "keywords": [
+        "Jonah",
+        "Nineveh",
+        "great fish",
+        "mercy",
+        "repentance",
+        "obedience",
+        "compassion"
+      ],
+      "introduction": {
+        "summary": "Jonah runs from God’s call, discovers mercy in the depths and reluctantly brings a warning to Nineveh, where God’s compassion challenges the narrowness of Jonah’s own heart.",
+        "context": "Nineveh was an important city of Assyria, an empire known to Israel as a violent enemy. God’s command asks Jonah to carry a message to people he does not want to see forgiven."
+      },
+      "storySections": [
+        {
+          "id": "running-away",
+          "title": "Running Away",
+          "content": "God tells Jonah to go east to Nineveh, but Jonah boards a ship travelling west. A violent storm threatens everyone aboard. While the sailors desperately pray and work, Jonah admits that he is running from God.",
+          "scriptureReference": "Jonah 1:1–10"
+        },
+        {
+          "id": "into-the-sea",
+          "title": "Into the Sea",
+          "content": "Jonah tells the sailors that throwing him overboard will calm the storm. They resist harming him, but eventually do as he says after every other effort fails. The sea becomes calm, and the sailors respond with reverence toward God.",
+          "scriptureReference": "Jonah 1:11–16"
+        },
+        {
+          "id": "prayer-from-the-depths",
+          "title": "Prayer from the Depths",
+          "content": "God appoints a great fish to preserve Jonah. From within it, Jonah prays, remembering that even in the depths he can turn toward God. After three days and nights, the fish releases him onto dry land.",
+          "scriptureReference": "Jonah 1:17; 2:1–10"
+        },
+        {
+          "id": "nineveh-responds",
+          "title": "Nineveh Responds",
+          "content": "God calls Jonah again. This time he goes to Nineveh and announces coming judgment. From ordinary citizens to the king, the people respond with fasting, humility and a change of conduct. God sees their response and withholds the announced destruction.",
+          "scriptureReference": "Jonah 3:1–10"
+        },
+        {
+          "id": "the-lesson-of-the-plant",
+          "title": "The Lesson of the Plant",
+          "content": "Instead of celebrating, Jonah becomes angry about God’s mercy. God uses a fast-growing plant and its sudden loss to expose Jonah’s concern for his own comfort. The story ends with God asking whether he should not care for the many people of Nineveh.",
+          "scriptureReference": "Jonah 4:1–11"
+        }
+      ],
+      "keyPeople": [
+        {
+          "name": "Jonah",
+          "role": "Reluctant prophet sent to Nineveh"
+        },
+        {
+          "name": "The sailors",
+          "role": "Crew who encounter God during the storm"
+        },
+        {
+          "name": "King of Nineveh",
+          "role": "Ruler who calls the city to turn from violence"
+        }
+      ],
+      "keyLocations": [
+        {
+          "name": "Joppa",
+          "description": "Port where Jonah boards a ship away from his calling"
+        },
+        {
+          "name": "The sea",
+          "description": "Place of storm, surrender and rescue"
+        },
+        {
+          "name": "Nineveh",
+          "description": "Assyrian city that responds to Jonah’s warning"
+        }
+      ],
+      "flashcards": [
+        {
+          "id": "jonah-card-1",
+          "front": "Where was Jonah sent?",
+          "back": "God sent Jonah to the city of Nineveh.",
+          "scriptureReference": "Jonah 1:1–2"
+        },
+        {
+          "id": "jonah-card-2",
+          "front": "Where did Jonah try to travel instead?",
+          "back": "He boarded a ship bound for Tarshish.",
+          "scriptureReference": "Jonah 1:3"
+        },
+        {
+          "id": "jonah-card-3",
+          "front": "What happened after Jonah entered the sea?",
+          "back": "The storm stopped, and God appointed a great fish to preserve him.",
+          "scriptureReference": "Jonah 1:15–17"
+        },
+        {
+          "id": "jonah-card-4",
+          "front": "How long was Jonah inside the fish?",
+          "back": "Jonah was there for three days and three nights.",
+          "scriptureReference": "Jonah 1:17"
+        },
+        {
+          "id": "jonah-card-5",
+          "front": "How did Nineveh respond to the warning?",
+          "back": "The people humbled themselves, fasted and turned from violent ways.",
+          "scriptureReference": "Jonah 3:5–10"
+        },
+        {
+          "id": "jonah-card-6",
+          "front": "What final lesson did God teach through a plant?",
+          "back": "Jonah valued his own comfort, while God cared compassionately for an entire city.",
+          "scriptureReference": "Jonah 4:6–11"
+        }
+      ],
+      "keyLessons": [
+        "Geographical distance cannot remove us from God’s presence.",
+        "God can meet a person in the consequences of disobedience.",
+        "Repentance includes a genuine change of direction.",
+        "God’s compassion reaches people we may consider undeserving.",
+        "Receiving mercy should make us more merciful toward others."
+      ],
+      "reflection": {
+        "question": "Is there a person or group you find difficult to imagine receiving God’s mercy?",
+        "prompt": "Pray for their good and ask God to replace resentment with truthful compassion."
+      },
+      "prayerPrompt": "Merciful God, correct my narrowness and teach me to care about the people you care about.",
+      "quiz": [
+        {
+          "id": "jonah-question-1",
+          "question": "To which city did God send Jonah?",
+          "options": [
+            "Jerusalem",
+            "Nineveh",
+            "Babylon",
+            "Damascus"
+          ],
+          "correctOptionIndex": 1,
+          "explanation": "Jonah was sent to warn Nineveh about its wrongdoing.",
+          "scriptureReference": "Jonah 1:1–2"
+        },
+        {
+          "id": "jonah-question-2",
+          "question": "What happened while Jonah’s ship was at sea?",
+          "options": [
+            "A great storm arose",
+            "The ship immediately arrived",
+            "The cargo multiplied",
+            "The wind completely stopped before departure"
+          ],
+          "correctOptionIndex": 0,
+          "explanation": "God sent a severe storm that threatened the ship.",
+          "scriptureReference": "Jonah 1:4–5"
+        },
+        {
+          "id": "jonah-question-3",
+          "question": "What did God appoint to preserve Jonah?",
+          "options": [
+            "A floating tree",
+            "A great fish",
+            "Another ship",
+            "An island"
+          ],
+          "correctOptionIndex": 1,
+          "explanation": "The fish prevented Jonah from dying in the sea.",
+          "scriptureReference": "Jonah 1:17"
+        },
+        {
+          "id": "jonah-question-4",
+          "question": "How did Nineveh react to Jonah’s message?",
+          "options": [
+            "It ignored him",
+            "It attacked him",
+            "It responded with repentance",
+            "It asked for a different prophet"
+          ],
+          "correctOptionIndex": 2,
+          "explanation": "The people believed the warning and changed their behaviour.",
+          "scriptureReference": "Jonah 3:5–10"
+        },
+        {
+          "id": "jonah-question-5",
+          "question": "Why was Jonah angry at the end?",
+          "options": [
+            "The sea was rough",
+            "God showed mercy to Nineveh",
+            "The sailors kept his luggage",
+            "He was made king"
+          ],
+          "correctOptionIndex": 1,
+          "explanation": "Jonah knew God was compassionate and resented Nineveh being spared.",
+          "scriptureReference": "Jonah 4:1–3"
+        }
+      ],
+      "completion": {
+        "points": 130,
+        "achievementId": "bible-explorer",
+        "nextStoryId": "daniel-and-the-lions"
+      }
+    },
+    {
+      "id": "daniel-and-the-lions",
+      "title": "Daniel and the Lions",
+      "subtitle": "Faith in the darkest night",
+      "description": "See Daniel remain faithful under pressure and experience God’s protection among the lions.",
+      "collectionIds": [
+        "kings-and-prophets",
+        "heroes-of-faith"
+      ],
+      "scriptureReferences": [
+        "Daniel 1:1–21",
+        "Daniel 6:1–28"
+      ],
+      "illustration": "stories/daniel-and-the-lions.svg",
+      "estimatedMinutes": 8,
+      "difficulty": "beginner",
+      "ageSuitability": "all-ages",
+      "featured": true,
+      "keywords": [
+        "Daniel",
+        "lions",
+        "prayer",
+        "integrity",
+        "Darius",
+        "faithfulness",
+        "courage"
+      ],
+      "introduction": {
+        "summary": "Daniel’s consistent integrity makes him trusted by a king and targeted by jealous officials. When prayer becomes illegal, Daniel remains faithful and God preserves him among the lions.",
+        "context": "Daniel was taken from Judah into exile as a young man and served under several foreign rulers. By the time of this event, his long record of trustworthy public service was well established."
+      },
+      "storySections": [
+        {
+          "id": "faithful-in-exile",
+          "title": "Faithful in Exile",
+          "content": "Taken to Babylon, Daniel and his friends receive new training, language and names. They learn to serve with excellence without surrendering their deepest allegiance to God. God gives them knowledge, wisdom and understanding.",
+          "scriptureReference": "Daniel 1:1–21"
+        },
+        {
+          "id": "an-excellent-spirit",
+          "title": "An Excellent Spirit",
+          "content": "Under King Darius, Daniel distinguishes himself through exceptional character and ability. The king plans to place him over the whole kingdom. Jealous officials search for corruption in his work but can find no negligence or dishonesty.",
+          "scriptureReference": "Daniel 6:1–5"
+        },
+        {
+          "id": "a-manipulated-law",
+          "title": "A Manipulated Law",
+          "content": "The officials persuade Darius to issue a decree forbidding prayer to anyone except the king for thirty days. Knowing that Daniel’s loyalty to God is predictable, they use his faithfulness as the basis of their trap.",
+          "scriptureReference": "Daniel 6:6–9"
+        },
+        {
+          "id": "windows-open",
+          "title": "Windows Open",
+          "content": "Daniel learns that the decree has been signed, yet continues his established practice of praying three times a day. He neither creates a performance nor hides his devotion. The officials observe him and report him to the distressed king.",
+          "scriptureReference": "Daniel 6:10–18"
+        },
+        {
+          "id": "preserved-among-lions",
+          "title": "Preserved Among Lions",
+          "content": "Daniel is lowered into the lions’ den and the entrance is sealed. At dawn, Darius hurries to the den and calls out. Daniel replies that God sent an angel to shut the lions’ mouths because he was found innocent. The king brings him out unharmed and honours Daniel’s God.",
+          "scriptureReference": "Daniel 6:19–28"
+        }
+      ],
+      "keyPeople": [
+        {
+          "name": "Daniel",
+          "role": "Exiled servant of God known for wisdom and integrity"
+        },
+        {
+          "name": "Darius",
+          "role": "King manipulated into issuing the prayer decree"
+        },
+        {
+          "name": "Jealous officials",
+          "role": "Administrators who target Daniel’s faithfulness"
+        }
+      ],
+      "keyLocations": [
+        {
+          "name": "Babylon",
+          "description": "Empire where Daniel first served in exile"
+        },
+        {
+          "name": "The lions’ den",
+          "description": "Place of intended death and God’s deliverance"
+        }
+      ],
+      "flashcards": [
+        {
+          "id": "daniel-card-1",
+          "front": "Why did Darius plan to promote Daniel?",
+          "back": "Daniel distinguished himself through exceptional qualities and trustworthy service.",
+          "scriptureReference": "Daniel 6:3"
+        },
+        {
+          "id": "daniel-card-2",
+          "front": "What fault did the officials discover in Daniel’s work?",
+          "back": "They found no corruption, negligence or dishonesty.",
+          "scriptureReference": "Daniel 6:4"
+        },
+        {
+          "id": "daniel-card-3",
+          "front": "What did the temporary decree forbid?",
+          "back": "It forbade petitions to any god or person except the king for thirty days.",
+          "scriptureReference": "Daniel 6:6–9"
+        },
+        {
+          "id": "daniel-card-4",
+          "front": "How often did Daniel pray?",
+          "back": "Daniel prayed three times each day, as he had done previously.",
+          "scriptureReference": "Daniel 6:10"
+        },
+        {
+          "id": "daniel-card-5",
+          "front": "Who shut the lions’ mouths?",
+          "back": "Daniel said that God sent an angel to shut them.",
+          "scriptureReference": "Daniel 6:22"
+        },
+        {
+          "id": "daniel-card-6",
+          "front": "What condition was Daniel in when removed?",
+          "back": "No wound was found on him because he had trusted God.",
+          "scriptureReference": "Daniel 6:23"
+        }
+      ],
+      "keyLessons": [
+        "Integrity is formed through consistent choices before a crisis arrives.",
+        "Excellence and faithfulness can belong together in public service.",
+        "Prayer is a relationship worth protecting under pressure.",
+        "Courage may look like quietly continuing a faithful practice.",
+        "God’s presence does not always prevent the den, but it can sustain us within it."
+      ],
+      "reflection": {
+        "question": "Which regular practice is shaping your character for moments of pressure?",
+        "prompt": "Choose a realistic daily time for prayer and protect it for the next seven days."
+      },
+      "prayerPrompt": "Faithful God, make my private devotion and public conduct consistent, courageous and trustworthy.",
+      "quiz": [
+        {
+          "id": "daniel-question-1",
+          "question": "Why could the officials not accuse Daniel through his work?",
+          "options": [
+            "He had no responsibilities",
+            "He was trustworthy and not corrupt",
+            "The king protected every decision",
+            "He left the kingdom"
+          ],
+          "correctOptionIndex": 1,
+          "explanation": "Daniel’s opponents could find no negligence or corruption.",
+          "scriptureReference": "Daniel 6:4"
+        },
+        {
+          "id": "daniel-question-2",
+          "question": "How long did the prayer decree last?",
+          "options": [
+            "Seven days",
+            "Thirty days",
+            "One year",
+            "Three years"
+          ],
+          "correctOptionIndex": 1,
+          "explanation": "The officials proposed a thirty-day prohibition.",
+          "scriptureReference": "Daniel 6:7"
+        },
+        {
+          "id": "daniel-question-3",
+          "question": "How did Daniel respond to the decree?",
+          "options": [
+            "He stopped praying",
+            "He prayed only in the palace",
+            "He continued his regular prayers",
+            "He left the city"
+          ],
+          "correctOptionIndex": 2,
+          "explanation": "Daniel maintained his established pattern of prayer.",
+          "scriptureReference": "Daniel 6:10"
+        },
+        {
+          "id": "daniel-question-4",
+          "question": "When did Darius return to the den?",
+          "options": [
+            "At dawn",
+            "After thirty days",
+            "At midnight",
+            "A week later"
+          ],
+          "correctOptionIndex": 0,
+          "explanation": "After a sleepless night, the king hurried there at first light.",
+          "scriptureReference": "Daniel 6:18–20"
+        },
+        {
+          "id": "daniel-question-5",
+          "question": "Why was Daniel unharmed?",
+          "options": [
+            "The lions were absent",
+            "He wore armour",
+            "God sent an angel and Daniel trusted him",
+            "The officials rescued him"
+          ],
+          "correctOptionIndex": 2,
+          "explanation": "Daniel credited God’s angel with shutting the lions’ mouths.",
+          "scriptureReference": "Daniel 6:22–23"
+        }
+      ],
+      "completion": {
+        "points": 140,
+        "achievementId": "five-day-streak",
+        "nextStoryId": "esther"
+      }
+    },
+    {
+      "id": "esther",
+      "title": "Esther",
+      "subtitle": "Courage for such a time as this",
+      "description": "Discover how Esther risks her position and life to speak courageously for her people.",
+      "collectionIds": [
+        "women-of-the-bible",
+        "heroes-of-faith"
+      ],
+      "scriptureReferences": [
+        "Esther 2:1–23",
+        "Esther 3:1–15",
+        "Esther 4:1–17",
+        "Esther 5:1–8",
+        "Esther 7:1–10",
+        "Esther 8:1–17",
+        "Esther 9:20–32"
+      ],
+      "illustration": "stories/esther.svg",
+      "estimatedMinutes": 11,
+      "difficulty": "intermediate",
+      "ageSuitability": "all-ages",
+      "featured": true,
+      "keywords": [
+        "Esther",
+        "Mordecai",
+        "Haman",
+        "courage",
+        "justice",
+        "Purim",
+        "advocacy",
+        "queen"
+      ],
+      "introduction": {
+        "summary": "Esther moves from hidden identity to courageous advocacy, risking her position and life to expose a deadly plot against her people.",
+        "context": "The Jewish people live scattered throughout the Persian Empire. Esther, an orphan raised by her cousin Mordecai, becomes queen without initially revealing her Jewish identity."
+      },
+      "storySections": [
+        {
+          "id": "an-unexpected-queen",
+          "title": "An Unexpected Queen",
+          "content": "Esther is brought into the royal selection process and wins the king’s favour. Following Mordecai’s advice, she does not initially reveal her background. Later, Mordecai uncovers a plot against the king, and Esther reports it in his name.",
+          "scriptureReference": "Esther 2:1–23"
+        },
+        {
+          "id": "hamans-plot",
+          "title": "Haman’s Plot",
+          "content": "Haman is enraged when Mordecai will not bow to him. Instead of targeting Mordecai alone, he manipulates the king into authorising destruction against all Jewish people in the empire. The decree brings grief and confusion.",
+          "scriptureReference": "Esther 3:1–15"
+        },
+        {
+          "id": "for-such-a-time",
+          "title": "For Such a Time",
+          "content": "Mordecai asks Esther to appeal to the king, but entering uninvited could mean death. He challenges her not to assume that palace life guarantees safety and suggests that she may have reached her position for this very moment. Esther asks the community to fast and resolves to go.",
+          "scriptureReference": "Esther 4:1–17"
+        },
+        {
+          "id": "courage-with-wisdom",
+          "title": "Courage with Wisdom",
+          "content": "The king welcomes Esther and offers to hear her request. Rather than rushing, she invites the king and Haman to carefully prepared banquets. Her patient strategy creates the setting in which the truth can be heard.",
+          "scriptureReference": "Esther 5:1–8; 6:1–14"
+        },
+        {
+          "id": "truth-and-deliverance",
+          "title": "Truth and Deliverance",
+          "content": "At the second banquet, Esther identifies herself with the threatened people and exposes Haman’s plan. Haman falls, Mordecai is elevated, and a new decree allows the Jewish communities to defend themselves. Their deliverance is remembered through the festival of Purim.",
+          "scriptureReference": "Esther 7:1–10; 8:1–17; 9:20–32"
+        }
+      ],
+      "keyPeople": [
+        {
+          "name": "Esther",
+          "role": "Jewish orphan who becomes queen and advocates for her people"
+        },
+        {
+          "name": "Mordecai",
+          "role": "Esther’s guardian and trusted adviser"
+        },
+        {
+          "name": "Haman",
+          "role": "Royal official whose pride produces a deadly plot"
+        },
+        {
+          "name": "King Ahasuerus",
+          "role": "Persian king also known as Xerxes"
+        }
+      ],
+      "keyLocations": [
+        {
+          "name": "Susa",
+          "description": "Persian capital where Esther lives in the royal palace"
+        },
+        {
+          "name": "The royal court",
+          "description": "Dangerous setting of Esther’s appeal to the king"
+        }
+      ],
+      "flashcards": [
+        {
+          "id": "esther-card-1",
+          "front": "Who raised Esther?",
+          "back": "Her cousin Mordecai raised her after she lost her parents.",
+          "scriptureReference": "Esther 2:5–7"
+        },
+        {
+          "id": "esther-card-2",
+          "front": "What position did Esther receive?",
+          "back": "Esther became queen of the Persian Empire.",
+          "scriptureReference": "Esther 2:16–18"
+        },
+        {
+          "id": "esther-card-3",
+          "front": "Why did Haman target the Jewish people?",
+          "back": "His pride turned Mordecai’s refusal to bow into hatred against an entire people.",
+          "scriptureReference": "Esther 3:1–6"
+        },
+        {
+          "id": "esther-card-4",
+          "front": "What made approaching the king dangerous?",
+          "back": "Anyone entering uninvited could be killed unless the king extended his golden sceptre.",
+          "scriptureReference": "Esther 4:10–11"
+        },
+        {
+          "id": "esther-card-5",
+          "front": "What did Esther ask her community to do?",
+          "back": "She asked them to fast for three days before she approached the king.",
+          "scriptureReference": "Esther 4:15–16"
+        },
+        {
+          "id": "esther-card-6",
+          "front": "What festival remembers the deliverance?",
+          "back": "The Jewish festival of Purim remembers these events.",
+          "scriptureReference": "Esther 9:20–28"
+        }
+      ],
+      "keyLessons": [
+        "Position and influence create responsibility toward others.",
+        "Courage recognises risk but chooses faithfulness over self-protection.",
+        "Wise timing and preparation strengthen courageous action.",
+        "Pride can turn personal offence into destructive injustice.",
+        "Communities should remember and celebrate deliverance together."
+      ],
+      "reflection": {
+        "question": "Where might your voice, access or influence help someone facing injustice?",
+        "prompt": "Identify one wise, concrete action and one trusted person who can support you."
+      },
+      "prayerPrompt": "God of justice, give me Esther’s courage, humility and wisdom to use my influence for the good of others.",
+      "quiz": [
+        {
+          "id": "esther-question-1",
+          "question": "Who raised Esther?",
+          "options": [
+            "Haman",
+            "Mordecai",
+            "The king",
+            "Ezra"
+          ],
+          "correctOptionIndex": 1,
+          "explanation": "Mordecai took Esther as his own daughter after her parents died.",
+          "scriptureReference": "Esther 2:5–7"
+        },
+        {
+          "id": "esther-question-2",
+          "question": "What did Esther initially keep private?",
+          "options": [
+            "Her royal title",
+            "Her Jewish identity",
+            "Her age",
+            "Her knowledge of Susa"
+          ],
+          "correctOptionIndex": 1,
+          "explanation": "Mordecai had advised Esther not to reveal her people and family background.",
+          "scriptureReference": "Esther 2:10"
+        },
+        {
+          "id": "esther-question-3",
+          "question": "Who designed the plot against the Jewish people?",
+          "options": [
+            "Mordecai",
+            "Haman",
+            "Esther",
+            "The palace guards"
+          ],
+          "correctOptionIndex": 1,
+          "explanation": "Haman manipulated the king into authorising the decree.",
+          "scriptureReference": "Esther 3:5–11"
+        },
+        {
+          "id": "esther-question-4",
+          "question": "What did the king extend to welcome Esther?",
+          "options": [
+            "A crown",
+            "A golden sceptre",
+            "A written decree",
+            "A sword"
+          ],
+          "correctOptionIndex": 1,
+          "explanation": "The extended sceptre showed that Esther could safely approach.",
+          "scriptureReference": "Esther 5:1–2"
+        },
+        {
+          "id": "esther-question-5",
+          "question": "What annual celebration came from the deliverance?",
+          "options": [
+            "Passover",
+            "Pentecost",
+            "Purim",
+            "Tabernacles"
+          ],
+          "correctOptionIndex": 2,
+          "explanation": "Mordecai and Esther established Purim as a time of remembrance and generosity.",
+          "scriptureReference": "Esther 9:20–32"
+        }
+      ],
+      "completion": {
+        "points": 160,
+        "achievementId": "story-scholar",
+        "nextStoryId": "birth-of-jesus"
+      }
+    },
+    {
+      "id": "birth-of-jesus",
+      "title": "The Birth of Jesus",
+      "subtitle": "Hope enters the world",
+      "description": "Experience the humble arrival of Jesus through Mary, Joseph, shepherds and heaven’s joyful announcement.",
+      "collectionIds": [
+        "life-of-jesus"
+      ],
+      "scriptureReferences": [
+        "Matthew 1:18–25",
+        "Matthew 2:1–23",
+        "Luke 1:26–56",
+        "Luke 2:1–40"
+      ],
+      "illustration": "stories/birth-of-jesus.svg",
+      "estimatedMinutes": 10,
+      "difficulty": "beginner",
+      "ageSuitability": "all-ages",
+      "featured": true,
+      "seasonalTags": [
+        "advent",
+        "christmas"
+      ],
+      "keywords": [
+        "Jesus",
+        "Mary",
+        "Joseph",
+        "Bethlehem",
+        "angels",
+        "shepherds",
+        "magi",
+        "Christmas",
+        "hope"
+      ],
+      "introduction": {
+        "summary": "Jesus is born in humble circumstances as angels announce good news, shepherds come to worship and visitors from the east recognise a king whose arrival brings hope to the world.",
+        "context": "The Gospel accounts locate Jesus’ birth within real families, rulers and places. The promised Messiah arrives without royal luxury, entrusted to Mary and Joseph."
+      },
+      "storySections": [
+        {
+          "id": "marys-yes",
+          "title": "Mary’s Yes",
+          "content": "The angel Gabriel tells Mary that she will give birth to Jesus, whose kingdom will not end. Though surprised and aware of the cost, Mary responds with humble willingness and later praises God for lifting the lowly and keeping his promises.",
+          "scriptureReference": "Luke 1:26–56"
+        },
+        {
+          "id": "josephs-obedience",
+          "title": "Joseph’s Obedience",
+          "content": "Joseph learns that Mary is expecting a child and initially plans a quiet separation. In a dream, an angel tells him not to be afraid, explaining that the child is from the Holy Spirit and will save his people. Joseph obeys and takes Mary as his wife.",
+          "scriptureReference": "Matthew 1:18–25"
+        },
+        {
+          "id": "born-in-bethlehem",
+          "title": "Born in Bethlehem",
+          "content": "A registration brings Joseph and Mary from Nazareth to Bethlehem. With ordinary guest space unavailable, Jesus is born in humble surroundings, wrapped securely and placed in a manger.",
+          "scriptureReference": "Luke 2:1–7"
+        },
+        {
+          "id": "good-news-for-shepherds",
+          "title": "Good News for Shepherds",
+          "content": "An angel appears to shepherds nearby and announces good news of great joy: a Saviour has been born. A multitude praises God. The shepherds hurry to Bethlehem, find the child and then spread the message they have received.",
+          "scriptureReference": "Luke 2:8–20"
+        },
+        {
+          "id": "recognised-and-protected",
+          "title": "Recognised and Protected",
+          "content": "Jesus is presented at the temple, where Simeon and Anna recognise God’s salvation. Later, wise men from the east follow a star and bring gifts. Herod reacts with violence, but Joseph is warned in a dream and takes the family to safety before eventually settling in Nazareth.",
+          "scriptureReference": "Luke 2:21–40; Matthew 2:1–23"
+        }
+      ],
+      "keyPeople": [
+        {
+          "name": "Jesus",
+          "role": "Promised Saviour and Messiah"
+        },
+        {
+          "name": "Mary",
+          "role": "Mother of Jesus who responds in faith"
+        },
+        {
+          "name": "Joseph",
+          "role": "Guardian who obeys God and protects the family"
+        },
+        {
+          "name": "The shepherds",
+          "role": "First local witnesses to the angelic announcement"
+        },
+        {
+          "name": "The magi",
+          "role": "Visitors from the east who honour Jesus as king"
+        }
+      ],
+      "keyLocations": [
+        {
+          "name": "Nazareth",
+          "description": "Home of Mary and Joseph and later Jesus’ childhood town"
+        },
+        {
+          "name": "Bethlehem",
+          "description": "Town where Jesus is born"
+        },
+        {
+          "name": "Jerusalem",
+          "description": "Location of the temple presentation"
+        },
+        {
+          "name": "Egypt",
+          "description": "Place of refuge from Herod’s violence"
+        }
+      ],
+      "flashcards": [
+        {
+          "id": "birth-card-1",
+          "front": "Who announced Jesus’ coming to Mary?",
+          "back": "The angel Gabriel brought the message to Mary.",
+          "scriptureReference": "Luke 1:26–33"
+        },
+        {
+          "id": "birth-card-2",
+          "front": "Why did Joseph continue with the marriage?",
+          "back": "An angel explained the child’s divine origin and mission, and Joseph obeyed.",
+          "scriptureReference": "Matthew 1:18–24"
+        },
+        {
+          "id": "birth-card-3",
+          "front": "In which town was Jesus born?",
+          "back": "Jesus was born in Bethlehem.",
+          "scriptureReference": "Luke 2:1–7"
+        },
+        {
+          "id": "birth-card-4",
+          "front": "Where was the newborn Jesus laid?",
+          "back": "He was wrapped and placed in a manger.",
+          "scriptureReference": "Luke 2:7"
+        },
+        {
+          "id": "birth-card-5",
+          "front": "Who heard the angelic announcement outside Bethlehem?",
+          "back": "Shepherds caring for their flocks heard the good news.",
+          "scriptureReference": "Luke 2:8–14"
+        },
+        {
+          "id": "birth-card-6",
+          "front": "What gifts did the magi bring?",
+          "back": "They presented gold, frankincense and myrrh.",
+          "scriptureReference": "Matthew 2:9–11"
+        }
+      ],
+      "keyLessons": [
+        "God’s great work can enter the world through humble people and places.",
+        "Faith responds to God with willing obedience even when the future is unclear.",
+        "The announcement of Jesus is good news intended for all kinds of people.",
+        "True worship offers honour rather than seeking control.",
+        "God’s saving purpose unfolds even amid political fear and human danger."
+      ],
+      "reflection": {
+        "question": "Which person’s response—Mary, Joseph, the shepherds or the magi—most challenges your own faith?",
+        "prompt": "Choose one way to respond: willing obedience, immediate witness, patient worship or generous giving."
+      },
+      "prayerPrompt": "God of hope, help me receive Jesus with wonder and respond with the willing faith shown in this story.",
+      "quiz": [
+        {
+          "id": "birth-question-1",
+          "question": "Which angel announced Jesus’ birth to Mary?",
+          "options": [
+            "Michael",
+            "Gabriel",
+            "Raphael",
+            "No angel is named"
+          ],
+          "correctOptionIndex": 1,
+          "explanation": "Luke identifies the messenger as Gabriel.",
+          "scriptureReference": "Luke 1:26–33"
+        },
+        {
+          "id": "birth-question-2",
+          "question": "Why did Mary and Joseph travel to Bethlehem?",
+          "options": [
+            "To attend a wedding",
+            "For a registration ordered by the ruler",
+            "To visit shepherds",
+            "To meet the magi"
+          ],
+          "correctOptionIndex": 1,
+          "explanation": "Joseph travelled to his ancestral town for the registration.",
+          "scriptureReference": "Luke 2:1–5"
+        },
+        {
+          "id": "birth-question-3",
+          "question": "Who received the nighttime announcement near Bethlehem?",
+          "options": [
+            "Roman soldiers",
+            "Shepherds",
+            "Temple priests",
+            "Merchants"
+          ],
+          "correctOptionIndex": 1,
+          "explanation": "Shepherds in nearby fields heard the angelic message.",
+          "scriptureReference": "Luke 2:8–14"
+        },
+        {
+          "id": "birth-question-4",
+          "question": "Who recognised Jesus during his temple presentation?",
+          "options": [
+            "Simeon and Anna",
+            "Herod and Pilate",
+            "Peter and John",
+            "Zechariah and Elizabeth"
+          ],
+          "correctOptionIndex": 0,
+          "explanation": "Simeon praised God, and Anna spoke about the child to those awaiting redemption.",
+          "scriptureReference": "Luke 2:25–38"
+        },
+        {
+          "id": "birth-question-5",
+          "question": "Where did Joseph take the family to escape Herod?",
+          "options": [
+            "Rome",
+            "Egypt",
+            "Bethany",
+            "Samaria"
+          ],
+          "correctOptionIndex": 1,
+          "explanation": "Joseph followed the warning received in a dream and left for Egypt.",
+          "scriptureReference": "Matthew 2:13–15"
+        }
+      ],
+      "completion": {
+        "points": 150,
+        "achievementId": "bible-explorer",
+        "nextStoryId": "jesus-calms-storm"
+      }
+    }
+  ]
+}

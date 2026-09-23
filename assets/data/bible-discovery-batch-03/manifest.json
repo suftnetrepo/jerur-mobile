@@ -1,0 +1,19 @@
+{
+  "id": "bible-discovery-batch-03",
+  "title": "Bible Discovery — Batch 3",
+  "version": "1.0.0",
+  "storyIds": [
+    "elijah",
+    "jonah",
+    "daniel-and-the-lions",
+    "esther",
+    "birth-of-jesus"
+  ],
+  "files": [
+    "stories/elijah.json",
+    "stories/jonah.json",
+    "stories/daniel-and-the-lions.json",
+    "stories/esther.json",
+    "stories/birth-of-jesus.json"
+  ]
+}

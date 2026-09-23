@@ -1,0 +1,224 @@
+{
+  "schemaVersion": "1.0.0",
+  "contentVersion": "1.0.0",
+  "language": "en-GB",
+  "contentNotice": "Original retelling based on the cited Bible passages; not a replacement for reading Scripture.",
+  "story": {
+    "id": "joseph",
+    "title": "Joseph",
+    "subtitle": "Dreams, betrayal and purpose",
+    "collectionIds": [
+      "heroes-of-faith"
+    ],
+    "scriptureReferences": [
+      "Genesis 37:1–36",
+      "Genesis 39:1–23",
+      "Genesis 40:1–23",
+      "Genesis 41:1–57",
+      "Genesis 42:1–38",
+      "Genesis 45:1–15",
+      "Genesis 50:15–21"
+    ],
+    "illustration": "stories/joseph.svg",
+    "estimatedMinutes": 11,
+    "difficulty": "intermediate",
+    "ageSuitability": "all-ages",
+    "featured": true,
+    "keywords": [
+      "Joseph",
+      "dreams",
+      "betrayal",
+      "Egypt",
+      "forgiveness",
+      "famine",
+      "providence",
+      "integrity"
+    ],
+    "introduction": {
+      "summary": "Joseph moves from a pit to slavery, prison and leadership. Through years of injustice, God develops his character and places him where he can save many lives.",
+      "context": "Joseph is one of Jacob’s twelve sons. Family favouritism and jealousy lead to his removal from home, but the story shows God working through circumstances that appear hopeless."
+    },
+    "storySections": [
+      {
+        "id": "dreams-and-jealousy",
+        "title": "Dreams and Jealousy",
+        "content": "Joseph receives dreams suggesting that his family will one day bow before him. His father’s favour and his manner of sharing the dreams deepen his brothers’ jealousy. They sell him to traders and deceive their father into believing Joseph is dead.",
+        "scriptureReference": "Genesis 37:1–36"
+      },
+      {
+        "id": "faithful-in-egypt",
+        "title": "Faithful in Egypt",
+        "content": "Joseph serves in Potiphar’s household and is entrusted with responsibility. When he refuses an immoral proposal, he is falsely accused and imprisoned. Even there, God remains with him and Joseph continues to serve faithfully.",
+        "scriptureReference": "Genesis 39:1–23"
+      },
+      {
+        "id": "forgotten-in-prison",
+        "title": "Forgotten in Prison",
+        "content": "Joseph accurately interprets the dreams of two royal officials. He asks the restored cupbearer to remember him, but the cupbearer forgets. Joseph’s release does not come immediately, and the season of waiting continues.",
+        "scriptureReference": "Genesis 40:1–23"
+      },
+      {
+        "id": "wisdom-before-pharaoh",
+        "title": "Wisdom Before Pharaoh",
+        "content": "When Pharaoh has disturbing dreams, Joseph explains that seven years of abundance will be followed by seven years of famine. He recommends a wise storage plan, and Pharaoh appoints him to lead Egypt’s preparation.",
+        "scriptureReference": "Genesis 41:1–57"
+      },
+      {
+        "id": "reconciliation",
+        "title": "Reconciliation and Purpose",
+        "content": "The famine brings Joseph’s brothers to Egypt seeking food. After testing their changed character, Joseph reveals his identity and embraces them. He recognises that although they intended harm, God used the situation to preserve many lives.",
+        "scriptureReference": "Genesis 42:1–38; 45:1–15; 50:15–21"
+      }
+    ],
+    "keyPeople": [
+      {
+        "name": "Joseph",
+        "role": "Son of Jacob who becomes a leader in Egypt"
+      },
+      {
+        "name": "Jacob",
+        "role": "Joseph’s father"
+      },
+      {
+        "name": "Joseph’s brothers",
+        "role": "Family members transformed from jealousy toward responsibility"
+      },
+      {
+        "name": "Pharaoh",
+        "role": "Ruler who appoints Joseph over Egypt’s famine preparations"
+      }
+    ],
+    "keyLocations": [
+      {
+        "name": "Canaan",
+        "description": "Joseph’s homeland"
+      },
+      {
+        "name": "Egypt",
+        "description": "The place of Joseph’s suffering, service and eventual leadership"
+      }
+    ],
+    "flashcards": [
+      {
+        "id": "joseph-card-1",
+        "front": "Why were Joseph’s brothers jealous?",
+        "back": "Their father showed Joseph special favour, and Joseph shared dreams in which his family bowed before him.",
+        "scriptureReference": "Genesis 37:3–11"
+      },
+      {
+        "id": "joseph-card-2",
+        "front": "Where did Joseph’s brothers place him before selling him?",
+        "back": "They threw Joseph into an empty cistern or pit.",
+        "scriptureReference": "Genesis 37:23–24"
+      },
+      {
+        "id": "joseph-card-3",
+        "front": "Why was Joseph imprisoned?",
+        "back": "He was falsely accused after refusing to betray Potiphar’s trust and sin against God.",
+        "scriptureReference": "Genesis 39:7–20"
+      },
+      {
+        "id": "joseph-card-4",
+        "front": "What did Pharaoh’s dreams predict?",
+        "back": "Seven years of abundance followed by seven years of severe famine.",
+        "scriptureReference": "Genesis 41:25–32"
+      },
+      {
+        "id": "joseph-card-5",
+        "front": "What plan did Joseph recommend?",
+        "back": "Store food during the abundant years so Egypt could survive the famine.",
+        "scriptureReference": "Genesis 41:33–36"
+      },
+      {
+        "id": "joseph-card-6",
+        "front": "How did Joseph interpret his brothers’ harmful actions?",
+        "back": "They intended harm, but God used the events to preserve many lives.",
+        "scriptureReference": "Genesis 50:20"
+      }
+    ],
+    "keyLessons": [
+      "Integrity matters even when faithfulness carries a cost.",
+      "Delay does not mean God is absent.",
+      "Wisdom prepares responsibly for future difficulty.",
+      "Forgiveness can break the cycle of revenge.",
+      "God can bring redemptive purpose from human wrongdoing without calling the wrongdoing good."
+    ],
+    "reflection": {
+      "question": "Is there a disappointment or injustice that has tempted you to give up doing what is right?",
+      "prompt": "Identify one faithful action you can take even before your circumstances change."
+    },
+    "prayerPrompt": "God who was with Joseph, keep me faithful in difficulty and give me grace to forgive.",
+    "quiz": [
+      {
+        "id": "joseph-question-1",
+        "question": "What did Joseph’s brothers do to him?",
+        "options": [
+          "Made him their leader",
+          "Sent him to school",
+          "Sold him to travelling merchants",
+          "Asked him to leave temporarily"
+        ],
+        "correctOptionIndex": 2,
+        "explanation": "The brothers sold Joseph, and he was taken to Egypt.",
+        "scriptureReference": "Genesis 37:25–28"
+      },
+      {
+        "id": "joseph-question-2",
+        "question": "In whose household did Joseph first serve in Egypt?",
+        "options": [
+          "Pharaoh’s",
+          "Potiphar’s",
+          "The cupbearer’s",
+          "The baker’s"
+        ],
+        "correctOptionIndex": 1,
+        "explanation": "Potiphar, an Egyptian official, bought Joseph and entrusted his household to him.",
+        "scriptureReference": "Genesis 39:1–6"
+      },
+      {
+        "id": "joseph-question-3",
+        "question": "How many years of abundance did Pharaoh’s dreams predict?",
+        "options": [
+          "Three",
+          "Five",
+          "Seven",
+          "Twelve"
+        ],
+        "correctOptionIndex": 2,
+        "explanation": "Seven abundant years would be followed by seven years of famine.",
+        "scriptureReference": "Genesis 41:26–30"
+      },
+      {
+        "id": "joseph-question-4",
+        "question": "Why did Joseph’s brothers travel to Egypt?",
+        "options": [
+          "To join an army",
+          "To find work",
+          "To buy food during the famine",
+          "To visit Pharaoh"
+        ],
+        "correctOptionIndex": 2,
+        "explanation": "The famine reached Canaan, so Jacob sent his sons to Egypt to buy grain.",
+        "scriptureReference": "Genesis 42:1–5"
+      },
+      {
+        "id": "joseph-question-5",
+        "question": "How did Joseph eventually treat his brothers?",
+        "options": [
+          "He imprisoned them permanently",
+          "He forgave and provided for them",
+          "He refused to speak to them",
+          "He sent them away without food"
+        ],
+        "correctOptionIndex": 1,
+        "explanation": "Joseph reconciled with his brothers and assured them of his care.",
+        "scriptureReference": "Genesis 45:1–15; 50:15–21"
+      }
+    ],
+    "completion": {
+      "points": 160,
+      "achievementId": "story-scholar",
+      "nextStoryId": "moses"
+    }
+  }
+}
